@@ -1,0 +1,8 @@
+#include "SystemContext.h"
+
+SystemContext::SystemContext() {
+    displayManager = std::make_shared<DisplayManager>();
+    inputManager = std::make_shared<InputManager>();
+    sensorManager = std::make_shared<SensorManager>();
+    processManager = std::make_shared<ProcessManager>();
+}
