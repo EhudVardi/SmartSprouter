@@ -1,5 +1,15 @@
 #include "Application.h"
+
+#include "StateMachine/States/StartingUpState.h"
+#include "StateMachine/States/SystemInErrorState.h"
+#include "StateMachine/States/InitializingState.h"
+#include "StateMachine/States/IdlingState.h"
+#include "StateMachine/States/InformingState.h"
+#include "StateMachine/States/SettingProcessState.h"
+#include "StateMachine/States/SettingParamState.h"
 #include "StateMachine/States/RunningState.h"
+#include "StateMachine/States/AbortingState.h"
+
 
 void Application::setup() {
     // Initialize managers in context
