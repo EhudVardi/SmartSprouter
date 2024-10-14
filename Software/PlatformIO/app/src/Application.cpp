@@ -17,6 +17,7 @@ void Application::setup() {
     context.inputManager = std::make_shared<InputManager>();
     context.sensorManager = std::make_shared<SensorManager>();
     context.processManager = std::make_shared<ProcessManager>();
+    context.actuatorManager = std::make_shared<ActuatorManager>();
 
     // Register event handlers for input events
     context.inputManager->registerEventHandler(InputEvent::ButtonXPressed, [this]() {
