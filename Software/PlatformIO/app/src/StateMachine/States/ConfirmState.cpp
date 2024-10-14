@@ -1,5 +1,5 @@
-#include "ConfirmState.h"
-#include "SystemContext.h"
+#include "StateMachine/States/ConfirmState.h"
+#include "SystemContext/SystemContext.h"
 #include <iostream>
 
 void ConfirmState::enter(SystemContext* context) {

@@ -1,8 +1,8 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "SystemContext.h"
-#include "StateMachine.h"
+#include "SystemContext/SystemContext.h"
+#include "StateMachine/StateMachine.h"
 
 class Application {
 private:

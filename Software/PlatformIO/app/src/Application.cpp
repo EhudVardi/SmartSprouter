@@ -1,5 +1,5 @@
 #include "Application.h"
-#include "RunningState.h"
+#include "StateMachine/States/RunningState.h"
 
 void Application::setup() {
     // Initialize managers in context

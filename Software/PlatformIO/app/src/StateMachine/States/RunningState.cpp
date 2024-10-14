@@ -1,5 +1,5 @@
-#include "RunningState.h"
-#include "SystemContext.h"
+#include "StateMachine/States/RunningState.h"
+#include "SystemContext/SystemContext.h"
 #include <iostream>
 
 void RunningState::enter(SystemContext* context) {

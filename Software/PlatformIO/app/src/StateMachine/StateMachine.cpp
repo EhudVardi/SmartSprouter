@@ -1,4 +1,4 @@
-#include "StateMachine.h"
+#include "StateMachine/StateMachine.h"
 #include <iostream>
 
 void StateMachine::changeState(std::shared_ptr<State> newState, SystemContext* context) {

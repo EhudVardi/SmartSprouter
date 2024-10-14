@@ -2,7 +2,7 @@
 #define STATE_MACHINE_H
 
 #include <memory>
-#include "State.h"
+#include "StateMachine/States/State.h"
 
 class StateMachine {
 private:

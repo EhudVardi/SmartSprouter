@@ -1,9 +1,9 @@
-#ifndef CONFIRM_STATE_H
-#define CONFIRM_STATE_H
+#ifndef RUNNING_STATE_H
+#define RUNNING_STATE_H
 
-#include "State.h"
+#include "StateMachine/States/State.h"
 
-class ConfirmState : public State {
+class RunningState : public State {
 public:
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;
@@ -11,4 +11,4 @@ public:
     void handleInput(SystemContext* context, InputEvent event) override;
 };
 
-#endif // CONFIRM_STATE_H
+#endif // RUNNING_STATE_H
