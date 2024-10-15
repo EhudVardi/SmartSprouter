@@ -10,6 +10,7 @@
 #include "StateMachine/States/RunningState.h"
 #include "StateMachine/States/AbortingState.h"
 
+#include <iostream>
 
 void Application::setup() {
     // Initialize managers in context
@@ -21,9 +22,29 @@ void Application::setup() {
 
     context.inputManager->initialize();
 
-    // Register event handlers for input events
-    context.inputManager->registerEventHandler(InputEvent::ButtonXPressed, [this]() {
-        stateMachine.handleInput(InputEvent::ButtonXPressed, &context);
+    context.inputManager->registerEventHandler(InputEvent::BackPressed, [this]() {
+        //stateMachine.handleInput(InputEvent::BackPressed, &context);
+        std::cout << "BackPressed" << std::endl ;
+    });
+    context.inputManager->registerEventHandler(InputEvent::BackReleased, [this]() {
+        //stateMachine.handleInput(InputEvent::BackReleased, &context);
+        std::cout << "BackReleased" << std::endl ;
+    });
+    context.inputManager->registerEventHandler(InputEvent::RotatedLeft, [this]() {
+        //stateMachine.handleInput(InputEvent::RotatedLeft, &context);
+        std::cout << "RotatedLeft" << std::endl ;
+    });
+    context.inputManager->registerEventHandler(InputEvent::RotatedRight, [this]() {
+        //stateMachine.handleInput(InputEvent::RotatedRight, &context);
+        std::cout << "RotatedRight" << std::endl ;
+    });
+    context.inputManager->registerEventHandler(InputEvent::EnterPressed, [this]() {
+        //stateMachine.handleInput(InputEvent::EnterPressed, &context);
+        std::cout << "EnterPressed" << std::endl ;
+    });
+    context.inputManager->registerEventHandler(InputEvent::EnterReleased, [this]() {
+        //stateMachine.handleInput(InputEvent::EnterReleased, &context);
+        std::cout << "EnterReleased" << std::endl ;
     });
 
     // Set initial state

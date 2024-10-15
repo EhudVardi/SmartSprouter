@@ -2,9 +2,12 @@
 #define INPUT_EVENT_H
 
 enum class InputEvent {
-    ButtonXPressed,
-    ButtonXReleased,
-    // Add other input events as needed
+    BackPressed,
+    BackReleased,
+    RotatedLeft,
+    RotatedRight,
+    EnterPressed,
+    EnterReleased,
 };
 
 #endif // INPUT_EVENT_H

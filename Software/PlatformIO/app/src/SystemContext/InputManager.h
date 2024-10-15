@@ -9,7 +9,6 @@
 
 #include "HardwareAbstraction/HWButtonHandler.h"
 #include "HardwareAbstraction/HWRotaryEncoderHandler.h"
-#include <iostream>
 
 class InputManager : public BaseManager {
 private:

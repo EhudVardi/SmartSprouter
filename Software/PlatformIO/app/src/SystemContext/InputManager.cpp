@@ -5,10 +5,18 @@ bool InputManager::initialize() {
     /// initialize simple buttons
     std::vector<int> hwButtonPins = { 12 };
     std::vector<std::function<void()>> hwButtonHandlers_onPress = {
-        []() { std::cout << "testing button - pressed" << std::endl; },
+        [this]() {     
+            if (eventHandlers.count(InputEvent::BackPressed)) {
+                eventHandlers[InputEvent::BackPressed]();
+            }
+        },
     };
     std::vector<std::function<void()>> hwButtonHandlers_onRelease = {
-        []() { std::cout << "testing button - released" << std::endl; },
+        [this]() {     
+            if (eventHandlers.count(InputEvent::BackReleased)) {
+                eventHandlers[InputEvent::BackReleased]();
+            }
+        },
     };
     hwButtonHandler = new HWButtonHandler(hwButtonPins, hwButtonHandlers_onPress, hwButtonHandlers_onRelease);
     
@@ -17,16 +25,32 @@ bool InputManager::initialize() {
         {18, 19, 21}, // Encoder 1
     };
     std::vector<std::function<void()>> handlers_onRotateLeft = {
-        []() { std::cout << "Encoder 1 Rotated Left" << std::endl; },
+        [this]() {     
+            if (eventHandlers.count(InputEvent::RotatedLeft)) {
+                eventHandlers[InputEvent::RotatedLeft]();
+            }
+        },
     };
     std::vector<std::function<void()>> handlers_onRotateRight = {
-        []() { std::cout << "Encoder 1 Rotated Right" << std::endl; },
+        [this]() {     
+            if (eventHandlers.count(InputEvent::RotatedRight)) {
+                eventHandlers[InputEvent::RotatedRight]();
+            }
+        },
     };
     std::vector<std::function<void()>> handlers_onButtonPress = {
-        []() { std::cout << "Encoder 1 Button Pressed" << std::endl; },
+        [this]() {     
+            if (eventHandlers.count(InputEvent::EnterPressed)) {
+                eventHandlers[InputEvent::EnterPressed]();
+            }
+        },
     };
     std::vector<std::function<void()>> handlers_onButtonRelease = {
-        []() { std::cout << "Encoder 1 Button Released" << std::endl; },
+        [this]() {     
+            if (eventHandlers.count(InputEvent::EnterReleased)) {
+                eventHandlers[InputEvent::EnterReleased]();
+            }
+        },
     };
     encoderHandler = new HWRotaryEncoderHandler(encoderParams, handlers_onRotateLeft, handlers_onRotateRight, handlers_onButtonPress, handlers_onButtonRelease);
     
@@ -38,13 +62,6 @@ void InputManager::registerEventHandler(InputEvent event, std::function<void()> 
 }
 
 void InputManager::pollInputs() {
-    
     hwButtonHandler->updateButtons();
     encoderHandler->tickAll();
-
-    // // In a real system, this would read from hardware inputs.
-    // // Simulate an input event
-    // if (eventHandlers.count(InputEvent::ButtonXPressed)) {
-    //     eventHandlers[InputEvent::ButtonXPressed]();  // Trigger the event handler
-    // }
 }
