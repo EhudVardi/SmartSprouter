@@ -1,8 +1,11 @@
 #ifndef ACTUATOR_MANAGER_H
 #define ACTUATOR_MANAGER_H
 
-class ActuatorManager {
+#include "BaseManager.h"
+
+class ActuatorManager : public BaseManager {
 public:
+    bool initialize() override;
     void setOutput(); 
 };
 

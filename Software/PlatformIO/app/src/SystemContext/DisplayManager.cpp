@@ -1,6 +1,11 @@
 #include "SystemContext/DisplayManager.h"
 #include <iostream>
 
+bool DisplayManager::initialize() {
+
+    return true;
+}
+
 void DisplayManager::showPage(const std::string& page) {
     std::cout << "Displaying: " << page << std::endl;
 }

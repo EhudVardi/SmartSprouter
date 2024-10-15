@@ -1,5 +1,9 @@
 #include "SystemContext/InputManager.h"
-#include <iostream>
+
+bool InputManager::initialize() {
+
+    return true;
+}
 
 void InputManager::registerEventHandler(InputEvent event, std::function<void()> handler) {
     eventHandlers[event] = handler;
