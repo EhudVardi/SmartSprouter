@@ -11,6 +11,8 @@
 #include "StateMachine/States/AbortingState.h"
 
 #include <iostream>
+#include <cmath>  // for std::isnan
+#include <string> // for std::to_string
 
 void Application::setup() {
     // Initialize managers in context
@@ -46,6 +48,11 @@ void Application::setup() {
         //stateMachine.handleInput(InputEvent::EnterReleased, &context);
         std::cout << "EnterReleased" << std::endl ;
     });
+    
+
+    context.sensorManager->initialize();
+
+
 
     // Set initial state
     auto runningState = std::make_shared<RunningState>();
@@ -55,9 +62,16 @@ void Application::setup() {
 void Application::loop() {
     // Poll input and sensor managers
     context.inputManager->pollInputs();
-    //context.sensorManager->readSensors();
 
+    float temperature = context.sensorManager->getTemperature();
+    std::cout << "temperature = " << (!std::isnan(temperature) ? std::to_string(temperature) : "nan") << std::endl;
+    float humidity = context.sensorManager->getHumidity();
+    std::cout << "humidity = " << (!std::isnan(humidity) ? std::to_string(humidity) : "nan") << std::endl;
+    
+    delay(500);
+    
     // Update state machine
     stateMachine.update(&context);
+
 }
 

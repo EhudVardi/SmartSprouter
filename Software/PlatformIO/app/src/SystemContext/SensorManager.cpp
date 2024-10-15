@@ -1,12 +1,25 @@
 #include "SystemContext/SensorManager.h"
-#include <iostream>
+#include "SystemContext/SensorPins.h"
 
 bool SensorManager::initialize() {
+    if (dht11Sensor == nullptr) {
+        dht11Sensor = new SensorDHT11Wrapper(SENSOR_DHT11_PIN);
+    }
+    dht11Sensor->init();
 
     return true;
 }
 
-void SensorManager::readSensors() {
-    // Simulate reading sensors
-    std::cout << "Reading sensors...\n";
+float SensorManager::getTemperature() {
+    if (dht11Sensor) {
+        return dht11Sensor->readTemperature();
+    }
+    return NAN;
+}
+
+float SensorManager::getHumidity() {
+    if (dht11Sensor) {
+        return dht11Sensor->readHumidity();
+    }
+    return NAN;
 }

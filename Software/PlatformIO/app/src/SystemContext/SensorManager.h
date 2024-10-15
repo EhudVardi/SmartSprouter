@@ -3,10 +3,16 @@
 
 #include "BaseManager.h"
 
+#include "HardwareAbstraction/SensorDHT11Wrapper.h"
+
 class SensorManager : public BaseManager {
+private:
+    SensorDHT11Wrapper* dht11Sensor = nullptr;
+
 public:
     bool initialize() override;
-    void readSensors();  // Function to read from system sensors
+    float getTemperature();
+    float getHumidity();
 };
 
 #endif // SENSOR_MANAGER_H
