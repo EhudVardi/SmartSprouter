@@ -2,7 +2,7 @@
 #define HW_BUTTON_HANDLER_H
 
 #include <vector>
-#include "HardwareAbstruction/HWButton.h"
+#include "HardwareAbstraction/HWButton.h"
 
 // HWButtonHandler class to manage multiple buttons
 class HWButtonHandler {

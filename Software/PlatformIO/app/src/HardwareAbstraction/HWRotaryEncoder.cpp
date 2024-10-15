@@ -1,4 +1,4 @@
-#include "HardwareAbstruction/HWRotaryEncoder.h"
+#include "HardwareAbstraction/HWRotaryEncoder.h"
 
 HWRotaryEncoder::HWRotaryEncoder(int pin1, int pin2, int buttonPin)
     : encoder(pin1, pin2), button(buttonPin) {

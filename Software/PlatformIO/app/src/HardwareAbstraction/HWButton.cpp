@@ -1,4 +1,4 @@
-# include "HardwareAbstruction/HWButton.h"
+# include "HardwareAbstraction/HWButton.h"
 
 HWButton::HWButton(int pin) 
 : pin(pin), state(HWButtonState::Released), lastState(HWButtonState::Released), lastReading(HIGH), lastDebounceTime(0) {
