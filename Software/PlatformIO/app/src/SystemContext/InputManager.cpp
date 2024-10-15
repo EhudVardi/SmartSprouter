@@ -1,9 +1,10 @@
 #include "SystemContext/InputManager.h"
+#include "SystemContext/InputPins.h"
 
 bool InputManager::initialize() {
     
     /// initialize simple buttons
-    std::vector<int> hwButtonPins = { 12 };
+    std::vector<int> hwButtonPins = { BUTTON_BACK_PIN };
     std::vector<std::function<void()>> hwButtonHandlers_onPress = {
         [this]() {     
             if (eventHandlers.count(InputEvent::BackPressed)) {
@@ -22,7 +23,7 @@ bool InputManager::initialize() {
     
     /// initialize rotary encoders
     std::vector<std::tuple<int, int, int>> encoderParams = {
-        {18, 19, 21}, // Encoder 1
+        {ROTARY_ENCODER_MAIN_A_PIN, ROTARY_ENCODER_MAIN_B_PIN, ROTARY_ENCODER_MAIN_BUTTON_PIN}, // Encoder 1
     };
     std::vector<std::function<void()>> handlers_onRotateLeft = {
         [this]() {     
