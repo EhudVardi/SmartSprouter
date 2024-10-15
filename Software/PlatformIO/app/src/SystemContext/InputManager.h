@@ -7,9 +7,15 @@
 #include <functional>
 #include "InputEvent.h" // Make sure to create this for the InputEvent enum
 
+#include "HardwareAbstraction/HWButtonHandler.h"
+#include "HardwareAbstraction/HWRotaryEncoderHandler.h"
+#include <iostream>
+
 class InputManager : public BaseManager {
 private:
     std::map<InputEvent, std::function<void()>> eventHandlers;
+    HWButtonHandler* hwButtonHandler = nullptr;
+    HWRotaryEncoderHandler* encoderHandler = nullptr;
 
 public:
     bool initialize() override;

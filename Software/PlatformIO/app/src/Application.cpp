@@ -19,6 +19,8 @@ void Application::setup() {
     context.processManager = std::make_shared<ProcessManager>();
     context.actuatorManager = std::make_shared<ActuatorManager>();
 
+    context.inputManager->initialize();
+
     // Register event handlers for input events
     context.inputManager->registerEventHandler(InputEvent::ButtonXPressed, [this]() {
         stateMachine.handleInput(InputEvent::ButtonXPressed, &context);
@@ -32,8 +34,9 @@ void Application::setup() {
 void Application::loop() {
     // Poll input and sensor managers
     context.inputManager->pollInputs();
-    context.sensorManager->readSensors();
+    //context.sensorManager->readSensors();
 
     // Update state machine
     stateMachine.update(&context);
 }
+
