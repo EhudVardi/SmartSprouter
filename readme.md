@@ -10,14 +10,21 @@ it may take photos for hyperlapse video of the sprouting proceedure
 
 
 # Hardware
+## Pinout
+| Pin Name | Pin Number |
+| -------- | ---------- |
+| DIGITAL_OUTPUT_RELAY1_PIN | 16 |
+| DIGITAL_OUTPUT_RELAY2_PIN | 17 |
+| BUTTON_BACK_PIN | 12 |
+| ROTARY_ENCODER_MAIN_A_PIN | 18 |
+| ROTARY_ENCODER_MAIN_B_PIN | 19 |
+| ROTARY_ENCODER_MAIN_BUTTON_PIN | 21 |
+| SENSOR_DHT11_PIN | 4 |
+| (TODO) LCD pins | ... |
 
 ## Notes
-
-### ESP32 relay board
-relay pins - 16 & 17
-
-reset into user app - press EN button.
-
+### ESP32 relay board pinout
+reset into user app - press EN button\
 reset into bootloader - press and hold EN, press and hold I00, release EN, release I00
 
 
