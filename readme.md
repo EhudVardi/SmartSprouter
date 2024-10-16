@@ -20,7 +20,8 @@ it may take photos for hyperlapse video of the sprouting proceedure
 | ROTARY_ENCODER_MAIN_B_PIN | 19 |
 | ROTARY_ENCODER_MAIN_BUTTON_PIN | 21 |
 | SENSOR_DHT11_PIN | 4 |
-| (TODO) LCD pins | ... |
+| LCD_SDA_PIN | 25 |
+| LCD_SCL_PIN | 26 |
 
 ## Notes
 ### ESP32 relay board pinout
