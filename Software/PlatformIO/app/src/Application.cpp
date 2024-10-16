@@ -58,6 +58,10 @@ void Application::setup() {
 
 
 
+    context.displayManager->initialize();
+
+
+
     // Set initial state
     auto runningState = std::make_shared<RunningState>();
     stateMachine.changeState(runningState, &context);
@@ -65,22 +69,23 @@ void Application::setup() {
 
 void Application::loop() {
     // Poll input and sensor managers
-    context.inputManager->pollInputs();
+    //context.inputManager->pollInputs();
 
+    /// test dht11 sensor
     // float temperature = context.sensorManager->getTemperature();
     // std::cout << "temperature = " << (!std::isnan(temperature) ? std::to_string(temperature) : "nan") << std::endl;
     // float humidity = context.sensorManager->getHumidity();
     // std::cout << "humidity = " << (!std::isnan(humidity) ? std::to_string(humidity) : "nan") << std::endl;
     
+    /// test actuator - relays
+    // context.actuatorManager->CloseRelay1();
+    // context.actuatorManager->OpenRelay2();
+    // delay(500);
+    // context.actuatorManager->CloseRelay2();
+    // context.actuatorManager->OpenRelay1();
+    // delay(500);
 
-    context.actuatorManager->CloseRelay1();
-    context.actuatorManager->OpenRelay2();
-
-    delay(500);
-    
-    context.actuatorManager->CloseRelay2();
-    context.actuatorManager->OpenRelay1();
-
+    context.displayManager->refresh();
     delay(500);
     
     // Update state machine
