@@ -29,6 +29,7 @@ bool DisplayManager::initialize() {
     myPage.AddElement(&myRangeTemp);
 
     myAppPage.SetTitle("title");
+    
 
     return true;
 }
@@ -42,6 +43,13 @@ void DisplayManager::updateLabel(const std::string& label, const std::string& va
 }
 
 void DisplayManager::refresh() {
+
+    if (displayHandler != nullptr) {
+        myAppPageAbout.Draw(*displayHandler);
+    } else {
+        Serial.println("Error: displayHandler is nullptr!");
+    }
+    return;
 
     if (displayHandler != nullptr) {
         myAppPage.Draw(*displayHandler);

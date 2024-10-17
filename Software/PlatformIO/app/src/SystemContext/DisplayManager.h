@@ -18,6 +18,7 @@
 #include "GUI/TypedNameRange.h"
 #include "GUI/NamedRangeEditState.h"
 #include "GUI/PageAppBase.h"
+#include "GUI/PageAppAbout.h"
 
 
 class DisplayManager : public BaseManager {
@@ -36,6 +37,8 @@ private:
     NamedRangeTemperature myRangeTemp;
 
     PageAppBase myAppPage;
+
+    PageAppAbout myAppPageAbout;
 
 public:
     DisplayManager() :
