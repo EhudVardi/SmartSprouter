@@ -6,7 +6,7 @@
 #include <Arduino.h>
 
 class Label : public GuiElement {
-private:
+protected:
     String text;
     FontSize fontSize;
     bool inverted; // New member to determine if label is inverted

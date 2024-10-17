@@ -20,6 +20,7 @@ bool DisplayManager::initialize() {
     myPage.AddElement(&intValue);
     myPage.AddElement(&floatValue);
     myPage.AddElement(&percentValue);
+    myPage.AddElement(&myCenteredLabel);
 
 
     return true;

@@ -9,6 +9,7 @@
 
 #include "GUI/GuiElement.h"
 #include "GUI/Label.h"
+#include "GUI/CenteredLabel.h"
 #include "GUI/NamedValue.h"
 #include "GUI/TypedNameValue.h"
 #include "GUI/Page.h"
@@ -27,13 +28,15 @@ private:
     NamedValueInt intValue;
     NamedValueFloat floatValue;
     NamedValueFloat percentValue;
+    CenteredLabel myCenteredLabel;
 
 public:
     DisplayManager() :
     myLabel(0, 0, "Status", FontSize::Medium), 
     intValue(0, 16, "Count", FontSize::Small), 
     floatValue(0, 26, "Temperature", FontSize::Small),  
-    percentValue(0, 36, "Humidity", FontSize::Small) {} // Initialize in the constructor
+    percentValue(0, 36, "Humidity", FontSize::Small), 
+    myCenteredLabel(40, "Centered", FontSize::Medium) {} // Initialize in the constructor
 
     bool initialize() override;
     void showPage(const std::string& page);
