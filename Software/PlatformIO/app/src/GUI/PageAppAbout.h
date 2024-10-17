@@ -10,7 +10,11 @@ protected:
     Image LogoImage;
 
 public:
-    PageAppAbout() : LogoImage((SCREEN_WIDTH - smileyBitmapWidth) / 2, (SCREEN_HEIGHT - smileyBitmapHeight) / 2, smileyBitmap, smileyBitmapWidth, smileyBitmapHeight ) {
+    PageAppAbout() : LogoImage( (SCREEN_WIDTH - abstractsproutingseedimage_width) / 2, 
+                                (SCREEN_HEIGHT - abstractsproutingseedimage_height) / 2, 
+                                abstractsproutingseedimage_bitmap, 
+                                abstractsproutingseedimage_width, 
+                                abstractsproutingseedimage_height ) {
         AddElement(&LogoImage);
         SetTitle(">About<");
     }
