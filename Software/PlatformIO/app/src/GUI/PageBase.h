@@ -1,5 +1,5 @@
-#ifndef PAGE_H
-#define PAGE_H
+#ifndef PAGEBASE_H
+#define PAGEBASE_H
 
 #include "GUI/GuiElement.h"
 #include <vector>
@@ -22,4 +22,4 @@ public:
     }
 };
 
-#endif // PAGE_H
+#endif // PAGEBASE_H
