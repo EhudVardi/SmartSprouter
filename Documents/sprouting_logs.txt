@@ -1,0 +1,16 @@
+manual tests:
+
+testing old seeds (2021.. now its the end of 2024):
+
+tests in the machine with just mosit makers, no automation:
+ - broccoli - does not sprout at all
+ - mush - srouts well
+ - pees - sprout pretty well
+ - sunflower - does not sprout almost at all
+ - Soy beans - attempted. TODO update status
+
+
+tested broccoli keil and alphalpha seeds manually with a simple paper towel and a plastic bag
+ - brocoli and keil seeds apparently too old, and they smell heavily bad.
+ - alphalpha sprouts but has a bit of bad odor.
+ - all other seeds failed to seed and had atrocious odor.
