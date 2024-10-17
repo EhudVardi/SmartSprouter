@@ -42,7 +42,7 @@ public:
         int16_t x1, y1;
         uint16_t w, h;
 
-        Adafruit_SSD1306& display = displayHandler.GetDisplayObject();
+        Adafruit_SSD1306& display = displayHandler.GetDisplayObject(); //get the display object (get a REFERENCE (an alias &), NOT a copy)
 
         // Set font size based on enum
         display.setTextSize(static_cast<uint8_t>(fontSize));
