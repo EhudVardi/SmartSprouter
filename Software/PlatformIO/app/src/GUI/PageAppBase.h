@@ -4,7 +4,6 @@
 #include "GUI/PageBase.h"
 #include "GUI/CenteredLabel.h"
 #include "GUI/Line.h"
-#include <iostream>
 
 class PageAppBase : public PageBase {
 protected:
