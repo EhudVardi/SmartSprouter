@@ -15,6 +15,8 @@
 #include "GUI/Page.h"
 #include "GUI/NamedValueEditState.h"
 #include "GUI/FontSize.h"
+#include "GUI/TypedNameRange.h"
+#include "GUI/NamedRangeEditState.h"
 
 
 class DisplayManager : public BaseManager {
@@ -29,6 +31,8 @@ private:
     NamedValueFloat floatValue;
     NamedValuePercent percentValue;
     CenteredLabel myCenteredLabel;
+    NamedRangePercent myRange;
+    NamedRangeTemperature myRangeTemp;
 
 public:
     DisplayManager() :
@@ -36,7 +40,9 @@ public:
     intValue(0, 16, "Count", FontSize::Small), 
     floatValue(0, 26, "Temperature", FontSize::Small),  
     percentValue(0, 36, "Humidity", FontSize::Small), 
-    myCenteredLabel(44, "Centered", FontSize::Medium) {} // Initialize in the constructor
+    myCenteredLabel(44, "Centered", FontSize::Medium), 
+    myRange(0, 46, "humid'"),
+    myRangeTemp(0, 56, "temp'") {} // Initialize in the constructor
 
     bool initialize() override;
     void showPage(const std::string& page);

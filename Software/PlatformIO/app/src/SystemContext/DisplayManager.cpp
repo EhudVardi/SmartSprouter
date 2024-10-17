@@ -12,6 +12,10 @@ bool DisplayManager::initialize() {
     intValue.SetValue(42);     // Example integer value
     floatValue.SetValue(25.3); // Example float value
     percentValue.SetValue(15.52);
+    myRange.SetMinValue(5);
+    myRange.SetMaxValue(20);
+    myRangeTemp.SetMinValue(20);
+    myRangeTemp.SetMaxValue(50);
 
     floatValue.SetEditState(NamedValueEditState::Entered);
 
@@ -20,7 +24,9 @@ bool DisplayManager::initialize() {
     myPage.AddElement(&intValue);
     myPage.AddElement(&floatValue);
     myPage.AddElement(&percentValue);
-    myPage.AddElement(&myCenteredLabel);
+    //myPage.AddElement(&myCenteredLabel);
+    myPage.AddElement(&myRange);
+    myPage.AddElement(&myRangeTemp);
 
 
     return true;
@@ -59,4 +65,14 @@ void DisplayManager::refresh() {
 
     percentValue.SetValue(percent);
 
+
+    NamedRangeEditState percentRangeState = myRange.GetEditState();
+    myRange.SetEditState(percentRangeState == NamedRangeEditState::None ? NamedRangeEditState::Selected : (percentRangeState == NamedRangeEditState::Selected ? NamedRangeEditState::EnteredMin : (percentRangeState == NamedRangeEditState::EnteredMin ? NamedRangeEditState::EnteredMax : NamedRangeEditState::None)));
+
+    myRange.SetMinValue(percent+50);
+    myRange.SetMaxValue(percent+70);
+
+
+    myRangeTemp.SetMinValue(temp+25);
+    myRangeTemp.SetMaxValue(temp+40);
 }
