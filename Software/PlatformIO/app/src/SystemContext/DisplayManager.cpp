@@ -2,19 +2,11 @@
 #include <iostream>
 
 bool DisplayManager::initialize() {
-
-    i2cwires.begin(SDA_PIN, SCL_PIN);
     
-    // Initialize the OLED display
-    if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) { // Address 0x3C for 128x64
-        Serial.println(F("SSD1306 allocation failed"));
-        for (;;); // Halt the program if display init fails
-    }
+    displayHandler = new LcdDisplayHandler(LCD_SDA_PIN, LCD_SCL_PIN);
 
     // Clear the display buffer
-    display.clearDisplay();
-    
-    //display.setTextColor(SSD1306_WHITE);
+    displayHandler->GetDisplayObject().clearDisplay();
      
     // Set initial values
     intValue.SetValue(42);     // Example integer value
@@ -43,8 +35,11 @@ void DisplayManager::updateLabel(const std::string& label, const std::string& va
 
 void DisplayManager::refresh() {
 
-        // Update display contents
-    myPage.Draw(display);
+    if (displayHandler != nullptr) {
+        myPage.Draw(*displayHandler);
+    } else {
+        Serial.println("Error: displayHandler is nullptr!");
+    }
 
     // Example: Modify the values dynamically (can be replaced by actual sensor input)
     static int count = 42;

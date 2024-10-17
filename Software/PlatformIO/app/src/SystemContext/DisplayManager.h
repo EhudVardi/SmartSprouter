@@ -4,10 +4,9 @@
 #include "BaseManager.h"
 #include <string>
 
+#include "HardwareAbstraction/LcdDisplayHandler.h"
+#include "SystemContext/DisplayPins.h"
 
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
 #include "GUI/GuiElement.h"
 #include "GUI/Label.h"
 #include "GUI/NamedValue.h"
@@ -17,36 +16,20 @@
 #include "GUI/FontSize.h"
 
 
-// Define OLED display width and height
-#define SCREEN_WIDTH 128
-#define SCREEN_HEIGHT 64
-#define OLED_RESET    -1  // Reset pin not used on ESP32
-#define SCREEN_ADDRESS 0x3C // Change if needed
-
-
-// Define SDA and SCL pins for I2C
-#define SDA_PIN 25        // Change to your desired SDA pin
-#define SCL_PIN 26        // Change to your desired SCL pin
-
-
-
-
 class DisplayManager : public BaseManager {
 private:
-    
-    TwoWire i2cwires = TwoWire(0);
 
-    Adafruit_SSD1306 display;
+    LcdDisplayHandler* displayHandler = nullptr;
 
     Page myPage;
-
-Label myLabel;
-NamedValueInt intValue;
-NamedValueFloat floatValue;
-NamedValueFloat percentValue;
+    
+    Label myLabel;
+    NamedValueInt intValue;
+    NamedValueFloat floatValue;
+    NamedValueFloat percentValue;
 
 public:
-    DisplayManager() : display(SCREEN_WIDTH, SCREEN_HEIGHT, &i2cwires, OLED_RESET), 
+    DisplayManager() :
     myLabel(0, 0, "Status", FontSize::Medium), 
     intValue(0, 16, "Count", FontSize::Small), 
     floatValue(0, 26, "Temperature", FontSize::Small),  

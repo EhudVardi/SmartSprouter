@@ -54,14 +54,14 @@ public:
         return editState;
     }
 
-    virtual void Draw(Adafruit_SSD1306 &display) override {
+    virtual void Draw(LcdDisplayHandler &displayHandler) override {
         if (!IsInvalidated()) return;
 
         // Draw name label
-        nameLabel.Draw(display);
+        nameLabel.Draw(displayHandler);
 
         // Draw value label
-        valueLabel.Draw(display);
+        valueLabel.Draw(displayHandler);
 
         // Clear invalidation flag
         invalidated = false;

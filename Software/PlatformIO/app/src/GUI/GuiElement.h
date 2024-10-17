@@ -1,7 +1,7 @@
 #ifndef GUIELEMENT_H
 #define GUIELEMENT_H
 
-#include <Adafruit_SSD1306.h>
+#include "HardwareAbstraction/LcdDisplayHandler.h"
 
 class GuiElement {
 protected:
@@ -11,7 +11,7 @@ protected:
 public:
     GuiElement(int xPos, int yPos) : x(xPos), y(yPos), invalidated(true) {}
 
-    virtual void Draw(Adafruit_SSD1306 &display) = 0; // Pure virtual function
+    virtual void Draw(LcdDisplayHandler &displayHandler) = 0; // Pure virtual function
 
     void Invalidate() {
         invalidated = true; // Mark as needing redraw

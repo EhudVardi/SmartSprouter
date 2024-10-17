@@ -13,10 +13,10 @@ public:
         elements.push_back(element);
     }
 
-    void Draw(Adafruit_SSD1306 &display) {
+    void Draw(LcdDisplayHandler &displayHandler) {
         for (auto &element : elements) {
             if (element->IsInvalidated()) {
-                element->Draw(display);
+                element->Draw(displayHandler);
             }
         }
     }
