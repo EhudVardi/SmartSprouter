@@ -18,7 +18,7 @@ public:
     NamedValue(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : GuiElement(xPos, yPos),
           nameLabel(xPos, yPos, name, size),
-          valueLabel(xPos + 64, yPos, "", size), // Offset for value label
+          valueLabel(xPos + SCREEN_WIDTH/2, yPos, "", size), // Offset for value label
           value(T()), 
           editState(EditState::None) {}
 

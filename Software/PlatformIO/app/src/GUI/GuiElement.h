@@ -2,6 +2,7 @@
 #define GUIELEMENT_H
 
 #include "HardwareAbstraction/LcdDisplayHandler.h"
+#include "HardwareAbstraction/LcdDisplayProperties.h"
 
 class GuiElement {
 protected:
