@@ -14,17 +14,23 @@ private:
     T value;
     EditState editState;
 
+protected:
+    // Virtual function to format the value as a string
+    virtual String FormatValue(T value) const {
+        return String(value); // Default conversion to string
+    }
+
 public:
     NamedValue(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : GuiElement(xPos, yPos),
           nameLabel(xPos, yPos, name, size),
-          valueLabel(xPos + SCREEN_WIDTH/2, yPos, "", size), // Offset for value label
+          valueLabel(xPos + SCREEN_WIDTH / 2, yPos, "", size), // Offset for value label
           value(T()), 
           editState(EditState::None) {}
 
     void SetValue(T newValue) {
         value = newValue;
-        String strValue = String(value); // Default conversion to string
+        String strValue = FormatValue(value); // Use the formatting method
         valueLabel.UpdateText(strValue);
         Invalidate();
     }

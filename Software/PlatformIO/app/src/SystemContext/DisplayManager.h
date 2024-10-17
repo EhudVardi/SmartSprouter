@@ -27,7 +27,7 @@ private:
     Label myLabel;
     NamedValueInt intValue;
     NamedValueFloat floatValue;
-    NamedValueFloat percentValue;
+    NamedValuePercent percentValue;
     CenteredLabel myCenteredLabel;
 
 public:
@@ -36,7 +36,7 @@ public:
     intValue(0, 16, "Count", FontSize::Small), 
     floatValue(0, 26, "Temperature", FontSize::Small),  
     percentValue(0, 36, "Humidity", FontSize::Small), 
-    myCenteredLabel(40, "Centered", FontSize::Medium) {} // Initialize in the constructor
+    myCenteredLabel(44, "Centered", FontSize::Medium) {} // Initialize in the constructor
 
     bool initialize() override;
     void showPage(const std::string& page);
