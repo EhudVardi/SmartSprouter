@@ -17,6 +17,7 @@
 #include "GUI/FontSize.h"
 #include "GUI/TypedNameRange.h"
 #include "GUI/NamedRangeEditState.h"
+#include "GUI/PageAppBase.h"
 
 
 class DisplayManager : public BaseManager {
@@ -33,6 +34,8 @@ private:
     CenteredLabel myCenteredLabel;
     NamedRangePercent myRange;
     NamedRangeTemperature myRangeTemp;
+
+    PageAppBase myAppPage;
 
 public:
     DisplayManager() :
