@@ -50,16 +50,9 @@ public:
 class NamedValuePercent : public NamedValue<float> {
 protected:
     String FormatValue(float value) const override {
-        // Create a result string with a fixed width for the numeric value
-        String result;
-        result.reserve(15); // Reserve enough space for formatting and the "%"
-        
-        // Format the float with 1 decimal place and append the '%' directly
-        char buffer[15]; // Buffer to hold the formatted number with percentage
-        snprintf(buffer, sizeof(buffer), "%6.1f %%", value); // 6 total width, 1 decimal place
-        
-        result += buffer; // Append formatted number with percent
-        return result; // Return the final result
+        char buffer[10]; // Adjust size as necessary
+        snprintf(buffer, sizeof(buffer), "%6.1f %%", value);
+        return String(buffer);
     }
 
 public:
