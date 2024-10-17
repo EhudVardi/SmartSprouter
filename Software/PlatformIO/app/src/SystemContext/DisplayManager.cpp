@@ -13,7 +13,7 @@ bool DisplayManager::initialize() {
     floatValue.SetValue(25.3); // Example float value
     percentValue.SetValue(15.52);
 
-    floatValue.SetEditState(EditState::Entered);
+    floatValue.SetEditState(NamedValueEditState::Entered);
 
     // Add elements to the page
     myPage.AddElement(&myLabel);
@@ -54,8 +54,8 @@ void DisplayManager::refresh() {
     intValue.SetValue(count);
     floatValue.SetValue(temp);
 
-    EditState intstate = intValue.GetEditState();
-    intValue.SetEditState(intstate == EditState::None ? EditState::Selected : (intstate == EditState::Selected ? EditState::Entered : EditState::None));
+    NamedValueEditState intstate = intValue.GetEditState();
+    intValue.SetEditState(intstate == NamedValueEditState::None ? NamedValueEditState::Selected : (intstate == NamedValueEditState::Selected ? NamedValueEditState::Entered : NamedValueEditState::None));
 
     percentValue.SetValue(percent);
 

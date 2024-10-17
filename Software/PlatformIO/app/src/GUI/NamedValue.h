@@ -3,7 +3,7 @@
 
 #include "GUI/GuiElement.h"
 #include "GUI/Label.h"
-#include "GUI/EditState.h"
+#include "GUI/NamedValueEditState.h"
 #include <Arduino.h>
 
 template <typename T>
@@ -12,7 +12,7 @@ private:
     Label nameLabel;
     Label valueLabel;
     T value;
-    EditState editState;
+    NamedValueEditState editState;
 
 protected:
     // Virtual function to format the value as a string
@@ -26,7 +26,7 @@ public:
           nameLabel(xPos, yPos, name, size),
           valueLabel(xPos + SCREEN_WIDTH / 2, yPos, "", size), // Offset for value label
           value(T()), 
-          editState(EditState::None) {}
+          editState(NamedValueEditState::None) {}
 
     void SetValue(T newValue) {
         value = newValue;
@@ -39,15 +39,15 @@ public:
         return value;
     }
 
-    void SetEditState(EditState state) {
+    void SetEditState(NamedValueEditState state) {
         editState = state;
         Invalidate();
 
         // Set inverted state for labels based on edit state
-        if (state == EditState::Selected) {
+        if (state == NamedValueEditState::Selected) {
             nameLabel.SetInverted(true);
             valueLabel.SetInverted(false);
-        } else if (state == EditState::Entered) {
+        } else if (state == NamedValueEditState::Entered) {
             nameLabel.SetInverted(false);
             valueLabel.SetInverted(true);
         } else {
@@ -56,7 +56,7 @@ public:
         }
     }
 
-    EditState GetEditState() const {
+    NamedValueEditState GetEditState() const {
         return editState;
     }
 

@@ -13,7 +13,7 @@
 #include "GUI/NamedValue.h"
 #include "GUI/TypedNameValue.h"
 #include "GUI/Page.h"
-#include "GUI/EditState.h"
+#include "GUI/NamedValueEditState.h"
 #include "GUI/FontSize.h"
 
 
