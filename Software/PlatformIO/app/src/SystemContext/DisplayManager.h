@@ -12,7 +12,7 @@
 #include "GUI/CenteredLabel.h"
 #include "GUI/NamedValue.h"
 #include "GUI/TypedNameValue.h"
-#include "GUI/Page.h"
+#include "GUI/PageBase.h"
 #include "GUI/NamedValueEditState.h"
 #include "GUI/FontSize.h"
 #include "GUI/TypedNameRange.h"
@@ -24,7 +24,7 @@ private:
 
     LcdDisplayHandler* displayHandler = nullptr;
 
-    Page myPage;
+    PageBase myPage;
     
     Label myLabel;
     NamedValueInt intValue;

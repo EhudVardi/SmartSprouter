@@ -4,8 +4,8 @@
 #include "GUI/GuiElement.h"
 #include <vector>
 
-class Page {
-private:
+class PageBase {
+protected:
     std::vector<GuiElement*> elements;
 
 public:
