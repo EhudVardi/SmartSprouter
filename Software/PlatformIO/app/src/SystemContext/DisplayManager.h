@@ -20,6 +20,7 @@
 #include "GUI/PageAppBase.h"
 #include "GUI/PageAppAbout.h"
 #include "GUI/PageAppError.h"
+#include "GUI/PageAppAbort.h"
 
 
 class DisplayManager : public BaseManager {
@@ -42,6 +43,8 @@ private:
     PageAppAbout myAppPageAbout;
 
     PageAppError myAppPageError;
+
+    PageAppAbort myAppPageAbort;
 
 public:
     DisplayManager() :

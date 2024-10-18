@@ -47,6 +47,13 @@ void DisplayManager::updateLabel(const std::string& label, const std::string& va
 void DisplayManager::refresh() {
 
     if (displayHandler != nullptr) {
+        myAppPageAbort.Draw(*displayHandler);
+    } else {
+        Serial.println("Error: displayHandler is nullptr!");
+    }
+    return;
+
+    if (displayHandler != nullptr) {
         myAppPageError.Draw(*displayHandler);
     } else {
         Serial.println("Error: displayHandler is nullptr!");
