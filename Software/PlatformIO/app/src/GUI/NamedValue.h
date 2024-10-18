@@ -4,6 +4,7 @@
 #include "GUI/GuiElement.h"
 #include "GUI/Label.h"
 #include "GUI/NamedValueEditState.h"
+#include "GUI/DisplayTypes.h"
 #include <Arduino.h>
 
 template <typename T>
@@ -17,8 +18,13 @@ private:
 protected:
     // Virtual function to format the value as a string
     virtual String FormatValue(T value) const {
-        return String(value); // Default conversion to string
+        return FormatHelper(value);
     }
+    // add helper formatters to act as defaults for each type, to allow the class to compile when inherited with a type that cannot be used with "String()"
+    String FormatHelper(int value) const { return String(value); }
+    String FormatHelper(float value) const { return String(value); }
+    String FormatHelper(const DisplayDate& value) const { return value.ToString(); }  // Formatting for DisplayDate
+    String FormatHelper(const DisplayTime& value) const { return value.ToString(); }  // Formatting for DisplayTime
 
 public:
     NamedValue(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
