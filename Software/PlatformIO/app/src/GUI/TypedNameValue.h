@@ -52,8 +52,8 @@ public:
 class NamedValuePercent : public NamedValue<float> {
 protected:
     String FormatValue(float value) const override {
-        char buffer[10]; // Adjust size as necessary
-        snprintf(buffer, sizeof(buffer), "%6.1f %%", value);
+        char buffer[8]; // Adjust size as necessary
+        snprintf(buffer, sizeof(buffer), "%3.1f%%", value);
         return String(buffer);
     }
 
