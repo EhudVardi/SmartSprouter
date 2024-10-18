@@ -32,6 +32,12 @@ bool DisplayManager::initialize() {
 
 
     myAppPageError.SetError("fatal error", 1234);
+    
+    
+    myAppPageIdle.SetHumidity(10.5);
+    myAppPageIdle.SetTemperature(32.5);
+    myAppPageIdle.SetDate(18, 10, 2024);
+    myAppPageIdle.SetTime(10,20,23);
 
     return true;
 }
