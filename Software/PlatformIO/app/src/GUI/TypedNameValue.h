@@ -66,3 +66,73 @@ public:
 
 #endif // NAMEDVALUEPERCENT_H
 
+
+#ifndef NAMEDVALUEDATE_H
+#define NAMEDVALUEDATE_H
+
+class Date {
+public:
+    int day, month, year;
+
+    Date(int d, int m, int y) : day(d), month(m), year(y) {}
+    
+    // Format as DD/MM/YYYY
+    String ToString() const {
+        char buffer[11]; 
+        snprintf(buffer, sizeof(buffer), "%02d/%02d/%04d", day, month, year);
+        return String(buffer);
+    }
+};
+
+class NamedValueDate : public NamedValue<Date> {
+protected:
+    // Format the Date object
+    String FormatValue(Date value) const override {
+        return value.ToString();  // Convert the Date object to a formatted string
+    }
+
+public:
+    NamedValueDate(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+        : NamedValue<Date>(xPos, yPos, name, size) {}
+
+    void SetValue(const Date &newDate) {
+        NamedValue<Date>::SetValue(newDate);
+    }
+};
+
+#endif // NAMEDVALUEDATE_H
+
+#ifndef NAMEDVALUETIME_H
+#define NAMEDVALUETIME_H
+
+class Time {
+public:
+    int hour, minute, second;
+
+    Time(int h, int m, int s) : hour(h), minute(m), second(s) {}
+
+    // Format time as HH:MM:SS
+    String ToString() const {
+        char buffer[9]; 
+        snprintf(buffer, sizeof(buffer), "%02d:%02d:%02d", hour, minute, second);
+        return String(buffer);
+    }
+};
+
+class NamedValueTime : public NamedValue<Time> {
+protected:
+    String FormatValue(Time value) const override {
+        return value.ToString();
+    }
+
+public:
+    NamedValueTime(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+        : NamedValue<Time>(xPos, yPos, name, size) {}
+
+    void SetValue(const Time &newTime) {
+        NamedValue<Time>::SetValue(newTime);
+    }
+};
+
+
+#endif // NAMEDVALUETIME_H
