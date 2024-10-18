@@ -47,6 +47,30 @@ void DisplayManager::updateLabel(const std::string& label, const std::string& va
 void DisplayManager::refresh() {
 
     if (displayHandler != nullptr) {
+        myAppPageIdle.Draw(*displayHandler);
+    } else {
+        Serial.println("Error: displayHandler is nullptr!");
+    }
+    
+    static float humidity = 42;
+    static float temperature = 25.3;
+    static int time = 0;
+    
+    humidity += 0.6;
+    temperature += 1.2;
+    time++;
+
+    myAppPageIdle.SetHumidity(humidity);
+    myAppPageIdle.SetTemperature(temperature);
+    myAppPageIdle.SetDate(1+time, 10, 2024);
+    myAppPageIdle.SetTime(time % 60, time / 60 % 60, time / 3600 % 24);
+
+    delay(500);
+    return;
+
+
+
+    if (displayHandler != nullptr) {
         myAppPageAbort.Draw(*displayHandler);
     } else {
         Serial.println("Error: displayHandler is nullptr!");
