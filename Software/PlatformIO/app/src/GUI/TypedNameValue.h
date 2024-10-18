@@ -94,6 +94,7 @@ private:
     }
 
 public:
+    DisplayDate() : day(1), month(1), year(2000) {}
     DisplayDate(int d, int m, int y) : day(d), month(m), year(y) {}
 
     // Format as DD/MM/YYYY
@@ -142,6 +143,14 @@ public:
     void SetValue(const DisplayDate &newDate) {
         NamedValue<DisplayDate>::SetValue(newDate);
     }
+
+    bool SetDate(int d, int m, int y) {
+        DisplayDate newDate;
+        if (!newDate.SetDate(d, m, y))
+            return false;
+        SetValue(newDate);
+        return true;
+    }
 };
 
 #endif // NAMEDVALUEDATE_H
@@ -150,25 +159,53 @@ public:
 #define NAMEDVALUETIME_H
 
 class DisplayTime {
-public:
+private:
     int hour, minute, second;
 
+public:
+    DisplayTime() : hour(0), minute(0), second(0) {}
     DisplayTime(int h, int m, int s) : hour(h), minute(m), second(s) {}
 
     // Format time as HH:MM:SS
     String ToString() const {
-        char buffer[9]; 
+        char buffer[9];
         snprintf(buffer, sizeof(buffer), "%02d:%02d:%02d", hour, minute, second);
         return String(buffer);
     }
-    
+
     // Format time as HH:MM
     String ToStringShort() const {
-        char buffer[5]; 
+        char buffer[6];
         snprintf(buffer, sizeof(buffer), "%02d:%02d", hour, minute);
         return String(buffer);
     }
+
+    int getSecond() { return second; }
+    int GetMinute() { return minute; }
+    int GetHour() { return hour; }
+    
+    // SetTime function with validation
+    bool SetTime(int h, int m, int s) {
+        // Validate hour (0 to 23)
+        if (h < 0 || h > 23) {
+            return false;
+        }
+        // Validate minute (0 to 59)
+        if (m < 0 || m > 59) {
+            return false;
+        }
+        // Validate second (0 to 59)
+        if (s < 0 || s > 59) {
+            return false;
+        }
+        // If everything is valid, set the time
+        hour = h;
+        minute = m;
+        second = s;
+        return true;
+    }
 };
+
 
 class NamedValueTime : public NamedValue<DisplayTime> {
 protected:
@@ -182,6 +219,14 @@ public:
 
     void SetValue(const DisplayTime &newTime) {
         NamedValue<DisplayTime>::SetValue(newTime);
+    }
+
+    bool SetTime(int s, int m, int h) {
+        DisplayTime newTime;
+        if (!newTime.SetTime(s, m, h))
+            return false;
+        SetValue(newTime);
+        return true;
     }
 };
 
