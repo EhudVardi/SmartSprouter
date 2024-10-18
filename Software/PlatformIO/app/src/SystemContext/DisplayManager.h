@@ -19,6 +19,7 @@
 #include "GUI/NamedRangeEditState.h"
 #include "GUI/PageAppBase.h"
 #include "GUI/PageAppAbout.h"
+#include "GUI/PageAppError.h"
 
 
 class DisplayManager : public BaseManager {
@@ -39,6 +40,8 @@ private:
     PageAppBase myAppPage;
 
     PageAppAbout myAppPageAbout;
+
+    PageAppError myAppPageError;
 
 public:
     DisplayManager() :
