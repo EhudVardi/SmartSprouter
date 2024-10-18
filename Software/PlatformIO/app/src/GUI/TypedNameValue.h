@@ -117,6 +117,13 @@ public:
         snprintf(buffer, sizeof(buffer), "%02d:%02d:%02d", hour, minute, second);
         return String(buffer);
     }
+    
+    // Format time as HH:MM
+    String ToStringShort() const {
+        char buffer[5]; 
+        snprintf(buffer, sizeof(buffer), "%02d:%02d", hour, minute);
+        return String(buffer);
+    }
 };
 
 class NamedValueTime : public NamedValue<Time> {
