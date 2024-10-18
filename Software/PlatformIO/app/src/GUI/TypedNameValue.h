@@ -71,16 +71,60 @@ public:
 #define NAMEDVALUEDATE_H
 
 class Date {
-public:
+private:
     int day, month, year;
 
+    // Helper function to check if the year is a leap year
+    bool IsLeapYear(int y) {
+        return (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);
+    }
+
+    // Helper function to get the maximum days in a month
+    int GetDaysInMonth(int m, int y) {
+        switch (m) {
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                return 31;  // Months with 31 days
+            case 4: case 6: case 9: case 11:
+                return 30;  // Months with 30 days
+            case 2:
+                return IsLeapYear(y) ? 29 : 28;  // February handling leap year
+            default:
+                return 0;  // Invalid month
+        }
+    }
+
+public:
     Date(int d, int m, int y) : day(d), month(m), year(y) {}
-    
+
     // Format as DD/MM/YYYY
     String ToString() const {
-        char buffer[11]; 
+        char buffer[11];
         snprintf(buffer, sizeof(buffer), "%02d/%02d/%04d", day, month, year);
         return String(buffer);
+    }
+
+    int GetDay() { return day; }
+    int GetMonth() { return month; }
+    int GetYear() { return year; }
+
+    // SetDate function with validation
+    bool SetDate(int d, int m, int y) {
+        // Validate month
+        if (m < 1 || m > 12) {
+            return false;  // Invalid month
+        }
+
+        // Validate day based on the month and year
+        int maxDays = GetDaysInMonth(m, y);
+        if (d < 1 || d > maxDays) {
+            return false;  // Invalid day for the given month
+        }
+
+        // If everything is valid, set the date
+        day = d;
+        month = m;
+        year = y;
+        return true;  // Success
     }
 };
 
