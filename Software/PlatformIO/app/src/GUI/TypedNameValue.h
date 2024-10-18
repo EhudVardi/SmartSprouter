@@ -70,7 +70,7 @@ public:
 #ifndef NAMEDVALUEDATE_H
 #define NAMEDVALUEDATE_H
 
-class Date {
+class DisplayDate {
 private:
     int day, month, year;
 
@@ -94,7 +94,7 @@ private:
     }
 
 public:
-    Date(int d, int m, int y) : day(d), month(m), year(y) {}
+    DisplayDate(int d, int m, int y) : day(d), month(m), year(y) {}
 
     // Format as DD/MM/YYYY
     String ToString() const {
@@ -128,19 +128,19 @@ public:
     }
 };
 
-class NamedValueDate : public NamedValue<Date> {
+class NamedValueDate : public NamedValue<DisplayDate> {
 protected:
     // Format the Date object
-    String FormatValue(Date value) const override {
+    String FormatValue(DisplayDate value) const override {
         return value.ToString();  // Convert the Date object to a formatted string
     }
 
 public:
     NamedValueDate(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
-        : NamedValue<Date>(xPos, yPos, name, size) {}
+        : NamedValue<DisplayDate>(xPos, yPos, name, size) {}
 
-    void SetValue(const Date &newDate) {
-        NamedValue<Date>::SetValue(newDate);
+    void SetValue(const DisplayDate &newDate) {
+        NamedValue<DisplayDate>::SetValue(newDate);
     }
 };
 
@@ -149,11 +149,11 @@ public:
 #ifndef NAMEDVALUETIME_H
 #define NAMEDVALUETIME_H
 
-class Time {
+class DisplayTime {
 public:
     int hour, minute, second;
 
-    Time(int h, int m, int s) : hour(h), minute(m), second(s) {}
+    DisplayTime(int h, int m, int s) : hour(h), minute(m), second(s) {}
 
     // Format time as HH:MM:SS
     String ToString() const {
@@ -170,18 +170,18 @@ public:
     }
 };
 
-class NamedValueTime : public NamedValue<Time> {
+class NamedValueTime : public NamedValue<DisplayTime> {
 protected:
-    String FormatValue(Time value) const override {
+    String FormatValue(DisplayTime value) const override {
         return value.ToString();
     }
 
 public:
     NamedValueTime(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
-        : NamedValue<Time>(xPos, yPos, name, size) {}
+        : NamedValue<DisplayTime>(xPos, yPos, name, size) {}
 
-    void SetValue(const Time &newTime) {
-        NamedValue<Time>::SetValue(newTime);
+    void SetValue(const DisplayTime &newTime) {
+        NamedValue<DisplayTime>::SetValue(newTime);
     }
 };
 
