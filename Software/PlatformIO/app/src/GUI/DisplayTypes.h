@@ -89,7 +89,7 @@ public:
     int GetHour() { return hour; }
     
     // SetTime function with validation
-    bool SetTime(int h, int m, int s) {
+    bool SetTime(int s, int m, int h) {
         // Validate hour (0 to 23)
         if (h < 0 || h > 23) {
             return false;
