@@ -110,4 +110,48 @@ public:
     }
 };
 
+#define DAY_IN_SECONDS 86400
+#define HOUR_IN_SECONDS 3600
+#define MINUTE_IN_SECONDS 60
+
+class DisplayDuration {
+private:
+    int seconds;
+
+public:
+    DisplayDuration() : seconds(0) {}
+    DisplayDuration(int days, int hrs, int mins, int secs) {
+        seconds = days*24*60*60 + hrs*60*60 + mins*60 + secs;
+    }
+
+    // Format duration as D:HH:MM:SS
+    String ToString() const {
+        char buffer[11];
+        snprintf(buffer, sizeof(buffer), "%01d:%02d:%02d:%02d", GetDays(), GetHours(), GetMinutes(), GetSeconds());
+        return String(buffer);
+    }
+
+    // Format duration as D:HH:MM
+    String ToStringShort() const {
+        char buffer[8];
+        snprintf(buffer, sizeof(buffer), "%01d:%02d:%02d", GetDays(), GetHours(), GetMinutes());
+        return String(buffer);
+    }
+
+    int GetSeconds() const { return seconds % MINUTE_IN_SECONDS; }
+    int GetMinutes() const { return seconds % HOUR_IN_SECONDS / MINUTE_IN_SECONDS; }
+    int GetHours() const { return seconds % DAY_IN_SECONDS / HOUR_IN_SECONDS; }
+    int GetDays() const { return seconds / DAY_IN_SECONDS; }
+    
+    
+    void AddSeconds(int secs) { seconds += secs; }
+    void AddMinutes(int mins) { seconds += mins * MINUTE_IN_SECONDS; }
+    void AddHours(int hrs) { seconds += hrs * HOUR_IN_SECONDS; }
+    void AddDays(int days) { seconds += days * DAY_IN_SECONDS; }
+
+    void TickDown() {
+        seconds--;
+    }
+};
+
 #endif // DISPLAYTYPES_H

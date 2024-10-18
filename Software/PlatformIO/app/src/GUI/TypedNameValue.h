@@ -130,5 +130,36 @@ public:
     }
 };
 
-
 #endif // NAMEDVALUETIME_H
+
+#ifndef NAMEDVALUEDURATION_H
+#define NAMEDVALUEDURATION_H
+
+#include "GUI/NamedValue.h"
+#include "GUI/DisplayTypes.h"
+
+class NamedValueDuration : public NamedValue<DisplayDuration> {
+protected:
+    String FormatValue(DisplayDuration value) const override {
+        return value.ToString();
+    }
+
+public:
+    NamedValueDuration(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+        : NamedValue<DisplayDuration>(xPos, yPos, name, size) {}
+
+    void SetValue(const DisplayDuration &newDuration) {
+        NamedValue<DisplayDuration>::SetValue(newDuration);
+    }
+
+    void AddSeconds(int secs) { DisplayDuration newDuration = GetValue(); newDuration.AddSeconds(secs); SetValue(newDuration); }
+    void AddMinutes(int mins) { DisplayDuration newDuration = GetValue(); newDuration.AddMinutes(mins); SetValue(newDuration); }
+    void AddHours(int hrs) { DisplayDuration newDuration = GetValue(); newDuration.AddHours(hrs); SetValue(newDuration); }
+    void AddDays(int days) { DisplayDuration newDuration = GetValue(); newDuration.AddDays(days); SetValue(newDuration); }
+
+    void TickDown() {
+        DisplayDuration newDuration = GetValue(); newDuration.TickDown(); SetValue(newDuration);
+    }
+};
+
+#endif // NAMEDVALUEDURATION_H

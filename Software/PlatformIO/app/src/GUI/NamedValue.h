@@ -25,6 +25,7 @@ protected:
     String FormatHelper(float value) const { return String(value); }
     String FormatHelper(const DisplayDate& value) const { return value.ToString(); }  // Formatting for DisplayDate
     String FormatHelper(const DisplayTime& value) const { return value.ToString(); }  // Formatting for DisplayTime
+    String FormatHelper(const DisplayDuration& value) const { return value.ToString(); }  // Formatting for DisplayDuration
 
 public:
     NamedValue(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
