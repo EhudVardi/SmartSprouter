@@ -15,6 +15,12 @@ protected:
     NamedRangeEditState editState; // Current edit state
 
 public:
+    NamedRange(int xPos, int yPos, T initialMinValue, T initialMaxValue, const String &name)
+        : GuiElement(xPos, yPos),
+          nameLabel(xPos, yPos, name),
+          valueRange(xPos + SCREEN_WIDTH * 3 / 8, yPos, initialMinValue, initialMaxValue), // Adjust position for the range
+          editState(NamedRangeEditState::None) {
+    }
     NamedRange(int xPos, int yPos, const String &name)
         : GuiElement(xPos, yPos),
           nameLabel(xPos, yPos, name),
@@ -22,6 +28,14 @@ public:
           editState(NamedRangeEditState::None) {
         // Set the initial sizes of the elements
         //valueRange.SetSize(100, 16); // Assuming 100x16 for the range display, adjust as necessary
+    }
+
+    // Getters for min and max values
+    T GetMinValue() {
+        return valueRange.GetMinValue();
+    }
+    T GetMaxValue() {
+        return valueRange.GetMaxValue();
     }
 
     // Setters for min and max values
