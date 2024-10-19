@@ -7,7 +7,7 @@
 class PageAppRun : public PageAppBase {
 protected:
     NamedValuePercent humidityGauge;
-    NamedValuePercent temperatureGauge;
+    NamedValueTemperature temperatureGauge;
     NamedValueDuration durationGauge;
 
 public:

@@ -49,24 +49,39 @@ public:
 
 #include "GUI/NamedValue.h"
 
-class NamedValuePercent : public NamedValue<float> {
+class NamedValuePercent : public NamedValueFloat {
 protected:
     String FormatValue(float value) const override {
         char buffer[8]; // Adjust size as necessary
         snprintf(buffer, sizeof(buffer), "%3.1f%%", value);
         return String(buffer);
     }
-
 public:
     NamedValuePercent(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
-        : NamedValue<float>(xPos, yPos, name, size) {}
-
-    void SetValue(float newValue) {
-        NamedValue<float>::SetValue(newValue);
-    }
+        : NamedValueFloat(xPos, yPos, name, size) {}
 };
 
 #endif // NAMEDVALUEPERCENT_H
+
+
+#ifndef NAMEDVALUETEMPERATURE_H
+#define NAMEDVALUETEMPERATURE_H
+
+#include "GUI/NamedValue.h"
+
+class NamedValueTemperature : public NamedValueFloat {
+protected:
+    String FormatValue(float value) const override {
+        char buffer[7]; // Adjust size as necessary
+        snprintf(buffer, sizeof(buffer), "%3.1fC", value);
+        return String(buffer);
+    }
+public:
+    NamedValueTemperature(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+        : NamedValueFloat(xPos, yPos, name, size) {}
+};
+
+#endif // NAMEDVALUETEMPERATURE_H
 
 
 #ifndef NAMEDVALUEDATE_H
