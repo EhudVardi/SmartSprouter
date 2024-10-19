@@ -72,7 +72,7 @@ public:
         // Set a custom formatter for temperature display with "C" appended
         valueRange.SetFormatter([](float value) {
             char buffer[7];
-            snprintf(buffer, sizeof(buffer), " %3.1fC", value);
+            snprintf(buffer, sizeof(buffer), " %3.0fC", value);
             return String(buffer);
         });
     }
