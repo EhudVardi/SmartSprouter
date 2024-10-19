@@ -72,7 +72,7 @@ public:
 
         // Draw name label
         nameLabel.Draw(displayHandler);
-
+        //delay(1); // uncomment to solve the bug where if a page is refreshed first before any setvalue called, the the name label is erased.
         // Draw value label
         valueLabel.Draw(displayHandler);
 
