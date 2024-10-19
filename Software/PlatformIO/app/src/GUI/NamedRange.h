@@ -16,15 +16,14 @@ protected:
 
 public:
     NamedRange(int xPos, int yPos, T initialMinValue, T initialMaxValue, const String &name)
-        : GuiElement(xPos, yPos),
-          nameLabel(xPos, yPos, name),
-          valueRange(xPos + SCREEN_WIDTH * 3 / 8, yPos, initialMinValue, initialMaxValue), // Adjust position for the range
-          editState(NamedRangeEditState::None) {
+        : NamedRange(xPos, yPos, name) {
+        SetMinValue(initialMinValue);
+        SetMaxValue(initialMaxValue);
     }
     NamedRange(int xPos, int yPos, const String &name)
         : GuiElement(xPos, yPos),
           nameLabel(xPos, yPos, name),
-          valueRange(xPos + SCREEN_WIDTH / 3, yPos), // Adjust position for the range
+          valueRange(xPos + SCREEN_WIDTH * 3 / 8, yPos), // Adjust position for the range
           editState(NamedRangeEditState::None) {
         // Set the initial sizes of the elements
         //valueRange.SetSize(100, 16); // Assuming 100x16 for the range display, adjust as necessary
