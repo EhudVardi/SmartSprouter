@@ -23,6 +23,7 @@
 #include "GUI/PageAppAbort.h"
 #include "GUI/PageAppIdle.h"
 #include "GUI/PageAppRun.h"
+#include "GUI/PageAppSetup.h"
 
 
 class DisplayManager : public BaseManager {
@@ -51,6 +52,8 @@ private:
     PageAppIdle myAppPageIdle;
 
     PageAppRun myAppPageRun;
+
+    PageAppSetup myAppPageSetup;
 
 public:
     DisplayManager() :
