@@ -59,8 +59,8 @@ public:
     floatValue(0, 26, "Temperature", FontSize::Small),  
     percentValue(0, 36, "Humidity", FontSize::Small), 
     myCenteredLabel(44, "Centered", FontSize::Medium), 
-    myRange(0, 46, "humid'"),
-    myRangeTemp(0, 56, "temp'") {} // Initialize in the constructor
+    myRange(0, 46, 0, 100, "humid'"),
+    myRangeTemp(0, 56, 0, 100, "temp'") {} // Initialize in the constructor
 
     bool initialize() override;
     void showPage(const std::string& page);
