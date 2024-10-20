@@ -22,12 +22,12 @@ private:
 
     LcdDisplayHandler* displayHandler = nullptr;
 
-    PageAppAbout myAppPageAbout;
-    PageAppError myAppPageError;
-    PageAppAbort myAppPageAbort;
-    PageAppIdle myAppPageIdle;
-    PageAppRun myAppPageRun;
-    PageAppSetup myAppPageSetup;
+    PageAppAbout appPageAbout;
+    PageAppError appPageError;
+    PageAppAbort appPageAbort;
+    PageAppIdle appPageIdle;
+    PageAppRun appPageRun;
+    PageAppSetup appPageSetup;
 
 public:
     DisplayManager() {}
