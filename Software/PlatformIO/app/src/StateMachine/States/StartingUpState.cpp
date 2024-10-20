@@ -13,7 +13,7 @@ void StartingUpState::update(SystemContext* context) {
     
     // Example: Transition to next state when done initializing
     if (true /* some condition */) {
-        stateMachine->changeState("InitializingState", context);  // Trigger state transition
+        stateMachine->changeState(States::Initializing, context);  // Trigger state transition
     }
 }
 void StartingUpState::handleInput(SystemContext* context, InputEvent event) {

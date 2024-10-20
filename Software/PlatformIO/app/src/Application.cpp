@@ -27,7 +27,7 @@ void Application::setup() {
         stateMachine.handleInput(InputEvent::EnterReleased, &context);
     });
 
-    stateMachine.changeState("StartingUpState", &context);
+    stateMachine.changeState(States::StartingUp, &context);
 }
 
 void Application::loop() {

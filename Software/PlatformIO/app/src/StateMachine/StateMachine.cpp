@@ -9,17 +9,17 @@ StateMachine::StateMachine() {
     auto initializingState = std::make_shared<InitializingState>();
 
     // Add states to the state machine
-    addState("StartingUpState", startingUpState);
-    addState("InitializingState", initializingState);
+    addState(States::StartingUp, startingUpState);
+    addState(States::Initializing, initializingState);
 }
 
-void StateMachine::addState(const std::string& stateName, std::shared_ptr<State> state) {
-    stateMap[stateName] = state;
+void StateMachine::addState(States stateEnum, std::shared_ptr<State> state) {
+    stateMap[stateEnum] = state;
     state->setStateMachine(this);
 }
 
-void StateMachine::changeState(const std::string& stateName, SystemContext* context) {
-    auto newState = stateMap.find(stateName);
+void StateMachine::changeState(States stateEnum, SystemContext* context) {
+    auto newState = stateMap.find(stateEnum);
     if (newState != stateMap.end()) {
         if (currentState) {
             currentState->exit(context);
@@ -29,7 +29,7 @@ void StateMachine::changeState(const std::string& stateName, SystemContext* cont
             currentState->enter(context);
         }
     } else {
-        std::cerr << "State " << stateName << " not found!" << std::endl;
+        std::cerr << "State " << States_ToString(stateEnum) << " not found!" << std::endl;
     }
 }
 
