@@ -32,7 +32,7 @@ void Application::setup() {
 
 void Application::loop() {
     // Poll input and sensor managers
-    //context.inputManager->pollInputs();
+    context.inputManager->pollInputs();
 
     /// test dht11 sensor
     // float temperature = context.sensorManager->getTemperature();
@@ -53,7 +53,6 @@ void Application::loop() {
     
     // Update state machine
     stateMachine.update(&context);
-    delay(500);
-
+    delay(1);
 }
 
