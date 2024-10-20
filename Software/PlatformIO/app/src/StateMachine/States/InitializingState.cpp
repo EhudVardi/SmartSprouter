@@ -1,16 +1,12 @@
 #include "StateMachine/States/InitializingState.h"
 
 void InitializingState::enter(SystemContext* context) {
-    // Initialization logic
-    std::cout << "Entering InitializingState" << std::endl;
+    /// StateLogic:
+    /// <TODO> check in memory if an unfinished process exists
+    /// <TODO> if exist then load it into current process and transition into running state
+    /// otherwise, transition into idle state
+    stateMachine->changeState(States::Idling, context);
 }
-void InitializingState::exit(SystemContext* context) {
-    std::cout << "Exiting InitializingState" << std::endl;
-}
-void InitializingState::update(SystemContext* context) {
-    // Update logic
-    std::cout << "Updating InitializingState" << std::endl;
-}
-void InitializingState::handleInput(SystemContext* context, InputEvent event) {
-    // Handle input events
-}
+void InitializingState::exit(SystemContext* context) {}
+void InitializingState::update(SystemContext* context) {}
+void InitializingState::handleInput(SystemContext* context, InputEvent event) {}
