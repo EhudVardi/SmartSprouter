@@ -1,21 +1,32 @@
 #include "StateMachine/States/StartingUpState.h"
 
 void StartingUpState::enter(SystemContext* context) {
-    // Initialization logic
-    std::cout << "Entering StartingUpState" << std::endl;
-}
-void StartingUpState::exit(SystemContext* context) {
-    std::cout << "Exiting StartingUpState" << std::endl;
-}
-void StartingUpState::update(SystemContext* context) {
-    // Update logic
-    std::cout << "Updating StartingUpState" << std::endl;
-    
-    // Example: Transition to next state when done initializing
-    if (true /* some condition */) {
-        stateMachine->changeState(States::Initializing, context);  // Trigger state transition
+    /// StateLogic:
+    /// initialize all managers in the system context object
+    /// if any fails, then transite to SystemInError state. else transite forward to Initializing state
+    if (!context->inputManager->initialize()) {
+        stateMachine->changeState(States::SystemInError, context);
+        return;
     }
+    if (!context->sensorManager->initialize()) {
+        stateMachine->changeState(States::SystemInError, context);
+        return;
+    }
+    if (!context->displayManager->initialize()) {
+        stateMachine->changeState(States::SystemInError, context);
+        return;
+    }
+    if (!context->actuatorManager->initialize()) {
+        stateMachine->changeState(States::SystemInError, context);
+        return;
+    }
+    if (!context->processManager->initialize()) {
+        stateMachine->changeState(States::SystemInError, context);
+        return;
+    }
+    stateMachine->changeState(States::Initializing, context);
 }
-void StartingUpState::handleInput(SystemContext* context, InputEvent event) {
-    // Handle input events
-}
+
+void StartingUpState::exit(SystemContext* context) { }
+void StartingUpState::update(SystemContext* context) { }
+void StartingUpState::handleInput(SystemContext* context, InputEvent event) { }

@@ -6,6 +6,7 @@ bool DisplayManager::initialize() {
     displayHandler = new LcdDisplayHandler(LCD_SDA_PIN, LCD_SCL_PIN);
 
     displayHandler->GetDisplayObject().clearDisplay();
+    displayHandler->GetDisplayObject().display();
 
     return true;
 }

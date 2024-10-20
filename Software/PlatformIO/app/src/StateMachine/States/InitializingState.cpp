@@ -10,11 +10,6 @@ void InitializingState::exit(SystemContext* context) {
 void InitializingState::update(SystemContext* context) {
     // Update logic
     std::cout << "Updating InitializingState" << std::endl;
-    
-    // Example: Transition to next state when done initializing
-    if (true /* some condition */) {
-        stateMachine->changeState(States::StartingUp, context);  // Trigger state transition
-    }
 }
 void InitializingState::handleInput(SystemContext* context, InputEvent event) {
     // Handle input events
