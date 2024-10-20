@@ -2,7 +2,9 @@
 #define DISPLAY_MANAGER_H
 
 #include "BaseManager.h"
-#include <string>
+
+#include <memory>
+#include <unordered_map>
 
 #include "HardwareAbstraction/LcdDisplayHandler.h"
 #include "SystemContext/DisplayPins.h"
@@ -15,26 +17,24 @@
 #include "GUI/PageAppIdle.h"
 #include "GUI/PageAppRun.h"
 #include "GUI/PageAppSetup.h"
+#include "GUI/Pages.h"
 
 
 class DisplayManager : public BaseManager {
 private:
-
     LcdDisplayHandler* displayHandler = nullptr;
 
-    PageAppAbout appPageAbout;
-    PageAppError appPageError;
-    PageAppAbort appPageAbort;
-    PageAppIdle appPageIdle;
-    PageAppRun appPageRun;
-    PageAppSetup appPageSetup;
+    std::shared_ptr<PageBase> currentPage;
+    std::unordered_map<Pages, std::shared_ptr<PageBase>> pageMap; // Store states
 
 public:
-    DisplayManager() {}
+    DisplayManager();
 
     bool initialize() override;
-    void showPage(const std::string& page);
-    void updateLabel(const std::string& label, const std::string& value);
+
+    void addPage(Pages pageEnum, std::shared_ptr<PageBase> page);
+
+    void changePage(Pages pageEnum);
 
     void refresh();
 };

@@ -48,7 +48,7 @@ void Application::loop() {
     // context.actuatorManager->OpenRelay1();
     // delay(500);
 
-    //context.displayManager->refresh();
+    context.displayManager->refresh();
     //delay(500);
     
     // Update state machine
