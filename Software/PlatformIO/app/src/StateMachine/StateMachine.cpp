@@ -1,13 +1,35 @@
 #include "StateMachine/StateMachine.h"
+#include "StateMachine/States/StartingUpState.h"
+#include "StateMachine/States/InitializingState.h"
 #include <iostream>
 
-void StateMachine::changeState(std::shared_ptr<State> newState, SystemContext* context) {
-    if (currentState) {
-        currentState->exit(context);
-    }
-    currentState = newState;
-    if (currentState) {
-        currentState->enter(context);
+StateMachine::StateMachine() {
+    
+    auto startingUpState = std::make_shared<StartingUpState>();
+    auto initializingState = std::make_shared<InitializingState>();
+
+    // Add states to the state machine
+    addState("StartingUpState", startingUpState);
+    addState("InitializingState", initializingState);
+}
+
+void StateMachine::addState(const std::string& stateName, std::shared_ptr<State> state) {
+    stateMap[stateName] = state;
+    state->setStateMachine(this);
+}
+
+void StateMachine::changeState(const std::string& stateName, SystemContext* context) {
+    auto newState = stateMap.find(stateName);
+    if (newState != stateMap.end()) {
+        if (currentState) {
+            currentState->exit(context);
+        }
+        currentState = newState->second;
+        if (currentState) {
+            currentState->enter(context);
+        }
+    } else {
+        std::cerr << "State " << stateName << " not found!" << std::endl;
     }
 }
 
