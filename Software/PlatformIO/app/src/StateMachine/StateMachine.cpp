@@ -3,6 +3,7 @@
 #include "StateMachine/States/InitializingState.h"
 #include "StateMachine/States/SystemInErrorState.h"
 #include "StateMachine/States/IdlingState.h"
+#include "StateMachine/States/InformingState.h"
 #include "StateMachine/States/SettingProcessState.h"
 #include "StateMachine/States/SettingParamState.h"
 #include "StateMachine/States/RunningState.h"
@@ -15,6 +16,7 @@ StateMachine::StateMachine() {
     auto initializingState = std::make_shared<InitializingState>();
     auto systemInErrorState = std::make_shared<SystemInErrorState>();
     auto idlingState = std::make_shared<IdlingState>();
+    auto informingState = std::make_shared<InformingState>();
     auto settingProcessState = std::make_shared<SettingProcessState>();
     auto settingParamState = std::make_shared<SettingParamState>();
     auto runningState = std::make_shared<RunningState>();
@@ -25,6 +27,7 @@ StateMachine::StateMachine() {
     addState(States::Initializing, initializingState);
     addState(States::SystemInError, systemInErrorState);
     addState(States::Idling, idlingState);
+    addState(States::Informing, informingState);
     addState(States::SettingProcess, settingProcessState);
     addState(States::SettingParam, settingParamState);
     addState(States::Running, runningState);
