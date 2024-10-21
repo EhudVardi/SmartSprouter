@@ -38,6 +38,7 @@ void DisplayManager::changePage(Pages pageEnum) {
 
         displayHandler->GetDisplayObject().clearDisplay();
         currentPage = newPage->second;
+        currentPage->InvalidatePage();
         
     } else {
         std::cerr << "Page " << Pages_ToString(pageEnum) << " not found!" << std::endl;

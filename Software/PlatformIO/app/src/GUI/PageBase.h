@@ -20,6 +20,12 @@ public:
             }
         }
     }
+
+    virtual void InvalidatePage() {
+        for (auto &element : elements) {
+            element->Invalidate();
+        }
+    }
 };
 
 #endif // PAGEBASE_H
