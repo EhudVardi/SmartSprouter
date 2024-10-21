@@ -40,12 +40,10 @@ public:
     // Setters for min and max values
     void SetMinValue(T newMinValue) {
         valueRange.SetMinValue(newMinValue);
-        Invalidate();
     }
 
     void SetMaxValue(T newMaxValue) {
         valueRange.SetMaxValue(newMaxValue);
-        Invalidate();
     }
 
     // Set and get the edit state
@@ -68,11 +66,19 @@ public:
             valueRange.SetMinInverted(false);
             valueRange.SetMaxInverted(true);
         }
-        Invalidate(); // Mark as needing redraw
     }
 
     NamedRangeEditState GetEditState() const {
         return editState;
+    }
+
+    virtual void Invalidate() override {
+        nameLabel.Invalidate();
+        valueRange.Invalidate();
+    }
+
+    virtual bool IsInvalidated() const override {
+        return (nameLabel.IsInvalidated() || valueRange.IsInvalidated());
     }
 
     // Override the Draw function
@@ -84,9 +90,6 @@ public:
 
         // Draw the value range
         valueRange.Draw(displayHandler);
-
-        // Clear invalidation flag
-        invalidated = false;
     }
 };
 

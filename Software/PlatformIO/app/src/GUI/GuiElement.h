@@ -14,11 +14,11 @@ public:
 
     virtual void Draw(LcdDisplayHandler &displayHandler) = 0; // Pure virtual function
 
-    void Invalidate() {
+    virtual void Invalidate() {
         invalidated = true; // Mark as needing redraw
     }
 
-    bool IsInvalidated() const {
+    virtual bool IsInvalidated() const {
         return invalidated;
     }
 

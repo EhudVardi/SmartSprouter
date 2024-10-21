@@ -39,7 +39,6 @@ public:
         value = newValue;
         String strValue = FormatValue(value); // Use the formatting method
         valueLabel.UpdateText(strValue);
-        Invalidate();
     }
 
     T GetValue() const {
@@ -48,7 +47,6 @@ public:
 
     void SetEditState(NamedValueEditState state) {
         editState = state;
-        Invalidate();
 
         // Set inverted state for labels based on edit state
         if (state == NamedValueEditState::Selected) {
@@ -67,6 +65,15 @@ public:
         return editState;
     }
 
+    virtual void Invalidate() override {
+        nameLabel.Invalidate();
+        valueLabel.Invalidate();
+    }
+
+    virtual bool IsInvalidated() const override {
+        return (nameLabel.IsInvalidated() || valueLabel.IsInvalidated());
+    }
+
     virtual void Draw(LcdDisplayHandler &displayHandler) override {
         if (!IsInvalidated()) return;
 
@@ -75,9 +82,6 @@ public:
         //delay(1); // uncomment to solve the bug where if a page is refreshed first before any setvalue called, the the name label is erased.
         // Draw value label
         valueLabel.Draw(displayHandler);
-
-        // Clear invalidation flag
-        invalidated = false;
     }
 };
 
