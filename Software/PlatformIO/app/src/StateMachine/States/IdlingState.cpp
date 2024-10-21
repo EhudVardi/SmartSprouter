@@ -3,6 +3,7 @@
 #include <iostream>
 
 void IdlingState::enter(SystemContext* context) {
+    context->displayManager->changePage(Pages::Idle);
 	std::cout << "enter IdlingState" << std::endl;
 }
 

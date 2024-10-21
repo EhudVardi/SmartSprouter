@@ -3,6 +3,7 @@
 #include <iostream>
 
 void InformingState::enter(SystemContext* context) {
+    context->displayManager->changePage(Pages::About);
 	std::cout << "enter InformingState" << std::endl;
 }
 
