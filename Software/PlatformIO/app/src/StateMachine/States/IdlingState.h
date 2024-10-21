@@ -4,6 +4,9 @@
 #include "StateMachine/States/State.h"
 
 class IdlingState : public State {
+private:
+    std::shared_ptr<PageAppIdle> idlePage = nullptr;
+    
 public:
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;

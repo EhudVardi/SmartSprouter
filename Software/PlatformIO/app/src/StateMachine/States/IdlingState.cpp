@@ -4,6 +4,9 @@
 
 void IdlingState::enter(SystemContext* context) {
     context->displayManager->changePage(Pages::Idle);
+    if (!idlePage) {
+        idlePage = context->displayManager->getPageAs<PageAppIdle>(Pages::Idle);
+    }
 	std::cout << "enter IdlingState" << std::endl;
 }
 
@@ -12,7 +15,11 @@ void IdlingState::exit(SystemContext* context) {
 }
 
 void IdlingState::update(SystemContext* context) {
-    context->displayManager->refresh();
+    if (idlePage) {
+        idlePage->SetHumidity(context->sensorManager->getHumidity());
+        idlePage->SetTemperature(context->sensorManager->getTemperature());
+        context->displayManager->refresh();
+    }
 }
 
 void IdlingState::handleInput(SystemContext* context, InputEvent event) {
