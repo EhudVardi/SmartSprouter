@@ -15,6 +15,10 @@ public:
         AddElement(&errorMessage);
         AddElement(&errorCode);
     }
+    
+    Pages getType() const override {
+        return Pages::Error;
+    }
 
     void SetError(String message, int code) {
         errorMessage.UpdateText("Message: " + message);

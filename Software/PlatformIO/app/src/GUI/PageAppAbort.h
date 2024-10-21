@@ -16,6 +16,10 @@ public:
         AddElement(&confirmQuestion);
         AddElement(&confirmInsrtruction);
     }
+    
+    Pages getType() const override {
+        return Pages::Abort;
+    }
 };
 
 #endif // PAGEAPPABORT_H

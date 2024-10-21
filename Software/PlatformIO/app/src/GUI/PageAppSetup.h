@@ -24,6 +24,10 @@ public:
         AddElement(&durationSetup);
         AddElement(&startButton);
     }
+    
+    Pages getType() const override {
+        return Pages::Setup;
+    }
 
     void IncreaseHumidityMin() { humidityRangeSetup.IncreaseMin(); }
     void DecreaseHumidityMin() { humidityRangeSetup.DecreaseMin(); }

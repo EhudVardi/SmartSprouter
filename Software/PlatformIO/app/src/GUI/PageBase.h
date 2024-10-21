@@ -2,6 +2,7 @@
 #define PAGEBASE_H
 
 #include "GUI/GuiElement.h"
+#include "GUI/Pages.h"
 #include <vector>
 
 class PageBase {
@@ -26,6 +27,8 @@ public:
             element->Invalidate();
         }
     }
+
+    virtual Pages getType() const = 0; // Using static casting with manual type checking to get a page by its sub type, by specifying its enum
 };
 
 #endif // PAGEBASE_H

@@ -45,6 +45,10 @@ void DisplayManager::changePage(Pages pageEnum) {
     }
 }
 
+std::shared_ptr<PageBase> DisplayManager::getPage(Pages pageEnum) {
+    return pageMap[pageEnum];
+}
+
 void DisplayManager::refresh() {
     if (displayHandler != nullptr && currentPage != nullptr)
         currentPage->Draw(*displayHandler);

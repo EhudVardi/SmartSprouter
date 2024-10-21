@@ -25,6 +25,10 @@ public:
         AddElement(&appName);
         AddElement(&appVersion);
     }
+    
+    Pages getType() const override {
+        return Pages::About;
+    }
 };
 
 #endif // PAGEAPPABOUT_H

@@ -20,6 +20,10 @@ public:
         AddElement(&durationGauge);
     }
     
+    Pages getType() const override {
+        return Pages::Run;
+    }
+    
     bool SetHumidity(float humidityPercent) {
         if (humidityPercent >= 0.0 &&  humidityPercent <= 100.0) {
             humidityGauge.SetValue(humidityPercent);

@@ -16,6 +16,8 @@ public:
         AddElement(&titleSeparator);
     }
     
+    virtual Pages getType() const override = 0;
+    
     void SetTitle(String title) {
         titleLabel.UpdateText(title);
     }

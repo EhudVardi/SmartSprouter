@@ -22,6 +22,10 @@ public:
         AddElement(&currentDate);
         AddElement(&currentTime);
     }
+    
+    Pages getType() const override {
+        return Pages::Idle;
+    }
 
     bool SetHumidity(float humidityPercent) {
         if (humidityPercent >= 0.0 &&  humidityPercent <= 100.0) {
