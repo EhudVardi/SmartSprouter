@@ -12,11 +12,7 @@ void IdlingState::exit(SystemContext* context) {
 }
 
 void IdlingState::update(SystemContext* context) {
-    static int temp = 0;
-    temp++;
-    if (!(temp % 1000)) {
-        std::cout << "update IdlingState" << std::endl;
-    }
+    context->displayManager->refresh();
 }
 
 void IdlingState::handleInput(SystemContext* context, InputEvent event) {

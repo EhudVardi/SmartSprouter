@@ -12,11 +12,7 @@ void InformingState::exit(SystemContext* context) {
 }
 
 void InformingState::update(SystemContext* context) {
-    static int temp = 0;
-    temp++;
-    if (!(temp % 1000)) {
-	    std::cout << "update InformingState" << std::endl;
-    }
+    context->displayManager->refresh();
 }
 
 void InformingState::handleInput(SystemContext* context, InputEvent event) {

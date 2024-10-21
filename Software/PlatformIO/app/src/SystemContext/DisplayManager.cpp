@@ -46,10 +46,6 @@ void DisplayManager::changePage(Pages pageEnum) {
 }
 
 void DisplayManager::refresh() {
-    static int temp = 0;
-    temp++;
-    if (!(temp % 1000)) {
-        if (displayHandler != nullptr && currentPage != nullptr)
-            currentPage->Draw(*displayHandler);
-    }
+    if (displayHandler != nullptr && currentPage != nullptr)
+        currentPage->Draw(*displayHandler);
 }
