@@ -5,27 +5,29 @@
 #include <string>
 
 enum class SetupStates {
-    StartingUp,
-    SystemInError,
-    Initializing,
-    Idling,
-    Informing,
-    SettingProcess,
-    Running,
-    Aborting,
+    HumidityRangeSelect,
+    HumidityRangeEditMin,
+    HumidityRangeEditMax,
+    TemperatureRangeSelect,
+    TemperatureRangeEditMin,
+    TemperatureRangeEditMax,
+    DurationSelect,
+    DurationEdit,
+    Start,
 };
 
 // Use a static map to convert enums to strings
 inline const char* States_ToString(SetupStates s) {
     static const std::unordered_map<SetupStates, const char*> stateMap = {
-        { SetupStates::StartingUp, "StartingUp" },
-        { SetupStates::SystemInError, "SystemInError" },
-        { SetupStates::Initializing, "Initializing" },
-        { SetupStates::Idling, "Idling" },
-        { SetupStates::Informing, "Informing" },
-        { SetupStates::SettingProcess, "SettingProcess" },
-        { SetupStates::Running, "Running" },
-        { SetupStates::Aborting, "Aborting" }
+        { SetupStates::HumidityRangeSelect, "HumidityRangeSelect" },
+        { SetupStates::HumidityRangeEditMin, "HumidityRangeEditMin" },
+        { SetupStates::HumidityRangeEditMax, "HumidityRangeEditMax" },
+        { SetupStates::TemperatureRangeSelect, "TemperatureRangeSelect" },
+        { SetupStates::TemperatureRangeEditMin, "TemperatureRangeEditMin" },
+        { SetupStates::TemperatureRangeEditMax, "TemperatureRangeEditMax" },
+        { SetupStates::DurationSelect, "DurationSelect" },
+        { SetupStates::DurationEdit, "DurationEdit" },
+        { SetupStates::Start, "Start" },
     };
 
     auto it = stateMap.find(s);
