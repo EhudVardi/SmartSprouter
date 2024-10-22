@@ -26,4 +26,7 @@ void IdlingState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::RotatedRight) {
         stateMachine->changeState(States::Informing, context);
     }
+    else if (event == InputEvent::EnterPressed) {
+        stateMachine->changeState(States::SettingProcess, context);
+    }
 }
