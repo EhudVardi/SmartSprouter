@@ -11,7 +11,6 @@ enum class States {
     Idling,
     Informing,
     SettingProcess,
-    SettingParam,
     Running,
     Aborting,
 };
@@ -25,7 +24,6 @@ inline const char* States_ToString(States s) {
         { States::Idling, "Idling" },
         { States::Informing, "Informing" },
         { States::SettingProcess, "SettingProcess" },
-        { States::SettingParam, "SettingParam" },
         { States::Running, "Running" },
         { States::Aborting, "Aborting" }
     };

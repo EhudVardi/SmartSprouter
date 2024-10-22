@@ -5,7 +5,6 @@
 #include "StateMachine/States/IdlingState.h"
 #include "StateMachine/States/InformingState.h"
 #include "StateMachine/States/SettingProcessState.h"
-#include "StateMachine/States/SettingParamState.h"
 #include "StateMachine/States/RunningState.h"
 #include "StateMachine/States/AbortingState.h"
 #include <iostream>
@@ -18,7 +17,6 @@ StateMachine::StateMachine() {
     auto idlingState = std::make_shared<IdlingState>();
     auto informingState = std::make_shared<InformingState>();
     auto settingProcessState = std::make_shared<SettingProcessState>();
-    auto settingParamState = std::make_shared<SettingParamState>();
     auto runningState = std::make_shared<RunningState>();
     auto abortingState = std::make_shared<AbortingState>();
 
@@ -29,7 +27,6 @@ StateMachine::StateMachine() {
     addState(States::Idling, idlingState);
     addState(States::Informing, informingState);
     addState(States::SettingProcess, settingProcessState);
-    addState(States::SettingParam, settingParamState);
     addState(States::Running, runningState);
     addState(States::Aborting, abortingState);
 }
