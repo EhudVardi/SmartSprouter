@@ -30,35 +30,3 @@ StateMachine::StateMachine() {
     addState(States::Running, runningState);
     addState(States::Aborting, abortingState);
 }
-
-void StateMachine::addState(States stateEnum, std::shared_ptr<State> state) {
-    stateMap[stateEnum] = state;
-    state->setStateMachine(this);
-}
-
-void StateMachine::changeState(States stateEnum, SystemContext* context) {
-    auto newState = stateMap.find(stateEnum);
-    if (newState != stateMap.end()) {
-        if (currentState) {
-            currentState->exit(context);
-        }
-        currentState = newState->second;
-        if (currentState) {
-            currentState->enter(context);
-        }
-    } else {
-        std::cerr << "State " << States_ToString(stateEnum) << " not found!" << std::endl;
-    }
-}
-
-void StateMachine::update(SystemContext* context) {
-    if (currentState) {
-        currentState->update(context);
-    }
-}
-
-void StateMachine::handleInput(InputEvent event, SystemContext* context) {
-    if (currentState) {
-        currentState->handleInput(context, event);
-    }
-}
