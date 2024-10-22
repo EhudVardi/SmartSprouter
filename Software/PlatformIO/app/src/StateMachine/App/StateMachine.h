@@ -1,5 +1,5 @@
-#ifndef STATE_MACHINE_H
-#define STATE_MACHINE_H
+#ifndef APP_STATE_MACHINE_H
+#define APP_STATE_MACHINE_H
 
 #include "StateMachine/StateMachineBase.h"
 #include "StateMachine/App/State.h"
@@ -14,4 +14,4 @@ public:
     AppStateMachine();
 };
 
-#endif // STATE_MACHINE_H
+#endif // APP_STATE_MACHINE_H

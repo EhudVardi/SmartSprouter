@@ -1,5 +1,5 @@
-#ifndef STATES_ENUMERATION_H
-#define STATES_ENUMERATION_H
+#ifndef APP_STATES_ENUMERATION_H
+#define APP_STATES_ENUMERATION_H
 
 #include <unordered_map>
 #include <string>
@@ -32,4 +32,4 @@ inline const char* States_ToString(AppStates s) {
     return (it != stateMap.end()) ? it->second : "[Unknown State_type]";
 }
 
-#endif // STATES_ENUMERATION_H
+#endif // APP_STATES_ENUMERATION_H

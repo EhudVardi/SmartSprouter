@@ -1,5 +1,5 @@
-#ifndef STATE_H
-#define STATE_H
+#ifndef APPSTATE_H
+#define APPSTATE_H
 
 #include "StateMachine/StateBase.h"
 #include "StateMachine/App/StateMachine.h"
@@ -9,4 +9,4 @@ class AppStateMachine; // Forward declare AppStateMachine
 
 class AppState : public StateBase<AppStateMachine> {};
 
-#endif // STATE_H
+#endif // APPSTATE_H
