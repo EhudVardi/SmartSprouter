@@ -1,7 +1,7 @@
 #ifndef SYSTEM_IN_ERROR_STATE_H
 #define SYSTEM_IN_ERROR_STATE_H
 
-#include "StateMachine/States/State.h"
+#include "StateMachine/App/State.h"
 
 class SystemInErrorState : public State {
 public:

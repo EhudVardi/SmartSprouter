@@ -1,7 +1,7 @@
 #ifndef INFORMAING_STATE_H
 #define INFORMAING_STATE_H
 
-#include "StateMachine/States/State.h"
+#include "StateMachine/App/State.h"
 
 class InformingState : public State {
 public:

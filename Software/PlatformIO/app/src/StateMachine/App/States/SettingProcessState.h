@@ -1,7 +1,7 @@
 #ifndef SETTING_PROCESS_STATE_H
 #define SETTING_PROCESS_STATE_H
 
-#include "StateMachine/States/State.h"
+#include "StateMachine/App/State.h"
 
 class SettingProcessState : public State {
 private:

@@ -1,7 +1,7 @@
 #ifndef INITIALIZING_STATE_H
 #define INITIALIZING_STATE_H
 
-#include "StateMachine/States/State.h"
+#include "StateMachine/App/State.h"
 
 class InitializingState : public State {
 public:

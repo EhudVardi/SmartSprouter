@@ -2,7 +2,7 @@
 #define APPLICATION_H
 
 #include "SystemContext/SystemContext.h"
-#include "StateMachine/StateMachine.h"
+#include "StateMachine/App/StateMachine.h"
 #include "Timer.h"
 
 class Application {

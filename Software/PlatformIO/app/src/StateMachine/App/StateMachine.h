@@ -2,8 +2,8 @@
 #define STATE_MACHINE_H
 
 #include "StateMachine/StateMachineBase.h"
-#include "StateMachine/States/State.h"
-#include "StateMachine/StatesEnumeration.h"
+#include "StateMachine/App/State.h"
+#include "StateMachine/App/StatesEnumeration.h"
 
 #include <iostream>
 

@@ -1,12 +1,12 @@
-#include "StateMachine/StateMachine.h"
-#include "StateMachine/States/StartingUpState.h"
-#include "StateMachine/States/InitializingState.h"
-#include "StateMachine/States/SystemInErrorState.h"
-#include "StateMachine/States/IdlingState.h"
-#include "StateMachine/States/InformingState.h"
-#include "StateMachine/States/SettingProcessState.h"
-#include "StateMachine/States/RunningState.h"
-#include "StateMachine/States/AbortingState.h"
+#include "StateMachine/App/StateMachine.h"
+#include "StateMachine/App/States/StartingUpState.h"
+#include "StateMachine/App/States/InitializingState.h"
+#include "StateMachine/App/States/SystemInErrorState.h"
+#include "StateMachine/App/States/IdlingState.h"
+#include "StateMachine/App/States/InformingState.h"
+#include "StateMachine/App/States/SettingProcessState.h"
+#include "StateMachine/App/States/RunningState.h"
+#include "StateMachine/App/States/AbortingState.h"
 #include <iostream>
 
 StateMachine::StateMachine() {

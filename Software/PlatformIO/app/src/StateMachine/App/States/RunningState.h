@@ -1,7 +1,7 @@
 #ifndef RUNNING_STATE_H
 #define RUNNING_STATE_H
 
-#include "StateMachine/States/State.h"
+#include "StateMachine/App/State.h"
 
 class RunningState : public State {
 public:
