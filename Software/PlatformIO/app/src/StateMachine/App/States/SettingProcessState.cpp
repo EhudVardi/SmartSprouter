@@ -23,6 +23,6 @@ void SettingProcessState::update(SystemContext* context) {
 
 void SettingProcessState::handleInput(SystemContext* context, InputEvent event) {
     if (event == InputEvent::BackPressed) {
-        stateMachine->changeState(States::Idling, context);
+        stateMachine->changeState(AppStates::Idling, context);
     }
 }

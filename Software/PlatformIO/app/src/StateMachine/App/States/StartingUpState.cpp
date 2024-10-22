@@ -5,26 +5,26 @@ void StartingUpState::enter(SystemContext* context) {
     /// initialize all managers in the system context object
     /// if any fails, then transite to SystemInError state. else transite forward to Initializing state
     if (!context->inputManager->initialize()) {
-        stateMachine->changeState(States::SystemInError, context);
+        stateMachine->changeState(AppStates::SystemInError, context);
         return;
     }
     if (!context->sensorManager->initialize()) {
-        stateMachine->changeState(States::SystemInError, context);
+        stateMachine->changeState(AppStates::SystemInError, context);
         return;
     }
     if (!context->displayManager->initialize()) {
-        stateMachine->changeState(States::SystemInError, context);
+        stateMachine->changeState(AppStates::SystemInError, context);
         return;
     }
     if (!context->actuatorManager->initialize()) {
-        stateMachine->changeState(States::SystemInError, context);
+        stateMachine->changeState(AppStates::SystemInError, context);
         return;
     }
     if (!context->processManager->initialize()) {
-        stateMachine->changeState(States::SystemInError, context);
+        stateMachine->changeState(AppStates::SystemInError, context);
         return;
     }
-    stateMachine->changeState(States::Initializing, context);
+    stateMachine->changeState(AppStates::Initializing, context);
 }
 
 void StartingUpState::exit(SystemContext* context) { }

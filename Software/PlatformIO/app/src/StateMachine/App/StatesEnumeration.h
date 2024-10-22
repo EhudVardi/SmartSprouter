@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <string>
 
-enum class States {
+enum class AppStates {
     StartingUp,
     SystemInError,
     Initializing,
@@ -16,16 +16,16 @@ enum class States {
 };
 
 // Use a static map to convert enums to strings
-inline const char* States_ToString(States s) {
-    static const std::unordered_map<States, const char*> stateMap = {
-        { States::StartingUp, "StartingUp" },
-        { States::SystemInError, "SystemInError" },
-        { States::Initializing, "Initializing" },
-        { States::Idling, "Idling" },
-        { States::Informing, "Informing" },
-        { States::SettingProcess, "SettingProcess" },
-        { States::Running, "Running" },
-        { States::Aborting, "Aborting" }
+inline const char* States_ToString(AppStates s) {
+    static const std::unordered_map<AppStates, const char*> stateMap = {
+        { AppStates::StartingUp, "StartingUp" },
+        { AppStates::SystemInError, "SystemInError" },
+        { AppStates::Initializing, "Initializing" },
+        { AppStates::Idling, "Idling" },
+        { AppStates::Informing, "Informing" },
+        { AppStates::SettingProcess, "SettingProcess" },
+        { AppStates::Running, "Running" },
+        { AppStates::Aborting, "Aborting" }
     };
 
     auto it = stateMap.find(s);

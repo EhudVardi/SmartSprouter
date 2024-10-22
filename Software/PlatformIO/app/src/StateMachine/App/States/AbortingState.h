@@ -3,7 +3,7 @@
 
 #include "StateMachine/App/State.h"
 
-class AbortingState : public State {
+class AbortingState : public AppState {
 public:
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;

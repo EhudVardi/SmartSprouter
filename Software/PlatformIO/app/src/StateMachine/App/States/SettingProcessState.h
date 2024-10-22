@@ -3,7 +3,7 @@
 
 #include "StateMachine/App/State.h"
 
-class SettingProcessState : public State {
+class SettingProcessState : public AppState {
 private:
     std::shared_ptr<PageAppIdle> setupPage = nullptr;
     

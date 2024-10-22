@@ -3,7 +3,7 @@
 
 #include "StateMachine/App/State.h"
 
-class IdlingState : public State {
+class IdlingState : public AppState {
 private:
     std::shared_ptr<PageAppIdle> idlePage = nullptr;
     

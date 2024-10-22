@@ -7,11 +7,11 @@
 
 #include <iostream>
 
-class State;
+class AppState;
 
-class StateMachine : public StateMachineBase<State, States> {
+class AppStateMachine : public StateMachineBase<AppState, AppStates> {
 public: 
-    StateMachine();
+    AppStateMachine();
 };
 
 #endif // STATE_MACHINE_H

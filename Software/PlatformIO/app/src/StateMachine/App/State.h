@@ -5,8 +5,8 @@
 #include "StateMachine/App/StateMachine.h"
 #include <iostream>
 
-class StateMachine; // Forward declare StateMachine
+class AppStateMachine; // Forward declare AppStateMachine
 
-class State : public StateBase<StateMachine> {};
+class AppState : public StateBase<AppStateMachine> {};
 
 #endif // STATE_H

@@ -9,7 +9,7 @@
 #include "StateMachine/App/States/AbortingState.h"
 #include <iostream>
 
-StateMachine::StateMachine() {
+AppStateMachine::AppStateMachine() {
     
     auto startingUpState = std::make_shared<StartingUpState>();
     auto initializingState = std::make_shared<InitializingState>();
@@ -21,12 +21,12 @@ StateMachine::StateMachine() {
     auto abortingState = std::make_shared<AbortingState>();
 
     // Add states to the state machine
-    addState(States::StartingUp, startingUpState);
-    addState(States::Initializing, initializingState);
-    addState(States::SystemInError, systemInErrorState);
-    addState(States::Idling, idlingState);
-    addState(States::Informing, informingState);
-    addState(States::SettingProcess, settingProcessState);
-    addState(States::Running, runningState);
-    addState(States::Aborting, abortingState);
+    addState(AppStates::StartingUp, startingUpState);
+    addState(AppStates::Initializing, initializingState);
+    addState(AppStates::SystemInError, systemInErrorState);
+    addState(AppStates::Idling, idlingState);
+    addState(AppStates::Informing, informingState);
+    addState(AppStates::SettingProcess, settingProcessState);
+    addState(AppStates::Running, runningState);
+    addState(AppStates::Aborting, abortingState);
 }

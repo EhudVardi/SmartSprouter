@@ -8,7 +8,7 @@
 class Application {
 private:
     SystemContext context;
-    StateMachine stateMachine;
+    AppStateMachine stateMachine;
 
     Timer inputPollingTimer;
     Timer stateMachineTimer;

@@ -24,9 +24,9 @@ void IdlingState::update(SystemContext* context) {
 
 void IdlingState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::RotatedRight) {
-        stateMachine->changeState(States::Informing, context);
+        stateMachine->changeState(AppStates::Informing, context);
     }
     else if (event == InputEvent::EnterPressed) {
-        stateMachine->changeState(States::SettingProcess, context);
+        stateMachine->changeState(AppStates::SettingProcess, context);
     }
 }

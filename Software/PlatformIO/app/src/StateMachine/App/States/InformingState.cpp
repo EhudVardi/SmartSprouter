@@ -17,6 +17,6 @@ void InformingState::update(SystemContext* context) {
 
 void InformingState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::RotatedLeft) {
-        stateMachine->changeState(States::Idling, context);
+        stateMachine->changeState(AppStates::Idling, context);
     }
 }
