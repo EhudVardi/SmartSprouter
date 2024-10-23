@@ -29,20 +29,30 @@ public:
         return Pages::Setup;
     }
 
+    void SetHumidityRangeSelectionMode(NamedRangeEditState newEditState) {
+        humidityRangeSetup.SetEditState(newEditState);
+    }
+    void SetTemperatureRangeSelectionMode(NamedRangeEditState newEditState) {
+        temperatureRangeSetup.SetEditState(newEditState);
+    }
+    void SetDurationSelectionMode(NamedValueEditState newEditState) {
+        durationSetup.SetEditState(newEditState);
+    }
+    void SetStartSelectionMode(bool selected) {
+        startButton.SetInverted(selected);
+    }
+
+
     void IncreaseHumidityMin() { humidityRangeSetup.IncreaseMin(); }
     void DecreaseHumidityMin() { humidityRangeSetup.DecreaseMin(); }
-
     void IncreaseHumidityMax() { humidityRangeSetup.IncreaseMax(); }
     void DecreaseHumidityMax() { humidityRangeSetup.DecreaseMax(); }
 
-
     void IncreaseTemperatureMin() { temperatureRangeSetup.IncreaseMin(); }
     void DecreaseTemperatureMin() { temperatureRangeSetup.DecreaseMin(); }
-
     void IncreaseTemperatureMax() { temperatureRangeSetup.IncreaseMax(); }
     void DecreaseTemperatureMax() { temperatureRangeSetup.DecreaseMax(); }
     
-
     void IncreaseDurationDays() { 
         durationSetup.AddDays(1); 
     }
