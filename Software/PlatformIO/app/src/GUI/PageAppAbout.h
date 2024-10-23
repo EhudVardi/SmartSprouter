@@ -4,7 +4,7 @@
 #include "GUI/PageAppBase.h"
 #include "GUI/Image.h"
 #include "GUI/AppLogoImage.h"
-#include "ApplicationProperties.h"
+#include "Application/ApplicationProperties.h"
 
 class PageAppAbout : public PageAppBase {
 protected:
