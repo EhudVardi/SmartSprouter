@@ -7,7 +7,7 @@
 class PageAppIdle : public PageAppBase {
 protected:
     NamedValuePercent humidityGauge;
-    NamedValuePercent temperatureGauge;
+    NamedValueTemperature temperatureGauge;
     NamedValueDate currentDate;
     NamedValueTime currentTime;
 
