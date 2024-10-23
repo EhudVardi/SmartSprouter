@@ -12,7 +12,7 @@ SetupStateMachine::SetupStateMachine() {
     auto TemperatureRangeEditMax = std::make_shared<TR_E_MAX>();
     auto DurationSelect = std::make_shared<D_S>();
     auto DurationEdit = std::make_shared<D_E>();
-    auto Start = std::make_shared<S_S>();
+    auto StartSelect = std::make_shared<S_S>();
 
     // Add states to the state machine
     addState(SetupStates::HumidityRangeSelect, HumidityRangeSelect);
@@ -23,5 +23,5 @@ SetupStateMachine::SetupStateMachine() {
     addState(SetupStates::TemperatureRangeEditMax, TemperatureRangeEditMax);
     addState(SetupStates::DurationSelect, DurationSelect);
     addState(SetupStates::DurationEdit, DurationEdit);
-    addState(SetupStates::Start, Start);
+    addState(SetupStates::StartSelect, StartSelect);
 }

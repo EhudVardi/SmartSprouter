@@ -13,7 +13,7 @@ enum class SetupStates {
     TemperatureRangeEditMax,
     DurationSelect,
     DurationEdit,
-    Start,
+    StartSelect,
 };
 
 // Use a static map to convert enums to strings
@@ -27,7 +27,7 @@ inline const char* States_ToString(SetupStates s) {
         { SetupStates::TemperatureRangeEditMax, "TemperatureRangeEditMax" },
         { SetupStates::DurationSelect, "DurationSelect" },
         { SetupStates::DurationEdit, "DurationEdit" },
-        { SetupStates::Start, "Start" },
+        { SetupStates::StartSelect, "StartSelect" },
     };
 
     auto it = stateMap.find(s);
