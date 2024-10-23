@@ -1,13 +1,5 @@
 #include "StateMachine/App/StateMachine.h"
-#include "StateMachine/App/States/StartingUpState.h"
-#include "StateMachine/App/States/InitializingState.h"
-#include "StateMachine/App/States/SystemInErrorState.h"
-#include "StateMachine/App/States/IdlingState.h"
-#include "StateMachine/App/States/InformingState.h"
-#include "StateMachine/App/States/SettingProcessState.h"
-#include "StateMachine/App/States/RunningState.h"
-#include "StateMachine/App/States/AbortingState.h"
-#include <iostream>
+#include "StateMachine/App/States/AppStates.h"
 
 AppStateMachine::AppStateMachine() {
     
