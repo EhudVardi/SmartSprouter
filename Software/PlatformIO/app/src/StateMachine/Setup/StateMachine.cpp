@@ -1,5 +1,5 @@
 #include "StateMachine/Setup/StateMachine.h"
-#include "StateMachine/Setup/States/SetupStates.h"
+#include "StateMachine/Setup/SetupStates.h"
 #include <iostream>
 
 SetupStateMachine::SetupStateMachine() {

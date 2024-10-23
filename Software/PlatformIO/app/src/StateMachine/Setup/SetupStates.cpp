@@ -1,4 +1,4 @@
-#include "StateMachine/Setup/States/SetupStates.h"
+#include "StateMachine/Setup/SetupStates.h"
 #include <iostream>
 
 void HR_S::enter(SystemContext* context) { 
