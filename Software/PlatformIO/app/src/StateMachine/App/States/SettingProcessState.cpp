@@ -7,6 +7,7 @@ void SettingProcessState::enter(SystemContext* context) {
     if (!setupPage) {
         setupPage = context->displayManager->getPageAs<PageAppIdle>(Pages::Setup);
     }
+    setupStateMachine.changeState(SetupStates::HumidityRangeSelect, context); // init nested setup state machine state to initial state
 	std::cout << "enter SettingProcessState" << std::endl;
 }
 
@@ -24,5 +25,9 @@ void SettingProcessState::update(SystemContext* context) {
 void SettingProcessState::handleInput(SystemContext* context, InputEvent event) {
     if (event == InputEvent::BackPressed) {
         stateMachine->changeState(AppStates::Idling, context);
+    }
+    else { // pass event into nested setup state machine
+        setupStateMachine.handleInput(event, context);
+        update(context);
     }
 }
