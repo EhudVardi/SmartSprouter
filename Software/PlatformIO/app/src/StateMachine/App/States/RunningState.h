@@ -4,6 +4,9 @@
 #include "StateMachine/App/State.h"
 
 class RunningState : public AppState {
+private:
+    std::shared_ptr<PageAppRun> runPage = nullptr;
+    
 public:
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;

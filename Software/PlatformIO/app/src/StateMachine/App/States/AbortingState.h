@@ -4,6 +4,9 @@
 #include "StateMachine/App/State.h"
 
 class AbortingState : public AppState {
+private:
+    std::shared_ptr<PageAppAbort> abortPage = nullptr;
+    
 public:
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;
