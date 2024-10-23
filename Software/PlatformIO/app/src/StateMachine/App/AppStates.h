@@ -1,4 +1,4 @@
-#include "StateMachine/App/State.h"
+#include "StateMachine/App/AppState.h"
 #include "SystemContext/SystemContext.h"
 
 #ifndef ABORTING_STATE_H
@@ -78,7 +78,7 @@ public:
 #ifndef SETTING_PROCESS_STATE_H
 #define SETTING_PROCESS_STATE_H
 
-#include "StateMachine/Setup/StateMachine.h"
+#include "StateMachine/Setup/SetupStateMachine.h"
 
 class SettingProcessState : public AppState {
 private:

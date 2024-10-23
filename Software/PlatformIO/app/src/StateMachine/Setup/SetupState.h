@@ -2,7 +2,7 @@
 #define SETUP_STATE_H
 
 #include "StateMachine/StateBase.h"
-#include "StateMachine/Setup/StateMachine.h"
+#include "StateMachine/Setup/SetupStateMachine.h"
 #include <iostream>
 
 class SetupStateMachine; // Forward declare SetupStateMachine

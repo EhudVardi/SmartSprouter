@@ -1,4 +1,4 @@
-#include "StateMachine/App/StateMachine.h"
+#include "StateMachine/App/AppStateMachine.h"
 #include "StateMachine/App/AppStates.h"
 
 AppStateMachine::AppStateMachine() {
