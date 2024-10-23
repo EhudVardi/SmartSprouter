@@ -2,6 +2,13 @@
 #include "SystemContext/SystemContext.h"
 #include <iostream>
 
+SettingProcessState::SettingProcessState() {
+    setupStateMachine.setOnStartEnterCallback(
+        [this](SystemContext* context) {
+            stateMachine->changeState(AppStates::Running, context);
+        });
+}
+
 void SettingProcessState::enter(SystemContext* context) {
     context->displayManager->changePage(Pages::Setup);
     if (!setupPage) {

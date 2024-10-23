@@ -161,7 +161,7 @@ void S_S::update(SystemContext* context) { }
 void S_S::handleInput(SystemContext* context, InputEvent event) {
     if (setupPage) {
         switch (event) {
-            case InputEvent::EnterPressed: /* TODO - parent state machine transition to running state */ break;
+            case InputEvent::EnterPressed: stateMachine->fireOnStartEnterEvent(context);
             case InputEvent::RotatedLeft: 
                 setupPage->SetStartSelectionMode(false);
                 stateMachine->changeState(SetupStates::DurationSelect, context);

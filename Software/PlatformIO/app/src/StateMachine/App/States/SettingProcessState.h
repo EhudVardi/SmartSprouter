@@ -11,6 +11,8 @@ private:
     SetupStateMachine setupStateMachine;
     
 public:
+    SettingProcessState();
+    
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;
     void update(SystemContext* context) override;

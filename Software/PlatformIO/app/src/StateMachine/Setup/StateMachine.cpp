@@ -25,3 +25,13 @@ SetupStateMachine::SetupStateMachine() {
     addState(SetupStates::DurationEdit, DurationEdit);
     addState(SetupStates::StartSelect, StartSelect);
 }
+
+void SetupStateMachine::setOnStartEnterCallback(std::function<void(SystemContext*)> callback) {
+    onStartEnter = callback;
+}
+
+void SetupStateMachine::fireOnStartEnterEvent(SystemContext* context) {
+    if (onStartEnter) {
+        onStartEnter(context);
+    }
+}
