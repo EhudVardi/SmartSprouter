@@ -116,12 +116,13 @@ public:
 
 class DisplayDuration {
 private:
-    int seconds;
+    unsigned long seconds;
 
 public:
     DisplayDuration() : seconds(0) {}
+
     DisplayDuration(int days, int hrs, int mins, int secs) {
-        seconds = days*24*60*60 + hrs*60*60 + mins*60 + secs;
+        seconds = days * DAY_IN_SECONDS + hrs * HOUR_IN_SECONDS + mins * MINUTE_IN_SECONDS + secs;
     }
 
     // Format duration as D:HH:MM:SS
@@ -139,18 +140,32 @@ public:
     }
 
     int GetSeconds() const { return seconds % MINUTE_IN_SECONDS; }
-    int GetMinutes() const { return seconds % HOUR_IN_SECONDS / MINUTE_IN_SECONDS; }
-    int GetHours() const { return seconds % DAY_IN_SECONDS / HOUR_IN_SECONDS; }
+    int GetMinutes() const { return (seconds % HOUR_IN_SECONDS) / MINUTE_IN_SECONDS; }
+    int GetHours() const { return (seconds % DAY_IN_SECONDS) / HOUR_IN_SECONDS; }
     int GetDays() const { return seconds / DAY_IN_SECONDS; }
-    
-    
-    void AddSeconds(int secs) { seconds += secs; }
-    void AddMinutes(int mins) { seconds += mins * MINUTE_IN_SECONDS; }
-    void AddHours(int hrs) { seconds += hrs * HOUR_IN_SECONDS; }
-    void AddDays(int days) { seconds += days * DAY_IN_SECONDS; }
+
+    // Add positive or negative seconds, preventing underflow
+    void AddSeconds(int secs) {
+        if (secs < 0 && static_cast<unsigned long>(-secs) > seconds) {
+            seconds = 0;  // Prevent underflow
+        } else {
+            seconds += secs;
+        }
+    }
+    void AddMinutes(int mins) {
+        AddSeconds(mins * MINUTE_IN_SECONDS);  // Reuse AddSeconds with conversion
+    }
+    void AddHours(int hrs) {
+        AddSeconds(hrs * HOUR_IN_SECONDS);  // Reuse AddSeconds with conversion
+    }
+    void AddDays(int days) {
+        AddSeconds(days * DAY_IN_SECONDS);  // Reuse AddSeconds with conversion
+    }
 
     void TickDown() {
-        seconds--;
+        if (seconds > 0) {
+            seconds--;
+        }
     }
 };
 
