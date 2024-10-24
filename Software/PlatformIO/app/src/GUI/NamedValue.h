@@ -49,15 +49,15 @@ public:
         editState = state;
 
         // Set inverted state for labels based on edit state
-        if (state == NamedValueEditState::Selected) {
+        if (state == NamedValueEditState::None) {
+            nameLabel.SetInverted(false);
+            valueLabel.SetInverted(false);
+        } else if (state == NamedValueEditState::Selected) {
             nameLabel.SetInverted(true);
             valueLabel.SetInverted(false);
         } else if (state == NamedValueEditState::Entered) {
-            nameLabel.SetInverted(false);
+            nameLabel.SetInverted(true);
             valueLabel.SetInverted(true);
-        } else {
-            nameLabel.SetInverted(false);
-            valueLabel.SetInverted(false);
         }
     }
 
