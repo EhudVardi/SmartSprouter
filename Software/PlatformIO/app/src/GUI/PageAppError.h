@@ -5,8 +5,8 @@
 
 class PageAppError : public PageAppBase {
 protected:
-    Label errorMessage;
-    Label errorCode;
+    TextLabel errorMessage;
+    TextLabel errorCode;
 
 public:
     PageAppError() : errorMessage(2, SCREEN_HEIGHT  / 4, "", FontSize::Small),

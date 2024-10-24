@@ -9,40 +9,31 @@
 
 template <typename T>
 class NamedValue : public GuiElement {
-private:
-    Label nameLabel;
-    Label valueLabel;
-    T value;
+protected:
+    Label<String> nameLabel;
+    Label<T> valueLabel;
     NamedValueEditState editState;
 
-protected:
-    // Virtual function to format the value as a string
-    virtual String FormatValue(T value) const {
-        return FormatHelper(value);
-    }
-    // add helper formatters to act as defaults for each type, to allow the class to compile when inherited with a type that cannot be used with "String()"
-    String FormatHelper(int value) const { return String(value); }
-    String FormatHelper(float value) const { return String(value); }
-    String FormatHelper(const DisplayDate& value) const { return value.ToString(); }  // Formatting for DisplayDate
-    String FormatHelper(const DisplayTime& value) const { return value.ToString(); }  // Formatting for DisplayTime
-    String FormatHelper(const DisplayDuration& value) const { return value.ToString(); }  // Formatting for DisplayDuration
-
 public:
+    NamedValue(int xPos, int yPos, T initialValue, const String &name, FontSize size = FontSize::Small)
+        : NamedValue(xPos, yPos, name, size) {
+        SetValue(initialValue);
+    }
     NamedValue(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : GuiElement(xPos, yPos),
-          nameLabel(xPos, yPos, name, size),
-          valueLabel(xPos + SCREEN_WIDTH / 2, yPos, "", size), // Offset for value label
-          value(T()), 
-          editState(NamedValueEditState::None) {}
-
-    void SetValue(T newValue) {
-        value = newValue;
-        String strValue = FormatValue(value); // Use the formatting method
-        valueLabel.UpdateText(strValue);
+          nameLabel(xPos, yPos, name),
+          valueLabel(xPos + SCREEN_WIDTH / 2, yPos), // Adjust position for the range
+          editState(NamedValueEditState::None) {
+        nameLabel.SetFontSize(size);
+        valueLabel.SetFontSize(size);
     }
 
-    T GetValue() const {
-        return value;
+    T GetValue() {
+        return valueLabel.GetValue();
+    }
+
+    void SetValue(T newValue) {
+        valueLabel.SetValue(newValue);
     }
 
     void SetEditState(NamedValueEditState state) {
@@ -79,7 +70,7 @@ public:
 
         // Draw name label
         nameLabel.Draw(displayHandler);
-        delay(1); // uncomment to solve the bug where if a page is refreshed first before any setvalue called, the the name label is erased.
+        
         // Draw value label
         valueLabel.Draw(displayHandler);
     }

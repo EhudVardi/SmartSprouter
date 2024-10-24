@@ -3,23 +3,46 @@
 
 #include "GUI/GuiElement.h"
 #include "GUI/FontSize.h"
+#include "Utils/ToString.h"
 #include <Arduino.h>
+#include <functional>
 
+template <typename T>
 class Label : public GuiElement {
 protected:
-    String text;
+    T value;
     FontSize fontSize;
     bool inverted; // New member to determine if label is inverted
+    std::function<String(T)> formatter; // Function to format the value
 
 public:
-    Label(int xPos, int yPos, const String &initialText, FontSize size = FontSize::Small)
-        : GuiElement(xPos, yPos), text(initialText), fontSize(size), inverted(false) {}
-
-    void UpdateText(const String &newText) {
-        if (newText != text) {
-            text = newText;
-            Invalidate(); // Mark as needing redraw
+    Label(int xPos, int yPos, T initialValue, FontSize size = FontSize::Small, std::function<String(T)> customFormatter = nullptr)
+        : Label(xPos, yPos, size, customFormatter) {
+            value = initialValue;
         }
+    
+    Label(int xPos, int yPos, FontSize size = FontSize::Small, std::function<String(T)> customFormatter = nullptr)
+        : GuiElement(xPos, yPos), 
+        fontSize(size), 
+        inverted(false),
+        formatter(customFormatter) {
+        // Default formatter if not provided
+        if (!formatter) {
+            SetFormatter([](T value) { return toString(value); }); // Default to simple string conversion
+        }
+    }
+    
+    // Set a custom formatter later
+    void SetFormatter(std::function<String(T)> customFormatter) {
+        formatter = customFormatter;
+    }
+
+    // Getters
+    T GetValue() const { return value; }
+    
+    void SetValue(T newValue) {
+        value = newValue;
+        Invalidate();
     }
 
     void SetFontSize(FontSize size) {
@@ -28,8 +51,10 @@ public:
     }
 
     void SetInverted(bool state) {
-        inverted = state;
-        Invalidate(); // Inversion state change requires redraw
+        if (state != inverted) {
+            inverted = state;
+            Invalidate();
+        }
     }
 
     bool IsInverted() const {
@@ -39,32 +64,22 @@ public:
     virtual void Draw(LcdDisplayHandler &displayHandler) override {
         if (!IsInvalidated()) return;
 
+        Adafruit_SSD1306& display = displayHandler.GetDisplayObject(); //get the display object (get a REFERENCE (an alias &), NOT a copy)
         int16_t x1, y1;
         uint16_t w, h;
 
-        Adafruit_SSD1306& display = displayHandler.GetDisplayObject(); //get the display object (get a REFERENCE (an alias &), NOT a copy)
+        String valueStr = formatter(value);
 
-        // Set font size based on enum
-        display.setTextSize(static_cast<uint8_t>(fontSize));
+        display.setTextSize(static_cast<uint8_t>(fontSize)); // Set font size based on enum
+        display.getTextBounds(valueStr, x, y, &x1, &y1, &w, &h); // Get text bounds for clearing
+        display.fillRect(x1, y1, w, h, inverted ? SSD1306_WHITE : SSD1306_BLACK); // Clear the area
+        display.setTextColor(inverted ? SSD1306_BLACK : SSD1306_WHITE); // Set text color
 
-        // Get text bounds for clearing
-        display.getTextBounds(text, x, y, &x1, &y1, &w, &h);
+        display.setCursor(x, y); // Set cursor
+        display.print(valueStr); // print the text
 
-        // Clear the area
-        display.fillRect(x1, y1, w, h, inverted ? SSD1306_WHITE : SSD1306_BLACK);
-        
-        // Set text color
-        display.setTextColor(inverted ? SSD1306_BLACK : SSD1306_WHITE);
-
-        // Set cursor and print text
-        display.setCursor(x, y);
-        display.print(text);
-
-        // Update the display
-        display.display();
-
-        // Clear invalidation flag
-        invalidated = false;
+        display.display(); // Update the display
+        invalidated = false; // Clear invalidation flag
     }
 };
 

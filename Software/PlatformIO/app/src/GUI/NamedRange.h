@@ -10,7 +10,7 @@
 template <typename T>
 class NamedRange : public GuiElement {
 protected:
-    Label nameLabel;              // The label for the name
+    TextLabel nameLabel;              // The label for the name
     Range<T> valueRange;          // The range for the values
     NamedRangeEditState editState; // Current edit state
 

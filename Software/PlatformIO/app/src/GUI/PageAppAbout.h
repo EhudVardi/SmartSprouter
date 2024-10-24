@@ -9,8 +9,8 @@
 class PageAppAbout : public PageAppBase {
 protected:
     Image LogoImage;
-    Label appName;
-    Label appVersion;
+    TextLabel appName;
+    TextLabel appVersion;
 
 public:
     PageAppAbout() : LogoImage(2, (SCREEN_HEIGHT - abstractsproutingseedimage_height) / 2, 

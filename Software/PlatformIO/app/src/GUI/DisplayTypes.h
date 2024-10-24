@@ -36,6 +36,7 @@ public:
         snprintf(buffer, sizeof(buffer), "%02d/%02d/%04d", day, month, year);
         return String(buffer);
     }
+    String toString() const { return ToString(); }
 
     int GetDay() { return day; }
     int GetMonth() { return month; }
@@ -76,6 +77,7 @@ public:
         snprintf(buffer, sizeof(buffer), "%02d:%02d:%02d", hour, minute, second);
         return String(buffer);
     }
+    String toString() const { return ToString(); }
 
     // Format time as HH:MM
     String ToStringShort() const {
@@ -131,6 +133,7 @@ public:
         snprintf(buffer, sizeof(buffer), "%01d:%02d:%02d:%02d", GetDays(), GetHours(), GetMinutes(), GetSeconds());
         return String(buffer);
     }
+    String toString() const { return ToStringShort(); }
 
     // Format duration as D:HH:MM
     String ToStringShort() const {
