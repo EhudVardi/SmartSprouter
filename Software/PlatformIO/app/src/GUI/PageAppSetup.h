@@ -57,9 +57,7 @@ public:
         durationSetup.AddDays(1); 
     }
     void DecreaseDurationDays() { 
-        int currDays = durationSetup.GetValue().GetDays();
-        if (currDays > 1)
-            durationSetup.GetValue().AddDays(-1);
+        durationSetup.AddDays(-1);
     }
 };
 
