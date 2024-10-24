@@ -17,17 +17,11 @@ private:
 
 public:
     Range(int xPos, int yPos, T initialMinValue, T initialMaxValue, std::function<String(T)> customFormatter = nullptr)
-        : GuiElement(xPos, yPos),
-          minValue(initialMinValue),
-          maxValue(initialMaxValue),
-          minInverted(false),
-          maxInverted(false),
-          formatter(customFormatter) {
-        // Default formatter if not provided
-        if (!formatter) {
-            SetFormatter([](T value) { return String(value); }); // Default to simple string conversion
+        : Range(xPos, yPos, customFormatter) {
+            SetMinValue(initialMinValue);
+            SetMaxValue(initialMaxValue);
         }
-    }
+
     Range(int xPos, int yPos, std::function<String(T)> customFormatter = nullptr)
         : GuiElement(xPos, yPos),
           minInverted(false),
