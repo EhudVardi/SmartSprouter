@@ -7,7 +7,7 @@
 #include <unordered_map>
 
 #include "HardwareAbstraction/LcdDisplayHandler.h"
-#include "SystemContext/DisplayPins.h"
+#include "SystemContext/HWSystemPins/DisplayPins.h"
 
 #include "GUI/PageBase.h"
 #include "GUI/PageAppBase.h"

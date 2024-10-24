@@ -1,5 +1,5 @@
-#include "SystemContext/InputManager.h"
-#include "SystemContext/InputPins.h"
+#include "SystemContext/SystemManagers/InputManager.h"
+#include "SystemContext/HWSystemPins/InputPins.h"
 
 bool InputManager::initialize() {
     

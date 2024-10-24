@@ -2,11 +2,11 @@
 #define SYSTEM_CONTEXT_H
 
 #include <memory>
-#include "DisplayManager.h"
-#include "InputManager.h"
-#include "SensorManager.h"
-#include "ProcessManager.h"
-#include "ActuatorManager.h"
+#include "SystemContext/SystemManagers/DisplayManager.h"
+#include "SystemContext/SystemManagers/InputManager.h"
+#include "SystemContext/SystemManagers/SensorManager.h"
+#include "SystemContext/SystemManagers/ProcessManager.h"
+#include "SystemContext/SystemManagers/ActuatorManager.h"
 
 class SystemContext {
 public:

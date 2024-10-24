@@ -1,5 +1,5 @@
-#include "SystemContext/SensorManager.h"
-#include "SystemContext/SensorPins.h"
+#include "SystemContext/SystemManagers/SensorManager.h"
+#include "SystemContext/HWSystemPins/SensorPins.h"
 
 bool SensorManager::initialize() {
     if (dht11Sensor == nullptr) {
