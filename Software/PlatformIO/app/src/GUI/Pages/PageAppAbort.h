@@ -1,8 +1,8 @@
 #ifndef PAGEAPPABORT_H
 #define PAGEAPPABORT_H
 
-#include "GUI/PageAppBase.h"
-#include "GUI/CenteredLabel.h"
+#include "GUI/Pages/PageAppBase.h"
+#include "GUI/Elements/Simple/CenteredLabel.h"
 
 class PageAppAbort : public PageAppBase {
 protected:

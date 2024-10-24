@@ -1,9 +1,9 @@
 #ifndef PAGEAPPABOUT_H
 #define PAGEAPPABOUT_H
 
-#include "GUI/PageAppBase.h"
-#include "GUI/Image.h"
-#include "GUI/AppLogoImage.h"
+#include "GUI/Pages/PageAppBase.h"
+#include "GUI/Elements/GFX/Image.h"
+#include "GUI/Bitmaps/AppLogoImage.h"
 #include "Application/ApplicationProperties.h"
 
 class PageAppAbout : public PageAppBase {

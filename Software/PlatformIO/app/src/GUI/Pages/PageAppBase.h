@@ -1,9 +1,9 @@
 #ifndef PAGEAPPBASE_H
 #define PAGEAPPBASE_H
 
-#include "GUI/PageBase.h"
-#include "GUI/CenteredLabel.h"
-#include "GUI/Line.h"
+#include "GUI/Pages/PageBase.h"
+#include "GUI/Elements/Simple/CenteredLabel.h"
+#include "GUI/Elements/GFX/Line.h"
 
 class PageAppBase : public PageBase {
 protected:

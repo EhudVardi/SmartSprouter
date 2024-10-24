@@ -1,7 +1,7 @@
 #ifndef TEXT_LABEL_H
 #define TEXT_LABEL_H
 
-#include "GUI/Label.h"
+#include "GUI/Elements/Simple/Label.h"
 
 class TextLabel : public Label<String> {
 public:

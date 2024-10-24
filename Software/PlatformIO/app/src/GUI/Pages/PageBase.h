@@ -1,8 +1,8 @@
 #ifndef PAGEBASE_H
 #define PAGEBASE_H
 
-#include "GUI/GuiElement.h"
-#include "GUI/Pages.h"
+#include "GUI/Elements/GuiElement.h"
+#include "GUI/Pages/Pages.h"
 #include <vector>
 
 class PageBase {

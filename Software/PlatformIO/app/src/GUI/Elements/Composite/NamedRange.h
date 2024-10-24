@@ -1,10 +1,10 @@
 #ifndef NAMED_RANGE_H
 #define NAMED_RANGE_H
 
-#include "GUI/GuiElement.h"
-#include "GUI/Label.h"
-#include "GUI/Range.h"
-#include "GUI/NamedRangeEditState.h"
+#include "GUI/Elements/GuiElement.h"
+#include "GUI/Elements/Simple/Label.h"
+#include "GUI/Elements/Simple/Range.h"
+#include "GUI/Elements/Composite/NamedRangeEditState.h"
 #include <Arduino.h>
 
 template <typename T>

@@ -1,7 +1,7 @@
 #ifndef NAMEDVALUEINT_H
 #define NAMEDVALUEINT_H
 
-#include "GUI/NamedValue.h"
+#include "GUI/Elements/Composite/NamedValue.h"
 
 class NamedValueInt : public NamedValue<int> {
 public:
@@ -24,8 +24,6 @@ public:
 #ifndef NAMEDVALUEFLOAT_H
 #define NAMEDVALUEFLOAT_H
 
-#include "GUI/NamedValue.h"
-
 class NamedValueFloat : public NamedValue<float> {
 public:
     NamedValueFloat(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
@@ -46,8 +44,6 @@ public:
 #ifndef NAMEDVALUEPERCENT_H
 #define NAMEDVALUEPERCENT_H
 
-#include "GUI/NamedValue.h"
-
 class NamedValuePercent : public NamedValueFloat {
 public:
     NamedValuePercent(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
@@ -65,8 +61,6 @@ public:
 
 #ifndef NAMEDVALUETEMPERATURE_H
 #define NAMEDVALUETEMPERATURE_H
-
-#include "GUI/NamedValue.h"
 
 class NamedValueTemperature : public NamedValueFloat {
 public:
@@ -86,8 +80,7 @@ public:
 #ifndef NAMEDVALUEDATE_H
 #define NAMEDVALUEDATE_H
 
-#include "GUI/NamedValue.h"
-#include "GUI/DisplayTypes.h"
+#include "GUI/Elements/DisplayTypes.h"
 
 class NamedValueDate : public NamedValue<DisplayDate> {
 public:
@@ -112,8 +105,7 @@ public:
 #ifndef NAMEDVALUETIME_H
 #define NAMEDVALUETIME_H
 
-#include "GUI/NamedValue.h"
-#include "GUI/DisplayTypes.h"
+#include "GUI/Elements/DisplayTypes.h"
 
 class NamedValueTime : public NamedValue<DisplayTime> {
 public:
@@ -138,8 +130,7 @@ public:
 #ifndef NAMEDVALUEDURATION_H
 #define NAMEDVALUEDURATION_H
 
-#include "GUI/NamedValue.h"
-#include "GUI/DisplayTypes.h"
+#include "GUI/Elements/DisplayTypes.h"
 
 class NamedValueDuration : public NamedValue<DisplayDuration> {
 public:

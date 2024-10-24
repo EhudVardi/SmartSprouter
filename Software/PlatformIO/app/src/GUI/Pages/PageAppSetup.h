@@ -1,10 +1,10 @@
 #ifndef PAGEAPPSETUP_H
 #define PAGEAPPSETUP_H
 
-#include "GUI/PageAppBase.h"
-#include "GUI/TypedNameRange.h"
-#include "GUI/TypedNameValue.h"
-#include "GUI/CenteredLabel.h"
+#include "GUI/Pages/PageAppBase.h"
+#include "GUI/Elements/Composite/TypedNameRange.h"
+#include "GUI/Elements/Composite/TypedNameValue.h"
+#include "GUI/Elements/Simple/CenteredLabel.h"
 
 class PageAppSetup : public PageAppBase {
 protected:

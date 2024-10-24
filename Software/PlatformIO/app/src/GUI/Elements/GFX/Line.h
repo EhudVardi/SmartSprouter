@@ -1,7 +1,7 @@
 #ifndef LINE_H
 #define LINE_H
 
-#include "GUIElement.h"
+#include "GUI/Elements/GuiElement.h"
 
 class Line : public GuiElement {
 private:

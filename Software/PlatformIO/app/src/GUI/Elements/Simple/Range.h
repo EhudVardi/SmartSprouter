@@ -1,8 +1,8 @@
 #ifndef RANGE_H
 #define RANGE_H
 
-#include "GUI/GuiElement.h"
-#include "GUI/FontSize.h"
+#include "GUI/Elements/GuiElement.h"
+#include "GUI/Elements/FontSize.h"
 #include <Arduino.h>
 #include <functional>
 

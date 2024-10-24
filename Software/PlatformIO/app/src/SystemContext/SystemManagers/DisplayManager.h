@@ -9,15 +9,15 @@
 #include "HardwareAbstraction/LcdDisplayHandler.h"
 #include "SystemContext/HWSystemPins/DisplayPins.h"
 
-#include "GUI/PageBase.h"
-#include "GUI/PageAppBase.h"
-#include "GUI/PageAppAbout.h"
-#include "GUI/PageAppError.h"
-#include "GUI/PageAppAbort.h"
-#include "GUI/PageAppIdle.h"
-#include "GUI/PageAppRun.h"
-#include "GUI/PageAppSetup.h"
-#include "GUI/Pages.h"
+#include "GUI/Pages/PageBase.h"
+#include "GUI/Pages/PageAppBase.h"
+#include "GUI/Pages/PageAppAbout.h"
+#include "GUI/Pages/PageAppError.h"
+#include "GUI/Pages/PageAppAbort.h"
+#include "GUI/Pages/PageAppIdle.h"
+#include "GUI/Pages/PageAppRun.h"
+#include "GUI/Pages/PageAppSetup.h"
+#include "GUI/Pages/Pages.h"
 
 
 class DisplayManager : public BaseManager {

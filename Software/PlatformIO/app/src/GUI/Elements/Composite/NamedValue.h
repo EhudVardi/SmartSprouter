@@ -1,10 +1,9 @@
 #ifndef NAMEDVALUE_H
 #define NAMEDVALUE_H
 
-#include "GUI/GuiElement.h"
-#include "GUI/Label.h"
-#include "GUI/NamedValueEditState.h"
-#include "GUI/DisplayTypes.h"
+#include "GUI/Elements/GuiElement.h"
+#include "GUI/Elements/Simple/Label.h"
+#include "GUI/Elements/Composite/NamedValueEditState.h"
 #include <Arduino.h>
 
 template <typename T>

@@ -1,7 +1,7 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 
-#include "GUIElement.h"
+#include "GUI/Elements/GUIElement.h"
 #include "HardwareAbstraction/LcdDisplayHandler.h"
 
 class Image : public GuiElement {

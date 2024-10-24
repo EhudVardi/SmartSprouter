@@ -1,7 +1,7 @@
 #ifndef PAGEAPPERROR_H
 #define PAGEAPPERROR_H
 
-#include "GUI/PageAppBase.h"
+#include "GUI/Pages/PageAppBase.h"
 
 class PageAppError : public PageAppBase {
 protected:
