@@ -2,6 +2,7 @@
 #define NAMEDVALUEINT_H
 
 #include "GUI/Elements/Composite/NamedValue.h"
+#include "Data/DisplayTypes.h"
 
 class NamedValueInt : public NamedValue<int> {
 public:
@@ -80,8 +81,6 @@ public:
 #ifndef NAMEDVALUEDATE_H
 #define NAMEDVALUEDATE_H
 
-#include "GUI/Elements/DisplayTypes.h"
-
 class NamedValueDate : public NamedValue<DisplayDate> {
 public:
     NamedValueDate(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
@@ -105,8 +104,6 @@ public:
 #ifndef NAMEDVALUETIME_H
 #define NAMEDVALUETIME_H
 
-#include "GUI/Elements/DisplayTypes.h"
-
 class NamedValueTime : public NamedValue<DisplayTime> {
 public:
     NamedValueTime(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
@@ -129,8 +126,6 @@ public:
 
 #ifndef NAMEDVALUEDURATION_H
 #define NAMEDVALUEDURATION_H
-
-#include "GUI/Elements/DisplayTypes.h"
 
 class NamedValueDuration : public NamedValue<DisplayDuration> {
 public:

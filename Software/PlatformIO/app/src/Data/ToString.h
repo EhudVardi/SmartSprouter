@@ -14,7 +14,7 @@ inline String toString(const T& value) {
 }
 
 // my custom types
-#include "GUI/Elements/DisplayTypes.h"
+#include "Data/DisplayTypes.h"
 template <>
 inline String toString(const DisplayDate& value) {
     return value.ToString();
