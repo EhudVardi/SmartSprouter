@@ -16,22 +16,4 @@ enum class SetupStates {
     StartSelect,
 };
 
-// Use a static map to convert enums to strings
-inline const char* States_ToString(SetupStates s) {
-    static const std::unordered_map<SetupStates, const char*> stateMap = {
-        { SetupStates::HumidityRangeSelect, "HumidityRangeSelect" },
-        { SetupStates::HumidityRangeEditMin, "HumidityRangeEditMin" },
-        { SetupStates::HumidityRangeEditMax, "HumidityRangeEditMax" },
-        { SetupStates::TemperatureRangeSelect, "TemperatureRangeSelect" },
-        { SetupStates::TemperatureRangeEditMin, "TemperatureRangeEditMin" },
-        { SetupStates::TemperatureRangeEditMax, "TemperatureRangeEditMax" },
-        { SetupStates::DurationSelect, "DurationSelect" },
-        { SetupStates::DurationEdit, "DurationEdit" },
-        { SetupStates::StartSelect, "StartSelect" },
-    };
-
-    auto it = stateMap.find(s);
-    return (it != stateMap.end()) ? it->second : "[Unknown State_type]";
-}
-
 #endif // SETUP_STATES_ENUMERATION_H

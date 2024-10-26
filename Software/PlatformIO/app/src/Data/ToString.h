@@ -28,6 +28,21 @@ inline String toString(const DisplayDuration& value) {
     return value.ToString(); // Assuming your class has a toString() member function
 }
 
+// my custom enumerations
+#include "Data/EnumHelpers.h"
+#include "StateMachine/App/AppStatesEnum.h"
+template <>
+inline String toString(const AppStates& value) {
+    using namespace EnumHelpers;
+    return EnumHelpers::AppStatesHelper.ToString(value);
+}
+#include "StateMachine/Setup/SetupStatesEnum.h"
+template <>
+inline String toString(const SetupStates& value) {
+    using namespace EnumHelpers;
+    return EnumHelpers::SetupStatesHelper.ToString(value);
+}
+
 // common primitives
 template <>
 inline String toString<int>(const int& value) {
