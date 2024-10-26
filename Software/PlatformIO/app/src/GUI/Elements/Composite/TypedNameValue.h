@@ -175,6 +175,10 @@ public:
         using namespace EnumHelpers;
         valueLabel.SetValue(EnumHelpers::HumidifierActionsHelper.Next(valueLabel.GetValue()));
     }
+    void SelectPrevValue() {
+        using namespace EnumHelpers;
+        valueLabel.SetValue(EnumHelpers::HumidifierActionsHelper.Prev(valueLabel.GetValue()));
+    }
 };
 
 #endif // NAMEDVALUE_ACTUATOR_HUMIDITY_ACTIONS_H

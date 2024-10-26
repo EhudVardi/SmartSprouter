@@ -55,6 +55,7 @@ public:
     }
     
     void SelectNextHumidifierAction() { humidifiers.SelectNextValue(); }
+    void SelectPrevHumidifierAction() { humidifiers.SelectPrevValue(); }
     HumidifierActions GetSelectedHumidifierAction() { return humidifiers.GetValue(); }
 };
 

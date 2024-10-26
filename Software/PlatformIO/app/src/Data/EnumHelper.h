@@ -27,6 +27,11 @@ public:
         int nextValue = (static_cast<int>(value) + 1) % Count();
         return static_cast<T>(nextValue);
     }
+    // Get the next enum value in a circular manner
+    T Prev(T value) const {
+        int prevValue = (static_cast<int>(value) - 1 + Count()) % Count();
+        return static_cast<T>(prevValue);
+    }
 
 private:
     const std::unordered_map<T, const char*> enumMap;
