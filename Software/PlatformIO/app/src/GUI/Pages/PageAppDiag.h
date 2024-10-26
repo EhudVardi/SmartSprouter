@@ -17,9 +17,9 @@ protected:
 public:
     PageAppDiag() : humidity(2, 12, -1, FontSize::Small),
                     temperature(42, 12, -1, FontSize::Small),
-                    date(2, 24, DisplayDate(0,0,0), FontSize::Small), 
-                    time(2 + SCREEN_WIDTH / 2, 24, DisplayTime(0,0,0), FontSize::Small),
-                    humidifiers(2, 38, HumidifierActions::Off, "Humidifiers", FontSize::Small) {
+                    date(2, 22, DisplayDate(0,0,0), FontSize::Small), 
+                    time(2 + SCREEN_WIDTH / 2, 22, DisplayTime(0,0,0), FontSize::Small),
+                    humidifiers(2, 32, HumidifierActions::Off, "Humidifiers", FontSize::Small) {
         SetTitle("Diagnostics");
         AddElement(&humidity);
         AddElement(&temperature);
