@@ -193,6 +193,12 @@ void SystemInErrorState::handleInput(SystemContext* context, InputEvent event) {
 
 
 
+DiagnosingState::DiagnosingState() {
+    diagStateMachine.setOnExitDiagCallback(
+        [this](SystemContext* context) {
+            stateMachine->changeState(AppStates::Idling, context);
+        });
+}
 void DiagnosingState::enter(SystemContext* context) {
     context->displayManager->changePage(Pages::Diag);
     if (!diagPage) {
@@ -200,11 +206,9 @@ void DiagnosingState::enter(SystemContext* context) {
         DisplayDate date(1,1,2024);
         diagPage->SetDate(date);
     }
-	std::cout << "enter DiagnosingState" << std::endl;
+	diagStateMachine.changeState(DiagStates::HumidifiersSelected, context); // init nested diag state machine
 }
-void DiagnosingState::exit(SystemContext* context) {
-	std::cout << "exit DiagnosingState" << std::endl;
-}
+void DiagnosingState::exit(SystemContext* context) { }
 void DiagnosingState::update(SystemContext* context) {
 	float humidity = context->sensorManager->getHumidity();
 	float temperature = context->sensorManager->getTemperature();
@@ -214,21 +218,8 @@ void DiagnosingState::update(SystemContext* context) {
         diagPage->TickTime();
         context->displayManager->refresh();
     }
-	//std::cout << "update DiagnosingState" << std::endl;
 }
 void DiagnosingState::handleInput(SystemContext* context, InputEvent event) {
-	if (event == InputEvent::BackPressed) {
-        stateMachine->changeState(AppStates::Idling, context);
-    } else if (event == InputEvent::RotatedLeft) {
-        if (diagPage) {
-            diagPage->SelectNextHumidifierAction();
-            context->displayManager->refresh();
-        }
-    } else if (event == InputEvent::EnterPressed) {
-        if (diagPage) {
-            HumidifierActions selectedAction = diagPage->GetSelectedHumidifierAction();
-            context->actuatorManager->SetHumidifiers(selectedAction);
-        }
-    } 
-	//std::cout << "handleInput DiagnosingState" << std::endl;
+    diagStateMachine.handleInput(event, context);
+    update(context);
 }

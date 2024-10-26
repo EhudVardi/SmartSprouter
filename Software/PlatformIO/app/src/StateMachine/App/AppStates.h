@@ -126,10 +126,16 @@ public:
 #ifndef DIAG_STATE_H
 #define DIAG_STATE_H
 
+#include "StateMachine/Diag/DiagStateMachine.h"
+
 class DiagnosingState : public AppState {
     std::shared_ptr<PageAppDiag> diagPage = nullptr;
 
+    DiagStateMachine diagStateMachine;
+
 public:
+    DiagnosingState();
+    
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;
     void update(SystemContext* context) override;
