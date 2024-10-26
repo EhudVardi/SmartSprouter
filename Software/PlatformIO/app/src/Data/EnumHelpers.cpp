@@ -25,4 +25,10 @@ namespace EnumHelpers {
         { SetupStates::DurationEdit, "DurationEdit" },
         { SetupStates::StartSelect, "StartSelect" }
     }, SetupStates::StartSelect); // last valid state
+    
+    EnumHelper<HumidifierActions> HumidifierActionsHelper({
+        { HumidifierActions::Off, "  Off " },
+        { HumidifierActions::Low, "  Low " },
+        { HumidifierActions::High, "  High" },
+    }, HumidifierActions::High); // last valid state
 }
