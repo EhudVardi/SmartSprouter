@@ -147,3 +147,34 @@ public:
 };
 
 #endif // NAMEDVALUEDURATION_H
+
+
+
+#include "Data/EnumHelpers.h"
+
+#ifndef NAMEDVALUE_ACTUATOR_HUMIDITY_ACTIONS_H
+#define NAMEDVALUE_ACTUATOR_HUMIDITY_ACTIONS_H
+
+#include "SystemContext/SystemManagers/ActuatorActions.h"
+
+class NamedValueHumidifierActions : public NamedValue<HumidifierActions> {
+public:
+    NamedValueHumidifierActions(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+        : NamedValue<HumidifierActions>(xPos, yPos, name, size) {
+        valueLabel.SetFormatter([](HumidifierActions value) {
+            using namespace EnumHelpers;
+            return String(EnumHelpers::HumidifierActionsHelper.ToString(value));
+        });
+    }
+    NamedValueHumidifierActions(int xPos, int yPos, HumidifierActions initialValue, const String &name, FontSize size = FontSize::Small)
+        : NamedValueHumidifierActions(xPos, yPos, name, size) {
+        SetValue(initialValue);
+    }
+
+    void SelectNextValue() {
+        using namespace EnumHelpers;
+        valueLabel.SetValue(EnumHelpers::HumidifierActionsHelper.Next(valueLabel.GetValue()));
+    }
+};
+
+#endif // NAMEDVALUE_ACTUATOR_HUMIDITY_ACTIONS_H

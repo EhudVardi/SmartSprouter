@@ -42,6 +42,12 @@ inline String toString(const SetupStates& value) {
     using namespace EnumHelpers;
     return EnumHelpers::SetupStatesHelper.ToString(value);
 }
+#include "SystemContext/SystemManagers/ActuatorActions.h"
+template <>
+inline String toString(const HumidifierActions& value) {
+    using namespace EnumHelpers;
+    return EnumHelpers::HumidifierActionsHelper.ToString(value);
+}
 
 // common primitives
 template <>

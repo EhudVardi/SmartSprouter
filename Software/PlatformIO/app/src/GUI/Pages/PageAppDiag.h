@@ -4,6 +4,7 @@
 #include "GUI/Pages/PageAppBase.h"
 #include "GUI/Elements/Composite/TypedNameValue.h"
 #include "GUI/Elements/Simple/TypedLabel.h"
+#include "SystemContext/SystemManagers/ActuatorActions.h"
 
 class PageAppDiag : public PageAppBase {
 protected:
@@ -11,17 +12,20 @@ protected:
     TemperatureLabel temperature;
     DateLabel date;
     TimeLabel time;
+    NamedValueHumidifierActions humidifiers;
 
 public:
     PageAppDiag() : humidity(2, 12, -1, FontSize::Small),
                     temperature(42, 12, -1, FontSize::Small),
                     date(2, 24, DisplayDate(0,0,0), FontSize::Small), 
-                    time(2 + SCREEN_WIDTH / 2, 24, DisplayTime(0,0,0), FontSize::Small) {
+                    time(2 + SCREEN_WIDTH / 2, 24, DisplayTime(0,0,0), FontSize::Small),
+                    humidifiers(2, 38, HumidifierActions::Off, "Humidifiers", FontSize::Small) {
         SetTitle("Diagnostics");
         AddElement(&humidity);
         AddElement(&temperature);
         AddElement(&date);
         AddElement(&time);
+        AddElement(&humidifiers);
     }
     
     Pages getType() const override {
@@ -49,6 +53,9 @@ public:
         time.Tick();
         return true;
     }
+    
+    void SelectNextHumidifierAction() { humidifiers.SelectNextValue(); }
+    HumidifierActions GetSelectedHumidifierAction() { return humidifiers.GetValue(); }
 };
 
 #endif // PAGEAPPDIAG_H
