@@ -116,6 +116,11 @@ public:
         value = newTime;
         Invalidate();
     }
+
+    void Tick() {
+        value.Tick();
+        Invalidate();
+    }
 };
 
 #endif // TIME_LABEL_H

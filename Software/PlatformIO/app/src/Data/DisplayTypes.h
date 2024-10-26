@@ -63,13 +63,21 @@ public:
     }
 };
 
+#include <functional>
+
 class DisplayTime {
 private:
     int hour, minute, second;
+    std::function<void()> onDayElapsed;  // Callback for when a day elapses
 
 public:
-    DisplayTime() : hour(0), minute(0), second(0) {}
-    DisplayTime(int h, int m, int s) : hour(h), minute(m), second(s) {}
+    DisplayTime() : hour(0), minute(0), second(0), onDayElapsed(nullptr) {}
+    DisplayTime(int h, int m, int s) : hour(h), minute(m), second(s), onDayElapsed(nullptr) {}
+
+    // Register the callback function for day elapsed event
+    void SetOnDayElapsed(std::function<void()> callback) {
+        onDayElapsed = callback;
+    }
 
     // Format time as HH:MM:SS
     String ToString() const {
@@ -89,28 +97,39 @@ public:
     int getSecond() { return second; }
     int GetMinute() { return minute; }
     int GetHour() { return hour; }
-    
+
     // SetTime function with validation
     bool SetTime(int s, int m, int h) {
-        // Validate hour (0 to 23)
-        if (h < 0 || h > 23) {
+        if (h < 0 || h > 23 || m < 0 || m > 59 || s < 0 || s > 59) {
             return false;
         }
-        // Validate minute (0 to 59)
-        if (m < 0 || m > 59) {
-            return false;
-        }
-        // Validate second (0 to 59)
-        if (s < 0 || s > 59) {
-            return false;
-        }
-        // If everything is valid, set the time
         hour = h;
         minute = m;
         second = s;
         return true;
     }
+
+    // Tick function to increment time by 1 second
+    void Tick() {
+        second++;
+        if (second >= 60) {
+            second = 0;
+            minute++;
+            if (minute >= 60) {
+                minute = 0;
+                hour++;
+                if (hour >= 24) {
+                    hour = 0;  // Wrap around to 0 after 23
+                    // Trigger the day elapsed event if set
+                    if (onDayElapsed) {
+                        onDayElapsed();
+                    }
+                }
+            }
+        }
+    }
 };
+
 
 #define DAY_IN_SECONDS 86400
 #define HOUR_IN_SECONDS 3600
@@ -170,6 +189,8 @@ public:
             seconds--;
         }
     }
+
+    unsigned long GetTotalSeconds() const { return seconds; }
 };
 
 #endif // DISPLAYTYPES_H
