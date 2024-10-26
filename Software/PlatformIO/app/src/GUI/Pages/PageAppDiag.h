@@ -56,7 +56,12 @@ public:
     
     void SelectNextHumidifierAction() { humidifiers.SelectNextValue(); }
     void SelectPrevHumidifierAction() { humidifiers.SelectPrevValue(); }
+    void SetSelectedHumidifierAction(HumidifierActions newAction) { humidifiers.SetValue(newAction); }
     HumidifierActions GetSelectedHumidifierAction() { return humidifiers.GetValue(); }
+
+    void SetHumidifiersEditState(NamedValueEditState newState) {
+        humidifiers.SetEditState(newState);
+    }
 };
 
 #endif // PAGEAPPDIAG_H
