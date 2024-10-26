@@ -51,7 +51,7 @@ public:
 #ifndef HUMIDITY_LABEL_H
 #define HUMIDITY_LABEL_H
 
-class PercentLabel : FloatLabel {
+class PercentLabel : public FloatLabel {
 public:
     PercentLabel(int xPos, int yPos, float initialvalue, FontSize size = FontSize::Small)
         : FloatLabel(xPos, yPos, initialvalue, size) {
@@ -69,7 +69,7 @@ public:
 #ifndef TEMPERATURE_LABEL_H
 #define TEMPERATURE_LABEL_H
 
-class TemperatureLabel : FloatLabel {
+class TemperatureLabel : public FloatLabel {
 public:
     TemperatureLabel(int xPos, int yPos, float initialvalue, FontSize size = FontSize::Small)
         : FloatLabel(xPos, yPos, initialvalue, size) {
