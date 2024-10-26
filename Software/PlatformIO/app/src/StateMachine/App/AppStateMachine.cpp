@@ -11,6 +11,7 @@ AppStateMachine::AppStateMachine() {
     auto settingProcessState = std::make_shared<SettingProcessState>();
     auto runningState = std::make_shared<RunningState>();
     auto abortingState = std::make_shared<AbortingState>();
+    auto diagnosingState = std::make_shared<DiagnosingState>();
 
     // Add states to the state machine
     addState(AppStates::StartingUp, startingUpState);
@@ -21,4 +22,5 @@ AppStateMachine::AppStateMachine() {
     addState(AppStates::SettingProcess, settingProcessState);
     addState(AppStates::Running, runningState);
     addState(AppStates::Aborting, abortingState);
+    addState(AppStates::Diagnosing, diagnosingState);
 }

@@ -51,6 +51,9 @@ void IdlingState::handleInput(SystemContext* context, InputEvent event) {
     else if (event == InputEvent::EnterPressed) {
         stateMachine->changeState(AppStates::SettingProcess, context);
     }
+    else if (event == InputEvent::BackPressed) {
+        stateMachine->changeState(AppStates::Diagnosing, context);
+    }
 }
 
 
@@ -187,3 +190,35 @@ void SystemInErrorState::enter(SystemContext* context) { }
 void SystemInErrorState::exit(SystemContext* context) { }
 void SystemInErrorState::update(SystemContext* context) { }
 void SystemInErrorState::handleInput(SystemContext* context, InputEvent event) { }
+
+
+
+void DiagnosingState::enter(SystemContext* context) {
+    context->displayManager->changePage(Pages::Diag);
+    if (!diagPage) {
+        diagPage = context->displayManager->getPageAs<PageAppDiag>(Pages::Diag);
+        DisplayDate date(1,1,2024);
+        diagPage->SetDate(date);
+    }
+	std::cout << "enter DiagnosingState" << std::endl;
+}
+void DiagnosingState::exit(SystemContext* context) {
+	std::cout << "exit DiagnosingState" << std::endl;
+}
+void DiagnosingState::update(SystemContext* context) {
+	float humidity = context->sensorManager->getHumidity();
+	float temperature = context->sensorManager->getTemperature();
+    if (diagPage) {
+        diagPage->SetHumidity(humidity);
+        diagPage->SetTemperature(temperature);
+        diagPage->TickTime();
+        context->displayManager->refresh();
+    }
+	//std::cout << "update DiagnosingState" << std::endl;
+}
+void DiagnosingState::handleInput(SystemContext* context, InputEvent event) {
+	if (event == InputEvent::BackPressed) {
+        stateMachine->changeState(AppStates::Idling, context);
+    }
+	std::cout << "handleInput DiagnosingState" << std::endl;
+}

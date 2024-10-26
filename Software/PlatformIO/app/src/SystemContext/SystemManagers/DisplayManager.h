@@ -17,6 +17,7 @@
 #include "GUI/Pages/PageAppIdle.h"
 #include "GUI/Pages/PageAppRun.h"
 #include "GUI/Pages/PageAppSetup.h"
+#include "GUI/Pages/PageAppDiag.h"
 #include "GUI/Pages/Pages.h"
 
 

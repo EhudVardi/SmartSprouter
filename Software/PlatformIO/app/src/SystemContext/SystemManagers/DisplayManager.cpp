@@ -9,6 +9,7 @@ DisplayManager::DisplayManager() {
     auto appPageIdle = std::make_shared<PageAppIdle>();
     auto appPageRun = std::make_shared<PageAppRun>();
     auto appPageSetup = std::make_shared<PageAppSetup>();
+    auto appPageDiag = std::make_shared<PageAppDiag>();
 
     addPage(Pages::About, appPageAbout);
     addPage(Pages::Error, appPageError);
@@ -16,6 +17,7 @@ DisplayManager::DisplayManager() {
     addPage(Pages::Idle, appPageIdle);
     addPage(Pages::Run, appPageRun);
     addPage(Pages::Setup, appPageSetup);
+    addPage(Pages::Diag, appPageDiag);
 }
 
 bool DisplayManager::initialize() {

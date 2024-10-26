@@ -11,6 +11,7 @@ enum class Pages {
     Run,
     Abort,
     Error,
+    Diag,
 };
 
 // Use a static map to convert enums to strings
@@ -22,6 +23,7 @@ inline const char* Pages_ToString(Pages s) {
         { Pages::Run, "Run" },
         { Pages::Abort, "Abort" },
         { Pages::Error, "Error" },
+        { Pages::Diag, "Diag" },
     };
 
     auto it = pagesMap.find(s);

@@ -122,3 +122,18 @@ public:
 };
 
 #endif // SYSTEM_IN_ERROR_STATE_H
+
+#ifndef DIAG_STATE_H
+#define DIAG_STATE_H
+
+class DiagnosingState : public AppState {
+    std::shared_ptr<PageAppDiag> diagPage = nullptr;
+
+public:
+    void enter(SystemContext* context) override;
+    void exit(SystemContext* context) override;
+    void update(SystemContext* context) override;
+    void handleInput(SystemContext* context, InputEvent event) override;
+};
+
+#endif // DIAG_STATE_H

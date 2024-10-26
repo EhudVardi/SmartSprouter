@@ -13,6 +13,7 @@ enum class AppStates {
     SettingProcess,
     Running,
     Aborting,
+    Diagnosing,
 };
 
 // Use a static map to convert enums to strings
@@ -25,7 +26,8 @@ inline const char* States_ToString(AppStates s) {
         { AppStates::Informing, "Informing" },
         { AppStates::SettingProcess, "SettingProcess" },
         { AppStates::Running, "Running" },
-        { AppStates::Aborting, "Aborting" }
+        { AppStates::Aborting, "Aborting" },
+        { AppStates::Diagnosing, "Diagnosing" }
     };
 
     auto it = stateMap.find(s);
