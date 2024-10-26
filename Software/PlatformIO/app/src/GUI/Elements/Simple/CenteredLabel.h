@@ -1,7 +1,7 @@
 #ifndef CENTERED_LABEL_H
 #define CENTERED_LABEL_H
 
-#include "GUI/Elements/Simple/TextLabel.h"
+#include "GUI/Elements/Simple/TypedLabel.h"
 
 class CenteredLabel : public TextLabel {
 private:
