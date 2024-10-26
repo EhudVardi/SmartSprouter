@@ -36,13 +36,6 @@ public:
             value = initialvalue;
             SetFormatter([](float value) { return String(value); });
         }
-        
-    void UpdateValue(float newValue) {
-        if (newValue != value) {
-            value = newValue;
-            Invalidate();
-        }
-    }
 };
 
 #endif // FLOAT_LABEL_H
