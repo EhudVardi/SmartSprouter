@@ -219,6 +219,16 @@ void DiagnosingState::update(SystemContext* context) {
 void DiagnosingState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::BackPressed) {
         stateMachine->changeState(AppStates::Idling, context);
-    }
-	std::cout << "handleInput DiagnosingState" << std::endl;
+    } else if (event == InputEvent::RotatedLeft) {
+        if (diagPage) {
+            diagPage->SelectNextHumidifierAction();
+            context->displayManager->refresh();
+        }
+    } else if (event == InputEvent::EnterPressed) {
+        if (diagPage) {
+            HumidifierActions selectedAction = diagPage->GetSelectedHumidifierAction();
+            context->actuatorManager->SetHumidifiers(selectedAction);
+        }
+    } 
+	//std::cout << "handleInput DiagnosingState" << std::endl;
 }
