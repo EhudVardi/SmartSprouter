@@ -93,3 +93,45 @@ void Application::loop() {
 
     // while(true) {delay(1000);}
 
+
+
+
+
+
+
+
+//////NTP example
+
+// #include <iostream>
+// #include <ctime>
+// #include <iomanip> // For std::put_time
+// #include "Data/WifiHandler.h"
+// #include "Data/NTPHandler.h"
+
+    // const char* ssid = "EVFU"; // Your Wi-Fi SSID
+    // const char* password = "ApSoDiFu01928374"; // Your Wi-Fi password
+
+    // WiFiHandler wifiHandler;
+    // NTPHandler ntpHandler("pool.ntp.org", wifiHandler); 
+
+    // if (wifiHandler.connect(ssid, password)) {
+    //     // Initialize NTP handler and open connection
+    //     ntpHandler.begin(wifiHandler);
+    //     std::cout << "connected to WiFi." << std::endl;
+    // } else {
+    //     std::cout << "Failed to connect to WiFi." << std::endl;
+    //     while(true) {delay(5000);}
+    // }
+
+    // while(true) {
+    //     time_t currentEpoch;
+    //     if (ntpHandler.fetchCurrentTime(currentEpoch, wifiHandler)) {
+    //         // Convert epoch time to tm structure
+    //         tm* timeInfo = localtime(&currentEpoch);
+    //         // Print as formatted date and time
+    //         std::cout << "Current time: " << std::put_time(timeInfo, "%Y-%m-%d %H:%M:%S") << std::endl;
+    //     } else {
+    //         std::cout << "Failed to fetch time from NTP server." << std::endl;
+    //     }
+    //     delay(5000);
+    // }
