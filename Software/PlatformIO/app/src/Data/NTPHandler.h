@@ -8,15 +8,16 @@
 class NTPHandler {
 private:
     const std::string ntpServer; // NTP server address
+    int ntpPort;
     std::string connectionName;  // Connection name in WiFiHandler
 
 public:
-    // Constructor
-    NTPHandler(const std::string& server, WiFiHandler& wifiHandler)
-        : ntpServer(server), connectionName("NTPConnection") {
-        // Create a UDP connection within WiFiHandler
-        wifiHandler.createConnection(connectionName, ntpServer.c_str(), 123, 48);
+    NTPHandler(const std::string& server, int port) : 
+        ntpServer(server), ntpPort(port), connectionName("NTPConnection") { }
 
+    void SetupNTPConnection(WiFiHandler& wifiHandler) {
+        // Create a UDP connection within WiFiHandler
+        wifiHandler.createConnection(connectionName, ntpServer.c_str(), ntpPort, 48);
         // Set buffer initialization for the NTP request
         wifiHandler.setBufferInitFunc(connectionName, [](byte* buffer) {
             memset(buffer, 0, 48); // Zero the buffer
