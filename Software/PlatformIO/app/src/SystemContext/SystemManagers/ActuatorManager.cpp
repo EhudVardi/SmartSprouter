@@ -1,5 +1,4 @@
 #include "SystemContext/SystemManagers/ActuatorManager.h"
-#include "SystemContext/HWSystemPins/ActuatorPins.h"
 #include <iostream>
 
 bool ActuatorManager::initialize() {
