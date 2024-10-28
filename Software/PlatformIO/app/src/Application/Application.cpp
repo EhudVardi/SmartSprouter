@@ -7,6 +7,7 @@ void Application::setup() {
     context.sensorManager = std::make_shared<SensorManager>();
     context.processManager = std::make_shared<ProcessManager>();
     context.actuatorManager = std::make_shared<ActuatorManager>();
+    context.timeManager = std::make_shared<TimeManager>();
     context.inputManager = std::make_shared<InputManager>();
 
     context.inputManager->registerEventHandler(InputEvent::BackPressed, [this]() {

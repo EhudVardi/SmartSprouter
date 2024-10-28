@@ -7,6 +7,7 @@
 #include "SystemContext/SystemManagers/SensorManager.h"
 #include "SystemContext/SystemManagers/ProcessManager.h"
 #include "SystemContext/SystemManagers/ActuatorManager.h"
+#include "SystemContext/SystemManagers/TimeManager.h"
 
 class SystemContext {
 public:
@@ -15,6 +16,7 @@ public:
     std::shared_ptr<SensorManager> sensorManager;
     std::shared_ptr<ProcessManager> processManager;
     std::shared_ptr<ActuatorManager> actuatorManager;
+    std::shared_ptr<TimeManager> timeManager;
 
     SystemContext();
 };
