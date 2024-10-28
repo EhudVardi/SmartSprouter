@@ -10,12 +10,6 @@ private:
     WiFiHandler wifiHandler;
     NTPHandler* ntpHandler = nullptr;
 
-    const char* ssid = "SSID";
-    const char* password = "PASSWORD";
-
-    const char* ntpServerUrl = "pool.ntp.org";
-    const int ntpPort = 123;
-
 public:
     bool initialize() override;
 

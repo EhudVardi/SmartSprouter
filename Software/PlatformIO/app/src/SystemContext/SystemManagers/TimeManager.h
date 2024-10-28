@@ -10,8 +10,6 @@ private:
     DateTime currentTime;           // Holds the current time
     RtcDS3231Wrapper rtcWrapper;    // Instance of RTC wrapper
 
-    int utcOffsetHours = 2; // utc offset
-
 public:
     bool initialize() override; // Initialize the RTC and NTP handler
     void update();  // Update the current time using the RTC wrapper
