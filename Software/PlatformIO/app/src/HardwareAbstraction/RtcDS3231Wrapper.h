@@ -3,15 +3,18 @@
 
 class RtcDS3231Wrapper {
 private:
+    TwoWire i2cwires = TwoWire(0);
     RTC_DS3231 rtc; // Instance of the RTC library
 
 public:
     // Constructor
-    RtcDS3231Wrapper() {}
+    RtcDS3231Wrapper(int sda_pin, int scl_pin) {
+        i2cwires.begin(sda_pin, scl_pin);
+    }
 
     // Initialize the RTC
     bool begin() {
-        if (!rtc.begin()) {
+        if (!rtc.begin(&i2cwires)) {
             return false; // RTC not found
         }
         return true;

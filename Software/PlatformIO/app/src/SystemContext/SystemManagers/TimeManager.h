@@ -7,8 +7,8 @@
 
 class TimeManager : public BaseManager {
 private:
-    DateTime currentTime;           // Holds the current time
-    RtcDS3231Wrapper rtcWrapper;    // Instance of RTC wrapper
+    DateTime currentTime; // Holds the current time
+    RtcDS3231Wrapper* rtcWrapper = nullptr; // Instance of RTC wrapper
 
 public:
     bool initialize() override; // Initialize the RTC and NTP handler

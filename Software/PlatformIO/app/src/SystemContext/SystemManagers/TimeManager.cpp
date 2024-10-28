@@ -2,16 +2,16 @@
 
 bool TimeManager::initialize() {
 
-    if (!rtcWrapper.begin()) {
+    rtcWrapper = new RtcDS3231Wrapper(RTC_SDA_PIN, RTC_SCL_PIN);
+    if (!rtcWrapper->begin()) {
         return false; // Initialization failed
     }
-    
     update(); // Update current time instance immediately after initialization
     return true; // Successful initialization
 }
 
 void TimeManager::update() {
-    currentTime = rtcWrapper.now(); // Fetch the current time from the RTC
+    currentTime = rtcWrapper->now(); // Fetch the current time from the RTC
 }
 
 DateTime& TimeManager::getCurrentTime() {
@@ -25,7 +25,7 @@ void TimeManager::setTimeFromExtSource(time_t& currentEpoch) {
     // Update the current time instance
     currentTime = DateTime(adjustedTime);
     // update hardware RTC with the new time
-    rtcWrapper.adjust(adjustedTime);
+    rtcWrapper->adjust(adjustedTime);
 }
 
 std::string TimeManager::timeToString(time_t time) {
