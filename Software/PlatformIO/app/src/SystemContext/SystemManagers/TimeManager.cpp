@@ -1,16 +1,12 @@
 #include "SystemContext/SystemManagers/TimeManager.h"
 
 bool TimeManager::initialize() {
+
     if (!rtcWrapper.begin()) {
-        Serial.println("RTC initialization failed");
         return false; // Initialization failed
     }
-
-    //ntpHandler.begin(); // Initialize NTP handler
-
-    // Optionally adjust the RTC time once
-    //rtcWrapper.adjust(DateTime(2024, 10, 27, 12, 0, 0)); // Set initial date/time
-    update(); // Update current time immediately after initialization
+    
+    update(); // Update current time instance immediately after initialization
     return true; // Successful initialization
 }
 
@@ -22,17 +18,19 @@ DateTime& TimeManager::getCurrentTime() {
     return currentTime;
 }
 
-// bool TimeManager::fetchTimeFromNTP() {
-//     time_t currentEpoch;
-//     if (!ntpHandler.fetchCurrentTime(currentEpoch)) {
-//         return false; // NTP fetch failed
-//     }
+void TimeManager::setTimeFromExtSource(time_t& currentEpoch) {
 
-//     // Update the current time
-//     currentTime = DateTime(currentEpoch);
-    
-//     // Update the hardware RTC
-//     rtcWrapper.adjust(currentTime);
+    // adjust UTC time offset
+    time_t adjustedTime = currentEpoch + utcOffsetHours * 3600;
+    // Update the current time instance
+    currentTime = DateTime(adjustedTime);
+    // update hardware RTC with the new time
+    rtcWrapper.adjust(adjustedTime);
+}
 
-//     return true; // Successful update
-// }
+std::string TimeManager::timeToString(time_t time) {
+    char buffer[80];
+    struct tm* timeInfo = gmtime(&time); // Use gmtime for UTC base
+    strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", timeInfo);
+    return std::string(buffer);
+}

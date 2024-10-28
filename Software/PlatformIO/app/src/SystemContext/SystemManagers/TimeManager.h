@@ -9,13 +9,15 @@ class TimeManager : public BaseManager {
 private:
     DateTime currentTime;           // Holds the current time
     RtcDS3231Wrapper rtcWrapper;    // Instance of RTC wrapper
-    // NTPHandler ntpHandler;          // Instance of NTP handler
+
+    int utcOffsetHours = 2; // utc offset
 
 public:
     bool initialize() override; // Initialize the RTC and NTP handler
-    void update();              // Update the current time using the RTC wrapper
+    void update();  // Update the current time using the RTC wrapper
     DateTime& getCurrentTime(); // Get a reference to the current time
-    // bool fetchTimeFromNTP();    // Fetch the current time from NTP server and update RTC and current time
+    void setTimeFromExtSource(time_t& currentEpoch); // set time retrieved from external source
+    std::string timeToString(time_t time); // Function to format time as a human-readable string
 };
 
 #endif // TIME_MANAGER_H
