@@ -178,6 +178,14 @@ void StartingUpState::enter(SystemContext* context) {
         stateMachine->changeState(AppStates::SystemInError, context);
         return;
     }
+    if (!context->networkManager->initialize()) {
+        stateMachine->changeState(AppStates::SystemInError, context);
+        return;
+    }
+    if (!context->timeManager->initialize()) {
+        stateMachine->changeState(AppStates::SystemInError, context);
+        return;
+    }
     stateMachine->changeState(AppStates::Initializing, context);
 }
 void StartingUpState::exit(SystemContext* context) { }
