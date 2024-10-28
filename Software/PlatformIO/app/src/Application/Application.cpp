@@ -1,6 +1,76 @@
 #include "Application/Application.h"
 
+
+
+#include <iostream>
+#include <ctime>
+#include "Data/WiFiHandler.h"
+#include "Data/NTPHandler.h"
+
+// Function to adjust for UTC offset
+time_t adjustUTC(time_t epochTime, int utcOffsetHours) {
+    return epochTime + utcOffsetHours * 3600;
+}
+
+// Function to format time as a human-readable string
+std::string formatTime(time_t epochTime) {
+    char buffer[80];
+    struct tm* timeInfo = gmtime(&epochTime); // Use gmtime for UTC base
+    strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", timeInfo);
+    return std::string(buffer);
+}
+
+
+
+
 void Application::setup() {
+
+
+    // Instantiate WiFi and NTP handlers
+    WiFiHandler wifiHandler;
+    NTPHandler ntpHandler("pool.ntp.org", wifiHandler);
+
+    const char* ssid = "SSID"; // Your Wi-Fi SSID
+    const char* password = "password"; // Your Wi-Fi password
+
+    // Connect to WiFi (replace with your network credentials)
+    if (wifiHandler.connect(ssid, password)) {
+        // Begin the NTP connection
+        ntpHandler.begin(wifiHandler);
+
+        // Define a UTC offset (e.g., UTC+2 for Central European Time)
+        int utcOffsetHours = 2;
+
+        while(true) {
+
+
+            // Fetch the current time from the NTP server
+            time_t currentEpoch;
+            if (ntpHandler.fetchCurrentTime(currentEpoch, wifiHandler)) {
+                // Adjust the fetched time for the UTC offset
+                time_t adjustedTime = adjustUTC(currentEpoch, utcOffsetHours);
+
+                // Format and print the adjusted time
+                std::cout << "Current Time (UTC+" << utcOffsetHours << "): " << formatTime(adjustedTime) << std::endl;
+            } else {
+                std::cout << "Failed to fetch time from NTP server." << std::endl;
+            }
+
+
+            delay(5000);
+
+        }
+
+        // Disconnect WiFi
+        wifiHandler.disconnect();
+    } else {
+        std::cout << "Failed to connect to WiFi." << std::endl;
+    }
+    while(true) {  delay(5000); }
+
+
+
+
     // Initialize managers in context
     context.displayManager = std::make_shared<DisplayManager>();
     context.sensorManager = std::make_shared<SensorManager>();
@@ -102,36 +172,62 @@ void Application::loop() {
 
 //////NTP example
 
-// #include <iostream>
+//#include <iostream>
 // #include <ctime>
-// #include <iomanip> // For std::put_time
-// #include "Data/WifiHandler.h"
+// #include "Data/WiFiHandler.h"
 // #include "Data/NTPHandler.h"
+
+// // Function to adjust for UTC offset
+// time_t adjustUTC(time_t epochTime, int utcOffsetHours) {
+//     return epochTime + utcOffsetHours * 3600;
+// }
+
+// // Function to format time as a human-readable string
+// std::string formatTime(time_t epochTime) {
+//     char buffer[80];
+//     struct tm* timeInfo = gmtime(&epochTime); // Use gmtime for UTC base
+//     strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", timeInfo);
+//     return std::string(buffer);
+// }
+
+    // // Instantiate WiFi and NTP handlers
+    // WiFiHandler wifiHandler;
+    // NTPHandler ntpHandler("pool.ntp.org", wifiHandler);
 
     // const char* ssid = "EVFU"; // Your Wi-Fi SSID
     // const char* password = "ApSoDiFu01928374"; // Your Wi-Fi password
 
-    // WiFiHandler wifiHandler;
-    // NTPHandler ntpHandler("pool.ntp.org", wifiHandler); 
-
+    // // Connect to WiFi (replace with your network credentials)
     // if (wifiHandler.connect(ssid, password)) {
-    //     // Initialize NTP handler and open connection
+    //     // Begin the NTP connection
     //     ntpHandler.begin(wifiHandler);
-    //     std::cout << "connected to WiFi." << std::endl;
+
+    //     // Define a UTC offset (e.g., UTC+2 for Central European Time)
+    //     int utcOffsetHours = 2;
+
+    //     while(true) {
+
+
+    //         // Fetch the current time from the NTP server
+    //         time_t currentEpoch;
+    //         if (ntpHandler.fetchCurrentTime(currentEpoch, wifiHandler)) {
+    //             // Adjust the fetched time for the UTC offset
+    //             time_t adjustedTime = adjustUTC(currentEpoch, utcOffsetHours);
+
+    //             // Format and print the adjusted time
+    //             std::cout << "Current Time (UTC+" << utcOffsetHours << "): " << formatTime(adjustedTime) << std::endl;
+    //         } else {
+    //             std::cout << "Failed to fetch time from NTP server." << std::endl;
+    //         }
+
+
+    //         delay(5000);
+
+    //     }
+
+    //     // Disconnect WiFi
+    //     wifiHandler.disconnect();
     // } else {
     //     std::cout << "Failed to connect to WiFi." << std::endl;
-    //     while(true) {delay(5000);}
     // }
-
-    // while(true) {
-    //     time_t currentEpoch;
-    //     if (ntpHandler.fetchCurrentTime(currentEpoch, wifiHandler)) {
-    //         // Convert epoch time to tm structure
-    //         tm* timeInfo = localtime(&currentEpoch);
-    //         // Print as formatted date and time
-    //         std::cout << "Current time: " << std::put_time(timeInfo, "%Y-%m-%d %H:%M:%S") << std::endl;
-    //     } else {
-    //         std::cout << "Failed to fetch time from NTP server." << std::endl;
-    //     }
-    //     delay(5000);
-    // }
+    // while(true) {  delay(5000); }
