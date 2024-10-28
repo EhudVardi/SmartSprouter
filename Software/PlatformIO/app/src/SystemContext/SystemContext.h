@@ -8,6 +8,7 @@
 #include "SystemContext/SystemManagers/ProcessManager.h"
 #include "SystemContext/SystemManagers/ActuatorManager.h"
 #include "SystemContext/SystemManagers/TimeManager.h"
+#include "SystemContext/SystemManagers/NetworkManager.h"
 
 class SystemContext {
 public:
@@ -17,6 +18,7 @@ public:
     std::shared_ptr<ProcessManager> processManager;
     std::shared_ptr<ActuatorManager> actuatorManager;
     std::shared_ptr<TimeManager> timeManager;
+    std::shared_ptr<NetworkManager> networkManager;
 
     SystemContext();
 };

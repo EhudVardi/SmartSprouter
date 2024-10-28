@@ -9,6 +9,7 @@ void Application::setup() {
     context.actuatorManager = std::make_shared<ActuatorManager>();
     context.timeManager = std::make_shared<TimeManager>();
     context.inputManager = std::make_shared<InputManager>();
+    context.networkManager = std::make_shared<NetworkManager>();
 
     context.inputManager->registerEventHandler(InputEvent::BackPressed, [this]() {
         stateMachine.handleInput(InputEvent::BackPressed, &context);

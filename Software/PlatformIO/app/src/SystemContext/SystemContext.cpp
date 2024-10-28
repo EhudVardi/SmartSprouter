@@ -7,4 +7,5 @@ SystemContext::SystemContext() {
     processManager = std::make_shared<ProcessManager>();
     actuatorManager = std::make_shared<ActuatorManager>();
     timeManager = std::make_shared<TimeManager>();
+    networkManager = std::make_shared<NetworkManager>();
 }
