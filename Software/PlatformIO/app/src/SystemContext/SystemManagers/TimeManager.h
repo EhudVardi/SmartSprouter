@@ -16,7 +16,7 @@ public:
 
     bool initialize() override; // Initialize the RTC and NTP handler
     void update();  // Update the current time using the RTC wrapper
-    const DateTime& getCurrentTime(); // Get a reference to the current time
+    const DateTime& getCurrentTime() const; // Get a constant reference to the current time
     void setTimeFromExtSource(time_t& currentEpoch); // Set time retrieved from an external source
     std::string timeToString(time_t time); // Function to format time as a human-readable string
 };

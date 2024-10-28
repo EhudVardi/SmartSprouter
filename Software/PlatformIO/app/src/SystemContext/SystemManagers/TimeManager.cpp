@@ -23,8 +23,8 @@ void TimeManager::update() {
     *currentTime = rtcWrapper->now(); // Fetch the current time from the RTC and update the value
 }
 
-DateTime& TimeManager::getCurrentTime() {
-    return *currentTime; // Return a reference to the current time instance
+const DateTime& TimeManager::getCurrentTime() const {
+    return *currentTime; // Return a const reference to the current time instance
 }
 
 void TimeManager::setTimeFromExtSource(time_t& currentEpoch) {
