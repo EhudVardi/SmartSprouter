@@ -4,35 +4,31 @@
 #include <Arduino.h>
 #include <string>
 #include "Data/WiFiHandler.h"
-#include "Data/UDPConnection.h"
 
 class NTPHandler {
 private:
     const std::string ntpServer; // NTP server address
-    std::string connectionName; // Connection name in the WiFiHandler
-    UDPConnection* udpConnection; // Pointer to the UDPConnection instance
+    std::string connectionName;  // Connection name in WiFiHandler
 
 public:
     // Constructor
     NTPHandler(const std::string& server, WiFiHandler& wifiHandler)
         : ntpServer(server), connectionName("NTPConnection") {
-        // Instantiate a UDPConnection instance
-        udpConnection = new UDPConnection(ntpServer.c_str(), 123, 48);
-        
-        // Set the buffer initialization function
-        udpConnection->setBufferInitFunc([](byte* buffer) {
+        // Create a UDP connection within WiFiHandler
+        wifiHandler.createConnection(connectionName, ntpServer.c_str(), 123, 48);
+
+        // Set buffer initialization for the NTP request
+        wifiHandler.setBufferInitFunc(connectionName, [](byte* buffer) {
             memset(buffer, 0, 48); // Zero the buffer
             buffer[0] = 0b00100011; // Set the first byte for NTP request
         });
-
-        // Add the connection to the WiFiHandler's map
-        wifiHandler.addConnection(connectionName, udpConnection);
     }
 
-    // Destructor
-    ~NTPHandler() {
-        delete udpConnection; // Clean up the UDP connection
-    }
+    // // Destructor
+    // ~NTPHandler() {
+    //     // Remove the connection from WiFiHandler
+    //     wifiHandler.closeConnection(connectionName);
+    // }
 
     // Open the NTP connection
     void begin(WiFiHandler& wifiHandler) {
@@ -47,7 +43,9 @@ public:
         // Wait for response
         int responseSize = wifiHandler.receiveResponse(connectionName, 2000); // 2-second timeout
         if (responseSize > 0) {
-            byte* responseBuffer = udpConnection->getPacketBuffer();
+            byte* responseBuffer = wifiHandler.getPacketBuffer(connectionName);
+            if (!responseBuffer) return false;
+
             // Extract the time from the packet
             unsigned long highWord = word(responseBuffer[40], responseBuffer[41]);
             unsigned long lowWord = word(responseBuffer[42], responseBuffer[43]);

@@ -13,11 +13,10 @@ public:
     // Method to connect to Wi-Fi
     bool connect(const char* ssid, const char* password) {
         WiFi.begin(ssid, password);
-
         Serial.print("Connecting to WiFi");
         while (WiFi.status() != WL_CONNECTED) {
             delay(500);
-            Serial.print("."); // Display dots while connecting
+            Serial.print(".");
         }
         Serial.println("Connected to WiFi!");
         return true; // Successfully connected
@@ -34,9 +33,16 @@ public:
         return WiFi.status() == WL_CONNECTED;
     }
 
-    // Add a UDP connection to the map
-    void addConnection(const std::string& name, UDPConnection* connection) {
-        connections[name] = connection;
+    // Create and add a UDP connection
+    void createConnection(const std::string& name, const char* address, int port, int size) {
+        connections[name] = new UDPConnection(address, port, size);
+    }
+
+    // Set the buffer initialization function for a specific connection
+    void setBufferInitFunc(const std::string& name, std::function<void(byte*)> func) {
+        if (connections.find(name) != connections.end()) {
+            connections[name]->setBufferInitFunc(func);
+        }
     }
 
     // Open a UDP connection by name
@@ -61,6 +67,22 @@ public:
             return connections[name]->receiveResponse(timeout);
         }
         return 0;
+    }
+
+    // Access the packet buffer for a specific connection
+    byte* getPacketBuffer(const std::string& name) {
+        if (connections.find(name) != connections.end()) {
+            return connections[name]->getPacketBuffer();
+        }
+        return nullptr;
+    }
+
+    // Close and delete a UDP connection
+    void closeConnection(const std::string& name) {
+        if (connections.find(name) != connections.end()) {
+            delete connections[name];
+            connections.erase(name);
+        }
     }
 };
 
