@@ -43,3 +43,13 @@ Alt+Shift+ mouse drag
 #### serial comm with board 
 on project ini file, set serial port baudrate with:
 'monitor_speed = 115200'
+
+
+# Resources
+
+## State Machine fundementals
+https://drawio-app.com/blog/uml-state-diagrams-with-draw-io/
+https://statesmith.github.io/fundamentals-1/
+https://github.com/StateSmith/StateSmith-drawio-plugin/wiki/How-to-Use
+https://www.lucidchart.com/pages/uml-state-machine-diagram
+https://sparxsystems.com/resources/tutorials/uml2/state-diagram.html
