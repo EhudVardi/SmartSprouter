@@ -77,6 +77,28 @@ public:
 #endif // TEMPERATURE_LABEL_H
 
 
+#ifndef DATETIME_LABEL_H
+#define DATETIME_LABEL_H
+
+class DateTimeLabel : public Label<DateTime> {
+public:
+    DateTimeLabel(int xPos, int yPos, DateTime initialDateTime, FontSize size = FontSize::Small)
+        : Label(xPos, yPos, size) {
+            value = initialDateTime;
+            // if (!formatter) {
+            //     SetFormatter([](DateTime value) { return value.toString(); });
+            // }
+        }
+        
+    void SetDate(const DateTime &newDate) {
+        value = newDate;
+        Invalidate();
+    }
+};
+
+#endif // DATETIME_LABEL_H
+
+
 #ifndef DATE_LABEL_H
 #define DATE_LABEL_H
 
