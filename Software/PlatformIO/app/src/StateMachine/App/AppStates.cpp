@@ -194,9 +194,13 @@ void StartingUpState::handleInput(SystemContext* context, InputEvent event) { }
 
 
 
-void SystemInErrorState::enter(SystemContext* context) { }
+void SystemInErrorState::enter(SystemContext* context) {
+    context->displayManager->changePage(Pages::Error);
+}
 void SystemInErrorState::exit(SystemContext* context) { }
-void SystemInErrorState::update(SystemContext* context) { }
+void SystemInErrorState::update(SystemContext* context) {
+    context->displayManager->refresh();
+}
 void SystemInErrorState::handleInput(SystemContext* context, InputEvent event) { }
 
 
