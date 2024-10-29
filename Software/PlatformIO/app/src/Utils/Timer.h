@@ -17,7 +17,7 @@ public:
         unsigned long currentMillis = millis();
         if (currentMillis - lastUpdate >= interval) {
             callback();  // Call the registered callback function
-            lastUpdate = currentMillis;
+            lastUpdate += interval;  // Add interval to lastUpdate to maintain accuracy
         }
     }
 
