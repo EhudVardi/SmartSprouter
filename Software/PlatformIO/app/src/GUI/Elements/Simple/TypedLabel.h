@@ -85,12 +85,9 @@ public:
     DateTimeLabel(int xPos, int yPos, DateTime initialDateTime, FontSize size = FontSize::Small)
         : Label(xPos, yPos, size) {
             value = initialDateTime;
-            // if (!formatter) {
-            //     SetFormatter([](DateTime value) { return value.toString(); });
-            // }
         }
         
-    void SetDate(const DateTime &newDate) {
+    void SetDateTime(const DateTime &newDate) {
         value = newDate;
         Invalidate();
     }
