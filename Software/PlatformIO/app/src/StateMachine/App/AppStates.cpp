@@ -215,8 +215,6 @@ void DiagnosingState::enter(SystemContext* context) {
     context->displayManager->changePage(Pages::Diag);
     if (!diagPage) {
         diagPage = context->displayManager->getPageAs<PageAppDiag>(Pages::Diag);
-        DisplayDate date(1,1,2024);
-        diagPage->SetDate(date);
     }
 	diagStateMachine.changeState(DiagStates::HumidifiersSelected, context); // init nested diag state machine
 }
@@ -227,7 +225,6 @@ void DiagnosingState::update(SystemContext* context) {
     if (diagPage) {
         diagPage->SetHumidity(humidity);
         diagPage->SetTemperature(temperature);
-        diagPage->TickTime();
         context->displayManager->refresh();
     }
 }
