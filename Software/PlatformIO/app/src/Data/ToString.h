@@ -19,7 +19,7 @@ inline String toString(const T& value) {
 }
 // lib class/struct types
 template <>
-inline String toString(const DateTime& value) {\
+inline String toString(const DateTime& value) {
     return String(dateTimeToArduinoString(value));
 }
 // my custom types
