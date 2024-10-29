@@ -78,52 +78,6 @@ public:
 #endif // NAMEDVALUETEMPERATURE_H
 
 
-#ifndef NAMEDVALUEDATE_H
-#define NAMEDVALUEDATE_H
-
-class NamedValueDate : public NamedValue<DisplayDate> {
-public:
-    NamedValueDate(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
-        : NamedValue<DisplayDate>(xPos, yPos, name, size) {
-        valueLabel.SetFormatter([](DisplayDate value) {
-            return value.ToString();
-        });
-    }
-
-    bool SetDate(int d, int m, int y) {
-        DisplayDate newDate;
-        if (!newDate.SetDate(d, m, y))
-            return false;
-        SetValue(newDate);
-        return true;
-    }
-};
-
-#endif // NAMEDVALUEDATE_H
-
-#ifndef NAMEDVALUETIME_H
-#define NAMEDVALUETIME_H
-
-class NamedValueTime : public NamedValue<DisplayTime> {
-public:
-    NamedValueTime(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
-        : NamedValue<DisplayTime>(xPos, yPos, name, size) {
-        valueLabel.SetFormatter([](DisplayTime value) {
-            return value.ToString();
-        });
-    }
-
-    bool SetTime(int s, int m, int h) {
-        DisplayTime newTime;
-        if (!newTime.SetTime(s, m, h))
-            return false;
-        SetValue(newTime);
-        return true;
-    }
-};
-
-#endif // NAMEDVALUETIME_H
-
 #ifndef NAMEDVALUEDURATION_H
 #define NAMEDVALUEDURATION_H
 
@@ -147,7 +101,6 @@ public:
 };
 
 #endif // NAMEDVALUEDURATION_H
-
 
 
 #include "Data/EnumHelpers.h"

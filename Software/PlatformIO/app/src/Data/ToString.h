@@ -25,14 +25,6 @@ inline String toString(const DateTime& value) {\
 // my custom types
 #include "Data/DisplayTypes.h"
 template <>
-inline String toString(const DisplayDate& value) {
-    return value.ToString();
-}
-template <>
-inline String toString(const DisplayTime& value) {
-    return value.ToString(); // Assuming your class has a toString() member function
-}
-template <>
 inline String toString(const DisplayDuration& value) {
     return value.ToString(); // Assuming your class has a toString() member function
 }
