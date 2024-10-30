@@ -31,7 +31,7 @@ extern const int ntpPort;
 #define SENSOR_DHT11_PIN 4
 
 // RTC_PINS
-#define RTC_SDA_PIN 25 
-#define RTC_SCL_PIN 26
+#define RTC_SDA_PIN 32 
+#define RTC_SCL_PIN 33
 
 #endif // APPLICATION_CONFIG_H

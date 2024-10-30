@@ -3,7 +3,7 @@
 
 class RtcDS3231Wrapper {
 private:
-    TwoWire i2cwires = TwoWire(0);
+    TwoWire i2cwires = TwoWire(1);
     RTC_DS3231 rtc; // Instance of the RTC library
 
 public:
