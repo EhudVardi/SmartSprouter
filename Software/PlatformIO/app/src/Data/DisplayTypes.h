@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <RTClib.h>
 
 #ifndef DISPLAYTYPES_H
 #define DISPLAYTYPES_H
