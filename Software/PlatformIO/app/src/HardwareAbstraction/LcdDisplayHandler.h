@@ -9,7 +9,7 @@
 class LcdDisplayHandler {
 
 private:
-    TwoWire i2cwires = TwoWire(0);
+    TwoWire i2cwires = TwoWire(0); //I2C bus #0
     Adafruit_SSD1306 display;
 
 public:
