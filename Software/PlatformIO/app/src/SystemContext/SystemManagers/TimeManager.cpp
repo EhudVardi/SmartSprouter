@@ -1,8 +1,9 @@
 #include "SystemContext/SystemManagers/TimeManager.h"
+#include "Data/DisplayTypes.h"
 
 // Constructor
 TimeManager::TimeManager() : currentTime(nullptr) {
-    currentTime = std::make_shared<DateTime>();
+    currentTime = std::make_shared<DisplayDateTime>();
 }
 
 bool TimeManager::initialize() {
@@ -15,7 +16,7 @@ bool TimeManager::initialize() {
 }
 
 void TimeManager::update() {
-    DateTime newTime = rtcWrapper->now(); // Fetch the current time from the RTC
+    DisplayDateTime newTime = rtcWrapper->now(); // Fetch the current time from the RTC
     if (newTime.isValid()) {
         *currentTime = std::move(newTime); // update the manager time value if value is valid. use std:move to get ownership of the object for effectivity
     } else {
@@ -23,7 +24,7 @@ void TimeManager::update() {
     }
 }
 
-const DateTime& TimeManager::getCurrentTime() const {
+const DisplayDateTime& TimeManager::getCurrentTime() const {
     return *currentTime; // Return a const reference to the current time instance
 }
 
@@ -40,7 +41,7 @@ void TimeManager::setTimeFromExtSource(time_t& currentEpoch) {
     // Adjust UTC time offset
     time_t adjustedTime = currentEpoch + utcOffsetHours * 3600;
     // Update the current time instance
-    *currentTime = DateTime(adjustedTime);
+    *currentTime = DisplayDateTime(adjustedTime);
     // Update hardware RTC with the new time
     rtcWrapper->adjust(*currentTime); // Pass currentTime to adjust
 }

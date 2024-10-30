@@ -1,5 +1,6 @@
 #include <Wire.h>
 #include <RTClib.h>
+#include "Data/DisplayTypes.h"
 
 class RtcDS3231Wrapper {
 private:
@@ -18,11 +19,12 @@ public:
         return true;
     }
 
-    void adjust(const DateTime& dt) {
+    void adjust(const DisplayDateTime& dt) {
         rtc.adjust(dt);
+        //rtc.adjust(static_cast<const DateTime&>(dt));
     }
 
     DateTime now() {
-        return rtc.now();
+        return DisplayDateTime(rtc.now());
     }
 };

@@ -118,20 +118,20 @@ public:
 #endif // TEMPERATURE_LABEL_H
 
 
-#ifndef DATETIME_LABEL_H
-#define DATETIME_LABEL_H
+#ifndef DISPLAYDATETIME_LABEL_H
+#define DISPLAYDATETIME_LABEL_H
 
-class DateTimeLabel : public Label<DateTime> {
+class DisplayDateTimeLabel : public Label<DisplayDateTime> {
 public:
-    DateTimeLabel(int xPos, int yPos, DateTime initialDateTime, FontSize size = FontSize::Small)
+    DisplayDateTimeLabel(int xPos, int yPos, DisplayDateTime initialDateTime, FontSize size = FontSize::Small)
         : Label(xPos, yPos, size) {
             value = initialDateTime;
         }
         
-    void SetDateTime(const DateTime &newDate) {
+    void SetDateTime(const DisplayDateTime &newDate) {
         value = newDate;
         Invalidate();
     }
 };
 
-#endif // DATETIME_LABEL_H
+#endif // DISPLAYDATETIME_LABEL_H

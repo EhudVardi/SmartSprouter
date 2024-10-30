@@ -7,9 +7,7 @@
 
 #include <Arduino.h>
 #include <RTClib.h>
-
-/// Helper functions
-String dateTimeToArduinoString(const DateTime& dt);
+#include "Data/DisplayTypes.h"
 
 /// Generic toString implementations
 // Generic type
@@ -19,8 +17,8 @@ inline String toString(const T& value) {
 }
 // lib class/struct types
 template <>
-inline String toString(const DateTime& value) {
-    return String(dateTimeToArduinoString(value));
+inline String toString(const DisplayDateTime& value) {
+    return value.ToArduinoString();
 }
 // my custom types
 #include "Data/DisplayTypes.h"

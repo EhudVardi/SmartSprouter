@@ -4,6 +4,21 @@
 #ifndef DISPLAYTYPES_H
 #define DISPLAYTYPES_H
 
+class DisplayDateTime : public DateTime {
+public:
+    DisplayDateTime() : DateTime() {}
+    DisplayDateTime(int year, int month, int day, int hour, int minute, int second) : DateTime(year, month, day, hour, minute, second) {}
+    DisplayDateTime(const DateTime& dt) : DateTime(dt) {}
+    
+    String ToArduinoString() const {
+        char buffer[20];
+        snprintf(buffer, sizeof(buffer), "%04d-%02d-%02d %02d:%02d:%02d", 
+                 year(), month(), day(), hour(), minute(), second());
+        return String(buffer);
+    }
+};
+
+
 #define DAY_IN_SECONDS 86400
 #define HOUR_IN_SECONDS 3600
 #define MINUTE_IN_SECONDS 60

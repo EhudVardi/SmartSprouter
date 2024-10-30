@@ -10,13 +10,13 @@ class PageAppDiag : public PageAppBase {
 protected:
     PercentLabel humidity;
     TemperatureLabel temperature;
-    DateTimeLabel dateTime;
+    DisplayDateTimeLabel dateTime;
     NamedValueHumidifierActions humidifiers;
 
 public:
     PageAppDiag() : humidity(2, 12, -1, FontSize::Small),
                     temperature(42, 12, -1, FontSize::Small),
-                    dateTime(2, 22, DateTime(2000,1,1,0,1,2), FontSize::Small),
+                    dateTime(2, 22, DisplayDateTime(2000,1,1,0,1,2), FontSize::Small),
                     humidifiers(2, 32, HumidifierActions::Off, "Humidifiers", FontSize::Small) {
         SetTitle("Diagnostics");
         AddElement(&humidity);
@@ -39,7 +39,7 @@ public:
             temperature.SetValue(newTemperature);
         return true;
     }
-    bool SetDateTime(const DateTime& newDateTime) {
+    bool SetDateTime(const DisplayDateTime& newDateTime) {
         if (dateTime.GetValue() != newDateTime)
             dateTime.SetValue(newDateTime);
         return true;
