@@ -4,6 +4,7 @@
 #include <WiFi.h>
 #include <map>
 #include "Data/UDPConnection.h"
+#include "Data/Log.h"
 
 class WiFiHandler {
 private:
@@ -13,19 +14,19 @@ public:
     // Method to connect to Wi-Fi
     bool connect(const char* ssid, const char* password) {
         WiFi.begin(ssid, password);
-        Serial.print("Connecting to WiFi");
+        log("Connecting to WiFi");
         while (WiFi.status() != WL_CONNECTED) {
             delay(500);
             Serial.print(".");
         }
-        Serial.println("Connected to WiFi!");
+        log("Connected to WiFi!");
         return true; // Successfully connected
     }
 
     // Method to disconnect from Wi-Fi
     void disconnect() {
         WiFi.disconnect();
-        Serial.println("Disconnected from WiFi");
+        log("Disconnected from WiFi");
     }
 
     // Method to check if connected to Wi-Fi
