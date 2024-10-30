@@ -6,14 +6,14 @@ void AbortingState::enter(SystemContext* context) {
     if (!abortPage) {
         abortPage = context->displayManager->getPageAs<PageAppAbort>(Pages::Abort);
     }
-	std::cout << "enter AbortingState" << std::endl;
+	log("enter AbortingState");
 }
 void AbortingState::exit(SystemContext* context) {
-	std::cout << "exit AbortingState" << std::endl;
+	log("exit AbortingState");
 }
 void AbortingState::update(SystemContext* context) {
     context->displayManager->refresh();
-	std::cout << "update RunningState" << std::endl;
+	log("update RunningState");
 }
 void AbortingState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::BackPressed) {
@@ -22,7 +22,7 @@ void AbortingState::handleInput(SystemContext* context, InputEvent event) {
     else if (event == InputEvent::EnterPressed) {
         stateMachine->changeState(AppStates::Idling, context);
     }
-	std::cout << "handleInput AbortingState" << std::endl;
+	log("handleInput AbortingState");
 }
 
 
@@ -32,10 +32,10 @@ void IdlingState::enter(SystemContext* context) {
     if (!idlePage) {
         idlePage = context->displayManager->getPageAs<PageAppIdle>(Pages::Idle);
     }
-	std::cout << "enter IdlingState" << std::endl;
+	log("enter IdlingState");
 }
 void IdlingState::exit(SystemContext* context) {
-	std::cout << "exit IdlingState" << std::endl;
+	log("exit IdlingState");
 }
 void IdlingState::update(SystemContext* context) {
     if (idlePage) {
@@ -61,10 +61,10 @@ void IdlingState::handleInput(SystemContext* context, InputEvent event) {
 
 void InformingState::enter(SystemContext* context) {
     context->displayManager->changePage(Pages::About);
-	std::cout << "enter InformingState" << std::endl;
+	log("enter InformingState");
 }
 void InformingState::exit(SystemContext* context) {
-	std::cout << "exit InformingState" << std::endl;
+	log("exit InformingState");
 }
 void InformingState::update(SystemContext* context) {
     context->displayManager->refresh();
@@ -95,10 +95,10 @@ void RunningState::enter(SystemContext* context) {
     if (!runPage) {
         runPage = context->displayManager->getPageAs<PageAppRun>(Pages::Run);
     }
-	std::cout << "enter RunningState" << std::endl;
+	log("enter RunningState");
 }
 void RunningState::exit(SystemContext* context) {
-	std::cout << "exit RunningState" << std::endl;
+	log("exit RunningState");
 }
 void RunningState::update(SystemContext* context) {
 	float humidity = context->sensorManager->getHumidity();
@@ -109,13 +109,13 @@ void RunningState::update(SystemContext* context) {
         runPage->SetTemperature(temperature);
         context->displayManager->refresh();
     }
-	std::cout << "update RunningState" << std::endl;
+	log("update RunningState");
 }
 void RunningState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::BackPressed) {
         stateMachine->changeState(AppStates::Aborting, context);
     }
-	std::cout << "handleInput RunningState" << std::endl;
+	log("handleInput RunningState");
 }
 
 
@@ -132,10 +132,10 @@ void SettingProcessState::enter(SystemContext* context) {
         setupPage = context->displayManager->getPageAs<PageAppIdle>(Pages::Setup);
     }
     setupStateMachine.changeState(SetupStates::HumidityRangeSelect, context); // init nested setup state machine state to initial state
-	std::cout << "enter SettingProcessState" << std::endl;
+	log("enter SettingProcessState");
 }
 void SettingProcessState::exit(SystemContext* context) {
-	std::cout << "exit SettingProcessState" << std::endl;
+	log("exit SettingProcessState");
 }
 void SettingProcessState::update(SystemContext* context) {
     if (setupPage) {

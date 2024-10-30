@@ -1,5 +1,5 @@
 #include "SystemContext/SystemManagers/ProcessManager.h"
-#include <iostream>
+#include "Data/Log.h"
 
 bool ProcessManager::initialize() {
 
@@ -7,9 +7,9 @@ bool ProcessManager::initialize() {
 }
 
 void ProcessManager::saveProcessState() {
-    std::cout << "Saving process state to flash...\n";
+    log("Saving process state to flash...\n");
 }
 
 void ProcessManager::loadProcessState() {
-    std::cout << "Loading process state from flash...\n";
+    log("Loading process state from flash...\n");
 }

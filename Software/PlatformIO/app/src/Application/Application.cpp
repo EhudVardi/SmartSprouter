@@ -67,7 +67,6 @@ void Application::loop() {
 
 // #include "Data/Process.h"
 // #include "Data/PreferenceHandler.h"
-// #include <iostream>
 
 
     // PreferenceHandler prefHandler("AppProcess");
@@ -75,28 +74,28 @@ void Application::loop() {
     // Process process(10, 30, 20, 25, DisplayDuration(1,2,3,4));
     // prefHandler.saveObjectToNVS(process, "CurrProcess");
 
-    // std::cout << "Object created and saved" << std::endl;
-    // std::cout << process.toString().c_str() << std::endl;
+    // log("Object created and saved");
+    // log(process.toString().c_str());
 
     // process.TickDurationDown();
     
     // prefHandler.saveObjectToNVS(process, "CurrProcess");
-    // std::cout << "Object modified and saved" << std::endl;
-    // std::cout << process.toString().c_str() << std::endl;
+    // log("Object modified and saved");
+    // log(process.toString().c_str());
 
     // Process loadedProcess;
 
     // if (prefHandler.loadObjectFromNVS(loadedProcess, "CurrProcess")) {
-    //     std::cout << "Object loaded successfully:" << std::endl;
-    //     std::cout << loadedProcess.toString().c_str() << std::endl;
+    //     log("Object loaded successfully:");
+    //     log(loadedProcess.toString().c_str());
     // } else {
-    //     std::cout << "Object not found or corrupted." << std::endl;
+    //     log("Object not found or corrupted.");
     // }
 
     // if (prefHandler.clearObjectFromNVS("CurrProcess")) {
-    //     std::cout << "Object cleared successfully:" << std::endl;
+    //     log("Object cleared successfully:");
     // } else {
-    //     std::cout << "Object failed to clear:" << std::endl;
+    //     log("Object failed to clear:");
     // }
 
 
