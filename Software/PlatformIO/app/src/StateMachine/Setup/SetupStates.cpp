@@ -160,7 +160,7 @@ void S_S::update(SystemContext* context) { }
 void S_S::handleInput(SystemContext* context, InputEvent event) {
     if (setupPage) {
         switch (event) {
-            case InputEvent::EnterPressed: stateMachine->fireOnStartEnterEvent(context);
+            case InputEvent::EnterPressed: stateMachine->fireOnStartEnterEvent(context); break;
             case InputEvent::RotatedLeft: 
                 setupPage->SetStartSelectionMode(false);
                 stateMachine->changeState(SetupStates::DurationSelect, context);
