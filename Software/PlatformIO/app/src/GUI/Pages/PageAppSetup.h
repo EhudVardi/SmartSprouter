@@ -10,7 +10,7 @@ class PageAppSetup : public PageAppBase {
 protected:
     NamedRangePercent humidityRangeSetup;
     NamedRangeTemperature temperatureRangeSetup;
-    NamedValueDuration durationSetup;
+    NamedValueTimeSpan durationSetup;
     CenteredLabel startButton;
 
 public:

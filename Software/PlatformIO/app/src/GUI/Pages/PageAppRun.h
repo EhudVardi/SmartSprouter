@@ -8,7 +8,7 @@ class PageAppRun : public PageAppBase {
 protected:
     NamedValuePercent humidityGauge;
     NamedValueTemperature temperatureGauge;
-    NamedValueDuration durationGauge;
+    NamedValueTimeSpan durationGauge;
 
 public:
     PageAppRun() : humidityGauge(2, 12, "Humidity", FontSize::Small),

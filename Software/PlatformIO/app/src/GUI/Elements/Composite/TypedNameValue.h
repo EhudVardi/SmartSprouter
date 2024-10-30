@@ -81,9 +81,9 @@ public:
 #ifndef NAMEDVALUEDURATION_H
 #define NAMEDVALUEDURATION_H
 
-class NamedValueDuration : public NamedValue<DisplayTimeSpan> {
+class NamedValueTimeSpan : public NamedValue<DisplayTimeSpan> {
 public:
-    NamedValueDuration(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+    NamedValueTimeSpan(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : NamedValue<DisplayTimeSpan>(xPos, yPos, name, size) {
         valueLabel.SetFormatter([](DisplayTimeSpan value) {
             return value.ToString();
@@ -94,10 +94,7 @@ public:
     void AddMinutes(int mins) { DisplayTimeSpan newDuration = GetValue(); newDuration.AddMinutes(mins); SetValue(newDuration); }
     void AddHours(int hrs) { DisplayTimeSpan newDuration = GetValue(); newDuration.AddHours(hrs); SetValue(newDuration); }
     void AddDays(int days) { DisplayTimeSpan newDuration = GetValue(); newDuration.AddDays(days); SetValue(newDuration); }
-
-    void TickDown() {
-        DisplayTimeSpan newDuration = GetValue(); newDuration.TickDown(); SetValue(newDuration);
-    }
+    void TickDown() { DisplayTimeSpan newDuration = GetValue(); newDuration.TickDown(); SetValue(newDuration); }
 };
 
 #endif // NAMEDVALUEDURATION_H
