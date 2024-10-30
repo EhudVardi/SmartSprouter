@@ -44,15 +44,21 @@ void Application::setup() {
         stateMachine.update(&context);
     });
 
+    timePollingTimer.setInterval(1000);
+    timePollingTimer.setCallback([&]() {
+        context.timeManager->update();
+    });
+
     inputPollingTimer.start();
     stateMachineTimer.start();
+    timePollingTimer.start();
 }
 
 void Application::loop() {
 
     inputPollingTimer.update();
     stateMachineTimer.update();
-    
+    timePollingTimer.update();
 }
 
 

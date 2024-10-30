@@ -43,6 +43,11 @@ public:
             return false;
         }
     }
+
+    bool SetDateTime(const DateTime& newDateTime) {
+        dateTime.SetValue(newDateTime);
+        return true;
+    }
 };
 
 #endif // PAGEAPPIDLE_H

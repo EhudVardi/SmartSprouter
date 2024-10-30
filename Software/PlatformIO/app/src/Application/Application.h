@@ -12,6 +12,7 @@ private:
 
     Timer inputPollingTimer;
     Timer stateMachineTimer;
+    Timer timePollingTimer;
 
 public:
     void setup();

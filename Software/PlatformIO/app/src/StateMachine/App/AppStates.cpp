@@ -41,6 +41,7 @@ void IdlingState::update(SystemContext* context) {
     if (idlePage) {
         idlePage->SetHumidity(context->sensorManager->getHumidity());
         idlePage->SetTemperature(context->sensorManager->getTemperature());
+        idlePage->SetDateTime(context->timeManager->getCurrentTime());
         context->displayManager->refresh();
     }
 }
