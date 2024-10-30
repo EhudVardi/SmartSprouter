@@ -39,12 +39,12 @@ void Application::setup() {
         context.inputManager->pollInputs();
     });
 
-    stateMachineTimer.setInterval(500);
+    stateMachineTimer.setInterval(200);
     stateMachineTimer.setCallback([&]() {
         stateMachine.update(&context);
     });
 
-    timePollingTimer.setInterval(1000);
+    timePollingTimer.setInterval(500);
     timePollingTimer.setCallback([&]() {
         context.timeManager->update();
     });

@@ -25,27 +25,34 @@ public:
     }
 
     bool SetHumidity(float humidityPercent) {
-        if (humidityPercent >= 0.0 &&  humidityPercent <= 100.0) {
-            humidityGauge.SetValue(humidityPercent);
-            return true;
+        if (humidityPercent != humidityGauge.GetValue()) {
+            if (humidityPercent >= 0.0 &&  humidityPercent <= 100.0) {
+                humidityGauge.SetValue(humidityPercent);
+                return true;
+            }
+            else {
+                return false;
+            }
         }
-        else {
-            return false;
-        }
+        return true;
     }
 
     bool SetTemperature(float temperature) {
-        if (temperature >= 0.0 &&  temperature <= 100.0) {
-            temperatureGauge.SetValue(temperature);
-            return true;
+        if (temperature != temperatureGauge.GetValue()) {
+            if (temperature >= 0.0 &&  temperature <= 100.0) {
+                temperatureGauge.SetValue(temperature);
+                return true;
+            }
+            else {
+                return false;
+            }
         }
-        else {
-            return false;
-        }
+        return true;
     }
 
     bool SetDateTime(const DateTime& newDateTime) {
-        dateTime.SetValue(newDateTime);
+        if (dateTime.GetValue() != newDateTime)
+            dateTime.SetValue(newDateTime);
         return true;
     }
 };

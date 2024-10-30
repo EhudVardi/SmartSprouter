@@ -8,12 +8,11 @@
 
 class TimeManager : public BaseManager {
 private:
-    DateTime* currentTime; // Pointer to hold the current time
+    std::shared_ptr<DateTime> currentTime; // Smart pointer to hold the current time
     RtcDS3231Wrapper* rtcWrapper = nullptr; // Instance of RTC wrapper
 
 public:
     TimeManager(); // Constructor
-    ~TimeManager(); // Destructor
 
     bool initialize() override; // Initialize the RTC and NTP handler
     void update();  // Update the current time using the RTC wrapper

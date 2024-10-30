@@ -2,12 +2,7 @@
 
 // Constructor
 TimeManager::TimeManager() : currentTime(nullptr) {
-    currentTime = new DateTime(); // Initialize currentTime with a new DateTime instance
-}
-
-// Destructor
-TimeManager::~TimeManager() {
-    delete currentTime; // Free the allocated memory
+    currentTime = std::make_shared<DateTime>();
 }
 
 bool TimeManager::initialize() {
@@ -20,7 +15,12 @@ bool TimeManager::initialize() {
 }
 
 void TimeManager::update() {
-    *currentTime = rtcWrapper->now(); // Fetch the current time from the RTC and update the value
+    DateTime newTime = rtcWrapper->now(); // Fetch the current time from the RTC
+    if (newTime.isValid()) {
+        *currentTime = std::move(newTime); // update the manager time value if value is valid. use std:move to get ownership of the object for effectivity
+    } else {
+        // Handle RTC error
+    }
 }
 
 const DateTime& TimeManager::getCurrentTime() const {
