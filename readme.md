@@ -11,8 +11,8 @@ it may take photos for hyperlapse video of the sprouting proceedure
 
 # Hardware
 ## Pinout
-| Pin Name | Pin Number |
-| -------- | ---------- |
+| Pin Name | Pin Number | BUS |
+| -------- | ---------- | --- |
 | DIGITAL_OUTPUT_RELAY1_PIN | 16 |
 | DIGITAL_OUTPUT_RELAY2_PIN | 17 |
 | BUTTON_BACK_PIN | 12 |
@@ -20,8 +20,10 @@ it may take photos for hyperlapse video of the sprouting proceedure
 | ROTARY_ENCODER_MAIN_B_PIN | 19 |
 | ROTARY_ENCODER_MAIN_BUTTON_PIN | 21 |
 | SENSOR_DHT11_PIN | 4 |
-| LCD_SDA_PIN | 25 |
-| LCD_SCL_PIN | 26 |
+| LCD_SDA_PIN | 25 | I2C bus #0
+| LCD_SCL_PIN | 26 | 
+| RTC_SDA_PIN | 32 | I2C bus #1
+| RTC_SCL_PIN | 33 |
 
 ## Notes
 ### ESP32 relay board pinout
