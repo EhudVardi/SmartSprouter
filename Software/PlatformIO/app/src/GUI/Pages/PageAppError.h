@@ -21,9 +21,9 @@ public:
         return Pages::Error;
     }
 
-    void SetError(AppErrors error, String errParams) {
-        errorEnum.UpdateText(EnumHelpers::AppErrorsHelper.ToString(error));
-        errorParams.UpdateText(errParams);
+    void SetError(AppErrors& error, const String& errParams) {
+        errorEnum.SetValue(EnumHelpers::AppErrorsHelper.ToString(error));
+        errorParams.SetValue(errParams);
     }
 };
 

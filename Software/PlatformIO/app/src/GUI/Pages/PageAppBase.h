@@ -18,8 +18,8 @@ public:
     
     virtual Pages getType() const override = 0;
     
-    void SetTitle(String title) {
-        titleLabel.UpdateText(title);
+    void SetTitle(const String& title) {
+        titleLabel.SetValue(title);
     }
 };
 

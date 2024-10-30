@@ -14,13 +14,6 @@ public:
                 SetFormatter([](String value) { return String(value); }); // Default to simple string conversion
             }
         }
-        
-    void UpdateText(const String &newText) {
-        if (newText != value) {
-            value = newText;
-            Invalidate(); // Mark as needing redraw
-        }
-    }
 };
 
 #endif // TEXT_LABEL_H
