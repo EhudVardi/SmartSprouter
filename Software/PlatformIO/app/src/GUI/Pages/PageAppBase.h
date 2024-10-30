@@ -2,8 +2,8 @@
 #define PAGEAPPBASE_H
 
 #include "GUI/Pages/PageBase.h"
-#include "GUI/Elements/Simple/CenteredLabel.h"
 #include "GUI/Elements/GFX/Line.h"
+#include "GUI/Elements/Simple/TypedLabel.h"
 
 class PageAppBase : public PageBase {
 protected:

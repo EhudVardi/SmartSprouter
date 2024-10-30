@@ -2,7 +2,7 @@
 #define PAGEAPPABORT_H
 
 #include "GUI/Pages/PageAppBase.h"
-#include "GUI/Elements/Simple/CenteredLabel.h"
+#include "GUI/Elements/Simple/TypedLabel.h"
 
 class PageAppAbort : public PageAppBase {
 protected:

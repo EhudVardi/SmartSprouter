@@ -4,7 +4,7 @@
 #include "GUI/Pages/PageAppBase.h"
 #include "GUI/Elements/Composite/TypedNameRange.h"
 #include "GUI/Elements/Composite/TypedNameValue.h"
-#include "GUI/Elements/Simple/CenteredLabel.h"
+#include "GUI/Elements/Simple/TypedLabel.h"
 
 class PageAppSetup : public PageAppBase {
 protected:
