@@ -14,6 +14,16 @@ namespace EnumHelpers {
         { AppStates::Diagnosing, "Diagnosing" }
     }, AppStates::Diagnosing); // last valid state
     
+    EnumHelper<AppErrors> AppErrorsHelper({
+        { AppErrors::ErrInitInputManager, "ErrInitInputManager" },
+        { AppErrors::ErrInitSensorManager, "ErrInitSensorManager" },
+        { AppErrors::ErrInitDisplayManager, "ErrInitDisplayManager" },
+        { AppErrors::ErrInitActuatorManager, "ErrInitActuatorManager" },
+        { AppErrors::ErrInitProcessManager, "ErrInitProcessManager" },
+        { AppErrors::ErrInitNetworkManager, "ErrInitNetworkManager" },
+        { AppErrors::ErrInitTimeManager, "ErrInitTimeManager" },
+    }, AppErrors::ErrInitTimeManager); // last valid state
+    
     EnumHelper<SetupStates> SetupStatesHelper({
         { SetupStates::HumidityRangeSelect, "HumidityRangeSelect" },
         { SetupStates::HumidityRangeEditMin, "HumidityRangeEditMin" },

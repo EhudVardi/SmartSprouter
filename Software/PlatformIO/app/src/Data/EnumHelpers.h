@@ -4,11 +4,13 @@
 #include "Data/EnumHelper.h"
 
 #include "StateMachine/App/AppStatesEnum.h"
+#include "StateMachine/App/AppErrorsEnum.h"
 #include "StateMachine/Setup/SetupStatesEnum.h"
 #include "SystemContext/SystemManagers/ActuatorActions.h"
 
 namespace EnumHelpers {
     extern EnumHelper<AppStates> AppStatesHelper;
+    extern EnumHelper<AppErrors> AppErrorsHelper;
     extern EnumHelper<SetupStates> SetupStatesHelper;
     extern EnumHelper<HumidifierActions> HumidifierActionsHelper;
 }

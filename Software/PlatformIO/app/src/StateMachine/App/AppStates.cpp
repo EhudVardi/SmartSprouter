@@ -159,31 +159,31 @@ void StartingUpState::enter(SystemContext* context) {
     /// initialize all managers in the system context object
     /// if any fails, then transite to SystemInError state. else transite forward to Initializing state
     if (!context->inputManager->initialize()) {
-        stateMachine->changeState(AppStates::SystemInError, context);
+        GoToErrorState(context, AppErrors::ErrInitInputManager);
         return;
     }
     if (!context->sensorManager->initialize()) {
-        stateMachine->changeState(AppStates::SystemInError, context);
+        GoToErrorState(context, AppErrors::ErrInitSensorManager);
         return;
     }
     if (!context->displayManager->initialize()) {
-        stateMachine->changeState(AppStates::SystemInError, context);
+        GoToErrorState(context, AppErrors::ErrInitDisplayManager);
         return;
     }
     if (!context->actuatorManager->initialize()) {
-        stateMachine->changeState(AppStates::SystemInError, context);
+        GoToErrorState(context, AppErrors::ErrInitActuatorManager);
         return;
     }
     if (!context->processManager->initialize()) {
-        stateMachine->changeState(AppStates::SystemInError, context);
+        GoToErrorState(context, AppErrors::ErrInitProcessManager);
         return;
     }
     if (!context->networkManager->initialize()) {
-        stateMachine->changeState(AppStates::SystemInError, context);
+        GoToErrorState(context, AppErrors::ErrInitNetworkManager);
         return;
     }
     if (!context->timeManager->initialize()) {
-        stateMachine->changeState(AppStates::SystemInError, context);
+        GoToErrorState(context, AppErrors::ErrInitTimeManager);
         return;
     }
     stateMachine->changeState(AppStates::Initializing, context);
