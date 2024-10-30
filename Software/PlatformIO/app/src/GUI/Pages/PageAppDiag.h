@@ -30,14 +30,21 @@ public:
     }
     
     bool SetHumidity(float newHumidity) {
-        humidity.SetValue(newHumidity);
+        if (newHumidity != humidity.GetValue())
+            humidity.SetValue(newHumidity);
         return true;
     }
     bool SetTemperature(float newTemperature) {
-        temperature.SetValue(newTemperature);
+        if (newTemperature != temperature.GetValue())
+            temperature.SetValue(newTemperature);
         return true;
     }
-    
+    bool SetDateTime(const DateTime& newDateTime) {
+        if (dateTime.GetValue() != newDateTime)
+            dateTime.SetValue(newDateTime);
+        return true;
+    }
+
     void SelectNextHumidifierAction() { humidifiers.SelectNextValue(); }
     void SelectPrevHumidifierAction() { humidifiers.SelectPrevValue(); }
     void SetSelectedHumidifierAction(HumidifierActions newAction) { humidifiers.SetValue(newAction); }

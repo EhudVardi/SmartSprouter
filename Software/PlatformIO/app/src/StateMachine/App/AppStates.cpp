@@ -236,6 +236,7 @@ void DiagnosingState::update(SystemContext* context) {
     if (diagPage) {
         diagPage->SetHumidity(humidity);
         diagPage->SetTemperature(temperature);
+        diagPage->SetDateTime(context->timeManager->getCurrentTime());
         context->displayManager->refresh();
     }
 }
