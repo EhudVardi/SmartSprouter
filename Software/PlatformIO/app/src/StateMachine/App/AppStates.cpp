@@ -157,7 +157,7 @@ void SettingProcessState::handleInput(SystemContext* context, InputEvent event) 
 void StartingUpState::enter(SystemContext* context) {
     /// StateLogic:
     /// initialize all managers in the system context object
-    /// if any fails, then transite to SystemInError state. else transite forward to Initializing state
+    /// if any fails, then transite to SystemInError state.
     if (!context->inputManager->initialize()) {
         GoToErrorState(context, AppErrors::ErrInitInputManager);
         return;
@@ -186,6 +186,16 @@ void StartingUpState::enter(SystemContext* context) {
         GoToErrorState(context, AppErrors::ErrInitTimeManager);
         return;
     }
+
+    // attempt to update RTC from NTP service
+    if (context->timeManager->UpdateRtcFromNtpService(context->networkManager.get())){
+        log("update time from ntp service successful");
+        log(dateTimeToArduinoString(context->timeManager->getCurrentTime()));
+    } else { 
+        log("update time from ntp service failed"); 
+    }
+
+    // transite forward to Initializing state
     stateMachine->changeState(AppStates::Initializing, context);
 }
 void StartingUpState::exit(SystemContext* context) { }

@@ -37,22 +37,26 @@ public:
     }
 
     // Fetch the current time from the NTP server
-    bool fetchCurrentTime(time_t& currentEpoch, WiFiHandler& wifiHandler) {
-        // Send NTP request
-        wifiHandler.sendRequest(connectionName);
+    bool fetchCurrentTime(time_t& currentEpoch, WiFiHandler& wifiHandler, int attempts = 10, int attemptDelayMS = 300) {
+        while (attempts--) {
+            log(String(attempts) + " attempts remain to fetch ntp time");
 
-        // Wait for response
-        int responseSize = wifiHandler.receiveResponse(connectionName, 2000); // 2-second timeout
-        if (responseSize > 0) {
-            byte* responseBuffer = wifiHandler.getPacketBuffer(connectionName);
-            if (!responseBuffer) return false;
-
-            // Extract the time from the packet
-            unsigned long highWord = word(responseBuffer[40], responseBuffer[41]);
-            unsigned long lowWord = word(responseBuffer[42], responseBuffer[43]);
-            unsigned long secsSince1900 = highWord << 16 | lowWord;
-            currentEpoch = secsSince1900 - 2208988800UL; // Convert to Unix time
-            return true; // Successfully fetched time
+            // Send NTP request
+            wifiHandler.sendRequest(connectionName);
+            // Wait for response
+            int responseSize = wifiHandler.receiveResponse(connectionName, 2000); // 2-second timeout
+            if (responseSize > 0) {
+                byte* responseBuffer = wifiHandler.getPacketBuffer(connectionName);
+                if (!responseBuffer) 
+                    continue;
+                // Extract the time from the packet
+                unsigned long highWord = word(responseBuffer[40], responseBuffer[41]);
+                unsigned long lowWord = word(responseBuffer[42], responseBuffer[43]);
+                unsigned long secsSince1900 = highWord << 16 | lowWord;
+                currentEpoch = secsSince1900 - 2208988800UL; // Convert to Unix time
+                return true; // Successfully fetched time
+            }
+            delay(attemptDelayMS);
         }
         return false; // Failed to fetch time
     }

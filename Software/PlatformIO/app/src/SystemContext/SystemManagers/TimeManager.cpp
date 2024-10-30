@@ -27,6 +27,15 @@ const DateTime& TimeManager::getCurrentTime() const {
     return *currentTime; // Return a const reference to the current time instance
 }
 
+bool TimeManager::UpdateRtcFromNtpService(NetworkManager* networkManager) {
+    time_t fetchedEpoch;
+    if (networkManager->GetTimeFromNTPService(fetchedEpoch)){
+        setTimeFromExtSource(fetchedEpoch);
+        return true;
+    }
+    return false;
+}
+
 void TimeManager::setTimeFromExtSource(time_t& currentEpoch) {
     // Adjust UTC time offset
     time_t adjustedTime = currentEpoch + utcOffsetHours * 3600;

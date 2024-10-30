@@ -12,15 +12,21 @@ private:
 
 public:
     // Method to connect to Wi-Fi
-    bool connect(const char* ssid, const char* password) {
+    bool connect(const char* ssid, const char* password, int attempts = 3, int attemptDelayMS = 500) {
         WiFi.begin(ssid, password);
         log("Connecting to WiFi");
-        while (WiFi.status() != WL_CONNECTED) {
-            delay(500);
-            Serial.print(".");
+        while (WiFi.status() != WL_CONNECTED && attempts--) {
+            delay(attemptDelayMS);
+            log(".");
         }
-        log("Connected to WiFi!");
-        return true; // Successfully connected
+        if (WiFi.status() == WL_CONNECTED) {
+            log("Connected to WiFi!");
+            return true;
+        }
+        else {
+            log("Failed To Connect to Wifi");
+            return false;
+        }
     }
 
     // Method to disconnect from Wi-Fi
