@@ -25,7 +25,7 @@ inline String toString(const DateTime& value) {
 // my custom types
 #include "Data/DisplayTypes.h"
 template <>
-inline String toString(const DisplayDuration& value) {
+inline String toString(const DisplayTimeSpan& value) {
     return value.ToString(); // Assuming your class has a toString() member function
 }
 // my custom enumerations

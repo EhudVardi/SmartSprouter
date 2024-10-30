@@ -71,7 +71,7 @@ void Application::loop() {
 
     // PreferenceHandler prefHandler("AppProcess");
 
-    // Process process(10, 30, 20, 25, DisplayDuration(1,2,3,4));
+    // Process process(10, 30, 20, 25, DisplayTimeSpan(1,2,3,4));
     // prefHandler.saveObjectToNVS(process, "CurrProcess");
 
     // log("Object created and saved");

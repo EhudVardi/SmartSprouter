@@ -7,11 +7,11 @@
 #define HOUR_IN_SECONDS 3600
 #define MINUTE_IN_SECONDS 60
 
-class DisplayDuration : public TimeSpan {
+class DisplayTimeSpan : public TimeSpan {
 public:
-    DisplayDuration() : TimeSpan(0) {}
-    DisplayDuration(int totalSeconds) : TimeSpan(totalSeconds) {}
-    DisplayDuration(int days, int hrs, int mins, int secs) : TimeSpan(days, hrs, mins, secs) {}
+    DisplayTimeSpan() : TimeSpan(0) {}
+    DisplayTimeSpan(int totalSeconds) : TimeSpan(totalSeconds) {}
+    DisplayTimeSpan(int days, int hrs, int mins, int secs) : TimeSpan(days, hrs, mins, secs) {}
 
     // Format duration as D:HH:MM:SS
     String ToString() const {

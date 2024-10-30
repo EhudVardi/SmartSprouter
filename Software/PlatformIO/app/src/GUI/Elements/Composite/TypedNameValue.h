@@ -81,22 +81,22 @@ public:
 #ifndef NAMEDVALUEDURATION_H
 #define NAMEDVALUEDURATION_H
 
-class NamedValueDuration : public NamedValue<DisplayDuration> {
+class NamedValueDuration : public NamedValue<DisplayTimeSpan> {
 public:
     NamedValueDuration(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
-        : NamedValue<DisplayDuration>(xPos, yPos, name, size) {
-        valueLabel.SetFormatter([](DisplayDuration value) {
+        : NamedValue<DisplayTimeSpan>(xPos, yPos, name, size) {
+        valueLabel.SetFormatter([](DisplayTimeSpan value) {
             return value.ToString();
         });
     }
 
-    void AddSeconds(int secs) { DisplayDuration newDuration = GetValue(); newDuration.AddSeconds(secs); SetValue(newDuration); }
-    void AddMinutes(int mins) { DisplayDuration newDuration = GetValue(); newDuration.AddMinutes(mins); SetValue(newDuration); }
-    void AddHours(int hrs) { DisplayDuration newDuration = GetValue(); newDuration.AddHours(hrs); SetValue(newDuration); }
-    void AddDays(int days) { DisplayDuration newDuration = GetValue(); newDuration.AddDays(days); SetValue(newDuration); }
+    void AddSeconds(int secs) { DisplayTimeSpan newDuration = GetValue(); newDuration.AddSeconds(secs); SetValue(newDuration); }
+    void AddMinutes(int mins) { DisplayTimeSpan newDuration = GetValue(); newDuration.AddMinutes(mins); SetValue(newDuration); }
+    void AddHours(int hrs) { DisplayTimeSpan newDuration = GetValue(); newDuration.AddHours(hrs); SetValue(newDuration); }
+    void AddDays(int days) { DisplayTimeSpan newDuration = GetValue(); newDuration.AddDays(days); SetValue(newDuration); }
 
     void TickDown() {
-        DisplayDuration newDuration = GetValue(); newDuration.TickDown(); SetValue(newDuration);
+        DisplayTimeSpan newDuration = GetValue(); newDuration.TickDown(); SetValue(newDuration);
     }
 };
 
