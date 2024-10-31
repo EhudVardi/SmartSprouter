@@ -13,7 +13,6 @@ void AbortingState::exit(SystemContext* context) {
 }
 void AbortingState::update(SystemContext* context) {
     context->displayManager->refresh();
-	log("update RunningState");
 }
 void AbortingState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::BackPressed) {
@@ -22,7 +21,6 @@ void AbortingState::handleInput(SystemContext* context, InputEvent event) {
     else if (event == InputEvent::EnterPressed) {
         stateMachine->changeState(AppStates::Idling, context);
     }
-	log("handleInput AbortingState");
 }
 
 
@@ -109,13 +107,12 @@ void RunningState::update(SystemContext* context) {
         runPage->SetTemperature(temperature);
         context->displayManager->refresh();
     }
-	log("update RunningState");
+	//log("update RunningState");
 }
 void RunningState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::BackPressed) {
         stateMachine->changeState(AppStates::Aborting, context);
     }
-	log("handleInput RunningState");
 }
 
 
