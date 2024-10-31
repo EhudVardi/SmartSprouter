@@ -1,4 +1,5 @@
 #include "SystemContext/SystemManagers/DisplayManager.h"
+#include "Data/Log.h"
 #include <iostream>
 
 DisplayManager::DisplayManager() {
@@ -43,7 +44,7 @@ void DisplayManager::changePage(Pages pageEnum) {
         currentPage->InvalidatePage();
         
     } else {
-        std::cerr << "Page " << Pages_ToString(pageEnum) << " not found!" << std::endl;
+        log("Page " + String(EnumHelpers::PagesHelper.ToString(pageEnum)) + " not found!", LogType::Error);
     }
 }
 

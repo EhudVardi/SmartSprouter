@@ -4,6 +4,7 @@
 
 #include "SystemContext/SystemContext.h"
 #include "StateMachine/StateBase.h"
+#include "Data/Log.h"
 #include <memory>
 #include <unordered_map>
 #include <iostream>
@@ -33,7 +34,7 @@ public:
                 currentState->enter(context);
             }
         } else {
-            std::cerr << "State not found!" << std::endl;
+            log("State not found!", LogType::Error);
         }
     }
 
