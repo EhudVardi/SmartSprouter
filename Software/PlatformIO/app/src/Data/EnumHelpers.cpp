@@ -41,4 +41,14 @@ namespace EnumHelpers {
         { HumidifierActions::Low, "  Low " },
         { HumidifierActions::High, "  High" },
     }, HumidifierActions::High); // last valid state
+    
+    EnumHelper<Pages> PagesHelper({
+        { Pages::About, "About" },
+        { Pages::Idle, "Idle" },
+        { Pages::Setup, "Setup" },
+        { Pages::Run, "Run" },
+        { Pages::Abort, "Abort" },
+        { Pages::Error, "Error" },
+        { Pages::Diag, "Diag" },
+    }, Pages::Diag); // last valid state
 }
