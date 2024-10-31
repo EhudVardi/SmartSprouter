@@ -42,6 +42,13 @@ https://platformio.org/
 #### vscode vertical selection
 Alt+Shift+ mouse drag
 
+#### vscode automatic formatting
+- Install extension "C/C++ Extension Pack" from Microsoft only.
+- Generate ".editorconfig" in the root of the project.\
+How: open the options CTRL+SHIFT+P and write "format setting" and select "C/C++: Generate EditorConfig contents from VC Format settings"
+- Edit the file, reference all options [here](https://learn.microsoft.com/en-us/visualstudio/ide/cpp-editorconfig-properties?view=vs-2022)
+- apply formatting using the shortcut ALT+SHIFT+F
+
 #### serial comm with board 
 on project ini file, set serial port baudrate with:
 'monitor_speed = 115200'
