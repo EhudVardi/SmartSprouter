@@ -2,9 +2,10 @@
 #define ACTIONABLEEVENT_H
 
 #include <functional>
+#include "Data/ISerializable.h"
 
 template<typename T>
-class ActionableEvent {
+class ActionableEvent : public ISerializable {
 public:
     ActionableEvent(std::function<bool(T)> predicate, std::function<void()> startAction, std::function<void()> stopAction)
         : predicate(predicate), startAction(startAction), stopAction(stopAction), active(false) {}
@@ -21,6 +22,13 @@ public:
                 active = false;
             }
         }
+    }
+
+    virtual void serialize(uint8_t* buffer) const override {
+        buffer = serializeMember(&active, sizeof(active), buffer);
+    }
+    virtual void deserialize(const uint8_t* buffer) override {
+        buffer = deserializeMember(&active, sizeof(active), buffer);
     }
 
 protected:
