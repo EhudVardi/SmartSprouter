@@ -51,4 +51,9 @@ namespace EnumHelpers {
         { Pages::Error, "Error" },
         { Pages::Diag, "Diag" },
     }, Pages::Diag); // last valid state
+    
+    EnumHelper<LogType> LogTypeHelper({
+        { LogType::Info, "Info" },
+        { LogType::Error, "Error" },
+    }, LogType::Error); // last valid state
 }

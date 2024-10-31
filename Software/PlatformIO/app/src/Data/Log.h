@@ -4,6 +4,8 @@
 #include <Arduino.h>
 #include <iostream>
 #include <string>
+#include "LogType.h"
+#include "Data/EnumHelpers.h"
 
 class Log {
 public:
@@ -12,8 +14,15 @@ public:
         return instance;
     }
 
-    void Write(const std::string& message) {
-        std::cout << "[LOG]: " << message << std::endl;
+    void Write(const std::string& message, LogType logType = LogType::Info) {
+        switch(logType) {
+            case LogType::Info: 
+                std::cout << EnumHelpers::LogTypeHelper.ToString(logType) << message << std::endl;
+                break;
+            case LogType::Error: 
+                std::cerr << EnumHelpers::LogTypeHelper.ToString(logType) << message << std::endl;
+                break;
+        }
     }
 
     Log(const Log&) = delete;
@@ -25,15 +34,15 @@ private:
 };
 
 // Overload for const char*
-inline void log(const char* message) {
+inline void log(const char* message, LogType logType = LogType::Info) {
     Log::Instance().Write(std::string(message)); // Convert const char* to std::string
 }
 
-inline void log(const std::string& message) {
+inline void log(const std::string& message, LogType logType = LogType::Info) {
     Log::Instance().Write(message);
 }
 
-inline void log(const String& message) {
+inline void log(const String& message, LogType logType = LogType::Info) {
     Log::Instance().Write(std::string(message.c_str())); // Convert String to std::string
 }
 

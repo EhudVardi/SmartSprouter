@@ -8,6 +8,7 @@
 #include "StateMachine/Setup/SetupStatesEnum.h"
 #include "SystemContext/SystemManagers/ActuatorActions.h"
 #include "GUI/Pages/Pages.h"
+#include "Data/LogType.h"
 
 namespace EnumHelpers {
     extern EnumHelper<AppStates> AppStatesHelper;
@@ -15,6 +16,7 @@ namespace EnumHelpers {
     extern EnumHelper<SetupStates> SetupStatesHelper;
     extern EnumHelper<HumidifierActions> HumidifierActionsHelper;
     extern EnumHelper<Pages> PagesHelper;
+    extern EnumHelper<LogType> LogTypeHelper;
 }
 
 #endif // ENUM_HELPER_ENUMERATION_H
