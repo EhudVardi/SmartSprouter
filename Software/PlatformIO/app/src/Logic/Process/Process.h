@@ -15,7 +15,7 @@ public:
         windowEvents.push_back(event);
     }
 
-    void updatePeriodicEvents(DateTime currentTime) {
+    void updatePeriodicEvents(DisplayDateTime currentTime) {
         for (auto& event : periodicEvents) {
             event.update(currentTime);
         }
