@@ -17,10 +17,10 @@ public:
     void Write(const std::string& message, LogType logType = LogType::Info) {
         switch(logType) {
             case LogType::Info: 
-                std::cout << EnumHelpers::LogTypeHelper.ToString(logType) << message << std::endl;
+                std::cout << EnumHelpers::LogTypeHelper.ToString(logType) << ": " << message << std::endl;
                 break;
             case LogType::Error: 
-                std::cerr << EnumHelpers::LogTypeHelper.ToString(logType) << message << std::endl;
+                std::cerr << EnumHelpers::LogTypeHelper.ToString(logType) << ": "  << message << std::endl;
                 break;
         }
     }
