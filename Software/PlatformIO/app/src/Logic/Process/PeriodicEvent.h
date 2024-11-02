@@ -45,6 +45,14 @@ public:
         buffer = deserializeMember(&interval, sizeof(interval), buffer);
         buffer = deserializeMember(&duration, sizeof(duration), buffer);
         buffer = deserializeMember(&nextStartTime, sizeof(nextStartTime), buffer);
+    
+    String ToString() const {
+        String str = "PeriodicEvent { ";
+        str += "interval: " + interval.toString() + ", ";
+        str += "duration: " + duration.toString() + ", ";
+        str += "nextStartTime: " + nextStartTime.ToArduinoString() + ", ";
+        str += "active: " + String(active ? "true" : "false") + " }";
+        return str;
     }
 
 private:

@@ -38,6 +38,13 @@ public:
         ActionableEvent<float>::deserialize(buffer);
         buffer = deserializeMember(&lowThreshold, sizeof(lowThreshold), buffer);
         buffer = deserializeMember(&highThreshold, sizeof(highThreshold), buffer);
+    
+    String ToString() const {
+        String str = "WindowEvent { ";
+        str += "lowThreshold: " + String(lowThreshold) + ", ";
+        str += "highThreshold: " + String(highThreshold) + ", ";
+        str += "active: " + String(active ? "true" : "false") + " }";
+        return str;
     }
 
 private:

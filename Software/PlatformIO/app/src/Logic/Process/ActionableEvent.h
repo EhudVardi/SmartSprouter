@@ -29,6 +29,11 @@ public:
     }
     virtual void deserialize(const uint8_t* buffer) override {
         buffer = deserializeMember(&active, sizeof(active), buffer);
+
+    String ToString() const {
+        String str = "ActionableEvent { ";
+        str += "active: " + String(active ? "true" : "false") + " }";
+        return str;
     }
 
 protected:
