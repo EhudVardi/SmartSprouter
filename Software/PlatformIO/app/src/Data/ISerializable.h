@@ -57,6 +57,15 @@ public:
     const uint8_t* deserializeMember(size_t* member, const uint8_t* buffer) const {
         return deserializeMember(static_cast<void*>(member), sizeof(size_t), buffer);
     }
+    // Specialized serialize and deserialize for bool
+    uint8_t* serializeMember(const bool* member, uint8_t* buffer) const {
+        *buffer = *member ? 1 : 0;
+        return buffer + 1;
+    }
+    const uint8_t* deserializeMember(bool* member, const uint8_t* buffer) const {
+        *member = (*buffer != 0);
+        return buffer + 1;
+    }
 
     // Variadic template functions for serializing and deserializing multiple members
     template <typename T, typename... Args>
