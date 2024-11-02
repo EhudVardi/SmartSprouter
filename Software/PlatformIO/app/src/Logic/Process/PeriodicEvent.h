@@ -34,11 +34,23 @@ public:
         }
     }
 
-    void serialize(uint8_t* buffer) const override {
-        ActionableEvent<DisplayDateTime>::serialize(buffer);
-        buffer = serializeMember(&interval, sizeof(interval), buffer);
-        buffer = serializeMember(&duration, sizeof(duration), buffer);
-        buffer = serializeMember(&nextStartTime, sizeof(nextStartTime), buffer);
+    // Implementing serialization
+    uint8_t* serialize(uint8_t* buffer) const override {
+        buffer = ActionableEvent::serialize(buffer);
+        buffer = serializeMember(&interval, buffer);
+        buffer = serializeMember(&duration, buffer);
+        return serializeMember(&nextStartTime, buffer);
+    }
+    const uint8_t* deserialize(const uint8_t* buffer) override {
+        buffer = ActionableEvent::deserialize(buffer);
+        buffer = deserializeMember(&interval, buffer);
+        buffer = deserializeMember(&duration, buffer);
+        return deserializeMember(&nextStartTime, buffer);
+    }
+    size_t getSerializedSize() const override {
+        int size = ActionableEvent::getSerializedSize() + sizeof(interval) + sizeof(duration) + sizeof(nextStartTime);
+        return size;
+    }
 
     // equal operator overload
     bool operator==(const PeriodicEvent& other) const {
@@ -47,11 +59,6 @@ public:
                nextStartTime == other.nextStartTime &&
                active == other.active;
     }
-    void deserialize(const uint8_t* buffer) override {
-        ActionableEvent<DisplayDateTime>::deserialize(buffer);
-        buffer = deserializeMember(&interval, sizeof(interval), buffer);
-        buffer = deserializeMember(&duration, sizeof(duration), buffer);
-        buffer = deserializeMember(&nextStartTime, sizeof(nextStartTime), buffer);
     
     String ToString() const {
         String str = "PeriodicEvent { ";

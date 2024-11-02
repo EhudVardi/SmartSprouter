@@ -29,10 +29,21 @@ public:
             startAction, stopAction),
           lowThreshold(p_lowThreshold), highThreshold(p_highThreshold) { }
 
-    void serialize(uint8_t* buffer) const override {
-        ActionableEvent<float>::serialize(buffer);
-        buffer = serializeMember(&lowThreshold, sizeof(lowThreshold), buffer);
-        buffer = serializeMember(&highThreshold, sizeof(highThreshold), buffer);
+    // Implementing serialization
+    uint8_t* serialize(uint8_t* buffer) const override {
+        buffer = ActionableEvent::serialize(buffer);
+        buffer = serializeMember(&lowThreshold, buffer);
+        return serializeMember(&highThreshold, buffer);
+    }
+    const uint8_t* deserialize(const uint8_t* buffer) override {
+        buffer = ActionableEvent::deserialize(buffer);
+        buffer = deserializeMember(&lowThreshold, buffer);
+        return deserializeMember(&highThreshold, buffer);
+    }
+    size_t getSerializedSize() const override {
+        int size = ActionableEvent::getSerializedSize() + sizeof(lowThreshold) + sizeof(highThreshold);
+        return size;
+    }
 
     // equal operator overload
     bool operator==(const WindowEvent& other) const {
@@ -40,10 +51,6 @@ public:
                highThreshold == other.highThreshold &&
                active == other.active;
     }
-    void deserialize(const uint8_t* buffer) override {
-        ActionableEvent<float>::deserialize(buffer);
-        buffer = deserializeMember(&lowThreshold, sizeof(lowThreshold), buffer);
-        buffer = deserializeMember(&highThreshold, sizeof(highThreshold), buffer);
     
     String ToString() const {
         String str = "WindowEvent { ";
