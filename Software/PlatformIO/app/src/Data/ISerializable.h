@@ -1,8 +1,6 @@
 #ifndef ISERIALIZABLE_H
 #define ISERIALIZABLE_H
 
-#include <cstring>
-#include <cstdint>
 
 class ISerializable {
 public:
