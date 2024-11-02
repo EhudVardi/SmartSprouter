@@ -51,6 +51,9 @@ public:
                highThreshold == other.highThreshold &&
                active == other.active;
     }
+    bool operator!=(const WindowEvent& other) const {
+        return !(*this == other);
+    }
     
     String ToString() const {
         String str = "WindowEvent { ";

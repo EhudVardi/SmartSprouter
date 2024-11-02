@@ -59,6 +59,9 @@ public:
                nextStartTime == other.nextStartTime &&
                active == other.active;
     }
+    bool operator!=(const PeriodicEvent& other) const {
+        return !(*this == other);
+    }
     
     String ToString() const {
         String str = "PeriodicEvent { ";
