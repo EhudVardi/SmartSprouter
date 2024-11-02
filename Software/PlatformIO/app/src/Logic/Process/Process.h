@@ -8,6 +8,10 @@
 
 class Process : public ISerializable {
 public:
+    Process() {}
+    Process(DisplayTimeSpan duration, DisplayDateTime start) 
+        : totalDuration(duration), remainingDuration(duration), startTime(start) {}
+
     void addPeriodicEvent(const PeriodicEvent& event) {
         periodicEvents.push_back(event);
     }
@@ -30,6 +34,10 @@ public:
     virtual uint8_t* serialize(uint8_t* buffer) const override {
         uint8_t* ptr = buffer;
 
+        ptr = serializeMember(&startTime, ptr);
+        ptr = serializeMember(&totalDuration, ptr);
+        ptr = serializeMember(&remainingDuration, ptr);
+
         size_t periodicEventCount = periodicEvents.size();
         ptr = serializeMember(&periodicEventCount, ptr);
         for (const auto& event : periodicEvents) {
@@ -46,6 +54,10 @@ public:
     }
     virtual const uint8_t* deserialize(const uint8_t* buffer) override {
         const uint8_t* ptr = buffer;
+
+        ptr = deserializeMember(&startTime, ptr);
+        ptr = deserializeMember(&totalDuration, ptr);
+        ptr = deserializeMember(&remainingDuration, ptr);
 
         size_t periodicEventCount;
         ptr = deserializeMember(&periodicEventCount, ptr);
@@ -73,6 +85,10 @@ public:
 
         size_t size = 0;
 
+        size += sizeof(startTime);
+        size += sizeof(totalDuration);
+        size += sizeof(remainingDuration);
+
         size += sizeof(size_t); // For periodicEventCount
         for (const auto& event : periodicEvents) {
             size += event.getSerializedSize();
@@ -88,6 +104,11 @@ public:
 
     // equal operator overload
     bool operator==(const Process& other) const {
+
+        // compare local members
+        if (startTime != other.startTime) return false;
+        if (totalDuration != other.totalDuration) return false;
+        if (remainingDuration != other.remainingDuration) return false;
         
         // Compare periodicEvents lists
         if (periodicEvents.size() != other.periodicEvents.size()) return false;
@@ -104,6 +125,9 @@ public:
     }
 
 private:
+    DisplayDateTime startTime;
+    DisplayTimeSpan totalDuration;
+    DisplayTimeSpan remainingDuration;
     std::vector<PeriodicEvent> periodicEvents;
     std::vector<WindowEvent> windowEvents;
 };

@@ -20,6 +20,9 @@ public:
     bool operator==(const DisplayDateTime& other) const {
         return unixtime() == other.unixtime();
     }
+    bool operator!=(const DisplayDateTime& other) const {
+        return !(*this == other);
+    }
 };
 
 
@@ -60,6 +63,9 @@ public:
     
     bool operator==(const DisplayTimeSpan& other) const {
         return totalseconds() == other.totalseconds();
+    }
+    bool operator!=(const DisplayTimeSpan& other) const {
+        return !(*this == other);
     }
 };
 
