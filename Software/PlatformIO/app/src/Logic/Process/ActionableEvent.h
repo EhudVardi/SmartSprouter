@@ -24,11 +24,16 @@ public:
         }
     }
 
-    virtual void serialize(uint8_t* buffer) const override {
-        buffer = serializeMember(&active, sizeof(active), buffer);
+    // Implementing serialization
+    virtual uint8_t* serialize(uint8_t* buffer) const override {
+        return serializeMember(&active, buffer);
     }
-    virtual void deserialize(const uint8_t* buffer) override {
-        buffer = deserializeMember(&active, sizeof(active), buffer);
+    virtual const uint8_t* deserialize(const uint8_t* buffer) override {
+        return deserializeMember(&active, buffer);
+    }
+    virtual size_t getSerializedSize() const override {
+        return sizeof(active);
+    }
 
     String ToString() const {
         String str = "ActionableEvent { ";
