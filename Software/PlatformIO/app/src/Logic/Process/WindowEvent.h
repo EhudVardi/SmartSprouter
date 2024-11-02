@@ -33,6 +33,12 @@ public:
         ActionableEvent<float>::serialize(buffer);
         buffer = serializeMember(&lowThreshold, sizeof(lowThreshold), buffer);
         buffer = serializeMember(&highThreshold, sizeof(highThreshold), buffer);
+
+    // equal operator overload
+    bool operator==(const WindowEvent& other) const {
+        return lowThreshold == other.lowThreshold &&
+               highThreshold == other.highThreshold &&
+               active == other.active;  //PRINT THE ARRAYS! endianess??
     }
     void deserialize(const uint8_t* buffer) override {
         ActionableEvent<float>::deserialize(buffer);

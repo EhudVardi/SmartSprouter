@@ -39,6 +39,13 @@ public:
         buffer = serializeMember(&interval, sizeof(interval), buffer);
         buffer = serializeMember(&duration, sizeof(duration), buffer);
         buffer = serializeMember(&nextStartTime, sizeof(nextStartTime), buffer);
+
+    // equal operator overload
+    bool operator==(const PeriodicEvent& other) const {
+        return interval == other.interval &&
+               duration == other.duration &&
+               nextStartTime == other.nextStartTime &&
+               active == other.active;
     }
     void deserialize(const uint8_t* buffer) override {
         ActionableEvent<DisplayDateTime>::deserialize(buffer);

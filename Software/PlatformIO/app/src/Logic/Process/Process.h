@@ -65,6 +65,22 @@ public:
             event.deserialize(buffer);
             windowEvents.push_back(event);
         }
+
+    // equal operator overload
+    bool operator==(const Process& other) const {
+
+        // Compare periodicEvents lists
+        if (periodicEvents.size() != other.periodicEvents.size()) { log("test1"); return false; }
+        if (!std::equal(periodicEvents.begin(), periodicEvents.end(), other.periodicEvents.begin())) { log("test2"); return false; }
+
+        // Compare windowEvents lists
+        if (windowEvents.size() != other.windowEvents.size()) { log("test3"); return false; }
+        if (!std::equal(windowEvents.begin(), windowEvents.end(), other.windowEvents.begin())) { log("test4"); return false; }
+        
+        return true;
+    }
+    bool operator!=(const Process& other) const {
+        return !(*this == other);
     }
 
 private:
