@@ -74,7 +74,7 @@ void Application::loop() {
     // prefHandler.clearObjectFromNVS("CurrProcess");
     
     // // Initialize a Process object
-    // Process process;
+    // Process process(DisplayTimeSpan(1,2,3,4), DisplayDateTime(2000,1,2,3,4,5));
 
     // // Initialize a PeriodicEvent (for example, every 10 minutes with 1 minute duration)
     // PeriodicEvent periodicEvent(
