@@ -15,13 +15,12 @@ template <typename T>
 inline String toString(const T& value) {
     return String(value);
 }
-// lib class/struct types
-template <>
-inline String toString(const DisplayDateTime& value) {
-    return value.ToArduinoString();
-}
 // my custom types
 #include "Data/DisplayTypes.h"
+template <>
+inline String toString(const DisplayDateTime& value) {
+    return value.ToArduinoString(); // Assuming your class has a toString() member function
+}
 template <>
 inline String toString(const DisplayTimeSpan& value) {
     return value.ToString(); // Assuming your class has a toString() member function
