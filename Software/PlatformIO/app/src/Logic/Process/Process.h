@@ -26,45 +26,63 @@ public:
         }
     }
     
-    void serialize(uint8_t* buffer) const override {
+    // Implementing serialization
+    virtual uint8_t* serialize(uint8_t* buffer) const override {
+        uint8_t* ptr = buffer;
 
-        // Serialize the size of periodicEvents
-        size_t periodicEventsSize = periodicEvents.size();
-        buffer = serializeMember(&periodicEventsSize, sizeof(periodicEventsSize), buffer);
-        // Serialize each periodic event
+        size_t periodicEventCount = periodicEvents.size();
+        ptr = serializeMember(&periodicEventCount, ptr);
         for (const auto& event : periodicEvents) {
-            event.serialize(buffer);
+            ptr = event.serialize(ptr);
         }
-        
-        // Serialize the size of windowEvents
-        size_t windowEventsSize = windowEvents.size();
-        buffer = serializeMember(&windowEventsSize, sizeof(windowEventsSize), buffer);
-        // Serialize each window event
-        for (const auto& event : windowEvents) {
-            event.serialize(buffer);
-        }
-    }
-    void deserialize(const uint8_t* buffer) override {
 
-        // Deserialize the size of periodicEvents
-        size_t periodicEventsSize;
-        buffer = deserializeMember(&periodicEventsSize, sizeof(periodicEventsSize), buffer);
+        size_t windowEventCount = windowEvents.size();
+        ptr = serializeMember(&windowEventCount, ptr);
+        for (const auto& event : windowEvents) {
+            ptr = event.serialize(ptr);
+        }
+
+        return ptr;
+    }
+    virtual const uint8_t* deserialize(const uint8_t* buffer) override {
+        const uint8_t* ptr = buffer;
+
+        size_t periodicEventCount;
+        ptr = deserializeMember(&periodicEventCount, ptr);
         periodicEvents.clear();
-        for (size_t i = 0; i < periodicEventsSize; ++i) {
+        for (size_t i = 0; i < periodicEventCount; ++i) {
             PeriodicEvent event;
-            event.deserialize(buffer);
+            ptr = event.deserialize(ptr);
             periodicEvents.push_back(event);
         }
 
-        // Deserialize the size of windowEvents
-        size_t windowEventsSize;
-        buffer = deserializeMember(&windowEventsSize, sizeof(windowEventsSize), buffer);
+        size_t windowEventCount; 
+        ptr = deserializeMember(&windowEventCount, ptr);
         windowEvents.clear();
-        for (size_t i = 0; i < windowEventsSize; ++i) {
+        for (size_t i = 0; i < windowEventCount; ++i) {
             WindowEvent event;
-            event.deserialize(buffer);
+            ptr = event.deserialize(ptr);
             windowEvents.push_back(event);
         }
+
+        return ptr; // Return the updated pointer
+    }
+    virtual size_t getSerializedSize() const override {
+
+        size_t size = 0;
+
+        size += sizeof(size_t); // For periodicEventCount
+        for (const auto& event : periodicEvents) {
+            size += event.getSerializedSize();
+        }
+
+        size += sizeof(size_t); // For windowEventCount
+        for (const auto& event : windowEvents) {
+            size += event.getSerializedSize();
+        }
+
+        return size;
+    }
 
     // equal operator overload
     bool operator==(const Process& other) const {
