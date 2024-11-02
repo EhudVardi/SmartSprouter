@@ -16,6 +16,10 @@ public:
                  year(), month(), day(), hour(), minute(), second());
         return String(buffer);
     }
+    
+    bool operator==(const DisplayDateTime& other) const {
+        return unixtime() == other.unixtime();
+    }
 };
 
 
@@ -52,6 +56,10 @@ public:
         if (_seconds > 0) {
             _seconds--;
         }
+    }
+    
+    bool operator==(const DisplayTimeSpan& other) const {
+        return totalseconds() == other.totalseconds();
     }
 };
 
