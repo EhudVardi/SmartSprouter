@@ -56,7 +56,7 @@ public:
         String str = "WindowEvent { ";
         str += "lowThreshold: " + String(lowThreshold) + ", ";
         str += "highThreshold: " + String(highThreshold) + ", ";
-        str += "active: " + String(active ? "true" : "false") + " }";
+        str += ActionableEvent::ToString() + " }";
         return str;
     }
 

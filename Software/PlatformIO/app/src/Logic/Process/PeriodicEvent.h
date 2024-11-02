@@ -65,7 +65,7 @@ public:
         str += "interval: " + interval.toString() + ", ";
         str += "duration: " + duration.toString() + ", ";
         str += "nextStartTime: " + nextStartTime.ToArduinoString() + ", ";
-        str += "active: " + String(active ? "true" : "false") + " }";
+        str += ActionableEvent::ToString() + " }";
         return str;
     }
 
