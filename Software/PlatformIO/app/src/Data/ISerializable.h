@@ -37,8 +37,9 @@ public:
         return deserializeAll(deserializeMember(&member, sizeof(member), buffer), args...);
     }
 
-    virtual void serialize(uint8_t* buffer) const = 0;
-    virtual void deserialize(const uint8_t* buffer) = 0;
+    virtual uint8_t* serialize(uint8_t* buffer) const = 0;
+    virtual const uint8_t* deserialize(const uint8_t* buffer) = 0;
+    virtual size_t getSerializedSize() const = 0;
 };
 
 #endif // ISERIALIZABLE_H

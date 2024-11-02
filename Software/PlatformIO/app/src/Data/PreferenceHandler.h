@@ -40,25 +40,49 @@ public:
 private:
     Preferences preferences;
     const char* namespaceName;
+    const char* keySizePrefix = "_ks"; // Suffix for size keys
+    const int NVS_KEY_NAME_MAX_SIZE = 16; // a definition from nvs.h, of the maximum size of any key
+
+    bool validateKeyLength(const char* key) const;
+    bool saveSizeKey(const char* key, size_t size);
+    bool loadSizeKey(const char* key, size_t& size);
 };
 
 // Template implementations in the header file
 template <typename T, typename>
 bool PreferenceHandler::saveObjectToNVS(const T& obj, const char* key) {
-    uint8_t buffer[sizeof(T)];
-    obj.serialize(buffer);  // Serialize the object into a byte array
-    size_t bytesWritten = preferences.putBytes(key, buffer, sizeof(T));  // Save the byte array to NVS
-    return bytesWritten == sizeof(T);  // Return true if all bytes were written
+    if (!validateKeyLength(key)) return false;
+
+    size_t bufferSize = obj.getSerializedSize();
+    if (strstr(key, keySizePrefix) != nullptr) return false; // Prevent using keys ending in keySizePrefix
+
+    if (!saveSizeKey(key, bufferSize)) return false;
+
+    uint8_t* buffer = new uint8_t[bufferSize];
+    obj.serialize(buffer);
+
+    size_t bytesWritten = preferences.putBytes(key, buffer, bufferSize);
+    delete[] buffer;
+
+    return bytesWritten == bufferSize;
 }
 
 template <typename T, typename>
 bool PreferenceHandler::loadObjectFromNVS(T& obj, const char* key) {
-    uint8_t buffer[sizeof(T)];
-    size_t bytesRead = preferences.getBytes(key, buffer, sizeof(T));
-    if (bytesRead != sizeof(T)) {
-        return false;  // Object not found or size mismatch
+    if (!validateKeyLength(key)) return false;
+
+    size_t bufferSize;
+    if (!loadSizeKey(key, bufferSize)) return false;
+
+    uint8_t* buffer = new uint8_t[bufferSize];
+    size_t bytesRead = preferences.getBytes(key, buffer, bufferSize);
+    if (bytesRead != bufferSize) {
+        delete[] buffer;
+        return false;
     }
     obj.deserialize(buffer);  // Deserialize the byte array into the object
+    delete[] buffer;
+
     return true;
 }
 
