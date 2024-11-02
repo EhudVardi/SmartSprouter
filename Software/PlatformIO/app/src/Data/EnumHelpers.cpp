@@ -54,6 +54,7 @@ namespace EnumHelpers {
     
     EnumHelper<LogType> LogTypeHelper({
         { LogType::Info, "Info" },
+        { LogType::Debug, "Debug" },
         { LogType::Error, "Error" },
     }, LogType::Error); // last valid state
 }
