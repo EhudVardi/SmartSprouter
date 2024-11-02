@@ -38,7 +38,7 @@ public:
     bool operator==(const WindowEvent& other) const {
         return lowThreshold == other.lowThreshold &&
                highThreshold == other.highThreshold &&
-               active == other.active;  //PRINT THE ARRAYS! endianess??
+               active == other.active;
     }
     void deserialize(const uint8_t* buffer) override {
         ActionableEvent<float>::deserialize(buffer);
