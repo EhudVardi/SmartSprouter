@@ -4,7 +4,7 @@
 #include "Logic/Process/PeriodicEvent.h"
 #include "Logic/Process/WindowEvent.h"
 #include "Data/ISerializable.h"
-#include <list>
+#include <vector>
 
 class Process : public ISerializable {
 public:
@@ -50,6 +50,7 @@ public:
         size_t periodicEventCount;
         ptr = deserializeMember(&periodicEventCount, ptr);
         periodicEvents.clear();
+        periodicEvents.reserve(periodicEventCount);
         for (size_t i = 0; i < periodicEventCount; ++i) {
             PeriodicEvent event;
             ptr = event.deserialize(ptr);
@@ -59,6 +60,7 @@ public:
         size_t windowEventCount; 
         ptr = deserializeMember(&windowEventCount, ptr);
         windowEvents.clear();
+        windowEvents.reserve(windowEventCount);
         for (size_t i = 0; i < windowEventCount; ++i) {
             WindowEvent event;
             ptr = event.deserialize(ptr);
@@ -102,8 +104,8 @@ public:
     }
 
 private:
-    std::list<PeriodicEvent> periodicEvents;
-    std::list<WindowEvent> windowEvents;
+    std::vector<PeriodicEvent> periodicEvents;
+    std::vector<WindowEvent> windowEvents;
 };
 
 #endif // PROCESS_H
