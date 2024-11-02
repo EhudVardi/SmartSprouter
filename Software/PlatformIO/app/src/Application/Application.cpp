@@ -65,31 +65,63 @@ void Application::loop() {
 
 //////Data store serialization and NOVRAM
 
-// #include "Data/Process.h"
 // #include "Data/PreferenceHandler.h"
+// #include "Logic/Process/Process.h"
 
 
     // PreferenceHandler prefHandler("AppProcess");
 
-    // Process process(10, 30, 20, 25, DisplayTimeSpan(1,2,3,4));
-    // prefHandler.saveObjectToNVS(process, "CurrProcess");
-
-    // log("Object created and saved");
-    // log(process.toString().c_str());
-
-    // process.TickDurationDown();
+    // prefHandler.clearObjectFromNVS("CurrProcess");
     
+    // // Initialize a Process object
+    // Process process;
+
+    // // Initialize a PeriodicEvent (for example, every 10 minutes with 1 minute duration)
+    // PeriodicEvent periodicEvent(
+    //     DisplayTimeSpan(1,2,3,4),               // Interval
+    //     DisplayTimeSpan(5,6,7,8),                // Duration
+    //     []() { log("PeriodicEvent Start\n"); },  // Start Action
+    //     []() { log("PeriodicEvent Stop\n"); }    // Stop Action
+    // );
+
+    // // Initialize a WindowEvent with thresholds
+    // WindowEvent windowEvent(
+    //     30.0f,                                   // Low threshold
+    //     70.0f,                                   // High threshold
+    //     []() { log("WindowEvent Start\n"); },    // Start Action
+    //     []() { log("WindowEvent Stop\n"); }      // Stop Action
+    // );
+    
+    // process.addPeriodicEvent(periodicEvent);
+    // process.addSensorEvent(windowEvent);
+
+    // // init some empty events
+    // WindowEvent windowEvent2;
+    // process.addSensorEvent(windowEvent2);
+    // WindowEvent windowEvent3;
+    // process.addSensorEvent(windowEvent3);
+    
+    // PeriodicEvent periodicEvent2;
+    // process.addPeriodicEvent(periodicEvent2);
+    // PeriodicEvent periodicEvent3;
+    // process.addPeriodicEvent(periodicEvent3);
+
+    // log("saving to NOV.");
     // prefHandler.saveObjectToNVS(process, "CurrProcess");
-    // log("Object modified and saved");
-    // log(process.toString().c_str());
-
+    
+    // log("loading from NOV");
     // Process loadedProcess;
-
     // if (prefHandler.loadObjectFromNVS(loadedProcess, "CurrProcess")) {
     //     log("Object loaded successfully:");
-    //     log(loadedProcess.toString().c_str());
     // } else {
     //     log("Object not found or corrupted.");
+    // }
+
+    // log("comparing instances");
+    // if (process == loadedProcess) {
+    //     log("instances equal!");
+    // } else {
+    //     log("instances different..");
     // }
 
     // if (prefHandler.clearObjectFromNVS("CurrProcess")) {
@@ -98,7 +130,5 @@ void Application::loop() {
     //     log("Object failed to clear:");
     // }
 
-
+    // log("finished");
     // while(true) {delay(1000);}
-
-
