@@ -93,13 +93,13 @@ void Application::loop() {
     // );
     
     // process.addPeriodicEvent(periodicEvent);
-    // process.addSensorEvent(windowEvent);
+    // process.addWindowEvent(windowEvent);
 
     // // init some empty events
     // WindowEvent windowEvent2;
-    // process.addSensorEvent(windowEvent2);
+    // process.addWindowEvent(windowEvent2);
     // WindowEvent windowEvent3;
-    // process.addSensorEvent(windowEvent3);
+    // process.addWindowEvent(windowEvent3);
     
     // PeriodicEvent periodicEvent2;
     // process.addPeriodicEvent(periodicEvent2);

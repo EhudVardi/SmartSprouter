@@ -11,7 +11,7 @@ public:
     void addPeriodicEvent(const PeriodicEvent& event) {
         periodicEvents.push_back(event);
     }
-    void addSensorEvent(const WindowEvent& event) {
+    void addWindowEvent(const WindowEvent& event) {
         windowEvents.push_back(event);
     }
 
