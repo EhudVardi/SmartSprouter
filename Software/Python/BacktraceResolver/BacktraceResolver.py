@@ -60,6 +60,13 @@ def browse_elf():
     elf_entry.delete(0, tk.END)
     elf_entry.insert(tk.END, filename)
 
+# hide the app exec console window 
+def hide_console_window():
+    # Hide the console window of the main script
+    import ctypes
+    hwnd = ctypes.windll.kernel32.GetConsoleWindow()
+    ctypes.windll.user32.ShowWindow(hwnd, 0)
+
 # GUI setup
 root = tk.Tk()
 root.title("Addr2line Backtrace Translator")
@@ -101,6 +108,9 @@ run_button.grid(row=4, column=1, columnspan=2, pady=10)
 # Configure grid stretching
 root.grid_rowconfigure(3, weight=1)
 root.grid_columnconfigure(1, weight=1)
+
+# Hide the console window before starting app window
+hide_console_window()
 
 # Start GUI
 root.mainloop()
