@@ -10,7 +10,7 @@ void ProcessManager::createCurrentProcess(float minHumidity, float maxHumidity,
                               float minTemperature, float maxTemperature, 
                               DisplayTimeSpan ventsInterval, DisplayTimeSpan ventsDuration, 
                               DisplayTimeSpan totalDuration, 
-                              TimeManager* timeManager, ActuatorManager* actuatorManager) {
+                              std::shared_ptr<TimeManager> timeManager, std::shared_ptr<ActuatorManager> actuatorManager) {
 
     deleteCurrentProcess();
     Process* newProcess = new Process(totalDuration, timeManager->getCurrentTime());
