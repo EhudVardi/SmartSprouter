@@ -92,19 +92,21 @@ void Application::loop() {
     //     []() { log("WindowEvent Stop\n"); }      // Stop Action
     // );
     
-    // process.addPeriodicEvent(periodicEvent);
-    // process.addWindowEvent(windowEvent);
+    // process.addPeriodicEvent(PeriodicEvents::PeriodicEvent1, periodicEvent);
+    // process.addWindowEvent(WindowEvents::WindowEvent1, windowEvent);
 
-    // // init some empty events
+    // //init some empty events
     // WindowEvent windowEvent2;
-    // process.addWindowEvent(windowEvent2);
+    // process.addWindowEvent(WindowEvents::WindowEvent2, windowEvent2);
     // WindowEvent windowEvent3;
-    // process.addWindowEvent(windowEvent3);
+    // process.addWindowEvent(WindowEvents::WindowEvent3, windowEvent3);
     
     // PeriodicEvent periodicEvent2;
-    // process.addPeriodicEvent(periodicEvent2);
+    // process.addPeriodicEvent(PeriodicEvents::PeriodicEvent3, periodicEvent2);
     // PeriodicEvent periodicEvent3;
-    // process.addPeriodicEvent(periodicEvent3);
+    // process.addPeriodicEvent(PeriodicEvents::PeriodicEvent3, periodicEvent3);
+
+    // log("process: " + process.ToString());
 
     // log("saving to NOV.");
     // prefHandler.saveObjectToNVS(process, "CurrProcess");
@@ -112,6 +114,7 @@ void Application::loop() {
     // log("loading from NOV");
     // Process loadedProcess;
     // if (prefHandler.loadObjectFromNVS(loadedProcess, "CurrProcess")) {
+    //     log("loadedProcess: " + loadedProcess.ToString());
     //     log("Object loaded successfully:");
     // } else {
     //     log("Object not found or corrupted.");

@@ -67,13 +67,22 @@ public:
         *member = (*buffer != 0);
         return buffer + 1;
     }
-    // Specialized serialize and deserialize for ProcessEvents
-    uint8_t* serializeMember(const ProcessEvents* member, uint8_t* buffer) const {
+    // Specialized serialize and deserialize for PeriodicEvents
+    uint8_t* serializeMember(const PeriodicEvents* member, uint8_t* buffer) const {
         *buffer++ = static_cast<uint8_t>(*member); // Serialize as uint8_t
         return buffer;
     }
-    const uint8_t* deserializeMember(ProcessEvents* member, const uint8_t* buffer) const {
-        *member = static_cast<ProcessEvents>(*buffer++); // Deserialize as uint8_t
+    const uint8_t* deserializeMember(PeriodicEvents* member, const uint8_t* buffer) const {
+        *member = static_cast<PeriodicEvents>(*buffer++); // Deserialize as uint8_t
+        return buffer;
+    }
+    // Specialized serialize and deserialize for WindowEvents
+    uint8_t* serializeMember(const WindowEvents* member, uint8_t* buffer) const {
+        *buffer++ = static_cast<uint8_t>(*member); // Serialize as uint8_t
+        return buffer;
+    }
+    const uint8_t* deserializeMember(WindowEvents* member, const uint8_t* buffer) const {
+        *member = static_cast<WindowEvents>(*buffer++); // Deserialize as uint8_t
         return buffer;
     }
 

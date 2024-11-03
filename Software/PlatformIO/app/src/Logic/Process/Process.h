@@ -15,20 +15,20 @@ public:
     Process(DisplayTimeSpan duration, DisplayDateTime start)
         : totalDuration(duration), remainingDuration(duration), startTime(start) {}
 
-    void addPeriodicEvent(ProcessEvents key, const PeriodicEvent& event) {
+    void addPeriodicEvent(PeriodicEvents key, const PeriodicEvent& event) {
         periodicEvents[key] = event;
     }
-    void addWindowEvent(ProcessEvents key, const WindowEvent& event) {
+    void addWindowEvent(WindowEvents key, const WindowEvent& event) {
         windowEvents[key] = event;
     }
 
-    void updatePeriodicEvent(ProcessEvents eventKey, DisplayDateTime currentTime) {
+    void updatePeriodicEvent(PeriodicEvents eventKey, DisplayDateTime currentTime) {
         auto it = periodicEvents.find(eventKey);
         if (it != periodicEvents.end()) {
             it->second.update(currentTime);
         }
     }
-    void updateWindowEvent(ProcessEvents eventKey, float sensorValue) {
+    void updateWindowEvent(WindowEvents eventKey, float sensorValue) {
         auto it = windowEvents.find(eventKey);
         if (it != windowEvents.end()) {
             it->second.check(sensorValue);
@@ -71,7 +71,7 @@ public:
         ptr = deserializeMember(&periodicEventCount, ptr);
         periodicEvents.clear();
         for (size_t i = 0; i < periodicEventCount; ++i) {
-            ProcessEvents key;
+            PeriodicEvents key;
             ptr = deserializeMember(&key, ptr);
             PeriodicEvent event;
             ptr = event.deserialize(ptr);
@@ -82,7 +82,7 @@ public:
         ptr = deserializeMember(&windowEventCount, ptr);
         windowEvents.clear();
         for (size_t i = 0; i < windowEventCount; ++i) {
-            ProcessEvents key;
+            WindowEvents key;
             ptr = deserializeMember(&key, ptr);
             WindowEvent event;
             ptr = event.deserialize(ptr);
@@ -160,13 +160,13 @@ public:
         // Add periodic events
         str += "periodicEvents: { ";
         for (const auto& pair : periodicEvents) {
-            str += "ProcessEvents::" + String(EnumHelpers::ProcessEventKeyHelper.ToString(pair.first)) + ": " + pair.second.ToString() + ", ";
+            str += "ProcessEvents::" + String(EnumHelpers::PeriodicEventsHelper.ToString(pair.first)) + ": " + pair.second.ToString() + ", ";
         }
         str += "}, ";
         // Add window events
         str += "windowEvents: { ";
         for (const auto& pair : windowEvents) {
-            str += "ProcessEvents::" + String(EnumHelpers::ProcessEventKeyHelper.ToString(pair.first)) + ": " + pair.second.ToString() + ", ";
+            str += "ProcessEvents::" + String(EnumHelpers::WindowEventsHelper.ToString(pair.first)) + ": " + pair.second.ToString() + ", ";
         }
         str += "} ";
 
@@ -178,8 +178,8 @@ private:
     DisplayDateTime startTime;
     DisplayTimeSpan totalDuration;
     DisplayTimeSpan remainingDuration;
-    std::unordered_map<ProcessEvents, PeriodicEvent> periodicEvents; // Use ProcessEvents enum
-    std::unordered_map<ProcessEvents, WindowEvent> windowEvents; // Use ProcessEvents enum
+    std::unordered_map<PeriodicEvents, PeriodicEvent> periodicEvents;
+    std::unordered_map<WindowEvents, WindowEvent> windowEvents;
 };
 
 #endif // PROCESS_H

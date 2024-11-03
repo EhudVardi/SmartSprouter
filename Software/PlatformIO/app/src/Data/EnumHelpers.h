@@ -18,7 +18,8 @@ namespace EnumHelpers {
     extern EnumHelper<HumidifierActions> HumidifierActionsHelper;
     extern EnumHelper<Pages> PagesHelper;
     extern EnumHelper<LogType> LogTypeHelper;
-    extern EnumHelper<ProcessEvents> ProcessEventKeyHelper;
+    extern EnumHelper<PeriodicEvents> PeriodicEventsHelper;
+    extern EnumHelper<WindowEvents> WindowEventsHelper;
 }
 
 #endif // ENUM_HELPER_ENUMERATION_H

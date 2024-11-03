@@ -58,9 +58,15 @@ namespace EnumHelpers {
         { LogType::Error, "Error" },
     }, LogType::Error); // last valid state
     
-    EnumHelper<ProcessEvents> ProcessEventKeyHelper({
-        { ProcessEvents::Event1, "Event1" },
-        { ProcessEvents::Event2, "Event2" },
-        { ProcessEvents::Event3, "Event3" },
-    }, ProcessEvents::Event3); // last valid state
+    EnumHelper<PeriodicEvents> PeriodicEventsHelper({
+        { PeriodicEvents::PeriodicEvent1, "PeriodicEvent1" },
+        { PeriodicEvents::PeriodicEvent2, "PeriodicEvent2" },
+        { PeriodicEvents::PeriodicEvent3, "PeriodicEvent3" },
+    }, PeriodicEvents::PeriodicEvent3); // last valid state
+    
+    EnumHelper<WindowEvents> WindowEventsHelper({
+        { WindowEvents::WindowEvent1, "WindowEvent1" },
+        { WindowEvents::WindowEvent2, "WindowEvent2" },
+        { WindowEvents::WindowEvent3, "WindowEvent3" },
+    }, WindowEvents::WindowEvent3); // last valid state
 }
