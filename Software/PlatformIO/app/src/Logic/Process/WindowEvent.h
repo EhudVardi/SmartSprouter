@@ -14,6 +14,8 @@ public:
           lowThreshold(0.0f),             // Initialize to default threshold
           highThreshold(100.0f)           // Initialize to default threshold
     {}
+    // Constructor with thresholds only (empty callbacks)
+    WindowEvent(float p_lowThreshold, float p_highThreshold) :WindowEvent(p_lowThreshold, p_highThreshold, []() {}, []() {}) {}
     // Constructor with parameters
     WindowEvent(float p_lowThreshold, float p_highThreshold, std::function<void()> startAction, std::function<void()> stopAction)
         : ActionableEvent<float>(
@@ -28,6 +30,11 @@ public:
             },
             startAction, stopAction),
           lowThreshold(p_lowThreshold), highThreshold(p_highThreshold) { }
+    
+    void setThresholds(float p_lowThreshold, float p_highThreshold) {
+        lowThreshold = p_lowThreshold;
+        highThreshold = p_highThreshold;
+    }
 
     // Implementing serialization
     uint8_t* serialize(uint8_t* buffer) const override {

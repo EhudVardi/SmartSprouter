@@ -22,6 +22,21 @@ public:
         windowEvents[key] = event;
     }
 
+    PeriodicEvent* getPeriodicEvent(PeriodicEvents eventKey) {
+        auto it = periodicEvents.find(eventKey);
+        if (it != periodicEvents.end()) {
+            return &it->second;
+        }
+        return nullptr;
+    }
+    WindowEvent* getWindowEvent(WindowEvents eventKey) {
+        auto it = windowEvents.find(eventKey);
+        if (it != windowEvents.end()) {
+            return &it->second;
+        }
+        return nullptr;
+    }
+
     void updatePeriodicEvent(PeriodicEvents eventKey, DisplayDateTime currentTime) {
         auto it = periodicEvents.find(eventKey);
         if (it != periodicEvents.end()) {

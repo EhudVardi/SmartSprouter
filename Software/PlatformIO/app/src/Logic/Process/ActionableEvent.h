@@ -9,6 +9,11 @@ class ActionableEvent : public ISerializable {
 public:
     ActionableEvent(std::function<bool(T)> predicate, std::function<void()> startAction, std::function<void()> stopAction)
         : predicate(predicate), startAction(startAction), stopAction(stopAction), active(false) {}
+        
+    void setActionCallbacks(std::function<void()> p_startAction, std::function<void()> p_stopAction) {
+        startAction = p_startAction;
+        stopAction = p_stopAction;
+    }
 
     void check(T data) {
         if (predicate(data)) {

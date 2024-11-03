@@ -16,6 +16,8 @@ public:
           duration(DisplayTimeSpan()),            // Initialize to default DisplayTimeSpan
           nextStartTime(DisplayDateTime(SECONDS_FROM_1970_TO_2000)) // Initialize to epoch time
     {}
+    // Constructor with thresholds only (empty callbacks)
+    PeriodicEvent(DisplayTimeSpan p_interval, DisplayTimeSpan p_duration) :PeriodicEvent(p_interval, p_duration, []() {}, []() {}) {}
     // Constructor with parameters
     PeriodicEvent(DisplayTimeSpan p_interval, DisplayTimeSpan p_duration, std::function<void()> startAction, std::function<void()> stopAction)
         : ActionableEvent<DisplayDateTime>(
@@ -25,6 +27,11 @@ public:
             startAction, stopAction),
           interval(p_interval), duration(p_duration) {
             nextStartTime = DisplayDateTime(SECONDS_FROM_1970_TO_2000); // Start at epoch time
+    }
+    
+    void setTiming(DisplayTimeSpan p_interval, DisplayTimeSpan p_duration) {
+        interval = p_interval;
+        duration = p_duration;
     }
 
     void update(DisplayDateTime now) {
