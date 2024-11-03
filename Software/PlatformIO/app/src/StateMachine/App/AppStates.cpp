@@ -76,11 +76,11 @@ void InformingState::handleInput(SystemContext* context, InputEvent event) {
 
 
 void InitializingState::enter(SystemContext* context) {
-    /// StateLogic:
-    /// <TODO> check in memory if an unfinished process exists
-    /// <TODO> if exist then load it into current process and transition into running state
-    /// otherwise, transition into idle state
-    stateMachine->changeState(AppStates::Idling, context);
+    if (context->processManager->loadProcessFromStorage(context->actuatorManager)) {
+        stateMachine->changeState(AppStates::Running, context);
+    } else {
+        stateMachine->changeState(AppStates::Idling, context);
+    }
 }
 void InitializingState::exit(SystemContext* context) {}
 void InitializingState::update(SystemContext* context) {}
