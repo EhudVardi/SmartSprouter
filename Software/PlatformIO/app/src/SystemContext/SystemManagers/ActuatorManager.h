@@ -44,6 +44,10 @@ public:
             delay(100);
         }
     }
+
+    void ShutDownAllActuators() {
+        SetHumidifiers(HumidifierActions::Off);
+    }
 };
 
 #endif // ACTUATOR_MANAGER_H
