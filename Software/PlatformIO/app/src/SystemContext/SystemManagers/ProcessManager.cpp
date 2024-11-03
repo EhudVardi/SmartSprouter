@@ -30,7 +30,7 @@ void ProcessManager::createCurrentProcess(float minHumidity, float maxHumidity,
     lastUpdateTime = timeManager->getCurrentTime();
 }
 
-DisplayTimeSpan ProcessManager::updateProcess(DisplayDateTime& now, float currHumidity, float currTemperatur) {
+DisplayTimeSpan ProcessManager::updateProcess(const DisplayDateTime& now, float currHumidity, float currTemperatur) {
 
     currentProcess->updateWindowEvent(WindowEvents::HumidifiersEvent, currHumidity);
     currentProcess->updateWindowEvent(WindowEvents::AirConditionersEvent, currTemperatur);
