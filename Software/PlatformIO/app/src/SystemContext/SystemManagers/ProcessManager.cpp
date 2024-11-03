@@ -53,6 +53,7 @@ bool ProcessManager::loadProcessFromStorage(std::shared_ptr<ActuatorManager> act
     } else {
         // Clean up if loading failed
         delete loadedProcess;
+        currentProcess = nullptr;
         return false;
     }
 }
