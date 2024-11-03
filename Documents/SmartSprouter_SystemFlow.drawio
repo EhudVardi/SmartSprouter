@@ -1162,7 +1162,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="hvhph0BZuOXfKj3lxP2B" name="Process liftime flowchart">
-    <mxGraphModel dx="5238" dy="3279" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="4702" dy="2964" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1433,7 +1433,7 @@
         <mxCell id="w_rVLYRd2tLA3pUXcyVk-211" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="w_rVLYRd2tLA3pUXcyVk-198" target="w_rVLYRd2tLA3pUXcyVk-204" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="w_rVLYRd2tLA3pUXcyVk-198" value="delete saved process from memory&lt;br&gt;currProc = nullptr" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+        <mxCell id="w_rVLYRd2tLA3pUXcyVk-198" value="delete saved process from memory" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="-3255" y="-1329" width="130" height="50" as="geometry" />
         </mxCell>
         <mxCell id="w_rVLYRd2tLA3pUXcyVk-210" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="w_rVLYRd2tLA3pUXcyVk-204" target="w_rVLYRd2tLA3pUXcyVk-185" edge="1">
