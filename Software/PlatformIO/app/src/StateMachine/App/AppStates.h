@@ -82,7 +82,7 @@ public:
 
 class SettingProcessState : public AppState {
 private:
-    std::shared_ptr<PageAppIdle> setupPage = nullptr;
+    std::shared_ptr<PageAppSetup> setupPage = nullptr;
 
     SetupStateMachine setupStateMachine;
     

@@ -129,7 +129,7 @@ SettingProcessState::SettingProcessState() {
 void SettingProcessState::enter(SystemContext* context) {
     context->displayManager->changePage(Pages::Setup);
     if (!setupPage) {
-        setupPage = context->displayManager->getPageAs<PageAppIdle>(Pages::Setup);
+        setupPage = context->displayManager->getPageAs<PageAppSetup>(Pages::Setup);
     }
     setupStateMachine.changeState(SetupStates::HumidityRangeSelect, context); // init nested setup state machine state to initial state
 	log("enter SettingProcessState");
