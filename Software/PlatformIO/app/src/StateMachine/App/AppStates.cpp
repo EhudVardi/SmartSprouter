@@ -123,6 +123,22 @@ void RunningState::handleInput(SystemContext* context, InputEvent event) {
 SettingProcessState::SettingProcessState() {
     setupStateMachine.setOnStartEnterCallback(
         [this](SystemContext* context) {
+
+            context->processManager->createCurrentProcess(
+                setupPage->GetSetupHumidityMin(),
+                setupPage->GetSetupHumidityMax(),
+                setupPage->GetSetupTemperatureMin(),
+                setupPage->GetSetupTemperatureMax(),
+                DisplayTimeSpan(0,0,1,0), //TODO vents interval
+                DisplayTimeSpan(0,0,1,0), //TODO vents duration
+                setupPage->GetDurationSetup(),
+                context->timeManager,
+                context->actuatorManager);
+
+            if (!context->processManager->storeCurrentProcess()) {
+                log("SettingProcessState setOnStartEnterCallback - failed to store newly created process");
+            }
+            
             stateMachine->changeState(AppStates::Running, context);
         });
 }
