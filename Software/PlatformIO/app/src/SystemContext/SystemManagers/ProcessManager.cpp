@@ -2,7 +2,7 @@
 #include "Data/Log.h"
 
 bool ProcessManager::initialize() {
-    lastUpdateTime = DateTime(SECONDS_FROM_1970_TO_2000); //set to oldest time, to force first update once started
+    lastUpdateTime = DateTime(SECONDS_FROM_1970_TO_2000);
     return true;
 }
 
