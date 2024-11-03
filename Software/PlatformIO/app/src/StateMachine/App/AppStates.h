@@ -62,9 +62,14 @@ public:
 #ifndef RUNNING_STATE_H
 #define RUNNING_STATE_H
 
+#include "Utils/Timer.h"
+
 class RunningState : public AppState {
 private:
     std::shared_ptr<PageAppRun> runPage = nullptr;
+
+    Timer* storeProcessTimer = nullptr;
+    const int storeProcessInterval = 10000; //store process state every 10 seconds
     
 public:
     void enter(SystemContext* context) override;

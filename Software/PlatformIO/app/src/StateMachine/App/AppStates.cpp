@@ -96,21 +96,42 @@ void RunningState::enter(SystemContext* context) {
     if (!runPage) {
         runPage = context->displayManager->getPageAs<PageAppRun>(Pages::Run);
     }
+    if (!storeProcessTimer) {
+        storeProcessTimer = new Timer(storeProcessInterval);
+        storeProcessTimer->setCallback([context]() {
+            if (context)
+                context->timeManager->update();
+        });
+    }
+    storeProcessTimer->start();
 	log("enter RunningState");
 }
 void RunningState::exit(SystemContext* context) {
+    storeProcessTimer->stop();
 	log("exit RunningState");
 }
 void RunningState::update(SystemContext* context) {
+
 	float humidity = context->sensorManager->getHumidity();
 	float temperature = context->sensorManager->getTemperature();
-	//TODO: make decisions and update actuators
-    if (runPage) {
-        runPage->SetHumidity(humidity);
-        runPage->SetTemperature(temperature);
-        context->displayManager->refresh();
+
+    DisplayTimeSpan remainingTime = context->processManager->updateProcess(context->timeManager->getCurrentTime(), humidity, temperature);
+    if (remainingTime.totalseconds() <= 0) {
+        log("RunningState: process finished successfully");
+        //TODO: log results
+        context->processManager->deleteCurrentProcess();
+        context->processManager->deleteStoredProcess();
+        context->actuatorManager->ShutDownAllActuators();
+        stateMachine->changeState(AppStates::Idling, context); //TODO: goto summery page/state ?
+    } else {
+        if (runPage) {
+            runPage->SetHumidity(humidity);
+            runPage->SetTemperature(temperature);
+            context->displayManager->refresh();
+        }
     }
-	//log("update RunningState");
+
+    storeProcessTimer->update();
 }
 void RunningState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::BackPressed) {
@@ -155,7 +176,6 @@ void SettingProcessState::exit(SystemContext* context) {
 }
 void SettingProcessState::update(SystemContext* context) {
     if (setupPage) {
-        
         context->displayManager->refresh();
     }
 }
