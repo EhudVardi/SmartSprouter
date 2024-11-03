@@ -9,9 +9,6 @@ void AbortingState::enter(SystemContext* context) {
 	log("enter AbortingState");
 }
 void AbortingState::exit(SystemContext* context) {
-    context->processManager->deleteCurrentProcess();
-    context->processManager->deleteStoredProcess();
-    context->actuatorManager->ShutDownAllActuators();
 	log("exit AbortingState");
 }
 void AbortingState::update(SystemContext* context) {
@@ -22,6 +19,9 @@ void AbortingState::handleInput(SystemContext* context, InputEvent event) {
         stateMachine->changeState(AppStates::Running, context);
     }
     else if (event == InputEvent::EnterPressed) {
+        context->processManager->deleteCurrentProcess();
+        context->processManager->deleteStoredProcess();
+        context->actuatorManager->ShutDownAllActuators();
         stateMachine->changeState(AppStates::Idling, context);
     }
 }
