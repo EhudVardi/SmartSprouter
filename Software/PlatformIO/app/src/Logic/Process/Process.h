@@ -49,6 +49,11 @@ public:
             it->second.check(sensorValue);
         }
     }
+
+    const DisplayTimeSpan updateRemainingDuration(const DisplayTimeSpan& passedTime) {
+        remainingDuration = remainingDuration - passedTime;
+        return remainingDuration;
+    }
     
     // Implementing serialization
     virtual uint8_t* serialize(uint8_t* buffer) const override {

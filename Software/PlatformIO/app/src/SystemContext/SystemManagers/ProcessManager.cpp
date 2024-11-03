@@ -30,6 +30,16 @@ void ProcessManager::createCurrentProcess(float minHumidity, float maxHumidity,
     lastUpdateTime = timeManager->getCurrentTime();
 }
 
+DisplayTimeSpan ProcessManager::updateProcess(DisplayDateTime& now, float currHumidity, float currTemperatur) {
+
+    currentProcess->updateWindowEvent(WindowEvents::HumidifiersEvent, currHumidity);
+    currentProcess->updateWindowEvent(WindowEvents::AirConditionersEvent, currTemperatur);
+    currentProcess->updatePeriodicEvent(PeriodicEvents::VentilatorsEvent, now);
+    
+    DisplayTimeSpan updatedRemainingTime = currentProcess->updateRemainingDuration(now - lastUpdateTime);
+    return updatedRemainingTime;
+}
+
 bool ProcessManager::storeCurrentProcess() {
     return prefHandler->saveObjectToNVS(*currentProcess, currentProcessKey);
 }
