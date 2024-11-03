@@ -9,6 +9,9 @@ void AbortingState::enter(SystemContext* context) {
 	log("enter AbortingState");
 }
 void AbortingState::exit(SystemContext* context) {
+    context->processManager->deleteCurrentProcess();
+    context->processManager->deleteStoredProcess();
+    context->actuatorManager->ShutDownAllActuators();
 	log("exit AbortingState");
 }
 void AbortingState::update(SystemContext* context) {
