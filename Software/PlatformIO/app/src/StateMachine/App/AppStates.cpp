@@ -186,7 +186,7 @@ void StartingUpState::enter(SystemContext* context) {
     }
 
     // attempt to update RTC from NTP service
-    if (context->timeManager->UpdateRtcFromNtpService(context->networkManager.get())){
+    if (context->timeManager->UpdateRtcFromNtpService(context->networkManager)){
         log("update time from ntp service successful");
         log(context->timeManager->getCurrentTime().ToArduinoString());
     } else { 

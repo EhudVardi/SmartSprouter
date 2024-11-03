@@ -28,7 +28,7 @@ const DisplayDateTime& TimeManager::getCurrentTime() const {
     return *currentTime; // Return a const reference to the current time instance
 }
 
-bool TimeManager::UpdateRtcFromNtpService(NetworkManager* networkManager) {
+bool TimeManager::UpdateRtcFromNtpService(std::shared_ptr<NetworkManager> networkManager) {
     time_t fetchedEpoch;
     if (networkManager->GetTimeFromNTPService(fetchedEpoch)){
         setTimeFromExtSource(fetchedEpoch);
