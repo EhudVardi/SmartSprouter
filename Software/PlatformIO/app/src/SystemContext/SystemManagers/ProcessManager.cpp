@@ -43,7 +43,7 @@ DisplayTimeSpan ProcessManager::updateProcess(DisplayDateTime& now, float currHu
 bool ProcessManager::storeCurrentProcess() {
     return prefHandler->saveObjectToNVS(*currentProcess, currentProcessKey);
 }
-bool ProcessManager::loadProcessFromStorage(ActuatorManager* actuatorManager) {
+bool ProcessManager::loadProcessFromStorage(std::shared_ptr<ActuatorManager> actuatorManager) {
     deleteCurrentProcess(); // Clear any existing process to avoid memory leaks
     Process* loadedProcess = new Process(); // Dynamically allocate a new Process object
     if (prefHandler->loadObjectFromNVS(*loadedProcess, currentProcessKey)) {
@@ -64,7 +64,7 @@ bool ProcessManager::deleteStoredProcess() {
     return prefHandler->clearObjectFromNVS(currentProcessKey);
 }
 
-bool ProcessManager::setProcessEventsCallbacks(Process* process, ActuatorManager* actuatorManager){
+bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr<ActuatorManager> actuatorManager){
     // check if process is not null. attempt to get each event from the process and set its start/stop callbacks
     if (process == nullptr)
         return false;
