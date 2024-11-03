@@ -3,6 +3,7 @@
 
 #include <cstring>  // for memcpy
 #include "Data/DisplayTypes.h"  // For DisplayDateTime and DisplayTimeSpan
+#include "Logic/Process/ProcessEvents.h"
 
 class ISerializable {
 public:
@@ -65,6 +66,15 @@ public:
     const uint8_t* deserializeMember(bool* member, const uint8_t* buffer) const {
         *member = (*buffer != 0);
         return buffer + 1;
+    }
+    // Specialized serialize and deserialize for ProcessEvents
+    uint8_t* serializeMember(const ProcessEvents* member, uint8_t* buffer) const {
+        *buffer++ = static_cast<uint8_t>(*member); // Serialize as uint8_t
+        return buffer;
+    }
+    const uint8_t* deserializeMember(ProcessEvents* member, const uint8_t* buffer) const {
+        *member = static_cast<ProcessEvents>(*buffer++); // Deserialize as uint8_t
+        return buffer;
     }
 
     // Variadic template functions for serializing and deserializing multiple members

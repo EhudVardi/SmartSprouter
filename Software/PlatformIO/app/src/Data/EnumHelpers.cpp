@@ -57,4 +57,10 @@ namespace EnumHelpers {
         { LogType::Debug, "Debug" },
         { LogType::Error, "Error" },
     }, LogType::Error); // last valid state
+    
+    EnumHelper<ProcessEvents> ProcessEventKeyHelper({
+        { ProcessEvents::Event1, "Event1" },
+        { ProcessEvents::Event2, "Event2" },
+        { ProcessEvents::Event3, "Event3" },
+    }, ProcessEvents::Event3); // last valid state
 }

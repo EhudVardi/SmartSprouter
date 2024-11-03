@@ -9,6 +9,7 @@
 #include "SystemContext/SystemManagers/ActuatorActions.h"
 #include "GUI/Pages/Pages.h"
 #include "Data/LogType.h"
+#include "Logic/Process/ProcessEvents.h"
 
 namespace EnumHelpers {
     extern EnumHelper<AppStates> AppStatesHelper;
@@ -17,6 +18,7 @@ namespace EnumHelpers {
     extern EnumHelper<HumidifierActions> HumidifierActionsHelper;
     extern EnumHelper<Pages> PagesHelper;
     extern EnumHelper<LogType> LogTypeHelper;
+    extern EnumHelper<ProcessEvents> ProcessEventKeyHelper;
 }
 
 #endif // ENUM_HELPER_ENUMERATION_H
