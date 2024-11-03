@@ -4,28 +4,6 @@
 #ifndef DISPLAYTYPES_H
 #define DISPLAYTYPES_H
 
-class DisplayDateTime : public DateTime {
-public:
-    DisplayDateTime() : DateTime() {}
-    DisplayDateTime(int year, int month, int day, int hour, int minute, int second) : DateTime(year, month, day, hour, minute, second) {}
-    DisplayDateTime(const DateTime& dt) : DateTime(dt) {}
-    
-    String ToArduinoString() const {
-        char buffer[20];
-        snprintf(buffer, sizeof(buffer), "%04d-%02d-%02d %02d:%02d:%02d", 
-                 year(), month(), day(), hour(), minute(), second());
-        return String(buffer);
-    }
-    
-    bool operator==(const DisplayDateTime& other) const {
-        return unixtime() == other.unixtime();
-    }
-    bool operator!=(const DisplayDateTime& other) const {
-        return !(*this == other);
-    }
-};
-
-
 #define DAY_IN_SECONDS 86400
 #define HOUR_IN_SECONDS 3600
 #define MINUTE_IN_SECONDS 60
@@ -66,6 +44,39 @@ public:
     }
     bool operator!=(const DisplayTimeSpan& other) const {
         return !(*this == other);
+    }
+    DisplayTimeSpan operator+(const DisplayTimeSpan &right) const {
+        return DisplayTimeSpan(_seconds + right._seconds);
+    }
+    DisplayTimeSpan operator-(const DisplayTimeSpan &right) const {
+        return DisplayTimeSpan(_seconds - right._seconds);
+    }
+};
+
+class DisplayDateTime : public DateTime {
+public:
+    DisplayDateTime() : DateTime() {}
+    DisplayDateTime(int year, int month, int day, int hour, int minute, int second) : DateTime(year, month, day, hour, minute, second) {}
+    DisplayDateTime(const DateTime& dt) : DateTime(dt) {}
+    
+    String ToArduinoString() const {
+        char buffer[20];
+        snprintf(buffer, sizeof(buffer), "%04d-%02d-%02d %02d:%02d:%02d", 
+                 year(), month(), day(), hour(), minute(), second());
+        return String(buffer);
+    }
+    
+    bool operator==(const DisplayDateTime& other) const {
+        return unixtime() == other.unixtime();
+    }
+    bool operator!=(const DisplayDateTime& other) const {
+        return !(*this == other);
+    }
+    DisplayDateTime operator-(const DisplayTimeSpan &span) const {
+        return DisplayDateTime(unixtime() - span.totalseconds());
+    }
+    DisplayTimeSpan operator-(const DisplayDateTime &right) const {
+        return DisplayTimeSpan(unixtime() - right.unixtime());
     }
 };
 
