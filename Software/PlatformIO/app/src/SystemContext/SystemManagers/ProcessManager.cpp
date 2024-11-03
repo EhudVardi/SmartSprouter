@@ -24,6 +24,10 @@ void ProcessManager::createCurrentProcess(float minHumidity, float maxHumidity,
     newProcess->addPeriodicEvent(PeriodicEvents::VentilatorsEvent, ventilatorsEvent);
 
     setProcessEventsCallbacks(newProcess, actuatorManager);
+
+    currentProcess = newProcess;
+
+    lastUpdateTime = timeManager->getCurrentTime();
 }
 
 bool ProcessManager::storeCurrentProcess() {
