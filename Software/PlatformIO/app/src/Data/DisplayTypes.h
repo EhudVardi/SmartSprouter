@@ -59,7 +59,7 @@ public:
     DisplayDateTime(int year, int month, int day, int hour, int minute, int second) : DateTime(year, month, day, hour, minute, second) {}
     DisplayDateTime(const DateTime& dt) : DateTime(dt) {}
     
-    String ToArduinoString() const {
+    String ToString() const {
         char buffer[20];
         snprintf(buffer, sizeof(buffer), "%04d-%02d-%02d %02d:%02d:%02d", 
                  year(), month(), day(), hour(), minute(), second());

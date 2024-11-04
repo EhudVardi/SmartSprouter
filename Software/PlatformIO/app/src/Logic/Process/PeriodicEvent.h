@@ -74,7 +74,7 @@ public:
         String str = "PeriodicEvent { ";
         str += "interval: " + interval.toString() + ", ";
         str += "duration: " + duration.toString() + ", ";
-        str += "nextStartTime: " + nextStartTime.ToArduinoString() + ", ";
+        str += "nextStartTime: " + nextStartTime.ToString() + ", ";
         str += ActionableEvent::ToString() + " }";
         return str;
     }

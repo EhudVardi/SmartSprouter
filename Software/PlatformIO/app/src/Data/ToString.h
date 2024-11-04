@@ -19,7 +19,7 @@ inline String toString(const T& value) {
 #include "Data/DisplayTypes.h"
 template <>
 inline String toString(const DisplayDateTime& value) {
-    return value.ToArduinoString(); // Assuming your class has a toString() member function
+    return value.ToString(); // Assuming your class has a toString() member function
 }
 template <>
 inline String toString(const DisplayTimeSpan& value) {

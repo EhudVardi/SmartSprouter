@@ -173,7 +173,7 @@ public:
     String ToString() const {
         String str = "Process { ";
 
-        str += "startTime: " + startTime.ToArduinoString() + ", ";
+        str += "startTime: " + startTime.ToString() + ", ";
         str += "totalDuration: " + totalDuration.ToString() + ", ";
         str += "remainingDuration: " + remainingDuration.ToString() + ", ";
 
