@@ -272,12 +272,12 @@ void DiagnosingState::enter(SystemContext* context) {
 }
 void DiagnosingState::exit(SystemContext* context) { }
 void DiagnosingState::update(SystemContext* context) {
-    float humidity, temperature;
-    context->sensorManager->getHumidity(humidity);
-    context->sensorManager->getTemperature(temperature);
     if (diagPage) {
-        diagPage->SetHumidity(humidity);
-        diagPage->SetTemperature(temperature);
+        float humidity, temperature;
+        if (context->sensorManager->getHumidity(humidity))
+            diagPage->SetHumidity(humidity);
+        if (context->sensorManager->getTemperature(temperature))
+            diagPage->SetTemperature(temperature);
         diagPage->SetDateTime(context->timeManager->getCurrentTime());
         context->displayManager->refresh();
     }
