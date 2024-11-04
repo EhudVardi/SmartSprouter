@@ -5,20 +5,17 @@ bool SensorManager::initialize() {
         dht11Sensor = new SensorDHT11Wrapper(SENSOR_DHT11_PIN);
     }
     dht11Sensor->init();
-
     return true;
 }
-
-float SensorManager::getTemperature() {
+bool SensorManager::getTemperature(float &temperature) {
     if (dht11Sensor) {
-        return dht11Sensor->readTemperature();
+        return dht11Sensor->readTemperature(temperature);
     }
-    return NAN;
+    return false;
 }
-
-float SensorManager::getHumidity() {
+bool SensorManager::getHumidity(float &humidity) {
     if (dht11Sensor) {
-        return dht11Sensor->readHumidity();
+        return dht11Sensor->readHumidity(humidity);
     }
-    return NAN;
+    return false;
 }

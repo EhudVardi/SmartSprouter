@@ -30,13 +30,14 @@ void ProcessManager::createCurrentProcess(float minHumidity, float maxHumidity,
     lastUpdateTime = timeManager->getCurrentTime();
 }
 
-DisplayTimeSpan ProcessManager::updateProcess(const DisplayDateTime& now, float currHumidity, float currTemperatur) {
-
-    currentProcess->updateWindowEvent(WindowEvents::HumidifiersEvent, currHumidity);
-    currentProcess->updateWindowEvent(WindowEvents::AirConditionersEvent, currTemperatur);
+DisplayTimeSpan ProcessManager::updateProcess(const DisplayDateTime& now, float currHumidity, float currTemperature) {
+    
+    if (!isnan(currHumidity)) currentProcess->updateWindowEvent(WindowEvents::HumidifiersEvent, currHumidity);
+    if (!isnan(currTemperature)) currentProcess->updateWindowEvent(WindowEvents::AirConditionersEvent, currTemperature);
     currentProcess->updatePeriodicEvent(PeriodicEvents::VentilatorsEvent, now);
     
     DisplayTimeSpan updatedRemainingTime = currentProcess->updateRemainingDuration(now - lastUpdateTime);
+    lastUpdateTime = now;
     return updatedRemainingTime;
 }
 
@@ -74,11 +75,11 @@ bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr
     if (humidifiersEvent != nullptr) {
         humidifiersEvent->setActionCallbacks(
             [actuatorManager]() { 
-                log("humidifiersEvent Start\n");
+                log("humidifiersEvent Start");
                 actuatorManager->SetHumidifiers(HumidifierActions::High);
             },
             [actuatorManager]() { 
-                log("humidifiersEvent Stop\n");
+                log("humidifiersEvent Stop");
                 actuatorManager->SetHumidifiers(HumidifierActions::Off);
             }
         );
@@ -89,11 +90,11 @@ bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr
     if (airConditionerEvent != nullptr) {
         airConditionerEvent->setActionCallbacks(
             [actuatorManager]() { 
-                log("airConditionerEvent Start\n");
+                log("airConditionerEvent Start");
                 //TODO: start cooler
             },
             [actuatorManager]() { 
-                log("airConditionerEvent Stop\n");
+                log("airConditionerEvent Stop");
                 //TODO: start warmer
             }
         );
@@ -104,11 +105,11 @@ bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr
     if (ventilatorsEvent != nullptr) {
         ventilatorsEvent->setActionCallbacks(
             [actuatorManager]() { 
-                log("ventilators Start\n");
+                log("ventilators Start");
                 //TODO: start ventilators
             },
             [actuatorManager]() { 
-                log("ventilators Stop\n");
+                log("ventilators Stop");
                 //TODO: start ventilators
             }
         );

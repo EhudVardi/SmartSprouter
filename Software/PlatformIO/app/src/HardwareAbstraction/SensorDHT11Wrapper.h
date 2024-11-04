@@ -10,22 +10,25 @@ private:
     DHT dht;  // DHT sensor object
 
 public:
-    // Constructor that initializes the DHT object with the sensor pin
     SensorDHT11Wrapper(int sensorPin) : dht(sensorPin, DHT11) {}
 
-    // Initialize the DHT sensor (to be called in setup)
     void init() {
         dht.begin();
     }
 
-    // Function to read temperature in Celsius
-    float readTemperature() {
-        return dht.readTemperature(); // Return temperature as float
+    // read temperature in Celsius. return read result. value is passed by ref
+    bool readTemperature(float &temperature) {
+        temperature = dht.readTemperature();
+        if (isnan(temperature))
+            return false;
+        return true;
     }
-
-    // Function to read humidity percentage
-    float readHumidity() {
-        return dht.readHumidity(); // Return humidity as float
+    // read humidity percentage. return read result. value is passed by ref
+    bool readHumidity(float &humidity) {
+        humidity = dht.readHumidity();
+        if (isnan(humidity))
+            return false;
+        return true;
     }
 };
 

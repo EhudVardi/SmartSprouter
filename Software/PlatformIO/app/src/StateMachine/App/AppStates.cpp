@@ -40,8 +40,11 @@ void IdlingState::exit(SystemContext* context) {
 }
 void IdlingState::update(SystemContext* context) {
     if (idlePage) {
-        idlePage->SetHumidity(context->sensorManager->getHumidity());
-        idlePage->SetTemperature(context->sensorManager->getTemperature());
+        float humidity, temperature;
+        context->sensorManager->getHumidity(humidity);
+        context->sensorManager->getTemperature(temperature);
+        idlePage->SetHumidity(humidity);
+        idlePage->SetTemperature(temperature);
         idlePage->SetDateTime(context->timeManager->getCurrentTime());
         context->displayManager->refresh();
     }
@@ -100,7 +103,7 @@ void RunningState::enter(SystemContext* context) {
         storeProcessTimer = new Timer(storeProcessInterval);
         storeProcessTimer->setCallback([context]() {
             if (context)
-                context->timeManager->update();
+                context->processManager->storeCurrentProcess();
         });
     }
     storeProcessTimer->start();
@@ -112,8 +115,9 @@ void RunningState::exit(SystemContext* context) {
 }
 void RunningState::update(SystemContext* context) {
 
-	float humidity = context->sensorManager->getHumidity();
-	float temperature = context->sensorManager->getTemperature();
+    float humidity, temperature;
+    bool humidityValid = context->sensorManager->getHumidity(humidity);
+    bool temperatureValid = context->sensorManager->getTemperature(temperature);
 
     DisplayTimeSpan remainingTime = context->processManager->updateProcess(context->timeManager->getCurrentTime(), humidity, temperature);
     if (remainingTime.totalseconds() <= 0) {
@@ -125,8 +129,9 @@ void RunningState::update(SystemContext* context) {
         stateMachine->changeState(AppStates::Idling, context); //TODO: goto summery page/state ?
     } else {
         if (runPage) {
-            runPage->SetHumidity(humidity);
-            runPage->SetTemperature(temperature);
+            if (humidityValid) runPage->SetHumidity(humidity);
+            if (temperatureValid) runPage->SetTemperature(temperature);
+            runPage->SetDuration(remainingTime);
             context->displayManager->refresh();
         }
     }
@@ -267,8 +272,9 @@ void DiagnosingState::enter(SystemContext* context) {
 }
 void DiagnosingState::exit(SystemContext* context) { }
 void DiagnosingState::update(SystemContext* context) {
-	float humidity = context->sensorManager->getHumidity();
-	float temperature = context->sensorManager->getTemperature();
+    float humidity, temperature;
+    context->sensorManager->getHumidity(humidity);
+    context->sensorManager->getTemperature(temperature);
     if (diagPage) {
         diagPage->SetHumidity(humidity);
         diagPage->SetTemperature(temperature);
