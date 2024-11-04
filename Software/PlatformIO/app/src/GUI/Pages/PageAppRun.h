@@ -44,11 +44,8 @@ public:
         }
     }
 
-    void SetDuration(int days, int hrs, int mins, int secs) {
-        durationGauge.AddDays(days);
-        durationGauge.AddHours(hrs);
-        durationGauge.AddMinutes(mins);
-        durationGauge.AddSeconds(secs);
+    void SetDuration(DisplayTimeSpan remainingTime) {
+        durationGauge.SetValue(remainingTime);
     }
 
     void TickDurationDown() {
