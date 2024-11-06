@@ -10,10 +10,10 @@ void ProcessManager::createCurrentProcess(float minHumidity, float maxHumidity,
                               float minTemperature, float maxTemperature, 
                               DisplayTimeSpan ventsInterval, DisplayTimeSpan ventsDuration, 
                               DisplayTimeSpan totalDuration, 
-                              std::shared_ptr<TimeManager> timeManager, std::shared_ptr<ActuatorManager> actuatorManager) {
+                              const DisplayDateTime& now, std::shared_ptr<ActuatorManager> actuatorManager) {
 
     deleteCurrentProcess();
-    Process* newProcess = new Process(totalDuration, timeManager->getCurrentTime());
+    Process* newProcess = new Process(totalDuration, now);
     
     WindowEvent humidifiersEvent(minHumidity, maxHumidity);
     WindowEvent airConditionerEvent(minTemperature, maxTemperature);
@@ -27,7 +27,7 @@ void ProcessManager::createCurrentProcess(float minHumidity, float maxHumidity,
 
     currentProcess = newProcess;
 
-    lastUpdateTime = timeManager->getCurrentTime();
+    lastUpdateTime = now;
 }
 
 DisplayTimeSpan ProcessManager::updateProcess(const DisplayDateTime& now, float currHumidity, float currTemperature) {
@@ -44,12 +44,13 @@ DisplayTimeSpan ProcessManager::updateProcess(const DisplayDateTime& now, float 
 bool ProcessManager::storeCurrentProcess() {
     return prefHandler->saveObjectToNVS(*currentProcess, currentProcessKey);
 }
-bool ProcessManager::loadProcessFromStorage(std::shared_ptr<ActuatorManager> actuatorManager) {
+bool ProcessManager::loadProcessFromStorage(const DisplayDateTime& now, std::shared_ptr<ActuatorManager> actuatorManager) {
     deleteCurrentProcess(); // Clear any existing process to avoid memory leaks
     Process* loadedProcess = new Process(); // Dynamically allocate a new Process object
     if (prefHandler->loadObjectFromNVS(*loadedProcess, currentProcessKey)) {
         currentProcess = loadedProcess;  // Assign the loaded process to currentProcess
         setProcessEventsCallbacks(currentProcess, actuatorManager); // set events callbacks
+        lastUpdateTime = now; // set last update to now since we just loaded the process
         return true;
     } else {
         // Clean up if loading failed

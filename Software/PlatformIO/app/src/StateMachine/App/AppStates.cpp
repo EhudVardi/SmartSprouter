@@ -82,7 +82,7 @@ void InformingState::handleInput(SystemContext* context, InputEvent event) {
 
 
 void InitializingState::enter(SystemContext* context) {
-    if (context->processManager->loadProcessFromStorage(context->actuatorManager)) {
+    if (context->processManager->loadProcessFromStorage(context->timeManager->getCurrentTime(), context->actuatorManager)) {
         stateMachine->changeState(AppStates::Running, context);
     } else {
         stateMachine->changeState(AppStates::Idling, context);
@@ -158,7 +158,7 @@ SettingProcessState::SettingProcessState() {
                 DisplayTimeSpan(0,0,1,0), //TODO vents interval
                 DisplayTimeSpan(0,0,1,0), //TODO vents duration
                 setupPage->GetDurationSetup(),
-                context->timeManager,
+                context->timeManager->getCurrentTime(),
                 context->actuatorManager);
 
             if (!context->processManager->storeCurrentProcess()) {
