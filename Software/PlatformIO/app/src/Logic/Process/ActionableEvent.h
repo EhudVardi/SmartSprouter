@@ -2,7 +2,7 @@
 #define ACTIONABLEEVENT_H
 
 #include <functional>
-#include "Data/ISerializable.h"
+#include "Data/Serialization/ISerializable.h"
 
 template<typename T>
 class ActionableEvent : public ISerializable {

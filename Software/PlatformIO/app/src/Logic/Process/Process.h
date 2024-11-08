@@ -3,7 +3,7 @@
 
 #include "Logic/Process/PeriodicEvent.h"
 #include "Logic/Process/WindowEvent.h"
-#include "Data/ISerializable.h"
+#include "Data/Serialization/ISerializable.h"
 #include "Logic/Process/ProcessEvents.h"
 #include "Data/EnumHelpers.h"
 #include <unordered_map>

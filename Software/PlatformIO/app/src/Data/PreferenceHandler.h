@@ -3,7 +3,7 @@
 
 #include <Preferences.h>
 #include <type_traits>
-#include "Data/ISerializable.h"
+#include "Data/Serialization/ISerializable.h"
 
 // Base class for handling NVS
 class PreferenceHandler {
