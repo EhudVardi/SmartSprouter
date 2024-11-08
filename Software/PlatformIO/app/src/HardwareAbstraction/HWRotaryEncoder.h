@@ -1,9 +1,8 @@
 #ifndef HWROTARYENCODER_H
 #define HWROTARYENCODER_H
 
-#include <RotaryEncoder.h>
 #include <functional>
-
+#include <RotaryEncoder.h>
 #include "HWButton.h"
 
 class HWRotaryEncoder {

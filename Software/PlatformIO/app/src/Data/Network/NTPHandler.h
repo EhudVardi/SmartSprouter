@@ -2,7 +2,6 @@
 #define NTP_HANDLER_H
 
 #include <Arduino.h>
-#include <string>
 #include "WiFiHandler.h"
 
 class NTPHandler {
@@ -24,12 +23,6 @@ public:
             buffer[0] = 0b00100011; // Set the first byte for NTP request
         });
     }
-
-    // // Destructor
-    // ~NTPHandler() {
-    //     // Remove the connection from WiFiHandler
-    //     wifiHandler.closeConnection(connectionName);
-    // }
 
     // Open the NTP connection
     void begin(WiFiHandler& wifiHandler) {

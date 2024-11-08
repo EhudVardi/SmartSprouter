@@ -2,7 +2,6 @@
 #define ENUM_HELPER_H
 
 #include <unordered_map>
-#include <string>
 
 template <typename T>
 class EnumHelper {

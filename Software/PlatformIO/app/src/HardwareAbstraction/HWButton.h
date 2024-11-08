@@ -1,8 +1,8 @@
 #ifndef HW_BUTTON_H
 #define HW_BUTTON_H
 
-#include <functional>
 #include <Arduino.h>
+#include <functional>
 
 enum class HWButtonState {
   Released,
