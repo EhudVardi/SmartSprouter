@@ -5,6 +5,7 @@
 #include "GUI/Elements/Composite/TypedNameRange.h"
 #include "GUI/Elements/Composite/TypedNameValue.h"
 #include "GUI/Elements/Simple/TypedLabel.h"
+#include "Application/ApplicationConfig.h"
 
 class PageAppSetup : public PageAppBase {
 protected:
@@ -14,9 +15,9 @@ protected:
     CenteredLabel startButton;
 
 public:
-    PageAppSetup() : humidityRangeSetup(2, 12, 0, 100, "Humidity"),
-                     temperatureRangeSetup(2, 24, 0, 100, "Temper'"),
-                     durationSetup(2, 36, "Duration", FontSize::Small), 
+    PageAppSetup() : humidityRangeSetup(2, 12, def_humidityRangeSetupMin, def_humidityRangeSetupMax, "Humidity"),
+                     temperatureRangeSetup(2, 24, def_temperatureRangeSetupMin, def_temperatureRangeSetupMax, "Temper'"),
+                     durationSetup(2, 36, def_durationSetup, "Duration", FontSize::Small), 
                      startButton(48, "Start", FontSize::Medium)  {
         SetTitle("Setup");
         AddElement(&humidityRangeSetup);

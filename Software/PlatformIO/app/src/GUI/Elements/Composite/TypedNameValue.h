@@ -83,6 +83,10 @@ public:
 
 class NamedValueTimeSpan : public NamedValue<DisplayTimeSpan> {
 public:
+    NamedValueTimeSpan(int xPos, int yPos, DisplayTimeSpan initialValue, const String &name, FontSize size = FontSize::Small)
+        : NamedValueTimeSpan(xPos, yPos, name, size) {
+            SetValue(initialValue);
+    }
     NamedValueTimeSpan(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : NamedValue<DisplayTimeSpan>(xPos, yPos, name, size) {
         valueLabel.SetFormatter([](DisplayTimeSpan value) {
