@@ -50,8 +50,8 @@ public:
     NamedValuePercent(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : NamedValueFloat(xPos, yPos, name, size) {
         valueLabel.SetFormatter([](float value) {
-            char buffer[8];
-            snprintf(buffer, sizeof(buffer), "%3.1f%%", value);
+            char buffer[11];
+            snprintf(buffer, sizeof(buffer), "%3.1f%%    ", value);
             return String(buffer);
         });
     }
@@ -68,8 +68,8 @@ public:
     NamedValueTemperature(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : NamedValueFloat(xPos, yPos, name, size) {
         valueLabel.SetFormatter([](float value) {
-            char buffer[7];
-            snprintf(buffer, sizeof(buffer), "%3.1fC", value);
+            char buffer[11];
+            snprintf(buffer, sizeof(buffer), "%3.1fC    ", value);
             return String(buffer);
         });
     }
