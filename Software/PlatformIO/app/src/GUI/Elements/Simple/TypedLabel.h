@@ -90,7 +90,7 @@ public:
     PercentLabel(int xPos, int yPos, float initialvalue, FontSize size = FontSize::Small)
         : FloatLabel(xPos, yPos, initialvalue, size) {
             SetFormatter([](float value) {
-                char buffer[8];
+                char buffer[7];
                 snprintf(buffer, sizeof(buffer), "%3.1f%%", value);
                 return String(buffer);
             });
