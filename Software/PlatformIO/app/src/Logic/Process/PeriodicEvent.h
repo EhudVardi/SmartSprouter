@@ -4,21 +4,21 @@
 #include "Logic/Process/ActionableEvent.h"
 #include "Data/DisplayTypes.h"
 
-class PeriodicEvent : public ActionableEvent<DisplayDateTime> {
+class PeriodicEvent : public ActionableEvent<AppDateTime> {
 public:
     // Default constructor
-    PeriodicEvent() : PeriodicEvent(DisplayTimeSpan(5), DisplayTimeSpan(1)) {}
+    PeriodicEvent() : PeriodicEvent(AppTimeSpan(5), AppTimeSpan(1)) {}
     // Constructor with thresholds only (empty callbacks)
-    PeriodicEvent(DisplayTimeSpan p_interval, DisplayTimeSpan p_duration) : ActionableEvent() {
+    PeriodicEvent(AppTimeSpan p_interval, AppTimeSpan p_duration) : ActionableEvent() {
         setTiming(p_interval, p_duration);
     }
     
-    void setTiming(DisplayTimeSpan p_interval, DisplayTimeSpan p_duration) {
+    void setTiming(AppTimeSpan p_interval, AppTimeSpan p_duration) {
         interval = p_interval;
         duration = p_duration;
     }
 
-    virtual void check(DisplayDateTime data) override {
+    virtual void check(AppDateTime data) override {
         if (!activeSynchronized) { // one time logic - set first nextStartTime to the next interval, and set active to false
             nextStartTime = data + interval;
             active = false;
@@ -80,9 +80,9 @@ public:
     }
 
 private:
-    DisplayTimeSpan interval;
-    DisplayTimeSpan duration;
-    DisplayDateTime nextStartTime;
+    AppTimeSpan interval;
+    AppTimeSpan duration;
+    AppDateTime nextStartTime;
 };
 
 #endif // PERIODICEVENT_H

@@ -44,7 +44,7 @@ public:
         }
     }
 
-    void SetDuration(DisplayTimeSpan remainingTime) {
+    void SetDuration(AppTimeSpan remainingTime) {
         durationGauge.SetValue(remainingTime);
     }
 

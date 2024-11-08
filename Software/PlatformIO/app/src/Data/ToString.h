@@ -18,11 +18,11 @@ inline String toString(const T& value) {
 // my custom types
 #include "Data/DisplayTypes.h"
 template <>
-inline String toString(const DisplayDateTime& value) {
+inline String toString(const AppDateTime& value) {
     return value.ToString(); // Assuming your class has a toString() member function
 }
 template <>
-inline String toString(const DisplayTimeSpan& value) {
+inline String toString(const AppTimeSpan& value) {
     return value.ToString(); // Assuming your class has a toString() member function
 }
 // my custom enumerations

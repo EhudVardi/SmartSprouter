@@ -12,7 +12,7 @@
 class Process : public ISerializable {
 public:
     Process() {}
-    Process(DisplayTimeSpan duration, DisplayDateTime start)
+    Process(AppTimeSpan duration, AppDateTime start)
         : totalDuration(duration), remainingDuration(duration), startTime(start) {}
 
     void addPeriodicEvent(PeriodicEvents key, const PeriodicEvent& event) {
@@ -37,7 +37,7 @@ public:
         return nullptr;
     }
 
-    void updatePeriodicEvent(PeriodicEvents eventKey, DisplayDateTime currentTime) {
+    void updatePeriodicEvent(PeriodicEvents eventKey, AppDateTime currentTime) {
         auto it = periodicEvents.find(eventKey);
         if (it != periodicEvents.end()) {
             it->second.check(currentTime);
@@ -50,7 +50,7 @@ public:
         }
     }
 
-    const DisplayTimeSpan updateRemainingDuration(const DisplayTimeSpan& passedTime) {
+    const AppTimeSpan updateRemainingDuration(const AppTimeSpan& passedTime) {
         remainingDuration = remainingDuration - passedTime;
         return remainingDuration;
     }
@@ -195,9 +195,9 @@ public:
     }
 
 private:
-    DisplayDateTime startTime;
-    DisplayTimeSpan totalDuration;
-    DisplayTimeSpan remainingDuration;
+    AppDateTime startTime;
+    AppTimeSpan totalDuration;
+    AppTimeSpan remainingDuration;
     std::unordered_map<PeriodicEvents, PeriodicEvent> periodicEvents;
     std::unordered_map<WindowEvents, WindowEvent> windowEvents;
 };

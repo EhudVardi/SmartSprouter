@@ -119,7 +119,7 @@ void RunningState::update(SystemContext* context) {
     bool humidityValid = context->sensorManager->getHumidity(humidity);
     bool temperatureValid = context->sensorManager->getTemperature(temperature);
 
-    DisplayTimeSpan remainingTime = context->processManager->updateProcess(context->timeManager->getCurrentTime(), humidity, temperature);
+    AppTimeSpan remainingTime = context->processManager->updateProcess(context->timeManager->getCurrentTime(), humidity, temperature);
     if (remainingTime.totalseconds() <= 0) {
         log("RunningState: process finished successfully");
         //TODO: log results

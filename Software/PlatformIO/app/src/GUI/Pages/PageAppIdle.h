@@ -13,7 +13,7 @@ protected:
 public:
     PageAppIdle() : humidityGauge(2, 12, "Humidity", FontSize::Small),
                     temperatureGauge(2, 24, "Temper'", FontSize::Small), 
-                    dateTime(2, 36, DisplayDateTime(2000,1,1,0,1,2), FontSize::Small) {
+                    dateTime(2, 36, AppDateTime(2000,1,1,0,1,2), FontSize::Small) {
         SetTitle("Idle");
         AddElement(&humidityGauge);
         AddElement(&temperatureGauge);
@@ -50,7 +50,7 @@ public:
         return true;
     }
 
-    bool SetDateTime(const DisplayDateTime& newDateTime) {
+    bool SetDateTime(const AppDateTime& newDateTime) {
         if (dateTime.GetValue() != newDateTime)
             dateTime.SetValue(newDateTime);
         return true;

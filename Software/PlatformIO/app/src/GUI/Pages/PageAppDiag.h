@@ -16,7 +16,7 @@ protected:
 public:
     PageAppDiag() : humidity(2, 12, -1, FontSize::Small),
                     temperature(42, 12, -1, FontSize::Small),
-                    dateTime(2, 22, DisplayDateTime(2000,1,1,0,1,2), FontSize::Small),
+                    dateTime(2, 22, AppDateTime(2000,1,1,0,1,2), FontSize::Small),
                     humidifiers(2, 32, HumidifierActions::Off, "Humidifiers", FontSize::Small) {
         SetTitle("Diagnostics");
         AddElement(&humidity);
@@ -39,7 +39,7 @@ public:
             temperature.SetValue(newTemperature);
         return true;
     }
-    bool SetDateTime(const DisplayDateTime& newDateTime) {
+    bool SetDateTime(const AppDateTime& newDateTime) {
         if (dateTime.GetValue() != newDateTime)
             dateTime.SetValue(newDateTime);
         return true;

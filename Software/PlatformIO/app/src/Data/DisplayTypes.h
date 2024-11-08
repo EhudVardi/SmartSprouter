@@ -8,11 +8,11 @@
 #define HOUR_IN_SECONDS 3600
 #define MINUTE_IN_SECONDS 60
 
-class DisplayTimeSpan : public TimeSpan {
+class AppTimeSpan : public TimeSpan {
 public:
-    DisplayTimeSpan() : TimeSpan(0) {}
-    DisplayTimeSpan(int totalSeconds) : TimeSpan(totalSeconds) {}
-    DisplayTimeSpan(int days, int hrs, int mins, int secs) : TimeSpan(days, hrs, mins, secs) {}
+    AppTimeSpan() : TimeSpan(0) {}
+    AppTimeSpan(int totalSeconds) : TimeSpan(totalSeconds) {}
+    AppTimeSpan(int days, int hrs, int mins, int secs) : TimeSpan(days, hrs, mins, secs) {}
 
     // Format duration as D:HH:MM:SS
     String ToString() const {
@@ -39,25 +39,25 @@ public:
         }
     }
     
-    bool operator==(const DisplayTimeSpan& other) const {
+    bool operator==(const AppTimeSpan& other) const {
         return totalseconds() == other.totalseconds();
     }
-    bool operator!=(const DisplayTimeSpan& other) const {
+    bool operator!=(const AppTimeSpan& other) const {
         return !(*this == other);
     }
-    DisplayTimeSpan operator+(const DisplayTimeSpan &right) const {
-        return DisplayTimeSpan(_seconds + right._seconds);
+    AppTimeSpan operator+(const AppTimeSpan &right) const {
+        return AppTimeSpan(_seconds + right._seconds);
     }
-    DisplayTimeSpan operator-(const DisplayTimeSpan &right) const {
-        return DisplayTimeSpan(_seconds - right._seconds);
+    AppTimeSpan operator-(const AppTimeSpan &right) const {
+        return AppTimeSpan(_seconds - right._seconds);
     }
 };
 
-class DisplayDateTime : public DateTime {
+class AppDateTime : public DateTime {
 public:
-    DisplayDateTime() : DateTime() {}
-    DisplayDateTime(int year, int month, int day, int hour, int minute, int second) : DateTime(year, month, day, hour, minute, second) {}
-    DisplayDateTime(const DateTime& dt) : DateTime(dt) {}
+    AppDateTime() : DateTime() {}
+    AppDateTime(int year, int month, int day, int hour, int minute, int second) : DateTime(year, month, day, hour, minute, second) {}
+    AppDateTime(const DateTime& dt) : DateTime(dt) {}
     
     String ToString() const {
         char buffer[20];
@@ -66,17 +66,17 @@ public:
         return String(buffer);
     }
     
-    bool operator==(const DisplayDateTime& other) const {
+    bool operator==(const AppDateTime& other) const {
         return unixtime() == other.unixtime();
     }
-    bool operator!=(const DisplayDateTime& other) const {
+    bool operator!=(const AppDateTime& other) const {
         return !(*this == other);
     }
-    DisplayDateTime operator-(const DisplayTimeSpan &span) const {
-        return DisplayDateTime(unixtime() - span.totalseconds());
+    AppDateTime operator-(const AppTimeSpan &span) const {
+        return AppDateTime(unixtime() - span.totalseconds());
     }
-    DisplayTimeSpan operator-(const DisplayDateTime &right) const {
-        return DisplayTimeSpan(unixtime() - right.unixtime());
+    AppTimeSpan operator-(const AppDateTime &right) const {
+        return AppTimeSpan(unixtime() - right.unixtime());
     }
 };
 

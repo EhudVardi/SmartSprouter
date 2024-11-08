@@ -47,7 +47,7 @@ public:
     float GetSetupHumidityMax() { return humidityRangeSetup.GetMaxValue(); }
     float GetSetupTemperatureMin() { return temperatureRangeSetup.GetMinValue(); }
     float GetSetupTemperatureMax() { return temperatureRangeSetup.GetMaxValue(); } 
-    DisplayTimeSpan GetDurationSetup() { return durationSetup.GetValue(); }
+    AppTimeSpan GetDurationSetup() { return durationSetup.GetValue(); }
 
     void IncreaseHumidityMin() { humidityRangeSetup.IncreaseMin(); }
     void DecreaseHumidityMin() { humidityRangeSetup.DecreaseMin(); }

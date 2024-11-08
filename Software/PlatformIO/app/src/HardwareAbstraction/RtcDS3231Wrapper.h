@@ -19,12 +19,12 @@ public:
         return true;
     }
 
-    void adjust(const DisplayDateTime& dt) {
+    void adjust(const AppDateTime& dt) {
         rtc.adjust(dt);
         //rtc.adjust(static_cast<const DateTime&>(dt));
     }
 
     DateTime now() {
-        return DisplayDateTime(rtc.now());
+        return AppDateTime(rtc.now());
     }
 };

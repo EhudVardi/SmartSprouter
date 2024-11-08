@@ -121,14 +121,14 @@ public:
 #ifndef DISPLAYDATETIME_LABEL_H
 #define DISPLAYDATETIME_LABEL_H
 
-class DisplayDateTimeLabel : public Label<DisplayDateTime> {
+class DisplayDateTimeLabel : public Label<AppDateTime> {
 public:
-    DisplayDateTimeLabel(int xPos, int yPos, DisplayDateTime initialDateTime, FontSize size = FontSize::Small)
+    DisplayDateTimeLabel(int xPos, int yPos, AppDateTime initialDateTime, FontSize size = FontSize::Small)
         : Label(xPos, yPos, size) {
             value = initialDateTime;
         }
         
-    void SetDateTime(const DisplayDateTime &newDate) {
+    void SetDateTime(const AppDateTime &newDate) {
         value = newDate;
         Invalidate();
     }

@@ -9,7 +9,7 @@ extern const float def_humidityRangeSetupMin;
 extern const float def_humidityRangeSetupMax;
 extern const float def_temperatureRangeSetupMin;
 extern const float def_temperatureRangeSetupMax;
-extern const DisplayTimeSpan def_durationSetup;
+extern const AppTimeSpan def_durationSetup;
 
 //TIME
 extern const int utcOffsetHours;

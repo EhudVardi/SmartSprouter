@@ -37,19 +37,19 @@ public:
     const uint8_t* deserializeMember(float* member, const uint8_t* buffer) const {
         return deserializeMember(static_cast<void*>(member), sizeof(float), buffer);
     }
-    // Specialized serialize and deserialize for DisplayDateTime
-    uint8_t* serializeMember(const DisplayDateTime* member, uint8_t* buffer) const {
-        return serializeMember(static_cast<const void*>(member), sizeof(DisplayDateTime), buffer);
+    // Specialized serialize and deserialize for AppDateTime
+    uint8_t* serializeMember(const AppDateTime* member, uint8_t* buffer) const {
+        return serializeMember(static_cast<const void*>(member), sizeof(AppDateTime), buffer);
     }
-    const uint8_t* deserializeMember(DisplayDateTime* member, const uint8_t* buffer) const {
-        return deserializeMember(static_cast<void*>(member), sizeof(DisplayDateTime), buffer);
+    const uint8_t* deserializeMember(AppDateTime* member, const uint8_t* buffer) const {
+        return deserializeMember(static_cast<void*>(member), sizeof(AppDateTime), buffer);
     }
-    // Specialized serialize and deserialize for DisplayTimeSpan
-    uint8_t* serializeMember(const DisplayTimeSpan* member, uint8_t* buffer) const {
-        return serializeMember(static_cast<const void*>(member), sizeof(DisplayTimeSpan), buffer);
+    // Specialized serialize and deserialize for AppTimeSpan
+    uint8_t* serializeMember(const AppTimeSpan* member, uint8_t* buffer) const {
+        return serializeMember(static_cast<const void*>(member), sizeof(AppTimeSpan), buffer);
     }
-    const uint8_t* deserializeMember(DisplayTimeSpan* member, const uint8_t* buffer) const {
-        return deserializeMember(static_cast<void*>(member), sizeof(DisplayTimeSpan), buffer);
+    const uint8_t* deserializeMember(AppTimeSpan* member, const uint8_t* buffer) const {
+        return deserializeMember(static_cast<void*>(member), sizeof(AppTimeSpan), buffer);
     }
     // Specialized serialize and deserialize for size_t
     uint8_t* serializeMember(const size_t* member, uint8_t* buffer) const {

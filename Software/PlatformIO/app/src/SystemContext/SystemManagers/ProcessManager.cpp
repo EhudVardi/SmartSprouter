@@ -8,9 +8,9 @@ bool ProcessManager::initialize() {
 
 void ProcessManager::createCurrentProcess(float minHumidity, float maxHumidity, 
                               float minTemperature, float maxTemperature, 
-                              DisplayTimeSpan ventsInterval, DisplayTimeSpan ventsDuration, 
-                              DisplayTimeSpan totalDuration, 
-                              const DisplayDateTime& now, std::shared_ptr<ActuatorManager> actuatorManager) {
+                              AppTimeSpan ventsInterval, AppTimeSpan ventsDuration, 
+                              AppTimeSpan totalDuration, 
+                              const AppDateTime& now, std::shared_ptr<ActuatorManager> actuatorManager) {
 
     deleteCurrentProcess();
     Process* newProcess = new Process(totalDuration, now);
@@ -30,13 +30,13 @@ void ProcessManager::createCurrentProcess(float minHumidity, float maxHumidity,
     lastUpdateTime = now;
 }
 
-DisplayTimeSpan ProcessManager::updateProcess(const DisplayDateTime& now, float currHumidity, float currTemperature) {
+AppTimeSpan ProcessManager::updateProcess(const AppDateTime& now, float currHumidity, float currTemperature) {
     
     if (!isnan(currHumidity)) currentProcess->updateWindowEvent(WindowEvents::HumidifiersEvent, currHumidity);
     if (!isnan(currTemperature)) currentProcess->updateWindowEvent(WindowEvents::AirConditionersEvent, currTemperature);
     currentProcess->updatePeriodicEvent(PeriodicEvents::VentilatorsEvent, now);
     
-    DisplayTimeSpan updatedRemainingTime = currentProcess->updateRemainingDuration(now - lastUpdateTime);
+    AppTimeSpan updatedRemainingTime = currentProcess->updateRemainingDuration(now - lastUpdateTime);
     lastUpdateTime = now;
     return updatedRemainingTime;
 }
@@ -44,7 +44,7 @@ DisplayTimeSpan ProcessManager::updateProcess(const DisplayDateTime& now, float 
 bool ProcessManager::storeCurrentProcess() {
     return prefHandler->saveObjectToNVS(*currentProcess, currentProcessKey);
 }
-bool ProcessManager::loadProcessFromStorage(const DisplayDateTime& now, std::shared_ptr<ActuatorManager> actuatorManager) {
+bool ProcessManager::loadProcessFromStorage(const AppDateTime& now, std::shared_ptr<ActuatorManager> actuatorManager) {
     deleteCurrentProcess(); // Clear any existing process to avoid memory leaks
     Process* loadedProcess = new Process(); // Dynamically allocate a new Process object
     if (prefHandler->loadObjectFromNVS(*loadedProcess, currentProcessKey)) {

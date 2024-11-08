@@ -81,24 +81,24 @@ public:
 #ifndef NAMEDVALUEDURATION_H
 #define NAMEDVALUEDURATION_H
 
-class NamedValueTimeSpan : public NamedValue<DisplayTimeSpan> {
+class NamedValueTimeSpan : public NamedValue<AppTimeSpan> {
 public:
-    NamedValueTimeSpan(int xPos, int yPos, DisplayTimeSpan initialValue, const String &name, FontSize size = FontSize::Small)
+    NamedValueTimeSpan(int xPos, int yPos, AppTimeSpan initialValue, const String &name, FontSize size = FontSize::Small)
         : NamedValueTimeSpan(xPos, yPos, name, size) {
             SetValue(initialValue);
     }
     NamedValueTimeSpan(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
-        : NamedValue<DisplayTimeSpan>(xPos, yPos, name, size) {
-        valueLabel.SetFormatter([](DisplayTimeSpan value) {
+        : NamedValue<AppTimeSpan>(xPos, yPos, name, size) {
+        valueLabel.SetFormatter([](AppTimeSpan value) {
             return value.ToString();
         });
     }
 
-    void AddSeconds(int secs) { DisplayTimeSpan newDuration = GetValue(); newDuration.AddSeconds(secs); SetValue(newDuration); }
-    void AddMinutes(int mins) { DisplayTimeSpan newDuration = GetValue(); newDuration.AddMinutes(mins); SetValue(newDuration); }
-    void AddHours(int hrs) { DisplayTimeSpan newDuration = GetValue(); newDuration.AddHours(hrs); SetValue(newDuration); }
-    void AddDays(int days) { DisplayTimeSpan newDuration = GetValue(); newDuration.AddDays(days); SetValue(newDuration); }
-    void TickDown() { DisplayTimeSpan newDuration = GetValue(); newDuration.TickDown(); SetValue(newDuration); }
+    void AddSeconds(int secs) { AppTimeSpan newDuration = GetValue(); newDuration.AddSeconds(secs); SetValue(newDuration); }
+    void AddMinutes(int mins) { AppTimeSpan newDuration = GetValue(); newDuration.AddMinutes(mins); SetValue(newDuration); }
+    void AddHours(int hrs) { AppTimeSpan newDuration = GetValue(); newDuration.AddHours(hrs); SetValue(newDuration); }
+    void AddDays(int days) { AppTimeSpan newDuration = GetValue(); newDuration.AddDays(days); SetValue(newDuration); }
+    void TickDown() { AppTimeSpan newDuration = GetValue(); newDuration.TickDown(); SetValue(newDuration); }
 };
 
 #endif // NAMEDVALUEDURATION_H
