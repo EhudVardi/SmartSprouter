@@ -6,7 +6,6 @@
 #include "Logic/Process/Process.h"
 #include "ActuatorManager.h"
 #include "TimeManager.h"
-#include "Data/Log/Log.h"
 
 class ProcessManager : public BaseManager {
 private:

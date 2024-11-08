@@ -2,7 +2,6 @@
 #define ACTUATOR_MANAGER_H
 
 #include "BaseManager.h"
-
 #include "HardwareAbstraction/DigitalOutputHandler.h"
 #include "ActuatorActions.h"
 

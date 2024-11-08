@@ -1,5 +1,5 @@
-#include "Application/Application.h"
 #include <Arduino.h>
+#include "Application/Application.h"
 
 Application app;
 

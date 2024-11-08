@@ -1,10 +1,10 @@
 #ifndef RANGE_H
 #define RANGE_H
 
-#include "GUI/Elements/GuiElement.h"
-#include "GUI/Elements/FontSize.h"
 #include <Arduino.h>
 #include <functional>
+#include "GUI/Elements/GuiElement.h"
+#include "GUI/Elements/FontSize.h"
 
 template <typename T>
 class Range : public GuiElement {

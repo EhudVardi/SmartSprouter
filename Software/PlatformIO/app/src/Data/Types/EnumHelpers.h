@@ -2,7 +2,6 @@
 #define ENUM_HELPER_ENUMERATION_H
 
 #include "EnumHelper.h"
-
 #include "StateMachine/App/AppStatesEnum.h"
 #include "StateMachine/App/AppErrorsEnum.h"
 #include "StateMachine/Setup/SetupStatesEnum.h"

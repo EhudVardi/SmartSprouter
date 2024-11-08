@@ -1,12 +1,10 @@
 #ifndef SETUP_STATE_MACHINE_H
 #define SETUP_STATE_MACHINE_H
 
+#include <functional>
 #include "StateMachine/StateMachineBase.h"
 #include "SetupState.h"
 #include "SetupStatesEnum.h"
-
-#include <iostream>
-#include <functional>
 
 class SetupState;
 

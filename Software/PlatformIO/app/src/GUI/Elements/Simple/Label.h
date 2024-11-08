@@ -1,11 +1,11 @@
 #ifndef LABEL_H
 #define LABEL_H
 
+#include <Arduino.h>
+#include <functional>
 #include "GUI/Elements/GuiElement.h"
 #include "GUI/Elements/FontSize.h"
 #include "Data/Types/ToString.h"
-#include <Arduino.h>
-#include <functional>
 
 template <typename T>
 class Label : public GuiElement {

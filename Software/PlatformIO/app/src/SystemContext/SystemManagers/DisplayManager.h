@@ -1,13 +1,10 @@
 #ifndef DISPLAY_MANAGER_H
 #define DISPLAY_MANAGER_H
 
-#include "BaseManager.h"
-
 #include <memory>
 #include <unordered_map>
-
+#include "BaseManager.h"
 #include "HardwareAbstraction/LcdDisplayHandler.h"
-
 #include "GUI/Pages/PageBase.h"
 #include "GUI/Pages/PageAppBase.h"
 #include "GUI/Pages/PageAppAbout.h"

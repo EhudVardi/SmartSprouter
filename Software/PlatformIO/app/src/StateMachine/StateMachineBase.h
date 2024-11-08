@@ -2,12 +2,11 @@
 #ifndef STATE_MACHINE_BASE_H
 #define STATE_MACHINE_BASE_H
 
+#include <memory>
+#include <unordered_map>
 #include "SystemContext/SystemContext.h"
 #include "StateBase.h"
 #include "Data/Log/Log.h"
-#include <memory>
-#include <unordered_map>
-#include <iostream>
 
 template<typename TState, typename TEnum>
 class StateMachineBase {

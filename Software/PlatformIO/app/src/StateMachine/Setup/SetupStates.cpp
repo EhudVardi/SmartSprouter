@@ -1,5 +1,4 @@
 #include "SetupStates.h"
-#include <iostream>
 
 void HR_S::enter(SystemContext* context) { 
     SetupState::enter(context);

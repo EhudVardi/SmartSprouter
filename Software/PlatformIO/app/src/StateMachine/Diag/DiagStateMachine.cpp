@@ -1,6 +1,5 @@
 #include "DiagStateMachine.h"
 #include "DiagStates.h"
-#include <iostream>
 
 DiagStateMachine::DiagStateMachine() {
 

@@ -3,7 +3,6 @@
 
 #include "StateMachine/StateBase.h"
 #include "DiagStateMachine.h"
-#include <iostream>
 
 class DiagStateMachine; // Forward declare SetupStateMachine
 

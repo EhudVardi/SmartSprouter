@@ -3,7 +3,6 @@
 
 #include "StateMachine/StateBase.h"
 #include "SetupStateMachine.h"
-#include <iostream>
 
 class SetupStateMachine; // Forward declare SetupStateMachine
 

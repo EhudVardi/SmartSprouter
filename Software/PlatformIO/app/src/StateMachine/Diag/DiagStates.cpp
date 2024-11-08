@@ -1,5 +1,4 @@
 #include "DiagStates.h"
-#include <iostream>
 
 void H_S::enter(SystemContext* context) { 
     DiagState::enter(context);

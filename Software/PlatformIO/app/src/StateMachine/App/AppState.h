@@ -3,7 +3,6 @@
 
 #include "StateMachine/StateBase.h"
 #include "AppStateMachine.h"
-#include <iostream>
 
 class AppStateMachine; // Forward declare AppStateMachine
 

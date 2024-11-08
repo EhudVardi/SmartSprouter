@@ -1,10 +1,10 @@
 #ifndef HWROTARYENCODERHANDLER_H
 #define HWROTARYENCODERHANDLER_H
 
-#include "HWRotaryEncoder.h"
 #include <vector>
 #include <tuple>
 #include <functional>
+#include "HWRotaryEncoder.h"
 
 class HWRotaryEncoderHandler {
 public:

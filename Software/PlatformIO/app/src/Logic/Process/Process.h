@@ -1,13 +1,13 @@
 #ifndef PROCESS_H
 #define PROCESS_H
 
+#include <unordered_map>
+#include <Arduino.h>
 #include "PeriodicEvent.h"
 #include "WindowEvent.h"
 #include "Data/Serialization/ISerializable.h"
 #include "ProcessEvents.h"
 #include "Data/Types/EnumHelpers.h"
-#include <unordered_map>
-#include <Arduino.h>
 
 class Process : public ISerializable {
 public:

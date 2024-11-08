@@ -1,5 +1,4 @@
 #include "AppStates.h"
-#include <iostream>
 
 void AbortingState::enter(SystemContext* context) {
     context->displayManager->changePage(Pages::Abort);

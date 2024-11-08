@@ -1,5 +1,4 @@
 #include "ActuatorManager.h"
-#include <iostream>
 
 bool ActuatorManager::initialize() {
 

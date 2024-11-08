@@ -1,9 +1,9 @@
 #ifndef PAGEBASE_H
 #define PAGEBASE_H
 
-#include "GUI/Elements/GuiElement.h"
-#include "Pages.h"
 #include <vector>
+#include "Pages.h"
+#include "GUI/Elements/GuiElement.h"
 
 class PageBase {
 protected:

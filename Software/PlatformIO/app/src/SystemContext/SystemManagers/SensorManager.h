@@ -2,7 +2,6 @@
 #define SENSOR_MANAGER_H
 
 #include "BaseManager.h"
-
 #include "HardwareAbstraction/SensorDHT11Wrapper.h"
 
 class SensorManager : public BaseManager {
