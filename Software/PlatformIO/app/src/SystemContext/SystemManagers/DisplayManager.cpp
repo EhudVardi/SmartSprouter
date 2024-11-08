@@ -1,5 +1,5 @@
 #include "SystemContext/SystemManagers/DisplayManager.h"
-#include "Data/Log.h"
+#include "Data/Log/Log.h"
 #include <iostream>
 
 DisplayManager::DisplayManager() {

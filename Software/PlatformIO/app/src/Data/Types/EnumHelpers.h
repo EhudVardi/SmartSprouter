@@ -8,7 +8,7 @@
 #include "StateMachine/Setup/SetupStatesEnum.h"
 #include "SystemContext/SystemManagers/ActuatorActions.h"
 #include "GUI/Pages/Pages.h"
-#include "Data/LogType.h"
+#include "Data/Log/LogType.h"
 #include "Logic/Process/ProcessEvents.h"
 
 namespace EnumHelpers {

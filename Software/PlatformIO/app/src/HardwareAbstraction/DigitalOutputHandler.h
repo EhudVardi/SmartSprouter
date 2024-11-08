@@ -5,7 +5,7 @@
 #include <map>
 #include <vector>
 #include <string>
-#include "Data/Log.h"
+#include "Data/Log/Log.h"
 
 class DigitalOutput {
 private:

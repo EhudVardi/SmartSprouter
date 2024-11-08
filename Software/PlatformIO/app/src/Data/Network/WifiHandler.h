@@ -4,7 +4,7 @@
 #include <WiFi.h>
 #include <map>
 #include "UDPConnection.h"
-#include "Data/Log.h"
+#include "Data/Log/Log.h"
 
 class WiFiHandler {
 private:
