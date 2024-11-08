@@ -48,7 +48,7 @@ bool ProcessManager::loadProcessFromStorage(const DisplayDateTime& now, std::sha
     deleteCurrentProcess(); // Clear any existing process to avoid memory leaks
     Process* loadedProcess = new Process(); // Dynamically allocate a new Process object
     if (prefHandler->loadObjectFromNVS(*loadedProcess, currentProcessKey)) {
-        setProcessEventsCallbacks(currentProcess, actuatorManager); // set events callbacks
+        setProcessEventsCallbacks(loadedProcess, actuatorManager); // set events callbacks
         currentProcess = loadedProcess;  // Assign the loaded process to currentProcess
         lastUpdateTime = now; // set last update to now since we just loaded the process
         return true;
