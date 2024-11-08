@@ -1,7 +1,7 @@
 #ifndef PAGEAPPABOUT_H
 #define PAGEAPPABOUT_H
 
-#include "GUI/Pages/PageAppBase.h"
+#include "PageAppBase.h"
 #include "GUI/Elements/GFX/Image.h"
 #include "GUI/Bitmaps/AppLogoImage.h"
 #include "Application/ApplicationProperties.h"

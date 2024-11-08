@@ -1,7 +1,7 @@
 #ifndef NAMEDVALUEINT_H
 #define NAMEDVALUEINT_H
 
-#include "GUI/Elements/Composite/NamedValue.h"
+#include "NamedValue.h"
 #include "Data/Types/AppTypes.h"
 
 class NamedValueInt : public NamedValue<int> {

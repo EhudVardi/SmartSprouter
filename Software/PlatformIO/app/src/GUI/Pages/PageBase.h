@@ -2,7 +2,7 @@
 #define PAGEBASE_H
 
 #include "GUI/Elements/GuiElement.h"
-#include "GUI/Pages/Pages.h"
+#include "Pages.h"
 #include <vector>
 
 class PageBase {

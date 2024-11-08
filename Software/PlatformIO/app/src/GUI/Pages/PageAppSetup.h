@@ -1,7 +1,7 @@
 #ifndef PAGEAPPSETUP_H
 #define PAGEAPPSETUP_H
 
-#include "GUI/Pages/PageAppBase.h"
+#include "PageAppBase.h"
 #include "GUI/Elements/Composite/TypedNameRange.h"
 #include "GUI/Elements/Composite/TypedNameValue.h"
 #include "GUI/Elements/Simple/TypedLabel.h"

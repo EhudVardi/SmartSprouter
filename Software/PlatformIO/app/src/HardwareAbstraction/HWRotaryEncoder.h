@@ -4,7 +4,7 @@
 #include <RotaryEncoder.h>
 #include <functional>
 
-#include "HardwareAbstraction/HWButton.h"
+#include "HWButton.h"
 
 class HWRotaryEncoder {
 public:

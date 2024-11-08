@@ -1,10 +1,10 @@
 #ifndef PROCESS_H
 #define PROCESS_H
 
-#include "Logic/Process/PeriodicEvent.h"
-#include "Logic/Process/WindowEvent.h"
+#include "PeriodicEvent.h"
+#include "WindowEvent.h"
 #include "Data/Serialization/ISerializable.h"
-#include "Logic/Process/ProcessEvents.h"
+#include "ProcessEvents.h"
 #include "Data/Types/EnumHelpers.h"
 #include <unordered_map>
 #include <Arduino.h>

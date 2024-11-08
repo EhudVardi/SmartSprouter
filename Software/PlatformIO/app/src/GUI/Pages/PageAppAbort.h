@@ -1,7 +1,7 @@
 #ifndef PAGEAPPABORT_H
 #define PAGEAPPABORT_H
 
-#include "GUI/Pages/PageAppBase.h"
+#include "PageAppBase.h"
 #include "GUI/Elements/Simple/TypedLabel.h"
 
 class PageAppAbort : public PageAppBase {

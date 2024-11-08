@@ -2,7 +2,7 @@
 #define APPSTATE_H
 
 #include "StateMachine/StateBase.h"
-#include "StateMachine/App/AppStateMachine.h"
+#include "AppStateMachine.h"
 #include <iostream>
 
 class AppStateMachine; // Forward declare AppStateMachine

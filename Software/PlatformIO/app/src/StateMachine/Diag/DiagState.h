@@ -2,7 +2,7 @@
 #define DIAGNOSTICS_STATE_H
 
 #include "StateMachine/StateBase.h"
-#include "StateMachine/Diag/DiagStateMachine.h"
+#include "DiagStateMachine.h"
 #include <iostream>
 
 class DiagStateMachine; // Forward declare SetupStateMachine

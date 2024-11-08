@@ -1,4 +1,4 @@
-#include "SystemContext/SystemManagers/NetworkManager.h"
+#include "NetworkManager.h"
 
 bool NetworkManager::initialize() {
 

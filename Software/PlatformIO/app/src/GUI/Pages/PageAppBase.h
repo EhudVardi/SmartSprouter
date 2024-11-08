@@ -1,7 +1,7 @@
 #ifndef PAGEAPPBASE_H
 #define PAGEAPPBASE_H
 
-#include "GUI/Pages/PageBase.h"
+#include "PageAppBase.h"
 #include "GUI/Elements/GFX/Line.h"
 #include "GUI/Elements/Simple/TypedLabel.h"
 

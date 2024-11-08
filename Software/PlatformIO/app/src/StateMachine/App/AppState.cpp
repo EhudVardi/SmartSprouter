@@ -1,4 +1,4 @@
-#include "StateMachine/App/AppState.h"
+#include "AppState.h"
 
 void AppState::GoToErrorState(SystemContext* context, AppErrors error, const String& errParams) {
     if (!errorPage) {

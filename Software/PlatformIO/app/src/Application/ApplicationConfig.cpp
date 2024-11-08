@@ -1,4 +1,4 @@
-#include "Application/ApplicationConfig.h"
+#include "ApplicationConfig.h"
 
 //DEFAULTS
 const float def_humidityRangeSetupMin = 65.0; // default humidity range setup min percent (65%)

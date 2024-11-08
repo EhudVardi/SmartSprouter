@@ -1,4 +1,4 @@
-#include "StateMachine/Diag/DiagState.h"
+#include "DiagState.h"
 
 #ifndef HUMIDIFIERS_SELECTED_STATE_H
 #define HUMIDIFIERS_SELECTED_STATE_H

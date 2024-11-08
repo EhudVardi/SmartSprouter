@@ -4,7 +4,7 @@
 #include "BaseManager.h"
 #include "HardwareAbstraction/RtcDS3231Wrapper.h"
 #include "Data/Network/NTPHandler.h"
-#include "SystemContext/SystemManagers/NetworkManager.h"
+#include "NetworkManager.h"
 #include "Data/Types/AppTypes.h"
 
 class TimeManager : public BaseManager {

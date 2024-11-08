@@ -3,7 +3,7 @@
 
 #include "GUI/Elements/GuiElement.h"
 #include "GUI/Elements/Simple/Label.h"
-#include "GUI/Elements/Composite/NamedValueEditState.h"
+#include "NamedValueEditState.h"
 #include <Arduino.h>
 
 template <typename T>

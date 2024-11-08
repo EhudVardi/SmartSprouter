@@ -1,7 +1,7 @@
 #ifndef PAGEAPPIDLE_H
 #define PAGEAPPIDLE_H
 
-#include "GUI/Pages/PageAppBase.h"
+#include "PageAppBase.h"
 #include "GUI/Elements/Composite/TypedNameValue.h"
 
 class PageAppIdle : public PageAppBase {

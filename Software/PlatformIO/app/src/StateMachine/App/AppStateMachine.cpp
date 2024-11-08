@@ -1,5 +1,5 @@
-#include "StateMachine/App/AppStateMachine.h"
-#include "StateMachine/App/AppStates.h"
+#include "AppStateMachine.h"
+#include "AppStates.h"
 
 AppStateMachine::AppStateMachine() {
     

@@ -2,8 +2,8 @@
 #define DIAG_STATE_MACHINE_H
 
 #include "StateMachine/StateMachineBase.h"
-#include "StateMachine/Diag/DiagState.h"
-#include "StateMachine/Diag/DiagStatesEnum.h"
+#include "DiagState.h"
+#include "DiagStatesEnum.h"
 
 #include <iostream>
 #include <functional>

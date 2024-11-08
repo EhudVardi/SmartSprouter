@@ -1,7 +1,7 @@
 #ifndef WINDOWEVENT_H
 #define WINDOWEVENT_H
 
-#include "Logic/Process/ActionableEvent.h"
+#include "ActionableEvent.h"
 
 class WindowEvent : public ActionableEvent<float> {
 public:

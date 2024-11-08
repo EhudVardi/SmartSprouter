@@ -1,4 +1,4 @@
-#include "HardwareAbstraction/HWRotaryEncoderHandler.h"
+#include "HWRotaryEncoderHandler.h"
 
 HWRotaryEncoderHandler::HWRotaryEncoderHandler(
     const std::vector<std::tuple<int, int, int>>& encoderParams,

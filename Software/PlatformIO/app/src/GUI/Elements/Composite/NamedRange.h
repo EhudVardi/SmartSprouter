@@ -4,7 +4,7 @@
 #include "GUI/Elements/GuiElement.h"
 #include "GUI/Elements/Simple/Label.h"
 #include "GUI/Elements/Simple/Range.h"
-#include "GUI/Elements/Composite/NamedRangeEditState.h"
+#include "NamedRangeEditState.h"
 #include <Arduino.h>
 
 template <typename T>

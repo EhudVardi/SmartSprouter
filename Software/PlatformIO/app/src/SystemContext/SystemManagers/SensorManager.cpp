@@ -1,4 +1,4 @@
-#include "SystemContext/SystemManagers/SensorManager.h"
+#include "SensorManager.h"
 
 bool SensorManager::initialize() {
     if (dht11Sensor == nullptr) {

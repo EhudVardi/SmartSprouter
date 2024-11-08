@@ -3,7 +3,7 @@
 #define STATE_MACHINE_BASE_H
 
 #include "SystemContext/SystemContext.h"
-#include "StateMachine/StateBase.h"
+#include "StateBase.h"
 #include "Data/Log/Log.h"
 #include <memory>
 #include <unordered_map>

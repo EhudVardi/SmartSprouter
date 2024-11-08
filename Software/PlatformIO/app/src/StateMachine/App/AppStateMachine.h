@@ -2,8 +2,8 @@
 #define APP_STATE_MACHINE_H
 
 #include "StateMachine/StateMachineBase.h"
-#include "StateMachine/App/AppState.h"
-#include "StateMachine/App/AppStatesEnum.h"
+#include "AppState.h"
+#include "AppStatesEnum.h"
 
 #include <iostream>
 

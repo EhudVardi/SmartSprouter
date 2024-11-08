@@ -1,4 +1,4 @@
-#include "StateMachine/Setup/SetupState.h"
+#include "SetupState.h"
 
 #ifndef HUMIDITY_RANGE_SELECTED_STATE_H
 #define HUMIDITY_RANGE_SELECTED_STATE_H

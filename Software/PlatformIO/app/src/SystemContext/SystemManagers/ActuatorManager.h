@@ -4,7 +4,7 @@
 #include "BaseManager.h"
 
 #include "HardwareAbstraction/DigitalOutputHandler.h"
-#include "SystemContext/SystemManagers/ActuatorActions.h"
+#include "ActuatorActions.h"
 
 class ActuatorManager : public BaseManager {
 private:

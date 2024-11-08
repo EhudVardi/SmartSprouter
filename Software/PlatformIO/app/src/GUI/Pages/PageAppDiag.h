@@ -1,7 +1,7 @@
 #ifndef PAGEAPPDIAG_H
 #define PAGEAPPDIAG_H
 
-#include "GUI/Pages/PageAppBase.h"
+#include "PageAppBase.h"
 #include "GUI/Elements/Composite/TypedNameValue.h"
 #include "GUI/Elements/Simple/TypedLabel.h"
 #include "SystemContext/SystemManagers/ActuatorActions.h"

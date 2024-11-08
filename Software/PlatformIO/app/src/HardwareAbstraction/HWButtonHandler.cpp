@@ -1,4 +1,4 @@
-#include "HardwareAbstraction/HWButtonHandler.h"
+#include "HWButtonHandler.h"
 
 // HWButtonHandler constructor
 HWButtonHandler::HWButtonHandler(const std::vector<int>& pins, const std::vector<std::function<void()>>& handlers_onPress, const std::vector<std::function<void()>>& handlers_onRelease) {

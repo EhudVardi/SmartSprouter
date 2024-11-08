@@ -1,7 +1,7 @@
 #ifndef PAGEAPPERROR_H
 #define PAGEAPPERROR_H
 
-#include "GUI/Pages/PageAppBase.h"
+#include "PageAppBase.h"
 #include "StateMachine/App/AppErrorsEnum.h"
 
 class PageAppError : public PageAppBase {

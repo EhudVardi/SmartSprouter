@@ -1,4 +1,4 @@
-#include "HardwareAbstraction/DigitalOutputHandler.h"
+#include "DigitalOutputHandler.h"
 
 DigitalOutputHandler::DigitalOutputHandler(const std::vector<int>& pins, const std::vector<std::string>& names) {
     if (pins.size() != names.size()) {

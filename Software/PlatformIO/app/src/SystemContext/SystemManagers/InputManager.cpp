@@ -1,4 +1,4 @@
-#include "SystemContext/SystemManagers/InputManager.h"
+#include "InputManager.h"
 
 bool InputManager::initialize() {
     

@@ -1,7 +1,7 @@
 #ifndef TYPED_NAMED_RANGE_H
 #define TYPED_NAMED_RANGE_H
 
-#include "GUI/Elements/Composite/NamedRange.h"
+#include "NamedRange.h"
 #include "GUI/Elements/Simple/Range.h"
 
 class NamedRangeInt : public NamedRange<int> {

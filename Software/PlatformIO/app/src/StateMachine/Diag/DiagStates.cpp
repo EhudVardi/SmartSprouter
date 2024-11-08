@@ -1,4 +1,4 @@
-#include "StateMachine/Diag/DiagStates.h"
+#include "DiagStates.h"
 #include <iostream>
 
 void H_S::enter(SystemContext* context) { 

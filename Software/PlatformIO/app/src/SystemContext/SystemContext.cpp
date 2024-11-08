@@ -1,4 +1,4 @@
-#include "SystemContext/SystemContext.h"
+#include "SystemContext.h"
 
 SystemContext::SystemContext() {
     displayManager = std::make_shared<DisplayManager>();

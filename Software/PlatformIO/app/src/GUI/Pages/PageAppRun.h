@@ -1,7 +1,7 @@
 #ifndef PAGEAPPRUN_H
 #define PAGEAPPRUN_H
 
-#include "GUI/Pages/PageAppBase.h"
+#include "PageAppBase.h"
 #include "GUI/Elements/Composite/TypedNameValue.h"
 
 class PageAppRun : public PageAppBase {

@@ -2,8 +2,8 @@
 #define SETUP_STATE_MACHINE_H
 
 #include "StateMachine/StateMachineBase.h"
-#include "StateMachine/Setup/SetupState.h"
-#include "StateMachine/Setup/SetupStatesEnum.h"
+#include "SetupState.h"
+#include "SetupStatesEnum.h"
 
 #include <iostream>
 #include <functional>
