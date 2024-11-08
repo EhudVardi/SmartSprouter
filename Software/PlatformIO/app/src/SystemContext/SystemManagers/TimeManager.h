@@ -3,7 +3,7 @@
 
 #include "BaseManager.h"
 #include "HardwareAbstraction/RtcDS3231Wrapper.h"
-#include "Data/NTPHandler.h"
+#include "Data/Network/NTPHandler.h"
 #include "SystemContext/SystemManagers/NetworkManager.h"
 #include "Data/AppTypes.h"
 

@@ -3,7 +3,7 @@
 
 #include <WiFi.h>
 #include <map>
-#include "Data/UDPConnection.h"
+#include "UDPConnection.h"
 #include "Data/Log.h"
 
 class WiFiHandler {

@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 #include <string>
-#include "Data/WiFiHandler.h"
+#include "WiFiHandler.h"
 
 class NTPHandler {
 private:

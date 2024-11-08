@@ -2,8 +2,8 @@
 #define NETWORK_MANAGER_H
 
 #include "BaseManager.h"
-#include "Data/NTPHandler.h"
-#include "Data/WifiHandler.h"
+#include "Data/Network/NTPHandler.h"
+#include "Data/Network/WifiHandler.h"
 
 class NetworkManager : public BaseManager {
 private:
