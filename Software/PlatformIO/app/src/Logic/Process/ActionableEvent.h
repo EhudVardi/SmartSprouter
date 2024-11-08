@@ -19,15 +19,9 @@ public:
     virtual void check(T data) {} // check event conditions, modify the "active" value and call appropriate action 
 
     // Implementing serialization
-    virtual uint8_t* serialize(uint8_t* buffer) const override {
-        return serializeMember(&active, buffer);
-    }
-    virtual const uint8_t* deserialize(const uint8_t* buffer) override {
-        return deserializeMember(&active, buffer);
-    }
-    virtual size_t getSerializedSize() const override {
-        return sizeof(active);
-    }
+    virtual uint8_t* serialize(uint8_t* buffer) const override { return buffer; }
+    virtual const uint8_t* deserialize(const uint8_t* buffer) override { return buffer; }
+    virtual size_t getSerializedSize() const override { return 0; }
 
     String ToString() const {
         String str = "ActionableEvent { ";
