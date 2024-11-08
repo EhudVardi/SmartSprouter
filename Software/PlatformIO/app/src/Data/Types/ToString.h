@@ -14,7 +14,7 @@ inline String toString(const T& value) {
     return String(value);
 }
 // my custom types
-#include "Data/AppTypes.h"
+#include "AppTypes.h"
 template <>
 inline String toString(const AppDateTime& value) {
     return value.ToString(); // Assuming your class has a toString() member function
@@ -24,7 +24,7 @@ inline String toString(const AppTimeSpan& value) {
     return value.ToString(); // Assuming your class has a toString() member function
 }
 // my custom enumerations
-#include "Data/EnumHelpers.h"
+#include "EnumHelpers.h"
 #include "StateMachine/App/AppStatesEnum.h"
 template <>
 inline String toString(const AppStates& value) {

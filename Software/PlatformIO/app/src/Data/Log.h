@@ -7,7 +7,7 @@
 #include <sstream>
 #include <string>
 #include "LogType.h"
-#include "Data/EnumHelpers.h"
+#include "Data/Types/EnumHelpers.h"
 
 class Log {
 public:

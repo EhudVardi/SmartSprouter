@@ -1,7 +1,7 @@
 #ifndef ENUM_HELPER_ENUMERATION_H
 #define ENUM_HELPER_ENUMERATION_H
 
-#include "Data/EnumHelper.h"
+#include "EnumHelper.h"
 
 #include "StateMachine/App/AppStatesEnum.h"
 #include "StateMachine/App/AppErrorsEnum.h"

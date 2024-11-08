@@ -2,7 +2,7 @@
 #define NAMEDVALUEINT_H
 
 #include "GUI/Elements/Composite/NamedValue.h"
-#include "Data/AppTypes.h"
+#include "Data/Types/AppTypes.h"
 
 class NamedValueInt : public NamedValue<int> {
 public:
@@ -104,7 +104,7 @@ public:
 #endif // NAMEDVALUEDURATION_H
 
 
-#include "Data/EnumHelpers.h"
+#include "Data/Types/EnumHelpers.h"
 
 #ifndef NAMEDVALUE_ACTUATOR_HUMIDITY_ACTIONS_H
 #define NAMEDVALUE_ACTUATOR_HUMIDITY_ACTIONS_H

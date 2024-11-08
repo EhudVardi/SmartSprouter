@@ -1,5 +1,5 @@
 #include "GUI/Elements/Simple/Label.h"
-#include "Data/ToString.h"
+#include "Data/Types/ToString.h"
 
 #ifndef TEXT_LABEL_H
 #define TEXT_LABEL_H

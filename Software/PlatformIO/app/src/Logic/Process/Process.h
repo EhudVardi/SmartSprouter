@@ -5,7 +5,7 @@
 #include "Logic/Process/WindowEvent.h"
 #include "Data/Serialization/ISerializable.h"
 #include "Logic/Process/ProcessEvents.h"
-#include "Data/EnumHelpers.h"
+#include "Data/Types/EnumHelpers.h"
 #include <unordered_map>
 #include <Arduino.h>
 

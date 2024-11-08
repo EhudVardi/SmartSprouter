@@ -3,7 +3,7 @@
 
 #include "GUI/Elements/GuiElement.h"
 #include "GUI/Elements/FontSize.h"
-#include "Data/ToString.h"
+#include "Data/Types/ToString.h"
 #include <Arduino.h>
 #include <functional>
 

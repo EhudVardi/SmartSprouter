@@ -1,4 +1,4 @@
-#include "Data/EnumHelpers.h"
+#include "EnumHelpers.h"
 
 namespace EnumHelpers {
 
