@@ -40,7 +40,7 @@ public:
     void updatePeriodicEvent(PeriodicEvents eventKey, DisplayDateTime currentTime) {
         auto it = periodicEvents.find(eventKey);
         if (it != periodicEvents.end()) {
-            it->second.update(currentTime);
+            it->second.check(currentTime);
         }
     }
     void updateWindowEvent(WindowEvents eventKey, float sensorValue) {

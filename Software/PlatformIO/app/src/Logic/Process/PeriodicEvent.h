@@ -7,26 +7,10 @@
 class PeriodicEvent : public ActionableEvent<DisplayDateTime> {
 public:
     // Default constructor
-    PeriodicEvent()
-        : ActionableEvent<DisplayDateTime>(
-            [](DisplayDateTime) { return false; },  // Default predicate always returns false
-            []() {},                         // No-op start action
-            []() {}),                        // No-op stop action
-          interval(DisplayTimeSpan()),            // Initialize to default DisplayTimeSpan
-          duration(DisplayTimeSpan()),            // Initialize to default DisplayTimeSpan
-          nextStartTime(DisplayDateTime(SECONDS_FROM_1970_TO_2000)) // Initialize to epoch time
-    {}
+    PeriodicEvent() : PeriodicEvent(DisplayTimeSpan(5), DisplayTimeSpan(1)) {}
     // Constructor with thresholds only (empty callbacks)
-    PeriodicEvent(DisplayTimeSpan p_interval, DisplayTimeSpan p_duration) :PeriodicEvent(p_interval, p_duration, []() {}, []() {}) {}
-    // Constructor with parameters
-    PeriodicEvent(DisplayTimeSpan p_interval, DisplayTimeSpan p_duration, std::function<void()> startAction, std::function<void()> stopAction)
-        : ActionableEvent<DisplayDateTime>(
-            [this](DisplayDateTime now) {
-                return (now >= nextStartTime) && (now < nextStartTime + duration);
-            },
-            startAction, stopAction),
-          interval(p_interval), duration(p_duration) {
-            nextStartTime = DisplayDateTime(SECONDS_FROM_1970_TO_2000); // Start at epoch time
+    PeriodicEvent(DisplayTimeSpan p_interval, DisplayTimeSpan p_duration) : ActionableEvent() {
+        setTiming(p_interval, p_duration);
     }
     
     void setTiming(DisplayTimeSpan p_interval, DisplayTimeSpan p_duration) {
@@ -34,10 +18,26 @@ public:
         duration = p_duration;
     }
 
-    void update(DisplayDateTime now) {
-        if (now >= nextStartTime + interval) {
-            nextStartTime = now;
-            this->check(now); // Check if we need to start the event
+    virtual void check(DisplayDateTime data) override {
+        if (!activeSynchronized) { // one time logic - set first nextStartTime to the next interval, and set active to false
+            nextStartTime = data + interval;
+            active = false;
+            activeSynchronized = true; // sync done
+        } else {
+            if (data >= nextStartTime) {
+                if (data < nextStartTime + duration) {
+                    if (!active) {
+                        startAction();
+                        this->active = true;
+                    }
+                } else {
+                    if (active) {
+                        stopAction();
+                        this->active = false;
+                        nextStartTime = data + interval - duration;
+                    }
+                }
+            }
         }
     }
 

@@ -7,27 +7,16 @@
 template<typename T>
 class ActionableEvent : public ISerializable {
 public:
-    ActionableEvent(std::function<bool(T)> predicate, std::function<void()> startAction, std::function<void()> stopAction)
-        : predicate(predicate), startAction(startAction), stopAction(stopAction), active(false) {}
+    ActionableEvent() : ActionableEvent([](){}, [](){})  {}
+    ActionableEvent(std::function<void()> startAction, std::function<void()> stopAction) 
+        : startAction(startAction), stopAction(stopAction), active(false), activeSynchronized(false) {}
         
     void setActionCallbacks(std::function<void()> p_startAction, std::function<void()> p_stopAction) {
         startAction = p_startAction;
         stopAction = p_stopAction;
     }
 
-    void check(T data) {
-        if (predicate(data)) {
-            if (!active) {
-                startAction();
-                active = true;
-            }
-        } else {
-            if (active) {
-                stopAction();
-                active = false;
-            }
-        }
-    }
+    virtual void check(T data) {} // check event conditions, modify the "active" value and call appropriate action 
 
     // Implementing serialization
     virtual uint8_t* serialize(uint8_t* buffer) const override {
@@ -48,7 +37,7 @@ public:
 
 protected:
     bool active;
-    std::function<bool(T)> predicate;
+    bool activeSynchronized;
     std::function<void()> startAction;
     std::function<void()> stopAction;
 };

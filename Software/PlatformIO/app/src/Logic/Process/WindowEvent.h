@@ -6,37 +6,42 @@
 class WindowEvent : public ActionableEvent<float> {
 public:
     // Default constructor
-    WindowEvent()
-        : ActionableEvent<float>(
-            [](float) { return false; },  // Default predicate always returns false
-            []() {},                       // No-op start action
-            []() {}),                      // No-op stop action
-          lowThreshold(0.0f),             // Initialize to default threshold
-          highThreshold(100.0f)           // Initialize to default threshold
-    {}
+    WindowEvent() : WindowEvent(0, 100) {}
     // Constructor with thresholds only (empty callbacks)
-    WindowEvent(float p_lowThreshold, float p_highThreshold) :WindowEvent(p_lowThreshold, p_highThreshold, []() {}, []() {}) {}
-    // Constructor with parameters
-    WindowEvent(float p_lowThreshold, float p_highThreshold, std::function<void()> startAction, std::function<void()> stopAction)
-        : ActionableEvent<float>(
-            [this](float value) { 
-                if (value < lowThreshold) {
-                    return true; // Should activate
-                } else if (value > highThreshold) {
-                    return false; // Should deactivate
-                } else {
-                    return active; // Maintain current state if within thresholds (hysteresis)
-                }
-            },
-            startAction, stopAction),
-          lowThreshold(p_lowThreshold), highThreshold(p_highThreshold) { }
+    WindowEvent(float p_lowThreshold, float p_highThreshold) : ActionableEvent() {
+        setThresholds(p_lowThreshold, p_highThreshold);
+    }
     
     void setThresholds(float p_lowThreshold, float p_highThreshold) {
         lowThreshold = p_lowThreshold;
         highThreshold = p_highThreshold;
     }
-
-    // Implementing serialization
+    
+    virtual void check(float data) override {
+        if (!activeSynchronized) { // one time logic - use the data to sync active value, without comparing to previous active value
+            if (data < lowThreshold) {
+                startAction();
+                this->active = true;
+            } else if (data > highThreshold) {
+                stopAction();
+                this->active = false;
+            } else { 
+                this->active = false; 
+            }
+            activeSynchronized = true; // sync done
+        } else {
+            if (this->active == false && data < lowThreshold) {
+                startAction();
+                this->active = true; // Should activate
+            } 
+            else if (this->active == true && data > highThreshold) {
+                stopAction();
+                this->active = false; // Should deactivate
+            } 
+            //else { } // Maintain current state if within thresholds (hysteresis)
+        }
+    }
+    
     uint8_t* serialize(uint8_t* buffer) const override {
         buffer = ActionableEvent::serialize(buffer);
         buffer = serializeMember(&lowThreshold, buffer);
@@ -61,7 +66,7 @@ public:
     bool operator!=(const WindowEvent& other) const {
         return !(*this == other);
     }
-    
+
     String ToString() const {
         String str = "WindowEvent { ";
         str += "lowThreshold: " + String(lowThreshold) + ", ";
