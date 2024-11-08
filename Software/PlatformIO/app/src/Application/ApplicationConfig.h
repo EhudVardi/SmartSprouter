@@ -1,7 +1,7 @@
 #ifndef APPLICATION_CONFIG_H
 #define APPLICATION_CONFIG_H
 
-#include "Data/DisplayTypes.h"
+#include "Data/AppTypes.h"
 
 //DEFAULTS
 // SETUP

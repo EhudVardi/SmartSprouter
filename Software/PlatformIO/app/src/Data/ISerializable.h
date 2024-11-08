@@ -2,7 +2,7 @@
 #define ISERIALIZABLE_H
 
 #include <cstring>  // for memcpy
-#include "Data/DisplayTypes.h"  // For DisplayDateTime and DisplayTimeSpan
+#include "Data/AppTypes.h"  // For AppDateTime and AppTimeSpan
 #include "Logic/Process/ProcessEvents.h"
 
 class ISerializable {

@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <RTClib.h>
 
-#ifndef DISPLAYTYPES_H
-#define DISPLAYTYPES_H
+#ifndef APPTYPES_H
+#define APPTYPES_H
 
 #define DAY_IN_SECONDS 86400
 #define HOUR_IN_SECONDS 3600
@@ -80,4 +80,4 @@ public:
     }
 };
 
-#endif // DISPLAYTYPES_H
+#endif // APPTYPES_H

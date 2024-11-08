@@ -1,6 +1,6 @@
 #include <Wire.h>
 #include <RTClib.h>
-#include "Data/DisplayTypes.h"
+#include "Data/AppTypes.h"
 
 class RtcDS3231Wrapper {
 private:

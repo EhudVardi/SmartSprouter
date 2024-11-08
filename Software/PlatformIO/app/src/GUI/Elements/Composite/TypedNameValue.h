@@ -2,7 +2,7 @@
 #define NAMEDVALUEINT_H
 
 #include "GUI/Elements/Composite/NamedValue.h"
-#include "Data/DisplayTypes.h"
+#include "Data/AppTypes.h"
 
 class NamedValueInt : public NamedValue<int> {
 public:

@@ -1,5 +1,5 @@
 #include "SystemContext/SystemManagers/TimeManager.h"
-#include "Data/DisplayTypes.h"
+#include "Data/AppTypes.h"
 
 // Constructor
 TimeManager::TimeManager() : currentTime(nullptr) {

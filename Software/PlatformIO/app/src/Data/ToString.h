@@ -6,8 +6,6 @@
 /// when adding new custom type to be used as the Value/Range type, add a toString in the new custom type and then add a new specific template here for that type.
 
 #include <Arduino.h>
-#include <RTClib.h>
-#include "Data/DisplayTypes.h"
 
 /// Generic toString implementations
 // Generic type
@@ -16,7 +14,7 @@ inline String toString(const T& value) {
     return String(value);
 }
 // my custom types
-#include "Data/DisplayTypes.h"
+#include "Data/AppTypes.h"
 template <>
 inline String toString(const AppDateTime& value) {
     return value.ToString(); // Assuming your class has a toString() member function

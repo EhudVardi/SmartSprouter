@@ -155,8 +155,8 @@ SettingProcessState::SettingProcessState() {
                 setupPage->GetSetupHumidityMax(),
                 setupPage->GetSetupTemperatureMin(),
                 setupPage->GetSetupTemperatureMax(),
-                DisplayTimeSpan(0,0,1,0), //TODO vents interval
-                DisplayTimeSpan(0,0,1,0), //TODO vents duration
+                AppTimeSpan(0,0,1,0), //TODO vents interval
+                AppTimeSpan(0,0,1,0), //TODO vents duration
                 setupPage->GetDurationSetup(),
                 context->timeManager->getCurrentTime(),
                 context->actuatorManager);

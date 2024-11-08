@@ -2,7 +2,7 @@
 #define PERIODICEVENT_H
 
 #include "Logic/Process/ActionableEvent.h"
-#include "Data/DisplayTypes.h"
+#include "Data/AppTypes.h"
 
 class PeriodicEvent : public ActionableEvent<AppDateTime> {
 public:
