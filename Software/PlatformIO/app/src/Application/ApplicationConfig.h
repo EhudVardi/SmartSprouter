@@ -5,20 +5,20 @@
 
 //DEFAULTS
 // SETUP
-extern const float def_humidityRangeSetupMin;
-extern const float def_humidityRangeSetupMax;
-extern const float def_temperatureRangeSetupMin;
-extern const float def_temperatureRangeSetupMax;
-extern const AppTimeSpan def_durationSetup;
+extern const float DEFAULT_HUMIDITY_RANGE_SETUP_MIN;
+extern const float DEFAULT_HUMIDITY_RANGE_SETUP_MAX;
+extern const float DEFAULT_TEMPERATURE_RANGE_SETUP_MIN;
+extern const float DEFAULT_TEMPERATURE_RANGE_SETUP_MAX;
+extern const AppTimeSpan DEFAULT_DURATION_SETUP;
 
 //TIME
-extern const int utcOffsetHours;
+extern const int UTC_OFFSET_HOURS;
 
 //NETWORK
-extern const char* ssid;
-extern const char* password;
-extern const char* ntpServerUrl;
-extern const int ntpPort;
+extern const char* LAN_SSID;
+extern const char* LAN_PASS;
+extern const char* NTP_SERVER_URL;
+extern const int NTP_SERVICE_PORT;
 
 //SYSTEM HARDWARE PINS
 // ACTUATOR_PINS

@@ -38,7 +38,7 @@ bool TimeManager::UpdateRtcFromNtpService(std::shared_ptr<NetworkManager> networ
 
 void TimeManager::setTimeFromExtSource(time_t& currentEpoch) {
     // Adjust UTC time offset
-    time_t adjustedTime = currentEpoch + utcOffsetHours * 3600;
+    time_t adjustedTime = currentEpoch + UTC_OFFSET_HOURS * 3600;
     // Update the current time instance
     *currentTime = AppDateTime(adjustedTime);
     // Update hardware RTC with the new time

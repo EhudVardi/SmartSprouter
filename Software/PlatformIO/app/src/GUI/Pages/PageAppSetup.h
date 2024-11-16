@@ -15,9 +15,9 @@ protected:
     CenteredLabel startButton;
 
 public:
-    PageAppSetup() : humidityRangeSetup(2, 12, def_humidityRangeSetupMin, def_humidityRangeSetupMax, "Humidity"),
-                     temperatureRangeSetup(2, 24, def_temperatureRangeSetupMin, def_temperatureRangeSetupMax, "Temper'"),
-                     durationSetup(2, 36, def_durationSetup, "Duration", FontSize::Small), 
+    PageAppSetup() : humidityRangeSetup(2, 12, DEFAULT_HUMIDITY_RANGE_SETUP_MIN, DEFAULT_HUMIDITY_RANGE_SETUP_MAX, "Humidity"),
+                     temperatureRangeSetup(2, 24, DEFAULT_TEMPERATURE_RANGE_SETUP_MIN, DEFAULT_TEMPERATURE_RANGE_SETUP_MAX, "Temper'"),
+                     durationSetup(2, 36, DEFAULT_DURATION_SETUP, "Duration", FontSize::Small), 
                      startButton(48, "Start", FontSize::Medium)  {
         SetTitle("SETUP");
         AddElement(&humidityRangeSetup);
