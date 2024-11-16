@@ -172,7 +172,7 @@ void SettingProcessState::enter(SystemContext* context) {
     if (!setupPage) {
         setupPage = context->displayManager->getPageAs<PageAppSetup>(Pages::Setup);
     }
-    setupStateMachine.changeState(SetupStates::HumidityRangeSelect, context); // init nested setup state machine state to initial state
+    setupStateMachine.changeState(SetupStates::HUMIDITY_RANGE_SELECT, context); // init nested setup state machine state to initial state
 	log("enter SettingProcessState");
 }
 void SettingProcessState::exit(SystemContext* context) {

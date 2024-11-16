@@ -14,15 +14,15 @@ SetupStateMachine::SetupStateMachine() {
     auto StartSelect = std::make_shared<S_S>();
 
     // Add states to the state machine
-    addState(SetupStates::HumidityRangeSelect, HumidityRangeSelect);
-    addState(SetupStates::HumidityRangeEditMin, HumidityRangeEditMin);
-    addState(SetupStates::HumidityRangeEditMax, HumidityRangeEditMax);
-    addState(SetupStates::TemperatureRangeSelect, TemperatureRangeSelect);
-    addState(SetupStates::TemperatureRangeEditMin, TemperatureRangeEditMin);
-    addState(SetupStates::TemperatureRangeEditMax, TemperatureRangeEditMax);
-    addState(SetupStates::DurationSelect, DurationSelect);
-    addState(SetupStates::DurationEdit, DurationEdit);
-    addState(SetupStates::StartSelect, StartSelect);
+    addState(SetupStates::HUMIDITY_RANGE_SELECT, HumidityRangeSelect);
+    addState(SetupStates::HUMIDITY_RANGE_EDIT_MIN, HumidityRangeEditMin);
+    addState(SetupStates::HUMIDITY_RANGE_EDIT_MAX, HumidityRangeEditMax);
+    addState(SetupStates::TEMPERATURE_RANGE_SELECT, TemperatureRangeSelect);
+    addState(SetupStates::TEMPERATURE_RANGE_EDIT_MIN, TemperatureRangeEditMin);
+    addState(SetupStates::TEMPERATURE_RANGE_EDIT_MAX, TemperatureRangeEditMax);
+    addState(SetupStates::DURATION_SELECT, DurationSelect);
+    addState(SetupStates::DURATION_EDIT, DurationEdit);
+    addState(SetupStates::START_SELECT, StartSelect);
 }
 
 void SetupStateMachine::setOnStartEnterCallback(std::function<void(SystemContext*)> callback) {

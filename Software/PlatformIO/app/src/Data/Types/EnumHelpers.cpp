@@ -25,16 +25,16 @@ namespace EnumHelpers {
     }, AppErrors::ERR_INIT_TIME_MANAGER); // last valid state
     
     EnumHelper<SetupStates> setupStatesHelper({
-        { SetupStates::HumidityRangeSelect, "HumidityRangeSelect" },
-        { SetupStates::HumidityRangeEditMin, "HumidityRangeEditMin" },
-        { SetupStates::HumidityRangeEditMax, "HumidityRangeEditMax" },
-        { SetupStates::TemperatureRangeSelect, "TemperatureRangeSelect" },
-        { SetupStates::TemperatureRangeEditMin, "TemperatureRangeEditMin" },
-        { SetupStates::TemperatureRangeEditMax, "TemperatureRangeEditMax" },
-        { SetupStates::DurationSelect, "DurationSelect" },
-        { SetupStates::DurationEdit, "DurationEdit" },
-        { SetupStates::StartSelect, "StartSelect" }
-    }, SetupStates::StartSelect); // last valid state
+        { SetupStates::HUMIDITY_RANGE_SELECT, "HUMIDITY_RANGE_SELECT" },
+        { SetupStates::HUMIDITY_RANGE_EDIT_MIN, "HUMIDITY_RANGE_EDIT_MIN" },
+        { SetupStates::HUMIDITY_RANGE_EDIT_MAX, "HUMIDITY_RANGE_EDIT_MAX" },
+        { SetupStates::TEMPERATURE_RANGE_SELECT, "TEMPERATURE_RANGE_SELECT" },
+        { SetupStates::TEMPERATURE_RANGE_EDIT_MIN, "TEMPERATURE_RANGE_EDIT_MIN" },
+        { SetupStates::TEMPERATURE_RANGE_EDIT_MAX, "TEMPERATURE_RANGE_EDIT_MAX" },
+        { SetupStates::DURATION_SELECT, "DURATION_SELECT" },
+        { SetupStates::DURATION_EDIT, "DURATION_EDIT" },
+        { SetupStates::START_SELECT, "START_SELECT" }
+    }, SetupStates::START_SELECT); // last valid state
     
     EnumHelper<HumidifierActions> humidifierActionsHelper({
         { HumidifierActions::Off, "  Off " },

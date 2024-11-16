@@ -2,15 +2,15 @@
 #define SETUP_STATES_ENUMERATION_H
 
 enum class SetupStates {
-    HumidityRangeSelect,
-    HumidityRangeEditMin,
-    HumidityRangeEditMax,
-    TemperatureRangeSelect,
-    TemperatureRangeEditMin,
-    TemperatureRangeEditMax,
-    DurationSelect,
-    DurationEdit,
-    StartSelect,
+    HUMIDITY_RANGE_SELECT,
+    HUMIDITY_RANGE_EDIT_MIN,
+    HUMIDITY_RANGE_EDIT_MAX,
+    TEMPERATURE_RANGE_SELECT,
+    TEMPERATURE_RANGE_EDIT_MIN,
+    TEMPERATURE_RANGE_EDIT_MAX,
+    DURATION_SELECT,
+    DURATION_EDIT,
+    START_SELECT,
 };
 
 #endif // SETUP_STATES_ENUMERATION_H
