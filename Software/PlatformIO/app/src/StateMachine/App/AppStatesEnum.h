@@ -2,15 +2,15 @@
 #define APP_STATES_ENUMERATION_H
 
 enum class AppStates {
-    StartingUp,
-    SystemInError,
-    Initializing,
-    Idling,
-    Informing,
-    SettingProcess,
-    Running,
-    Aborting,
-    Diagnosing,
+    STARTING_UP,
+    SYSTEM_IN_ERROR,
+    INITIALIZING,
+    IDLING,
+    INFORMING,
+    SETTING_PROCESS,
+    RUNNING,
+    ABORTING,
+    DIAGNOSING,
 };
 
 #endif // APP_STATES_ENUMERATION_H

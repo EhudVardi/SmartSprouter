@@ -5,6 +5,6 @@ void AppState::GoToErrorState(SystemContext* context, AppErrors error, const Str
         errorPage = context->displayManager->getPageAs<PageAppError>(Pages::Error);
         errorPage->SetError(error, errParams);
     }
-    stateMachine->changeState(AppStates::SystemInError, context);
+    stateMachine->changeState(AppStates::SYSTEM_IN_ERROR, context);
 }
 

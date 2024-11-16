@@ -14,7 +14,7 @@ public:
     PageAppRun() : humidityGauge(2, 12, "Humidity", FontSize::Small),
                    temperatureGauge(2, 24, "Temper'", FontSize::Small),
                    durationGauge(2, 36, "Duration", FontSize::Small) {
-        SetTitle("Running");
+        SetTitle("RUNNING");
         AddElement(&humidityGauge);
         AddElement(&temperatureGauge);
         AddElement(&durationGauge);

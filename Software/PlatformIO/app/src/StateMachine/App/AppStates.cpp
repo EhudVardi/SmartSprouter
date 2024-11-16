@@ -15,13 +15,13 @@ void AbortingState::update(SystemContext* context) {
 }
 void AbortingState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::BackPressed) {
-        stateMachine->changeState(AppStates::Running, context);
+        stateMachine->changeState(AppStates::RUNNING, context);
     }
     else if (event == InputEvent::EnterPressed) {
         context->processManager->deleteCurrentProcess();
         context->processManager->deleteStoredProcess();
         context->actuatorManager->ShutDownAllActuators();
-        stateMachine->changeState(AppStates::Idling, context);
+        stateMachine->changeState(AppStates::IDLING, context);
     }
 }
 
@@ -50,13 +50,13 @@ void IdlingState::update(SystemContext* context) {
 }
 void IdlingState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::RotatedRight) {
-        stateMachine->changeState(AppStates::Informing, context);
+        stateMachine->changeState(AppStates::INFORMING, context);
     }
     else if (event == InputEvent::EnterPressed) {
-        stateMachine->changeState(AppStates::SettingProcess, context);
+        stateMachine->changeState(AppStates::SETTING_PROCESS, context);
     }
     else if (event == InputEvent::BackPressed) {
-        stateMachine->changeState(AppStates::Diagnosing, context);
+        stateMachine->changeState(AppStates::DIAGNOSING, context);
     }
 }
 
@@ -74,7 +74,7 @@ void InformingState::update(SystemContext* context) {
 }
 void InformingState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::RotatedLeft) {
-        stateMachine->changeState(AppStates::Idling, context);
+        stateMachine->changeState(AppStates::IDLING, context);
     }
 }
 
@@ -82,9 +82,9 @@ void InformingState::handleInput(SystemContext* context, InputEvent event) {
 
 void InitializingState::enter(SystemContext* context) {
     if (context->processManager->loadProcessFromStorage(context->timeManager->getCurrentTime(), context->actuatorManager)) {
-        stateMachine->changeState(AppStates::Running, context);
+        stateMachine->changeState(AppStates::RUNNING, context);
     } else {
-        stateMachine->changeState(AppStates::Idling, context);
+        stateMachine->changeState(AppStates::IDLING, context);
     }
 }
 void InitializingState::exit(SystemContext* context) {}
@@ -125,7 +125,7 @@ void RunningState::update(SystemContext* context) {
         context->processManager->deleteCurrentProcess();
         context->processManager->deleteStoredProcess();
         context->actuatorManager->ShutDownAllActuators();
-        stateMachine->changeState(AppStates::Idling, context); //TODO: goto summery page/state ?
+        stateMachine->changeState(AppStates::IDLING, context); //TODO: goto summery page/state ?
     } else {
         if (runPage) {
             if (humidityValid) runPage->SetHumidity(humidity);
@@ -139,7 +139,7 @@ void RunningState::update(SystemContext* context) {
 }
 void RunningState::handleInput(SystemContext* context, InputEvent event) {
 	if (event == InputEvent::BackPressed) {
-        stateMachine->changeState(AppStates::Aborting, context);
+        stateMachine->changeState(AppStates::ABORTING, context);
     }
 }
 
@@ -164,7 +164,7 @@ SettingProcessState::SettingProcessState() {
                 log("SettingProcessState setOnStartEnterCallback - failed to store newly created process");
             }
             
-            stateMachine->changeState(AppStates::Running, context);
+            stateMachine->changeState(AppStates::RUNNING, context);
         });
 }
 void SettingProcessState::enter(SystemContext* context) {
@@ -185,7 +185,7 @@ void SettingProcessState::update(SystemContext* context) {
 }
 void SettingProcessState::handleInput(SystemContext* context, InputEvent event) {
     if (event == InputEvent::BackPressed) {
-        stateMachine->changeState(AppStates::Idling, context);
+        stateMachine->changeState(AppStates::IDLING, context);
     }
     else { // pass event into nested setup state machine
         setupStateMachine.handleInput(event, context);
@@ -198,7 +198,7 @@ void SettingProcessState::handleInput(SystemContext* context, InputEvent event) 
 void StartingUpState::enter(SystemContext* context) {
     /// StateLogic:
     /// initialize all managers in the system context object
-    /// if any fails, then transite to SystemInError state.
+    /// if any fails, then transite to SYSTEM_IN_ERROR state.
     if (!context->inputManager->initialize()) {
         GoToErrorState(context, AppErrors::ErrInitInputManager);
         return;
@@ -236,8 +236,8 @@ void StartingUpState::enter(SystemContext* context) {
         log("update time from ntp service failed"); 
     }
 
-    // transite forward to Initializing state
-    stateMachine->changeState(AppStates::Initializing, context);
+    // transite forward to INITIALIZING state
+    stateMachine->changeState(AppStates::INITIALIZING, context);
 }
 void StartingUpState::exit(SystemContext* context) { }
 void StartingUpState::update(SystemContext* context) { }
@@ -259,7 +259,7 @@ void SystemInErrorState::handleInput(SystemContext* context, InputEvent event) {
 DiagnosingState::DiagnosingState() {
     diagStateMachine.setOnExitDiagCallback(
         [this](SystemContext* context) {
-            stateMachine->changeState(AppStates::Idling, context);
+            stateMachine->changeState(AppStates::IDLING, context);
         });
 }
 void DiagnosingState::enter(SystemContext* context) {

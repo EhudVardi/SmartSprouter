@@ -3,16 +3,16 @@
 namespace EnumHelpers {
 
     EnumHelper<AppStates> appStatesHelper({
-        { AppStates::StartingUp, "StartingUp" },
-        { AppStates::SystemInError, "SystemInError" },
-        { AppStates::Initializing, "Initializing" },
-        { AppStates::Idling, "Idling" },
-        { AppStates::Informing, "Informing" },
-        { AppStates::SettingProcess, "SettingProcess" },
-        { AppStates::Running, "Running" },
-        { AppStates::Aborting, "Aborting" },
-        { AppStates::Diagnosing, "Diagnosing" }
-    }, AppStates::Diagnosing); // last valid state
+        { AppStates::STARTING_UP, "STARTING_UP" },
+        { AppStates::SYSTEM_IN_ERROR, "SYSTEM_IN_ERROR" },
+        { AppStates::INITIALIZING, "INITIALIZING" },
+        { AppStates::IDLING, "IDLING" },
+        { AppStates::INFORMING, "INFORMING" },
+        { AppStates::SETTING_PROCESS, "SETTING_PROCESS" },
+        { AppStates::RUNNING, "RUNNING" },
+        { AppStates::ABORTING, "ABORTING" },
+        { AppStates::DIAGNOSING, "DIAGNOSING" }
+    }, AppStates::DIAGNOSING); // last valid state
     
     EnumHelper<AppErrors> appErrorsHelper({
         { AppErrors::ErrInitInputManager, "ErrInitInputManager" },

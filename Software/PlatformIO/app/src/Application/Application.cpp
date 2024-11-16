@@ -31,7 +31,7 @@ void Application::setup() {
     });
 
 
-    stateMachine.changeState(AppStates::StartingUp, &context);
+    stateMachine.changeState(AppStates::STARTING_UP, &context);
 
 
     inputPollingTimer.setInterval(1);
