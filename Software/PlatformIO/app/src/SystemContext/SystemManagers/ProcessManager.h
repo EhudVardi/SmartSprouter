@@ -23,11 +23,11 @@ public:
     ~ProcessManager() { delete currentProcess; }
 
     bool initialize() override;
-    void createCurrentProcess(float minHumidity, float maxHumidity, 
-                              float minTemperature, float maxTemperature, 
-                              AppTimeSpan ventsInterval, AppTimeSpan ventsDuration, 
-                              AppTimeSpan totalDuration, 
-                              const AppDateTime& now, std::shared_ptr<ActuatorManager> actuatorManager); //create process from args and set events + their callbacks
+    void createCurrentProcess(float minHumidity, float maxHumidity,
+        float minTemperature, float maxTemperature,
+        AppTimeSpan ventsInterval, AppTimeSpan ventsDuration,
+        AppTimeSpan totalDuration,
+        const AppDateTime& now, std::shared_ptr<ActuatorManager> actuatorManager); //create process from args and set events + their callbacks
     AppTimeSpan updateProcess(const AppDateTime& now, float currHumidity, float currTemperature); // interval process update. update process events, update remaining time, and returns remaining time
     bool storeCurrentProcess(); //save Process instance in currentProcess into flash memory
     bool loadProcessFromStorage(const AppDateTime& now, std::shared_ptr<ActuatorManager> actuatorManager); //attempt to load stored process into currentProcess, return result status

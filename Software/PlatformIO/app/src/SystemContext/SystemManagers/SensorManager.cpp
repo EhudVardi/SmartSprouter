@@ -7,13 +7,13 @@ bool SensorManager::initialize() {
     dht11Sensor->init();
     return true;
 }
-bool SensorManager::getTemperature(float &temperature) {
+bool SensorManager::getTemperature(float& temperature) {
     if (dht11Sensor) {
         return dht11Sensor->readTemperature(temperature);
     }
     return false;
 }
-bool SensorManager::getHumidity(float &humidity) {
+bool SensorManager::getHumidity(float& humidity) {
     if (dht11Sensor) {
         return dht11Sensor->readHumidity(humidity);
     }

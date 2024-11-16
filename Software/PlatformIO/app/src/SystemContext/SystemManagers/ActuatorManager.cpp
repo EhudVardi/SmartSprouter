@@ -11,6 +11,6 @@ bool ActuatorManager::initialize() {
 }
 
 void ActuatorManager::CloseRelay1() { digitalOutputHandler->SetOutput(DIGITAL_OUTPUT_RELAY1_NAME, 1); }
-void ActuatorManager::OpenRelay1()  { digitalOutputHandler->SetOutput(DIGITAL_OUTPUT_RELAY1_NAME, 0); }
+void ActuatorManager::OpenRelay1() { digitalOutputHandler->SetOutput(DIGITAL_OUTPUT_RELAY1_NAME, 0); }
 void ActuatorManager::CloseRelay2() { digitalOutputHandler->SetOutput(DIGITAL_OUTPUT_RELAY2_NAME, 1); }
-void ActuatorManager::OpenRelay2()  { digitalOutputHandler->SetOutput(DIGITAL_OUTPUT_RELAY2_NAME, 0); }
+void ActuatorManager::OpenRelay2() { digitalOutputHandler->SetOutput(DIGITAL_OUTPUT_RELAY2_NAME, 0); }

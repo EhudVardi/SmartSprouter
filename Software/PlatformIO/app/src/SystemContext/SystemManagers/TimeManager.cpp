@@ -18,7 +18,8 @@ void TimeManager::update() {
     AppDateTime newTime = rtcWrapper->now(); // Fetch the current time from the RTC
     if (newTime.isValid()) {
         *currentTime = std::move(newTime); // update the manager time value if value is valid. use std:move to get ownership of the object for effectivity
-    } else {
+    }
+    else {
         // Handle RTC error
     }
 }
@@ -29,7 +30,7 @@ const AppDateTime& TimeManager::getCurrentTime() const {
 
 bool TimeManager::UpdateRtcFromNtpService(std::shared_ptr<NetworkManager> networkManager) {
     time_t fetchedEpoch;
-    if (networkManager->GetTimeFromNTPService(fetchedEpoch)){
+    if (networkManager->GetTimeFromNTPService(fetchedEpoch)) {
         setTimeFromExtSource(fetchedEpoch);
         return true;
     }
@@ -37,7 +38,7 @@ bool TimeManager::UpdateRtcFromNtpService(std::shared_ptr<NetworkManager> networ
 }
 
 void TimeManager::setTimeFromExtSource(time_t& currentEpoch) {
-    
+
     time_t adjustedTime = currentEpoch + UTC_OFFSET_HOURS * 3600; // Adjust UTC time offset
     *currentTime = AppDateTime(adjustedTime); // Update the current time instance
     rtcWrapper->adjust(*currentTime); // Update hardware RTC with new currentTime

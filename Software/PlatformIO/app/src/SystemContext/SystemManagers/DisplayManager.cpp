@@ -21,7 +21,7 @@ DisplayManager::DisplayManager() {
 }
 
 bool DisplayManager::initialize() {
-    
+
     displayHandler = new LcdDisplayHandler(LCD_SDA_PIN, LCD_SCL_PIN);
 
     displayHandler->GetDisplayObject().clearDisplay();
@@ -41,8 +41,9 @@ void DisplayManager::changePage(Pages pageEnum) {
         displayHandler->GetDisplayObject().clearDisplay();
         currentPage = newPage->second;
         currentPage->InvalidatePage();
-        
-    } else {
+
+    }
+    else {
         log("Page " + String(EnumHelpers::pagesHelper.ToString(pageEnum)) + " not found!", LogType::ERROR);
     }
 }

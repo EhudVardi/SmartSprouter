@@ -34,7 +34,7 @@ public:
     void changePage(Pages pageEnum);
 
     std::shared_ptr<PageBase> getPage(Pages pageEnum);
-    
+
     template <typename T>
     std::shared_ptr<T> getPageAs(Pages pageEnum) {
         auto page = pageMap[pageEnum];

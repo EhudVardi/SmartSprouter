@@ -9,7 +9,7 @@ bool NetworkManager::initialize() {
 }
 
 bool NetworkManager::GetTimeFromNTPService(time_t& currentEpoch) {
-    
+
     // connect to wifi network and attempt an NTP request
     bool status = false;
     if (wifiHandler.connect(LAN_SSID, LAN_PASS)) {

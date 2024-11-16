@@ -11,10 +11,10 @@ private:
 
     void CloseRelay1();
     void OpenRelay1();
-    
+
     void CloseRelay2();
     void OpenRelay2();
-    
+
 public:
     bool initialize() override;
 
@@ -32,7 +32,8 @@ public:
             delay(100);
             OpenRelay2();
             delay(100);
-        } else if (action == HumidifierActions::H_LOW) {
+        }
+        else if (action == HumidifierActions::H_LOW) {
             CloseRelay2();
             delay(100);
             OpenRelay2();

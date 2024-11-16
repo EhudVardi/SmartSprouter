@@ -10,8 +10,8 @@ private:
 
 public:
     bool initialize() override;
-    bool getTemperature(float &temperature);
-    bool getHumidity(float &humidity);
+    bool getTemperature(float& temperature);
+    bool getHumidity(float& humidity);
 };
 
 #endif // SENSOR_MANAGER_H
