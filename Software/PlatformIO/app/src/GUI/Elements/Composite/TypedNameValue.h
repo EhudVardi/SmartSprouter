@@ -94,11 +94,11 @@ public:
         });
     }
 
-    void AddSeconds(int secs) { AppTimeSpan newDuration = GetValue(); newDuration.AddSeconds(secs); SetValue(newDuration); }
-    void AddMinutes(int mins) { AppTimeSpan newDuration = GetValue(); newDuration.AddMinutes(mins); SetValue(newDuration); }
-    void AddHours(int hrs) { AppTimeSpan newDuration = GetValue(); newDuration.AddHours(hrs); SetValue(newDuration); }
-    void AddDays(int days) { AppTimeSpan newDuration = GetValue(); newDuration.AddDays(days); SetValue(newDuration); }
-    void TickDown() { AppTimeSpan newDuration = GetValue(); newDuration.TickDown(); SetValue(newDuration); }
+    void addSeconds(int secs) { AppTimeSpan newDuration = GetValue(); newDuration.addSeconds(secs); SetValue(newDuration); }
+    void addMinutes(int mins) { AppTimeSpan newDuration = GetValue(); newDuration.addMinutes(mins); SetValue(newDuration); }
+    void addHours(int hrs) { AppTimeSpan newDuration = GetValue(); newDuration.addHours(hrs); SetValue(newDuration); }
+    void addDays(int days) { AppTimeSpan newDuration = GetValue(); newDuration.addDays(days); SetValue(newDuration); }
+    void tickDown() { AppTimeSpan newDuration = GetValue(); newDuration.tickDown(); SetValue(newDuration); }
 };
 
 #endif // NAMEDVALUEDURATION_H

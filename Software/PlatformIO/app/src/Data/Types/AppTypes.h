@@ -28,12 +28,12 @@ public:
     }
     String toString() const { return toStringShort(); }
     
-    void AddSeconds(int secs) { _seconds = max(0, _seconds + secs); } // Add positive or negative seconds, preventing underflow
-    void AddMinutes(int mins) { AddSeconds(mins * MINUTE_IN_SECONDS); }
-    void AddHours(int hrs) { AddSeconds(hrs * HOUR_IN_SECONDS); }
-    void AddDays(int days) { AddSeconds(days * DAY_IN_SECONDS); }
+    void addSeconds(int secs) { _seconds = max(0, _seconds + secs); } // Add positive or negative seconds, preventing underflow
+    void addMinutes(int mins) { addSeconds(mins * MINUTE_IN_SECONDS); }
+    void addHours(int hrs) { addSeconds(hrs * HOUR_IN_SECONDS); }
+    void addDays(int days) { addSeconds(days * DAY_IN_SECONDS); }
 
-    void TickDown() {
+    void tickDown() {
         if (_seconds > 0) {
             _seconds--;
         }

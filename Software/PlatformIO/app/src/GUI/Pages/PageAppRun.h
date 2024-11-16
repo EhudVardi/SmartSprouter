@@ -49,7 +49,7 @@ public:
     }
 
     void TickDurationDown() {
-        durationGauge.TickDown();
+        durationGauge.tickDown();
     }
 };
 

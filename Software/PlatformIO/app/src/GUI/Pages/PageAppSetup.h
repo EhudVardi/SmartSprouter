@@ -60,10 +60,10 @@ public:
     void DecreaseTemperatureMax() { temperatureRangeSetup.DecreaseMax(); }
     
     void IncreaseDurationDays() { 
-        durationSetup.AddDays(1); 
+        durationSetup.addDays(1); 
     }
     void DecreaseDurationDays() { 
-        durationSetup.AddDays(-1);
+        durationSetup.addDays(-1);
     }
 };
 
