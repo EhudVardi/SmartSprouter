@@ -8,7 +8,8 @@ class EnumHelper {
 public:
     // Constructor accepting an unordered_map to initialize the enum-to-string map
     EnumHelper(const std::unordered_map<T, const char*>& map, T lastValidValue)
-        : enumMap(map), lastValue(lastValidValue) {}
+        : enumMap(map), lastValue(lastValidValue) {
+    }
 
     // Convert enum to string
     const char* ToString(T value) const {

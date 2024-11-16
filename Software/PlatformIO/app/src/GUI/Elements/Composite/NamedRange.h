@@ -12,19 +12,19 @@ class NamedRange : public GuiElement {
 protected:
     TextLabel nameLabel;
     Range<T> valueRange;
-    NamedRangeEditState editState; 
+    NamedRangeEditState editState;
 
 public:
-    NamedRange(int xPos, int yPos, T initialMinValue, T initialMaxValue, const String &name)
+    NamedRange(int xPos, int yPos, T initialMinValue, T initialMaxValue, const String& name)
         : NamedRange(xPos, yPos, name) {
         SetMinValue(initialMinValue);
         SetMaxValue(initialMaxValue);
     }
-    NamedRange(int xPos, int yPos, const String &name)
+    NamedRange(int xPos, int yPos, const String& name)
         : GuiElement(xPos, yPos),
-          nameLabel(xPos, yPos, name),
-          valueRange(xPos + SCREEN_WIDTH * 3 / 8, yPos),
-          editState(NamedRangeEditState::None) {
+        nameLabel(xPos, yPos, name),
+        valueRange(xPos + SCREEN_WIDTH * 3 / 8, yPos),
+        editState(NamedRangeEditState::None) {
     }
 
     T GetMinValue() {
@@ -48,15 +48,18 @@ public:
             nameLabel.SetInverted(false);
             valueRange.SetMinInverted(false);
             valueRange.SetMaxInverted(false);
-        } else if (state == NamedRangeEditState::Selected) {
+        }
+        else if (state == NamedRangeEditState::Selected) {
             nameLabel.SetInverted(true);
             valueRange.SetMinInverted(false);
             valueRange.SetMaxInverted(false);
-        } else if (state == NamedRangeEditState::EnteredMin) {
+        }
+        else if (state == NamedRangeEditState::EnteredMin) {
             nameLabel.SetInverted(true);
             valueRange.SetMinInverted(true);
             valueRange.SetMaxInverted(false);
-        } else if (state == NamedRangeEditState::EnteredMax) {
+        }
+        else if (state == NamedRangeEditState::EnteredMax) {
             nameLabel.SetInverted(true);
             valueRange.SetMinInverted(false);
             valueRange.SetMaxInverted(true);
@@ -76,9 +79,9 @@ public:
         return (nameLabel.IsInvalidated() || valueRange.IsInvalidated());
     }
 
-    virtual void Draw(LcdDisplayHandler &displayHandler) override {
+    virtual void Draw(LcdDisplayHandler& displayHandler) override {
         if (!IsInvalidated()) return;
-        
+
         nameLabel.Draw(displayHandler);
         valueRange.Draw(displayHandler);
     }

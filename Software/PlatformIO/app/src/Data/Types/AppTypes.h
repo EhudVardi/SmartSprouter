@@ -27,7 +27,7 @@ public:
         return String(buffer);
     }
     String toString() const { return toStringShort(); }
-    
+
     void addSeconds(int secs) { _seconds = max(0, _seconds + secs); } // Add positive or negative seconds, preventing underflow
     void addMinutes(int mins) { addSeconds(mins * MINUTE_IN_SECONDS); }
     void addHours(int hrs) { addSeconds(hrs * HOUR_IN_SECONDS); }
@@ -38,17 +38,17 @@ public:
             _seconds--;
         }
     }
-    
+
     bool operator==(const AppTimeSpan& other) const {
         return totalseconds() == other.totalseconds();
     }
     bool operator!=(const AppTimeSpan& other) const {
         return !(*this == other);
     }
-    AppTimeSpan operator+(const AppTimeSpan &right) const {
+    AppTimeSpan operator+(const AppTimeSpan& right) const {
         return AppTimeSpan(_seconds + right._seconds);
     }
-    AppTimeSpan operator-(const AppTimeSpan &right) const {
+    AppTimeSpan operator-(const AppTimeSpan& right) const {
         return AppTimeSpan(_seconds - right._seconds);
     }
 };
@@ -58,24 +58,24 @@ public:
     AppDateTime() : DateTime() {}
     AppDateTime(int year, int month, int day, int hour, int minute, int second) : DateTime(year, month, day, hour, minute, second) {}
     AppDateTime(const DateTime& dt) : DateTime(dt) {}
-    
+
     String ToString() const {
         char buffer[20];
-        snprintf(buffer, sizeof(buffer), "%04d-%02d-%02d %02d:%02d:%02d", 
-                 year(), month(), day(), hour(), minute(), second());
+        snprintf(buffer, sizeof(buffer), "%04d-%02d-%02d %02d:%02d:%02d",
+            year(), month(), day(), hour(), minute(), second());
         return String(buffer);
     }
-    
+
     bool operator==(const AppDateTime& other) const {
         return unixtime() == other.unixtime();
     }
     bool operator!=(const AppDateTime& other) const {
         return !(*this == other);
     }
-    AppDateTime operator-(const AppTimeSpan &span) const {
+    AppDateTime operator-(const AppTimeSpan& span) const {
         return AppDateTime(unixtime() - span.totalseconds());
     }
-    AppTimeSpan operator-(const AppDateTime &right) const {
+    AppTimeSpan operator-(const AppDateTime& right) const {
         return AppTimeSpan(unixtime() - right.unixtime());
     }
 };

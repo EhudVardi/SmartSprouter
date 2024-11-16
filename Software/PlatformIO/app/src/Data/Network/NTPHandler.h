@@ -11,8 +11,9 @@ private:
     std::string connectionName; // Connection name in WiFiHandler
 
 public:
-    NTPHandler(const std::string& server, int port) : 
-        ntpServer(server), ntpPort(port), connectionName("NTPConnection") { }
+    NTPHandler(const std::string& server, int port) :
+        ntpServer(server), ntpPort(port), connectionName("NTPConnection") {
+    }
 
     void setupNTPConnection(WiFiHandler& wifiHandler) {
         // Create a UDP connection within WiFiHandler
@@ -38,7 +39,7 @@ public:
             // Handle response data
             if (responseSize > 0) {
                 byte* responseBuffer = wifiHandler.getPacketBuffer(connectionName);
-                if (!responseBuffer) 
+                if (!responseBuffer)
                     continue;
                 // Extract the time from the packet
                 unsigned long highWord = word(responseBuffer[40], responseBuffer[41]);
