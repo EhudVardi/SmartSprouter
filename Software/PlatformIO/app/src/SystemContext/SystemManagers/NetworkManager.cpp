@@ -4,7 +4,7 @@ bool NetworkManager::initialize() {
 
     // init NTP handler and use WifiHandler instance to create and register a connection
     ntpHandler = new NTPHandler(ntpServerUrl, ntpPort);
-    ntpHandler->SetupNTPConnection(wifiHandler);
+    ntpHandler->setupNTPConnection(wifiHandler);
     return true;
 }
 

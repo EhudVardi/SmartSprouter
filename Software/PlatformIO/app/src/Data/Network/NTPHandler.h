@@ -14,7 +14,7 @@ public:
     NTPHandler(const std::string& server, int port) : 
         ntpServer(server), ntpPort(port), connectionName("NTPConnection") { }
 
-    void SetupNTPConnection(WiFiHandler& wifiHandler) {
+    void setupNTPConnection(WiFiHandler& wifiHandler) {
         // Create a UDP connection within WiFiHandler
         wifiHandler.createConnection(connectionName, ntpServer.c_str(), ntpPort, 48);
         // Set buffer initialization for the NTP request
