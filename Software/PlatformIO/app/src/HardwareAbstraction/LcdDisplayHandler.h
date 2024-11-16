@@ -16,7 +16,7 @@ public:
     LcdDisplayHandler(int sda_pin, int scl_pin) : display(SCREEN_WIDTH, SCREEN_HEIGHT, &i2cwires, OLED_RESET) {
 
         i2cwires.begin(sda_pin, scl_pin);
-        
+
         // Initialize the OLED display
         if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) { // Address 0x3C for 128x64
             Serial.println(F("SSD1306 allocation failed"));
@@ -24,10 +24,10 @@ public:
         }
     }
 
-    Adafruit_SSD1306& GetDisplayObject() { 
-        return display; 
+    Adafruit_SSD1306& GetDisplayObject() {
+        return display;
     }
-    
+
     // Prevent copying and assignment for this class
     LcdDisplayHandler(const LcdDisplayHandler&) = delete;  // No copy constructor
     LcdDisplayHandler& operator=(const LcdDisplayHandler&) = delete;  // No copy assignment

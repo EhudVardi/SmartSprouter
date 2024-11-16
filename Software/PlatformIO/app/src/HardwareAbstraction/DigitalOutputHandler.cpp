@@ -12,7 +12,8 @@ DigitalOutputHandler::DigitalOutputHandler(const std::vector<int>& pins, const s
 void DigitalOutputHandler::SetOutput(const std::string& name, int value) {
     if (outputs.find(name) != outputs.end()) {
         outputs[name].set(value);
-    } else {
+    }
+    else {
         log("Error: Output not found with name: " + name);
     }
 }

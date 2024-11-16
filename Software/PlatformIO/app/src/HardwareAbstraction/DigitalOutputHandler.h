@@ -29,7 +29,7 @@ private:
 public:
     DigitalOutputHandler(const std::vector<int>& pins, const std::vector<std::string>& names);
     void SetOutput(const std::string& name, int value);
-    
+
 };
 
 #endif // DIGITAL_OUTPUT_HANDLER_H

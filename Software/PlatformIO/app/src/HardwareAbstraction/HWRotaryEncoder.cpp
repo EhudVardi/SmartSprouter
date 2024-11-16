@@ -12,7 +12,8 @@ void HWRotaryEncoder::tick() {
     if (newPos != lastPosition) {
         if (newPos > lastPosition && onRotateRight) {
             onRotateRight();
-        } else if (newPos < lastPosition && onRotateLeft) {
+        }
+        else if (newPos < lastPosition && onRotateLeft) {
             onRotateLeft();
         }
         lastPosition = newPos;
