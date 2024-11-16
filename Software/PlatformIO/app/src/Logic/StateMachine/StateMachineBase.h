@@ -32,7 +32,8 @@ public:
             if (currentState) {
                 currentState->enter(context);
             }
-        } else {
+        }
+        else {
             log("State not found!", LogType::ERROR);
         }
     }

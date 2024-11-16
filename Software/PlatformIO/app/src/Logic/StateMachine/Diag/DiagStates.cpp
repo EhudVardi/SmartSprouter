@@ -1,11 +1,11 @@
 #include "DiagStates.h"
 
-void H_S::enter(SystemContext* context) { 
+void H_S::enter(SystemContext* context) {
     DiagState::enter(context);
     if (diagPage) diagPage->SetHumidifiersEditState(NamedValueEditState::Selected);
 }
-void H_S::exit(SystemContext* context) { }
-void H_S::update(SystemContext* context) { }
+void H_S::exit(SystemContext* context) {}
+void H_S::update(SystemContext* context) {}
 void H_S::handleInput(SystemContext* context, InputEvent event) {
     if (diagPage) {
         switch (event) {
@@ -18,12 +18,12 @@ void H_S::handleInput(SystemContext* context, InputEvent event) {
     }
 }
 
-void H_E::enter(SystemContext* context) { 
+void H_E::enter(SystemContext* context) {
     DiagState::enter(context);
     if (diagPage) diagPage->SetHumidifiersEditState(NamedValueEditState::Entered);
 }
-void H_E::exit(SystemContext* context) { }
-void H_E::update(SystemContext* context) { }
+void H_E::exit(SystemContext* context) {}
+void H_E::update(SystemContext* context) {}
 void H_E::handleInput(SystemContext* context, InputEvent event) {
     if (diagPage) {
         switch (event) {

@@ -5,16 +5,16 @@ void AbortingState::enter(SystemContext* context) {
     if (!abortPage) {
         abortPage = context->displayManager->getPageAs<PageAppAbort>(Pages::ABORT);
     }
-	log("enter AbortingState");
+    log("enter AbortingState");
 }
 void AbortingState::exit(SystemContext* context) {
-	log("exit AbortingState");
+    log("exit AbortingState");
 }
 void AbortingState::update(SystemContext* context) {
     context->displayManager->refresh();
 }
 void AbortingState::handleInput(SystemContext* context, InputEvent event) {
-	if (event == InputEvent::BackPressed) {
+    if (event == InputEvent::BackPressed) {
         stateMachine->changeState(AppStates::RUNNING, context);
     }
     else if (event == InputEvent::EnterPressed) {
@@ -32,10 +32,10 @@ void IdlingState::enter(SystemContext* context) {
     if (!idlePage) {
         idlePage = context->displayManager->getPageAs<PageAppIdle>(Pages::IDLE);
     }
-	log("enter IdlingState");
+    log("enter IdlingState");
 }
 void IdlingState::exit(SystemContext* context) {
-	log("exit IdlingState");
+    log("exit IdlingState");
 }
 void IdlingState::update(SystemContext* context) {
     if (idlePage) {
@@ -49,7 +49,7 @@ void IdlingState::update(SystemContext* context) {
     }
 }
 void IdlingState::handleInput(SystemContext* context, InputEvent event) {
-	if (event == InputEvent::RotatedRight) {
+    if (event == InputEvent::RotatedRight) {
         stateMachine->changeState(AppStates::INFORMING, context);
     }
     else if (event == InputEvent::EnterPressed) {
@@ -64,16 +64,16 @@ void IdlingState::handleInput(SystemContext* context, InputEvent event) {
 
 void InformingState::enter(SystemContext* context) {
     context->displayManager->changePage(Pages::ABOUT);
-	log("enter InformingState");
+    log("enter InformingState");
 }
 void InformingState::exit(SystemContext* context) {
-	log("exit InformingState");
+    log("exit InformingState");
 }
 void InformingState::update(SystemContext* context) {
     context->displayManager->refresh();
 }
 void InformingState::handleInput(SystemContext* context, InputEvent event) {
-	if (event == InputEvent::RotatedLeft) {
+    if (event == InputEvent::RotatedLeft) {
         stateMachine->changeState(AppStates::IDLING, context);
     }
 }
@@ -83,7 +83,8 @@ void InformingState::handleInput(SystemContext* context, InputEvent event) {
 void InitializingState::enter(SystemContext* context) {
     if (context->processManager->loadProcessFromStorage(context->timeManager->getCurrentTime(), context->actuatorManager)) {
         stateMachine->changeState(AppStates::RUNNING, context);
-    } else {
+    }
+    else {
         stateMachine->changeState(AppStates::IDLING, context);
     }
 }
@@ -106,11 +107,11 @@ void RunningState::enter(SystemContext* context) {
         });
     }
     storeProcessTimer->start();
-	log("enter RunningState");
+    log("enter RunningState");
 }
 void RunningState::exit(SystemContext* context) {
     storeProcessTimer->stop();
-	log("exit RunningState");
+    log("exit RunningState");
 }
 void RunningState::update(SystemContext* context) {
 
@@ -126,7 +127,8 @@ void RunningState::update(SystemContext* context) {
         context->processManager->deleteStoredProcess();
         context->actuatorManager->ShutDownAllActuators();
         stateMachine->changeState(AppStates::IDLING, context); //TODO: goto summery page/state ?
-    } else {
+    }
+    else {
         if (runPage) {
             if (humidityValid) runPage->SetHumidity(humidity);
             if (temperatureValid) runPage->SetTemperature(temperature);
@@ -138,7 +140,7 @@ void RunningState::update(SystemContext* context) {
     storeProcessTimer->update();
 }
 void RunningState::handleInput(SystemContext* context, InputEvent event) {
-	if (event == InputEvent::BackPressed) {
+    if (event == InputEvent::BackPressed) {
         stateMachine->changeState(AppStates::ABORTING, context);
     }
 }
@@ -149,23 +151,23 @@ SettingProcessState::SettingProcessState() {
     setupStateMachine.setOnStartEnterCallback(
         [this](SystemContext* context) {
 
-            context->processManager->createCurrentProcess(
-                setupPage->GetSetupHumidityMin(),
-                setupPage->GetSetupHumidityMax(),
-                setupPage->GetSetupTemperatureMin(),
-                setupPage->GetSetupTemperatureMax(),
-                AppTimeSpan(0,0,1,0), //TODO vents interval
-                AppTimeSpan(0,0,1,0), //TODO vents duration
-                setupPage->GetDurationSetup(),
-                context->timeManager->getCurrentTime(),
-                context->actuatorManager);
+        context->processManager->createCurrentProcess(
+            setupPage->GetSetupHumidityMin(),
+            setupPage->GetSetupHumidityMax(),
+            setupPage->GetSetupTemperatureMin(),
+            setupPage->GetSetupTemperatureMax(),
+            AppTimeSpan(0, 0, 1, 0), //TODO vents interval
+            AppTimeSpan(0, 0, 1, 0), //TODO vents duration
+            setupPage->GetDurationSetup(),
+            context->timeManager->getCurrentTime(),
+            context->actuatorManager);
 
-            if (!context->processManager->storeCurrentProcess()) {
-                log("SettingProcessState setOnStartEnterCallback - failed to store newly created process");
-            }
-            
-            stateMachine->changeState(AppStates::RUNNING, context);
-        });
+        if (!context->processManager->storeCurrentProcess()) {
+            log("SettingProcessState setOnStartEnterCallback - failed to store newly created process");
+        }
+
+        stateMachine->changeState(AppStates::RUNNING, context);
+    });
 }
 void SettingProcessState::enter(SystemContext* context) {
     context->displayManager->changePage(Pages::SETUP);
@@ -173,10 +175,10 @@ void SettingProcessState::enter(SystemContext* context) {
         setupPage = context->displayManager->getPageAs<PageAppSetup>(Pages::SETUP);
     }
     setupStateMachine.changeState(SetupStates::HUMIDITY_RANGE_SELECT, context); // init nested setup state machine state to initial state
-	log("enter SettingProcessState");
+    log("enter SettingProcessState");
 }
 void SettingProcessState::exit(SystemContext* context) {
-	log("exit SettingProcessState");
+    log("exit SettingProcessState");
 }
 void SettingProcessState::update(SystemContext* context) {
     if (setupPage) {
@@ -229,47 +231,48 @@ void StartingUpState::enter(SystemContext* context) {
     }
 
     // attempt to update RTC from NTP service
-    if (context->timeManager->UpdateRtcFromNtpService(context->networkManager)){
+    if (context->timeManager->UpdateRtcFromNtpService(context->networkManager)) {
         log("update time from ntp service successful");
         log(context->timeManager->getCurrentTime().ToString());
-    } else { 
-        log("update time from ntp service failed"); 
+    }
+    else {
+        log("update time from ntp service failed");
     }
 
     // transite forward to INITIALIZING state
     stateMachine->changeState(AppStates::INITIALIZING, context);
 }
-void StartingUpState::exit(SystemContext* context) { }
-void StartingUpState::update(SystemContext* context) { }
-void StartingUpState::handleInput(SystemContext* context, InputEvent event) { }
+void StartingUpState::exit(SystemContext* context) {}
+void StartingUpState::update(SystemContext* context) {}
+void StartingUpState::handleInput(SystemContext* context, InputEvent event) {}
 
 
 
 void SystemInErrorState::enter(SystemContext* context) {
     context->displayManager->changePage(Pages::ERROR);
 }
-void SystemInErrorState::exit(SystemContext* context) { }
+void SystemInErrorState::exit(SystemContext* context) {}
 void SystemInErrorState::update(SystemContext* context) {
     context->displayManager->refresh();
 }
-void SystemInErrorState::handleInput(SystemContext* context, InputEvent event) { }
+void SystemInErrorState::handleInput(SystemContext* context, InputEvent event) {}
 
 
 
 DiagnosingState::DiagnosingState() {
     diagStateMachine.setOnExitDiagCallback(
         [this](SystemContext* context) {
-            stateMachine->changeState(AppStates::IDLING, context);
-        });
+        stateMachine->changeState(AppStates::IDLING, context);
+    });
 }
 void DiagnosingState::enter(SystemContext* context) {
     context->displayManager->changePage(Pages::DIAG);
     if (!diagPage) {
         diagPage = context->displayManager->getPageAs<PageAppDiag>(Pages::DIAG);
     }
-	diagStateMachine.changeState(DiagStates::HumidifiersSelected, context); // init nested diag state machine
+    diagStateMachine.changeState(DiagStates::HumidifiersSelected, context); // init nested diag state machine
 }
-void DiagnosingState::exit(SystemContext* context) { }
+void DiagnosingState::exit(SystemContext* context) {}
 void DiagnosingState::update(SystemContext* context) {
     if (diagPage) {
         float humidity, temperature;

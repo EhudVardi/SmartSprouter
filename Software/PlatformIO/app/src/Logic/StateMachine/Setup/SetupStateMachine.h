@@ -10,9 +10,9 @@ class SetupState;
 
 class SetupStateMachine : public StateMachineBase<SetupState, SetupStates> {
 private:
-  std::function<void(SystemContext*)> onStartEnter; // event that fires when the Start SETUP state gets Enter input
-  
-public: 
+    std::function<void(SystemContext*)> onStartEnter; // event that fires when the Start SETUP state gets Enter input
+
+public:
     SetupStateMachine();
 
     void setOnStartEnterCallback(std::function<void(SystemContext*)> callback);

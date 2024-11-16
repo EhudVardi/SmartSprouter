@@ -7,7 +7,7 @@
 class AbortingState : public AppState {
 private:
     std::shared_ptr<PageAppAbort> abortPage = nullptr;
-    
+
 public:
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;
@@ -23,7 +23,7 @@ public:
 class IdlingState : public AppState {
 private:
     std::shared_ptr<PageAppIdle> idlePage = nullptr;
-    
+
 public:
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;
@@ -69,7 +69,7 @@ private:
     std::shared_ptr<PageAppRun> runPage = nullptr;
 
     Timer* storeProcessTimer = nullptr;
-    
+
 public:
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;
@@ -89,10 +89,10 @@ private:
     std::shared_ptr<PageAppSetup> setupPage = nullptr;
 
     SetupStateMachine setupStateMachine;
-    
+
 public:
     SettingProcessState();
-    
+
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;
     void update(SystemContext* context) override;
@@ -139,7 +139,7 @@ class DiagnosingState : public AppState {
 
 public:
     DiagnosingState();
-    
+
     void enter(SystemContext* context) override;
     void exit(SystemContext* context) override;
     void update(SystemContext* context) override;

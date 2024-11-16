@@ -10,9 +10,9 @@ class DiagState;
 
 class DiagStateMachine : public StateMachineBase<DiagState, DiagStates> {
 private:
-  std::function<void(SystemContext*)> onExitDiag; // event that fires when the Start SETUP state gets Enter input
-  
-public: 
+    std::function<void(SystemContext*)> onExitDiag; // event that fires when the Start SETUP state gets Enter input
+
+public:
     DiagStateMachine();
 
     void setOnExitDiagCallback(std::function<void(SystemContext*)> callback);

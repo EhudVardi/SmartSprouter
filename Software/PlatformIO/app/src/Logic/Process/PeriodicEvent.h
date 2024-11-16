@@ -12,7 +12,7 @@ public:
     PeriodicEvent(AppTimeSpan p_interval, AppTimeSpan p_duration) : ActionableEvent() {
         setTiming(p_interval, p_duration);
     }
-    
+
     void setTiming(AppTimeSpan p_interval, AppTimeSpan p_duration) {
         interval = p_interval;
         duration = p_duration;
@@ -23,14 +23,16 @@ public:
             nextStartTime = data + interval;
             active = false;
             activeSynchronized = true; // sync done
-        } else {
+        }
+        else {
             if (data >= nextStartTime) {
                 if (data < nextStartTime + duration) {
                     if (!active) {
                         startAction();
                         this->active = true;
                     }
-                } else {
+                }
+                else {
                     if (active) {
                         stopAction();
                         this->active = false;
@@ -62,14 +64,14 @@ public:
     // equal operator overload
     bool operator==(const PeriodicEvent& other) const {
         return interval == other.interval &&
-               duration == other.duration &&
-               nextStartTime == other.nextStartTime &&
-               active == other.active;
+            duration == other.duration &&
+            nextStartTime == other.nextStartTime &&
+            active == other.active;
     }
     bool operator!=(const PeriodicEvent& other) const {
         return !(*this == other);
     }
-    
+
     String ToString() const {
         String str = "PeriodicEvent { ";
         str += "interval: " + interval.toString() + ", ";

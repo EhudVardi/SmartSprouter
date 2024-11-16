@@ -8,7 +8,7 @@
 class AppState;
 
 class AppStateMachine : public StateMachineBase<AppState, AppStates> {
-public: 
+public:
     AppStateMachine();
 };
 

@@ -13,7 +13,8 @@ class Process : public ISerializable {
 public:
     Process() {}
     Process(AppTimeSpan duration, AppDateTime start)
-        : totalDuration(duration), remainingDuration(duration), startTime(start) {}
+        : totalDuration(duration), remainingDuration(duration), startTime(start) {
+    }
 
     void addPeriodicEvent(PeriodicEvents key, const PeriodicEvent& event) {
         periodicEvents[key] = event;
@@ -54,7 +55,7 @@ public:
         remainingDuration = remainingDuration - passedTime;
         return remainingDuration;
     }
-    
+
     // Implementing serialization
     virtual uint8_t* serialize(uint8_t* buffer) const override {
         uint8_t* ptr = buffer;
@@ -79,7 +80,7 @@ public:
 
         return ptr;
     }
-    
+
     virtual const uint8_t* deserialize(const uint8_t* buffer) override {
         const uint8_t* ptr = buffer;
 
@@ -165,11 +166,11 @@ public:
 
         return true;
     }
-    
+
     bool operator!=(const Process& other) const {
         return !(*this == other);
     }
-    
+
     String ToString() const {
         String str = "Process { ";
 

@@ -7,10 +7,11 @@
 template<typename T>
 class ActionableEvent : public ISerializable {
 public:
-    ActionableEvent() : ActionableEvent([](){}, [](){})  {}
-    ActionableEvent(std::function<void()> startAction, std::function<void()> stopAction) 
-        : startAction(startAction), stopAction(stopAction), active(false), activeSynchronized(false) {}
-        
+    ActionableEvent() : ActionableEvent([]() {}, []() {}) {}
+    ActionableEvent(std::function<void()> startAction, std::function<void()> stopAction)
+        : startAction(startAction), stopAction(stopAction), active(false), activeSynchronized(false) {
+    }
+
     void setActionCallbacks(std::function<void()> p_startAction, std::function<void()> p_stopAction) {
         startAction = p_startAction;
         stopAction = p_stopAction;
