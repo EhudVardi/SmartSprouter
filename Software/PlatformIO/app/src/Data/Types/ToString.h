@@ -29,19 +29,19 @@ inline String toString(const AppTimeSpan& value) {
 template <>
 inline String toString(const AppStates& value) {
     using namespace EnumHelpers;
-    return EnumHelpers::AppStatesHelper.ToString(value);
+    return EnumHelpers::appStatesHelper.ToString(value);
 }
 #include "StateMachine/Setup/SetupStatesEnum.h"
 template <>
 inline String toString(const SetupStates& value) {
     using namespace EnumHelpers;
-    return EnumHelpers::SetupStatesHelper.ToString(value);
+    return EnumHelpers::setupStatesHelper.ToString(value);
 }
 #include "SystemContext/SystemManagers/ActuatorActions.h"
 template <>
 inline String toString(const HumidifierActions& value) {
     using namespace EnumHelpers;
-    return EnumHelpers::HumidifierActionsHelper.ToString(value);
+    return EnumHelpers::humidifierActionsHelper.ToString(value);
 }
 // common primitives
 template <>

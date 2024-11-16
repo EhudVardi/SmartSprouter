@@ -22,7 +22,7 @@ public:
     }
 
     void SetError(AppErrors& error, const String& errParams) {
-        errorEnum.SetValue(EnumHelpers::AppErrorsHelper.ToString(error));
+        errorEnum.SetValue(EnumHelpers::appErrorsHelper.ToString(error));
         errorParams.SetValue(errParams);
     }
 };

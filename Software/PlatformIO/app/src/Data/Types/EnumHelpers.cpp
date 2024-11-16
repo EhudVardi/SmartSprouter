@@ -2,7 +2,7 @@
 
 namespace EnumHelpers {
 
-    EnumHelper<AppStates> AppStatesHelper({
+    EnumHelper<AppStates> appStatesHelper({
         { AppStates::StartingUp, "StartingUp" },
         { AppStates::SystemInError, "SystemInError" },
         { AppStates::Initializing, "Initializing" },
@@ -14,7 +14,7 @@ namespace EnumHelpers {
         { AppStates::Diagnosing, "Diagnosing" }
     }, AppStates::Diagnosing); // last valid state
     
-    EnumHelper<AppErrors> AppErrorsHelper({
+    EnumHelper<AppErrors> appErrorsHelper({
         { AppErrors::ErrInitInputManager, "ErrInitInputManager" },
         { AppErrors::ErrInitSensorManager, "ErrInitSensorManager" },
         { AppErrors::ErrInitDisplayManager, "ErrInitDisplayManager" },
@@ -24,7 +24,7 @@ namespace EnumHelpers {
         { AppErrors::ErrInitTimeManager, "ErrInitTimeManager" },
     }, AppErrors::ErrInitTimeManager); // last valid state
     
-    EnumHelper<SetupStates> SetupStatesHelper({
+    EnumHelper<SetupStates> setupStatesHelper({
         { SetupStates::HumidityRangeSelect, "HumidityRangeSelect" },
         { SetupStates::HumidityRangeEditMin, "HumidityRangeEditMin" },
         { SetupStates::HumidityRangeEditMax, "HumidityRangeEditMax" },
@@ -36,13 +36,13 @@ namespace EnumHelpers {
         { SetupStates::StartSelect, "StartSelect" }
     }, SetupStates::StartSelect); // last valid state
     
-    EnumHelper<HumidifierActions> HumidifierActionsHelper({
+    EnumHelper<HumidifierActions> humidifierActionsHelper({
         { HumidifierActions::Off, "  Off " },
         { HumidifierActions::Low, "  Low " },
         { HumidifierActions::High, "  High" },
     }, HumidifierActions::High); // last valid state
     
-    EnumHelper<Pages> PagesHelper({
+    EnumHelper<Pages> pagesHelper({
         { Pages::About, "About" },
         { Pages::Idle, "Idle" },
         { Pages::Setup, "Setup" },
@@ -52,17 +52,17 @@ namespace EnumHelpers {
         { Pages::Diag, "Diag" },
     }, Pages::Diag); // last valid state
     
-    EnumHelper<LogType> LogTypeHelper({
+    EnumHelper<LogType> logTypeHelper({
         { LogType::Info, "Info" },
         { LogType::Debug, "Debug" },
         { LogType::Error, "Error" },
     }, LogType::Error); // last valid state
     
-    EnumHelper<PeriodicEvents> PeriodicEventsHelper({
+    EnumHelper<PeriodicEvents> periodicEventsHelper({
         { PeriodicEvents::VentilatorsEvent, "VentilatorsEvent" },
     }, PeriodicEvents::VentilatorsEvent); // last valid state
     
-    EnumHelper<WindowEvents> WindowEventsHelper({
+    EnumHelper<WindowEvents> windowEventsHelper({
         { WindowEvents::HumidifiersEvent, "HumidifiersEvent" },
         { WindowEvents::AirConditionersEvent, "AirConditionersEvent" },
     }, WindowEvents::AirConditionersEvent); // last valid state

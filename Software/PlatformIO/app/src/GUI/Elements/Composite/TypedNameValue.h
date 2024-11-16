@@ -117,7 +117,7 @@ public:
         : NamedValue<HumidifierActions>(xPos, yPos, name, size) {
         valueLabel.SetFormatter([](HumidifierActions value) {
             using namespace EnumHelpers;
-            return String(EnumHelpers::HumidifierActionsHelper.ToString(value));
+            return String(EnumHelpers::humidifierActionsHelper.ToString(value));
         });
     }
     NamedValueHumidifierActions(int xPos, int yPos, HumidifierActions initialValue, const String &name, FontSize size = FontSize::Small)
@@ -127,11 +127,11 @@ public:
 
     void SelectNextValue() {
         using namespace EnumHelpers;
-        valueLabel.SetValue(EnumHelpers::HumidifierActionsHelper.next(valueLabel.GetValue()));
+        valueLabel.SetValue(EnumHelpers::humidifierActionsHelper.next(valueLabel.GetValue()));
     }
     void SelectPrevValue() {
         using namespace EnumHelpers;
-        valueLabel.SetValue(EnumHelpers::HumidifierActionsHelper.prev(valueLabel.GetValue()));
+        valueLabel.SetValue(EnumHelpers::humidifierActionsHelper.prev(valueLabel.GetValue()));
     }
 };
 

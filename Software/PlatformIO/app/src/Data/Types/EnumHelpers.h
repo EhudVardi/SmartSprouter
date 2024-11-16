@@ -11,14 +11,14 @@
 #include "Logic/Process/ProcessEvents.h"
 
 namespace EnumHelpers {
-    extern EnumHelper<AppStates> AppStatesHelper;
-    extern EnumHelper<AppErrors> AppErrorsHelper;
-    extern EnumHelper<SetupStates> SetupStatesHelper;
-    extern EnumHelper<HumidifierActions> HumidifierActionsHelper;
-    extern EnumHelper<Pages> PagesHelper;
-    extern EnumHelper<LogType> LogTypeHelper;
-    extern EnumHelper<PeriodicEvents> PeriodicEventsHelper;
-    extern EnumHelper<WindowEvents> WindowEventsHelper;
+    extern EnumHelper<AppStates> appStatesHelper;
+    extern EnumHelper<AppErrors> appErrorsHelper;
+    extern EnumHelper<SetupStates> setupStatesHelper;
+    extern EnumHelper<HumidifierActions> humidifierActionsHelper;
+    extern EnumHelper<Pages> pagesHelper;
+    extern EnumHelper<LogType> logTypeHelper;
+    extern EnumHelper<PeriodicEvents> periodicEventsHelper;
+    extern EnumHelper<WindowEvents> windowEventsHelper;
 }
 
 #endif // ENUM_HELPER_ENUMERATION_H

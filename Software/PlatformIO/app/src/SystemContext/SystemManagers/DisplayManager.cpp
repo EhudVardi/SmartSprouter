@@ -43,7 +43,7 @@ void DisplayManager::changePage(Pages pageEnum) {
         currentPage->InvalidatePage();
         
     } else {
-        log("Page " + String(EnumHelpers::PagesHelper.ToString(pageEnum)) + " not found!", LogType::Error);
+        log("Page " + String(EnumHelpers::pagesHelper.ToString(pageEnum)) + " not found!", LogType::Error);
     }
 }
 

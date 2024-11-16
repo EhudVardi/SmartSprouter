@@ -180,13 +180,13 @@ public:
         // Add periodic events
         str += "periodicEvents: { ";
         for (const auto& pair : periodicEvents) {
-            str += "ProcessEvents::" + String(EnumHelpers::PeriodicEventsHelper.ToString(pair.first)) + ": " + pair.second.ToString() + ", ";
+            str += "ProcessEvents::" + String(EnumHelpers::periodicEventsHelper.ToString(pair.first)) + ": " + pair.second.ToString() + ", ";
         }
         str += "}, ";
         // Add window events
         str += "windowEvents: { ";
         for (const auto& pair : windowEvents) {
-            str += "ProcessEvents::" + String(EnumHelpers::WindowEventsHelper.ToString(pair.first)) + ": " + pair.second.ToString() + ", ";
+            str += "ProcessEvents::" + String(EnumHelpers::windowEventsHelper.ToString(pair.first)) + ": " + pair.second.ToString() + ", ";
         }
         str += "} ";
 
