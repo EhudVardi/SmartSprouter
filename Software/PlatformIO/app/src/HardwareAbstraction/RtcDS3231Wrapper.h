@@ -21,7 +21,6 @@ public:
 
     void adjust(const AppDateTime& dt) {
         rtc.adjust(dt);
-        //rtc.adjust(static_cast<const DateTime&>(dt));
     }
 
     DateTime now() {

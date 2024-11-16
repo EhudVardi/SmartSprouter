@@ -1,7 +1,7 @@
 #ifndef ISERIALIZABLE_H
 #define ISERIALIZABLE_H
 
-#include <cstring>  // for memcpy
+#include <cstring>
 #include "Data/Types/AppTypes.h"
 #include "Logic/Process/ProcessEvents.h"
 

@@ -8,10 +8,10 @@ TimeManager::TimeManager() : currentTime(nullptr) {
 bool TimeManager::initialize() {
     rtcWrapper = new RtcDS3231Wrapper(RTC_SDA_PIN, RTC_SCL_PIN);
     if (!rtcWrapper->begin()) {
-        return false; // Initialization failed
+        return false;
     }
     update(); // Update current time instance immediately after initialization
-    return true; // Successful initialization
+    return true;
 }
 
 void TimeManager::update() {
@@ -37,12 +37,10 @@ bool TimeManager::UpdateRtcFromNtpService(std::shared_ptr<NetworkManager> networ
 }
 
 void TimeManager::setTimeFromExtSource(time_t& currentEpoch) {
-    // Adjust UTC time offset
-    time_t adjustedTime = currentEpoch + UTC_OFFSET_HOURS * 3600;
-    // Update the current time instance
-    *currentTime = AppDateTime(adjustedTime);
-    // Update hardware RTC with the new time
-    rtcWrapper->adjust(*currentTime); // Pass currentTime to adjust
+    
+    time_t adjustedTime = currentEpoch + UTC_OFFSET_HOURS * 3600; // Adjust UTC time offset
+    *currentTime = AppDateTime(adjustedTime); // Update the current time instance
+    rtcWrapper->adjust(*currentTime); // Update hardware RTC with new currentTime
 }
 
 std::string TimeManager::timeToString(time_t time) {

@@ -10,9 +10,9 @@
 template <typename T>
 class NamedRange : public GuiElement {
 protected:
-    TextLabel nameLabel;              // The label for the name
-    Range<T> valueRange;          // The range for the values
-    NamedRangeEditState editState; // Current edit state
+    TextLabel nameLabel;
+    Range<T> valueRange;
+    NamedRangeEditState editState; 
 
 public:
     NamedRange(int xPos, int yPos, T initialMinValue, T initialMaxValue, const String &name)
@@ -23,13 +23,10 @@ public:
     NamedRange(int xPos, int yPos, const String &name)
         : GuiElement(xPos, yPos),
           nameLabel(xPos, yPos, name),
-          valueRange(xPos + SCREEN_WIDTH * 3 / 8, yPos), // Adjust position for the range
+          valueRange(xPos + SCREEN_WIDTH * 3 / 8, yPos),
           editState(NamedRangeEditState::None) {
-        // Set the initial sizes of the elements
-        //valueRange.SetSize(100, 16); // Assuming 100x16 for the range display, adjust as necessary
     }
 
-    // Getters for min and max values
     T GetMinValue() {
         return valueRange.GetMinValue();
     }
@@ -37,7 +34,6 @@ public:
         return valueRange.GetMaxValue();
     }
 
-    // Setters for min and max values
     void SetMinValue(T newMinValue) {
         valueRange.SetMinValue(newMinValue);
     }
@@ -46,7 +42,6 @@ public:
         valueRange.SetMaxValue(newMaxValue);
     }
 
-    // Set and get the edit state
     void SetEditState(NamedRangeEditState state) {
         editState = state;
         if (state == NamedRangeEditState::None) {
@@ -81,14 +76,10 @@ public:
         return (nameLabel.IsInvalidated() || valueRange.IsInvalidated());
     }
 
-    // Override the Draw function
     virtual void Draw(LcdDisplayHandler &displayHandler) override {
         if (!IsInvalidated()) return;
-
-        // Draw the name label
+        
         nameLabel.Draw(displayHandler);
-
-        // Draw the value range
         valueRange.Draw(displayHandler);
     }
 };

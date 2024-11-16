@@ -6,7 +6,7 @@
 
 class GuiElement {
 protected:
-    int x, y;         // Position
+    int x, y; // Position
     bool invalidated; // Invalidated flag
 
 public:

@@ -1,9 +1,11 @@
 #ifndef TOSTRING_H
 #define TOSTRING_H
 
-/// these are toString definitions for types that the arduino String type cannot handle.
-/// it is (currently) used in Label type (and can be used in Range type) to provide a default formatter for generic type T, when T is of type "DisplayDate","DisplayTime" and "DisplayDuration"
-/// when adding new custom type to be used as the Value/Range type, add a toString in the new custom type and then add a new specific template here for that type.
+/*
+these are toString definitions for types that the arduino String type cannot handle.
+it is (currently) used in Label type (and can be used in Range type) to provide a default formatter for generic type T, when T is of type "DisplayDate","DisplayTime" and "DisplayDuration"
+when adding new custom type to be used as the Value/Range type, add a toString in the new custom type and then add a new specific template here for that type.
+*/
 
 #include <Arduino.h>
 

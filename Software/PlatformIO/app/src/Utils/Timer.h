@@ -16,8 +16,8 @@ public:
     void update() {
         unsigned long currentMillis = millis();
         if (currentMillis - lastUpdate >= interval) {
-            callback();  // Call the registered callback function
-            lastUpdate += interval;  // Add interval to lastUpdate to maintain accuracy
+            callback(); // Call the registered callback function
+            lastUpdate += interval; // Add interval to lastUpdate to maintain accuracy
         }
     }
 

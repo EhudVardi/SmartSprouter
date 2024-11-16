@@ -6,7 +6,7 @@
 class Line : public GuiElement {
 private:
     int length;
-    bool horizontal;  // True if the line is horizontal, false if vertical
+    bool horizontal;  // True -> horizontal, false -> vertical
 
 public:
     // Constructor for a general line with specified position, length, and orientation
@@ -21,23 +21,19 @@ public:
     Line(bool /*dummy*/, int xPos) 
         : GuiElement(xPos, 0), length(SCREEN_HEIGHT), horizontal(false) {}
 
-    // Override the Draw function to draw the line on the display
     void Draw(LcdDisplayHandler &displayHandler) override {
+        if (!IsInvalidated()) return;
+        
         Adafruit_SSD1306& display = displayHandler.GetDisplayObject();
-
         if (horizontal) {
-            // Draw a horizontal line
             display.drawLine(x, y, x + length, y, SSD1306_WHITE);
         } else {
-            // Draw a vertical line
             display.drawLine(x, y, x, y + length, SSD1306_WHITE);
         }
-
-        invalidated = false;  // Mark as no longer invalidated
-        display.display();    // Update the display after drawing
+        invalidated = false;
+        display.display();
     }
 
-    // Optionally, add setters to update line properties if needed
     void SetLength(int newLength) {
         length = newLength;
         Invalidate();

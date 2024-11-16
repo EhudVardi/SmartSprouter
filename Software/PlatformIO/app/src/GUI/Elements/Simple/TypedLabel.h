@@ -8,9 +8,9 @@ public:
     TextLabel(int xPos, int yPos, String initialText, FontSize size = FontSize::Small)
         : Label(xPos, yPos, size) {
             value = initialText;
-            // Default formatter if not provided
+            // Default simple string conversion formatter if not provided
             if (!formatter) {
-                SetFormatter([](String value) { return String(value); }); // Default to simple string conversion
+                SetFormatter([](String value) { return String(value); });
             }
         }
 };
@@ -24,7 +24,7 @@ public:
 class CenteredLabel : public TextLabel {
 private:
     bool positionCalculated; // Flag to track if the position has been calculated
-    int centeredX;           // Cached x position for centering
+    int centeredX; // Cached x position for centering
 
 public:
     CenteredLabel(int yPos, const String &initialText, FontSize size = FontSize::Large)
@@ -32,24 +32,16 @@ public:
     }
 
     virtual void Draw(LcdDisplayHandler &displayHandler) override {
-        Adafruit_SSD1306 &display = displayHandler.GetDisplayObject(); // Get the display object
+        Adafruit_SSD1306 &display = displayHandler.GetDisplayObject();
 
         if (!positionCalculated) {
-            // Calculate text bounds to determine width only once
+            
             int16_t x1, y1;
             uint16_t textWidth, textHeight;
-
-            // Set font size
-            display.setTextSize(static_cast<uint8_t>(fontSize));
-
-            // Get text bounds
             display.getTextBounds(value, 0, 0, &x1, &y1, &textWidth, &textHeight);
-
-            // Center the text
-            centeredX = (display.width() - textWidth) / 2; // Centering based on actual display width
-
-            // Directly set the inherited x position
-            x = centeredX; // Set the x position
+            display.setTextSize(static_cast<uint8_t>(fontSize));
+            centeredX = (display.width() - textWidth) / 2; // Centering the text based on actual display width
+            x = centeredX; // Directly Set the inherited x position
             positionCalculated = true; // Mark the position as calculated
         }
 
@@ -57,9 +49,9 @@ public:
         Label::Draw(displayHandler);
     }
 
-    // Optionally, provide a method to reset the position if needed
+    // reset calculation flag to force re-calculation on next draw
     void ResetPosition() {
-        positionCalculated = false; // Allows recalculation on the next Draw
+        positionCalculated = false;
     }
 };
 

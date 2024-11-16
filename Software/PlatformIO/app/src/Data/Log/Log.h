@@ -31,11 +31,11 @@ public:
     }
 
     void writeBufferInHexFormat(const uint8_t* buffer, size_t size, LogType logType = LogType::INFO) {
-        std::ostringstream oss;  // Create the output string stream
+        std::ostringstream oss;
         for (size_t i = 0; i < size; ++i) {
             oss << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(buffer[i]);
         }
-        write(oss.str(), logType);  // Log the hexadecimal representation
+        write(oss.str(), logType);
     }
 
     Log(const Log&) = delete;
@@ -46,7 +46,6 @@ private:
     ~Log() = default;
 };
 
-// Overload for const char*
 inline void log(const char* message, LogType logType = LogType::INFO) {
     Log::Instance().write(std::string(message), logType);
 }
@@ -59,7 +58,6 @@ inline void log(const String& message, LogType logType = LogType::INFO) {
     Log::Instance().write(std::string(message.c_str()), logType);
 }
 
-// Log the buffer in hexadecimal format
 inline void logBufferHex(const uint8_t* buffer, size_t size, LogType logType = LogType::INFO) {
     Log::Instance().writeBufferInHexFormat(buffer, size, logType);
 }

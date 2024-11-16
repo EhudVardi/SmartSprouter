@@ -29,6 +29,7 @@ class NamedValueFloat : public NamedValue<float> {
 public:
     NamedValueFloat(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : NamedValue<float>(xPos, yPos, name, size) {
+        // Set a custom formatter for general float display
         valueLabel.SetFormatter([](float value) {
             return String(value);
         });
@@ -49,6 +50,7 @@ class NamedValuePercent : public NamedValueFloat {
 public:
     NamedValuePercent(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : NamedValueFloat(xPos, yPos, name, size) {
+        // Set a custom formatter for percentage display
         valueLabel.SetFormatter([](float value) {
             char buffer[11];
             snprintf(buffer, sizeof(buffer), "%3.1f%%    ", value);
@@ -67,6 +69,7 @@ class NamedValueTemperature : public NamedValueFloat {
 public:
     NamedValueTemperature(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : NamedValueFloat(xPos, yPos, name, size) {
+        // Set a custom formatter for temperature display with "C" appended
         valueLabel.SetFormatter([](float value) {
             char buffer[11];
             snprintf(buffer, sizeof(buffer), "%3.1fC    ", value);
@@ -89,6 +92,7 @@ public:
     }
     NamedValueTimeSpan(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : NamedValue<AppTimeSpan>(xPos, yPos, name, size) {
+        // Set a custom formatter for a TimeSpan value
         valueLabel.SetFormatter([](AppTimeSpan value) {
             return value.ToString();
         });
@@ -115,6 +119,7 @@ class NamedValueHumidifierActions : public NamedValue<HumidifierActions> {
 public:
     NamedValueHumidifierActions(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : NamedValue<HumidifierActions>(xPos, yPos, name, size) {
+        // Set a custom formatter for HumidifierActions enum value
         valueLabel.SetFormatter([](HumidifierActions value) {
             using namespace EnumHelpers;
             return String(EnumHelpers::humidifierActionsHelper.ToString(value));

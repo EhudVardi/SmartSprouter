@@ -5,7 +5,6 @@
 #include <type_traits>
 #include "Data/Serialization/ISerializable.h"
 
-// Base class for handling NVS
 class PreferenceHandler {
 public:
     PreferenceHandler(const char* namespaceName);

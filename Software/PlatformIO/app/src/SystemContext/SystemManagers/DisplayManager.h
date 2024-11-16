@@ -22,7 +22,7 @@ private:
     LcdDisplayHandler* displayHandler = nullptr;
 
     std::shared_ptr<PageBase> currentPage;
-    std::unordered_map<Pages, std::shared_ptr<PageBase>> pageMap; // Store states
+    std::unordered_map<Pages, std::shared_ptr<PageBase>> pageMap;
 
 public:
     DisplayManager();

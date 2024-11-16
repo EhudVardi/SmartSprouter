@@ -26,7 +26,7 @@ public:
         int nextValue = (static_cast<int>(value) + 1) % count();
         return static_cast<T>(nextValue);
     }
-    // Get the next enum value in a circular manner
+    // Get the prev enum value in a circular manner
     T prev(T value) const {
         int prevValue = (static_cast<int>(value) - 1 + count()) % count();
         return static_cast<T>(prevValue);

@@ -10,6 +10,7 @@ HWButtonState HWButton::getState() {
 }
 
 void HWButton::updateState() {
+  // Read digital value
   int currentReading = digitalRead(pin);
   // Check if the reading has changed (due to noise or press)
   if (currentReading != lastReading) {

@@ -21,7 +21,7 @@ public:
     NamedValue(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
         : GuiElement(xPos, yPos),
           nameLabel(xPos, yPos, name),
-          valueLabel(xPos + SCREEN_WIDTH / 2, yPos), // Adjust position for the range
+          valueLabel(xPos + SCREEN_WIDTH / 2, yPos),
           editState(NamedValueEditState::None) {
         nameLabel.SetFontSize(size);
         valueLabel.SetFontSize(size);
@@ -67,10 +67,7 @@ public:
     virtual void Draw(LcdDisplayHandler &displayHandler) override {
         if (!IsInvalidated()) return;
 
-        // Draw name label
         nameLabel.Draw(displayHandler);
-        
-        // Draw value label
         valueLabel.Draw(displayHandler);
     }
 };

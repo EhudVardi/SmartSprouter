@@ -13,12 +13,12 @@ private:
     RtcDS3231Wrapper* rtcWrapper = nullptr; // Instance of RTC wrapper
 
 public:
-    TimeManager(); // Constructor
+    TimeManager();
 
     bool initialize() override; // Initialize the RTC and NTP handler
-    void update();  // Update the current time using the RTC wrapper
+    void update(); // Update the current time using the RTC wrapper
     const AppDateTime& getCurrentTime() const; // Get a constant reference to the current time
-    bool UpdateRtcFromNtpService(std::shared_ptr<NetworkManager> networkManager);
+    bool UpdateRtcFromNtpService(std::shared_ptr<NetworkManager> networkManager); // Attempt to fetch time from web and update RTC device internal time
     void setTimeFromExtSource(time_t& currentEpoch); // Set time retrieved from an external source
     std::string timeToString(time_t time); // Function to format time as a human-readable string
 };

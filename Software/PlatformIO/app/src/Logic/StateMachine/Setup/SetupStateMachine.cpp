@@ -13,7 +13,6 @@ SetupStateMachine::SetupStateMachine() {
     auto DurationEdit = std::make_shared<D_E>();
     auto StartSelect = std::make_shared<S_S>();
 
-    // Add states to the state machine
     addState(SetupStates::HUMIDITY_RANGE_SELECT, HumidityRangeSelect);
     addState(SetupStates::HUMIDITY_RANGE_EDIT_MIN, HumidityRangeEditMin);
     addState(SetupStates::HUMIDITY_RANGE_EDIT_MAX, HumidityRangeEditMax);

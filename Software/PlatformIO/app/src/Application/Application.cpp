@@ -8,9 +8,8 @@ void Application::setup() {
     context.processManager = std::make_shared<ProcessManager>();
     context.actuatorManager = std::make_shared<ActuatorManager>();
     context.timeManager = std::make_shared<TimeManager>();
-    context.inputManager = std::make_shared<InputManager>();
     context.networkManager = std::make_shared<NetworkManager>();
-
+    context.inputManager = std::make_shared<InputManager>();
     context.inputManager->registerEventHandler(InputEvent::BackPressed, [this]() {
         stateMachine.handleInput(InputEvent::BackPressed, &context);
     });
@@ -30,10 +29,10 @@ void Application::setup() {
         stateMachine.handleInput(InputEvent::EnterReleased, &context);
     });
 
-
+    // Initialize state machine to initial state
     stateMachine.changeState(AppStates::STARTING_UP, &context);
 
-
+    // Setup polling timers
     inputPollingTimer.setInterval(1);
     inputPollingTimer.setCallback([&]() {
         context.inputManager->pollInputs();
@@ -56,6 +55,7 @@ void Application::setup() {
 
 void Application::loop() {
 
+    // update all polling timers
     inputPollingTimer.update();
     stateMachineTimer.update();
     timePollingTimer.update();

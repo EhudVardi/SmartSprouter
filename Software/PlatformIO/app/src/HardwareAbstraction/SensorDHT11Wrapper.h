@@ -7,7 +7,7 @@
 
 class SensorDHT11Wrapper {
 private:
-    DHT dht;  // DHT sensor object
+    DHT dht;
 
 public:
     SensorDHT11Wrapper(int sensorPin) : dht(sensorPin, DHT11) {}
