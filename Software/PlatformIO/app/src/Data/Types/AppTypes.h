@@ -21,12 +21,12 @@ public:
         return String(buffer);
     }
     // Format duration as D:HH:MM
-    String ToStringShort() const {
+    String toStringShort() const {
         char buffer[8];
         snprintf(buffer, sizeof(buffer), "%01d:%02d:%02d", days(), hours(), minutes());
         return String(buffer);
     }
-    String toString() const { return ToStringShort(); }
+    String toString() const { return toStringShort(); }
     
     void AddSeconds(int secs) { _seconds = max(0, _seconds + secs); } // Add positive or negative seconds, preventing underflow
     void AddMinutes(int mins) { AddSeconds(mins * MINUTE_IN_SECONDS); }
