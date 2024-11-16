@@ -99,7 +99,7 @@ void RunningState::enter(SystemContext* context) {
         runPage = context->displayManager->getPageAs<PageAppRun>(Pages::RUN);
     }
     if (!storeProcessTimer) {
-        storeProcessTimer = new Timer(storeProcessInterval);
+        storeProcessTimer = new Timer(STORE_PROCESS_INTERVAL);
         storeProcessTimer->setCallback([context]() {
             if (context)
                 context->processManager->storeCurrentProcess();

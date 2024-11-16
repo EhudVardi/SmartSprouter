@@ -10,6 +10,9 @@ const AppTimeSpan DEFAULT_DURATION_SETUP(3,0,0,0); // default process total dura
 //TIME
 const int UTC_OFFSET_HOURS = 2; // utc offset (+2HR)
 
+//STORAGE
+const int STORE_PROCESS_INTERVAL = 10000; //store process state every 10 seconds
+
 //NETWORK
 const char* LAN_SSID = "SSID";
 const char* LAN_PASS = "PASSWORD";

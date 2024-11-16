@@ -14,6 +14,9 @@ extern const AppTimeSpan DEFAULT_DURATION_SETUP;
 //TIME
 extern const int UTC_OFFSET_HOURS;
 
+//STORAGE
+extern const int STORE_PROCESS_INTERVAL;
+
 //NETWORK
 extern const char* LAN_SSID;
 extern const char* LAN_PASS;
