@@ -2,7 +2,7 @@
 #include "AppStates.h"
 
 AppStateMachine::AppStateMachine() {
-    
+
     auto startingUpState = std::make_shared<StartingUpState>();
     auto initializingState = std::make_shared<InitializingState>();
     auto systemInErrorState = std::make_shared<SystemInErrorState>();
