@@ -85,7 +85,7 @@ bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr
             }
         );
     } 
-    else { log("failed to set event callbacks: humidifiersEvent not found in process", LogType::Error); }
+    else { log("failed to set event callbacks: humidifiersEvent not found in process", LogType::ERROR); }
     
     WindowEvent* airConditionerEvent = process->getWindowEvent(WindowEvents::AirConditionersEvent);
     if (airConditionerEvent != nullptr) {
@@ -100,7 +100,7 @@ bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr
             }
         );
     } 
-    else { log("failed to set event callbacks: airConditionerEvent not found in process", LogType::Error); }
+    else { log("failed to set event callbacks: airConditionerEvent not found in process", LogType::ERROR); }
     
     PeriodicEvent* ventilatorsEvent = process->getPeriodicEvent(PeriodicEvents::VentilatorsEvent);
     if (ventilatorsEvent != nullptr) {
@@ -115,7 +115,7 @@ bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr
             }
         );
     } 
-    else { log("failed to set event callbacks: ventilatorsEvent not found in process", LogType::Error); }
+    else { log("failed to set event callbacks: ventilatorsEvent not found in process", LogType::ERROR); }
 
     return true;
 }

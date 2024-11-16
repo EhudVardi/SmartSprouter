@@ -53,10 +53,10 @@ namespace EnumHelpers {
     }, Pages::DIAG); // last valid state
     
     EnumHelper<LogType> logTypeHelper({
-        { LogType::Info, "Info" },
-        { LogType::Debug, "Debug" },
-        { LogType::Error, "Error" },
-    }, LogType::Error); // last valid state
+        { LogType::INFO, "INFO" },
+        { LogType::DEBUG, "DEBUG" },
+        { LogType::ERROR, "ERROR" },
+    }, LogType::ERROR); // last valid state
     
     EnumHelper<PeriodicEvents> periodicEventsHelper({
         { PeriodicEvents::VentilatorsEvent, "VentilatorsEvent" },

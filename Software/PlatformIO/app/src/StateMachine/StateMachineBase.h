@@ -33,7 +33,7 @@ public:
                 currentState->enter(context);
             }
         } else {
-            log("State not found!", LogType::Error);
+            log("State not found!", LogType::ERROR);
         }
     }
 
