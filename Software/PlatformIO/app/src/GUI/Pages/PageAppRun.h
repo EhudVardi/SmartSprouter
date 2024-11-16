@@ -21,7 +21,7 @@ public:
     }
     
     Pages getType() const override {
-        return Pages::Run;
+        return Pages::RUN;
     }
     
     bool SetHumidity(float humidityPercent) {

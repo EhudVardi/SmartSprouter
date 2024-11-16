@@ -19,7 +19,7 @@ public:
                      temperatureRangeSetup(2, 24, def_temperatureRangeSetupMin, def_temperatureRangeSetupMax, "Temper'"),
                      durationSetup(2, 36, def_durationSetup, "Duration", FontSize::Small), 
                      startButton(48, "Start", FontSize::Medium)  {
-        SetTitle("Setup");
+        SetTitle("SETUP");
         AddElement(&humidityRangeSetup);
         AddElement(&temperatureRangeSetup);
         AddElement(&durationSetup);
@@ -27,7 +27,7 @@ public:
     }
     
     Pages getType() const override {
-        return Pages::Setup;
+        return Pages::SETUP;
     }
 
     void SetHumidityRangeSelectionMode(NamedRangeEditState newEditState) {

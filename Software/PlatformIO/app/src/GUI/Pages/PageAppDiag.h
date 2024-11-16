@@ -26,7 +26,7 @@ public:
     }
     
     Pages getType() const override {
-        return Pages::Diag;
+        return Pages::DIAG;
     }
     
     bool SetHumidity(float newHumidity) {

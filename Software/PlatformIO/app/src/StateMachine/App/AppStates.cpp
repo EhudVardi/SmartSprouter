@@ -1,9 +1,9 @@
 #include "AppStates.h"
 
 void AbortingState::enter(SystemContext* context) {
-    context->displayManager->changePage(Pages::Abort);
+    context->displayManager->changePage(Pages::ABORT);
     if (!abortPage) {
-        abortPage = context->displayManager->getPageAs<PageAppAbort>(Pages::Abort);
+        abortPage = context->displayManager->getPageAs<PageAppAbort>(Pages::ABORT);
     }
 	log("enter AbortingState");
 }
@@ -28,9 +28,9 @@ void AbortingState::handleInput(SystemContext* context, InputEvent event) {
 
 
 void IdlingState::enter(SystemContext* context) {
-    context->displayManager->changePage(Pages::Idle);
+    context->displayManager->changePage(Pages::IDLE);
     if (!idlePage) {
-        idlePage = context->displayManager->getPageAs<PageAppIdle>(Pages::Idle);
+        idlePage = context->displayManager->getPageAs<PageAppIdle>(Pages::IDLE);
     }
 	log("enter IdlingState");
 }
@@ -63,7 +63,7 @@ void IdlingState::handleInput(SystemContext* context, InputEvent event) {
 
 
 void InformingState::enter(SystemContext* context) {
-    context->displayManager->changePage(Pages::About);
+    context->displayManager->changePage(Pages::ABOUT);
 	log("enter InformingState");
 }
 void InformingState::exit(SystemContext* context) {
@@ -94,9 +94,9 @@ void InitializingState::handleInput(SystemContext* context, InputEvent event) {}
 
 
 void RunningState::enter(SystemContext* context) {
-    context->displayManager->changePage(Pages::Run);
+    context->displayManager->changePage(Pages::RUN);
     if (!runPage) {
-        runPage = context->displayManager->getPageAs<PageAppRun>(Pages::Run);
+        runPage = context->displayManager->getPageAs<PageAppRun>(Pages::RUN);
     }
     if (!storeProcessTimer) {
         storeProcessTimer = new Timer(storeProcessInterval);
@@ -168,9 +168,9 @@ SettingProcessState::SettingProcessState() {
         });
 }
 void SettingProcessState::enter(SystemContext* context) {
-    context->displayManager->changePage(Pages::Setup);
+    context->displayManager->changePage(Pages::SETUP);
     if (!setupPage) {
-        setupPage = context->displayManager->getPageAs<PageAppSetup>(Pages::Setup);
+        setupPage = context->displayManager->getPageAs<PageAppSetup>(Pages::SETUP);
     }
     setupStateMachine.changeState(SetupStates::HUMIDITY_RANGE_SELECT, context); // init nested setup state machine state to initial state
 	log("enter SettingProcessState");
@@ -246,7 +246,7 @@ void StartingUpState::handleInput(SystemContext* context, InputEvent event) { }
 
 
 void SystemInErrorState::enter(SystemContext* context) {
-    context->displayManager->changePage(Pages::Error);
+    context->displayManager->changePage(Pages::ERROR);
 }
 void SystemInErrorState::exit(SystemContext* context) { }
 void SystemInErrorState::update(SystemContext* context) {
@@ -263,9 +263,9 @@ DiagnosingState::DiagnosingState() {
         });
 }
 void DiagnosingState::enter(SystemContext* context) {
-    context->displayManager->changePage(Pages::Diag);
+    context->displayManager->changePage(Pages::DIAG);
     if (!diagPage) {
-        diagPage = context->displayManager->getPageAs<PageAppDiag>(Pages::Diag);
+        diagPage = context->displayManager->getPageAs<PageAppDiag>(Pages::DIAG);
     }
 	diagStateMachine.changeState(DiagStates::HumidifiersSelected, context); // init nested diag state machine
 }

@@ -14,14 +14,14 @@ public:
     PageAppIdle() : humidityGauge(2, 12, "Humidity", FontSize::Small),
                     temperatureGauge(2, 24, "Temper'", FontSize::Small), 
                     dateTime(2, 36, AppDateTime(2000,1,1,0,1,2), FontSize::Small) {
-        SetTitle("Idle");
+        SetTitle("IDLE");
         AddElement(&humidityGauge);
         AddElement(&temperatureGauge);
         AddElement(&dateTime);
     }
     
     Pages getType() const override {
-        return Pages::Idle;
+        return Pages::IDLE;
     }
 
     bool SetHumidity(float humidityPercent) {

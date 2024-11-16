@@ -11,13 +11,13 @@ DisplayManager::DisplayManager() {
     auto appPageSetup = std::make_shared<PageAppSetup>();
     auto appPageDiag = std::make_shared<PageAppDiag>();
 
-    addPage(Pages::About, appPageAbout);
-    addPage(Pages::Error, appPageError);
-    addPage(Pages::Abort, appPageAbort);
-    addPage(Pages::Idle, appPageIdle);
-    addPage(Pages::Run, appPageRun);
-    addPage(Pages::Setup, appPageSetup);
-    addPage(Pages::Diag, appPageDiag);
+    addPage(Pages::ABOUT, appPageAbout);
+    addPage(Pages::ERROR, appPageError);
+    addPage(Pages::ABORT, appPageAbort);
+    addPage(Pages::IDLE, appPageIdle);
+    addPage(Pages::RUN, appPageRun);
+    addPage(Pages::SETUP, appPageSetup);
+    addPage(Pages::DIAG, appPageDiag);
 }
 
 bool DisplayManager::initialize() {

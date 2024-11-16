@@ -43,14 +43,14 @@ namespace EnumHelpers {
     }, HumidifierActions::H_HIGH); // last valid state
     
     EnumHelper<Pages> pagesHelper({
-        { Pages::About, "About" },
-        { Pages::Idle, "Idle" },
-        { Pages::Setup, "Setup" },
-        { Pages::Run, "Run" },
-        { Pages::Abort, "Abort" },
-        { Pages::Error, "Error" },
-        { Pages::Diag, "Diag" },
-    }, Pages::Diag); // last valid state
+        { Pages::ABOUT, "ABOUT" },
+        { Pages::IDLE, "IDLE" },
+        { Pages::SETUP, "SETUP" },
+        { Pages::RUN, "RUN" },
+        { Pages::ABORT, "ABORT" },
+        { Pages::ERROR, "ERROR" },
+        { Pages::DIAG, "DIAG" },
+    }, Pages::DIAG); // last valid state
     
     EnumHelper<LogType> logTypeHelper({
         { LogType::Info, "Info" },

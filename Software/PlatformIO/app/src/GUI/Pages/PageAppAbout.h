@@ -20,14 +20,14 @@ public:
                              appNameText, FontSize::Small),
                      appVersion(abstractsproutingseedimage_width + 4, SCREEN_HEIGHT  / 4 + 12,
                                 "Version " + appVersionText, FontSize::Small) {
-        SetTitle("About");
+        SetTitle("ABOUT");
         AddElement(&LogoImage);
         AddElement(&appName);
         AddElement(&appVersion);
     }
     
     Pages getType() const override {
-        return Pages::About;
+        return Pages::ABOUT;
     }
 };
 

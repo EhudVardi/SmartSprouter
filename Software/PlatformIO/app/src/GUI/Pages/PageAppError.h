@@ -12,13 +12,13 @@ protected:
 public:
     PageAppError() : errorEnum(2, SCREEN_HEIGHT  / 4, "", FontSize::Small),
                      errorParams(2, SCREEN_HEIGHT  / 4 + 12, "", FontSize::Small)  {
-        SetTitle("Error");
+        SetTitle("ERROR");
         AddElement(&errorEnum);
         AddElement(&errorParams);
     }
     
     Pages getType() const override {
-        return Pages::Error;
+        return Pages::ERROR;
     }
 
     void SetError(AppErrors& error, const String& errParams) {

@@ -13,7 +13,7 @@ protected:
 public:
     void enter(SystemContext* context) override {
         if (!setupPage) {
-            setupPage = context->displayManager->getPageAs<PageAppSetup>(Pages::Setup);
+            setupPage = context->displayManager->getPageAs<PageAppSetup>(Pages::SETUP);
         }
     }
 };

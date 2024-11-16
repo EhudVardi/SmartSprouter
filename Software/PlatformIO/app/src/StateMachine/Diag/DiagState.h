@@ -13,7 +13,7 @@ protected:
 public:
     void enter(SystemContext* context) override {
         if (!diagPage) {
-            diagPage = context->displayManager->getPageAs<PageAppDiag>(Pages::Diag);
+            diagPage = context->displayManager->getPageAs<PageAppDiag>(Pages::DIAG);
         }
     }
 };

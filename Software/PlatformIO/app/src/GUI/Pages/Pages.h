@@ -5,13 +5,13 @@
 #include <string>
 
 enum class Pages {
-    About,
-    Idle,
-    Setup,
-    Run,
-    Abort,
-    Error,
-    Diag,
+    ABOUT,
+    IDLE,
+    SETUP,
+    RUN,
+    ABORT,
+    ERROR,
+    DIAG,
 };
 
 #endif // PAGES_ENUMERATION_H
