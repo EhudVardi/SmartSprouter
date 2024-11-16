@@ -19,9 +19,9 @@ void ProcessManager::createCurrentProcess(float minHumidity, float maxHumidity,
     WindowEvent airConditionerEvent(minTemperature, maxTemperature);
     PeriodicEvent ventilatorsEvent(ventsInterval, ventsDuration);
 
-    newProcess->addWindowEvent(WindowEvents::HumidifiersEvent, humidifiersEvent);
-    newProcess->addWindowEvent(WindowEvents::AirConditionersEvent, airConditionerEvent);
-    newProcess->addPeriodicEvent(PeriodicEvents::VentilatorsEvent, ventilatorsEvent);
+    newProcess->addWindowEvent(WindowEvents::HUMIDIFIERS_EVENT, humidifiersEvent);
+    newProcess->addWindowEvent(WindowEvents::AIR_CONDITIONERS_EVENT, airConditionerEvent);
+    newProcess->addPeriodicEvent(PeriodicEvents::VENTILATORS_EVENT, ventilatorsEvent);
 
     setProcessEventsCallbacks(newProcess, actuatorManager);
 
@@ -32,9 +32,9 @@ void ProcessManager::createCurrentProcess(float minHumidity, float maxHumidity,
 
 AppTimeSpan ProcessManager::updateProcess(const AppDateTime& now, float currHumidity, float currTemperature) {
     
-    if (!isnan(currHumidity)) currentProcess->updateWindowEvent(WindowEvents::HumidifiersEvent, currHumidity);
-    if (!isnan(currTemperature)) currentProcess->updateWindowEvent(WindowEvents::AirConditionersEvent, currTemperature);
-    currentProcess->updatePeriodicEvent(PeriodicEvents::VentilatorsEvent, now);
+    if (!isnan(currHumidity)) currentProcess->updateWindowEvent(WindowEvents::HUMIDIFIERS_EVENT, currHumidity);
+    if (!isnan(currTemperature)) currentProcess->updateWindowEvent(WindowEvents::AIR_CONDITIONERS_EVENT, currTemperature);
+    currentProcess->updatePeriodicEvent(PeriodicEvents::VENTILATORS_EVENT, now);
     
     AppTimeSpan updatedRemainingTime = currentProcess->updateRemainingDuration(now - lastUpdateTime);
     lastUpdateTime = now;
@@ -72,7 +72,7 @@ bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr
     if (process == nullptr)
         return false;
     
-    WindowEvent* humidifiersEvent = process->getWindowEvent(WindowEvents::HumidifiersEvent);
+    WindowEvent* humidifiersEvent = process->getWindowEvent(WindowEvents::HUMIDIFIERS_EVENT);
     if (humidifiersEvent != nullptr) {
         humidifiersEvent->setActionCallbacks(
             [actuatorManager]() { 
@@ -87,7 +87,7 @@ bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr
     } 
     else { log("failed to set event callbacks: humidifiersEvent not found in process", LogType::ERROR); }
     
-    WindowEvent* airConditionerEvent = process->getWindowEvent(WindowEvents::AirConditionersEvent);
+    WindowEvent* airConditionerEvent = process->getWindowEvent(WindowEvents::AIR_CONDITIONERS_EVENT);
     if (airConditionerEvent != nullptr) {
         airConditionerEvent->setActionCallbacks(
             [actuatorManager]() { 
@@ -102,7 +102,7 @@ bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr
     } 
     else { log("failed to set event callbacks: airConditionerEvent not found in process", LogType::ERROR); }
     
-    PeriodicEvent* ventilatorsEvent = process->getPeriodicEvent(PeriodicEvents::VentilatorsEvent);
+    PeriodicEvent* ventilatorsEvent = process->getPeriodicEvent(PeriodicEvents::VENTILATORS_EVENT);
     if (ventilatorsEvent != nullptr) {
         ventilatorsEvent->setActionCallbacks(
             [actuatorManager]() { 

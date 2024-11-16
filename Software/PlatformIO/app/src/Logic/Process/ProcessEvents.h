@@ -2,11 +2,11 @@
 #define EVENTKEY_H
 
 enum class PeriodicEvents {
-    VentilatorsEvent,
+    VENTILATORS_EVENT,
 };
 enum class WindowEvents {
-    HumidifiersEvent,
-    AirConditionersEvent,
+    HUMIDIFIERS_EVENT,
+    AIR_CONDITIONERS_EVENT,
 };
 
 #endif // EVENTKEY_H

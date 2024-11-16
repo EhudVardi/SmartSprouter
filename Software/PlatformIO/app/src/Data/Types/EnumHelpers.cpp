@@ -59,11 +59,11 @@ namespace EnumHelpers {
     }, LogType::ERROR); // last valid state
     
     EnumHelper<PeriodicEvents> periodicEventsHelper({
-        { PeriodicEvents::VentilatorsEvent, "VentilatorsEvent" },
-    }, PeriodicEvents::VentilatorsEvent); // last valid state
+        { PeriodicEvents::VENTILATORS_EVENT, "VENTILATORS_EVENT" },
+    }, PeriodicEvents::VENTILATORS_EVENT); // last valid state
     
     EnumHelper<WindowEvents> windowEventsHelper({
-        { WindowEvents::HumidifiersEvent, "HumidifiersEvent" },
-        { WindowEvents::AirConditionersEvent, "AirConditionersEvent" },
-    }, WindowEvents::AirConditionersEvent); // last valid state
+        { WindowEvents::HUMIDIFIERS_EVENT, "HUMIDIFIERS_EVENT" },
+        { WindowEvents::AIR_CONDITIONERS_EVENT, "AIR_CONDITIONERS_EVENT" },
+    }, WindowEvents::AIR_CONDITIONERS_EVENT); // last valid state
 }
