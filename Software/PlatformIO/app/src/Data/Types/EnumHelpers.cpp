@@ -37,10 +37,10 @@ namespace EnumHelpers {
     }, SetupStates::START_SELECT); // last valid state
     
     EnumHelper<HumidifierActions> humidifierActionsHelper({
-        { HumidifierActions::Off, "  Off " },
-        { HumidifierActions::Low, "  Low " },
-        { HumidifierActions::High, "  High" },
-    }, HumidifierActions::High); // last valid state
+        { HumidifierActions::OFF, "  OFF " },
+        { HumidifierActions::LOW, "  LOW " },
+        { HumidifierActions::HIGH, "  HIGH" },
+    }, HumidifierActions::HIGH); // last valid state
     
     EnumHelper<Pages> pagesHelper({
         { Pages::About, "About" },

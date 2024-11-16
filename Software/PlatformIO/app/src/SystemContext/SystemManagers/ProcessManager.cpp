@@ -77,11 +77,11 @@ bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr
         humidifiersEvent->setActionCallbacks(
             [actuatorManager]() { 
                 log("humidifiersEvent Start");
-                actuatorManager->SetHumidifiers(HumidifierActions::High);
+                actuatorManager->SetHumidifiers(HumidifierActions::HIGH);
             },
             [actuatorManager]() { 
                 log("humidifiersEvent Stop");
-                actuatorManager->SetHumidifiers(HumidifierActions::Off);
+                actuatorManager->SetHumidifiers(HumidifierActions::OFF);
             }
         );
     } 

@@ -17,7 +17,7 @@ public:
     PageAppDiag() : humidity(2, 12, -1, FontSize::Small),
                     temperature(42, 12, -1, FontSize::Small),
                     dateTime(2, 22, AppDateTime(2000,1,1,0,1,2), FontSize::Small),
-                    humidifiers(2, 32, HumidifierActions::Off, "Humidifiers", FontSize::Small) {
+                    humidifiers(2, 32, HumidifierActions::OFF, "Humidifiers", FontSize::Small) {
         SetTitle("Diagnostics");
         AddElement(&humidity);
         AddElement(&temperature);

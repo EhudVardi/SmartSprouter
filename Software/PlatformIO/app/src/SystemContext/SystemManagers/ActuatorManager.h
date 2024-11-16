@@ -19,7 +19,7 @@ public:
     bool initialize() override;
 
     void SetHumidifiers(HumidifierActions action) {
-        if (action == HumidifierActions::Off) {
+        if (action == HumidifierActions::OFF) {
             OpenRelay1();
             return;
         }
@@ -27,12 +27,12 @@ public:
         delay(100);
         CloseRelay1();
         delay(100);
-        if (action == HumidifierActions::High) {
+        if (action == HumidifierActions::HIGH) {
             CloseRelay2();
             delay(100);
             OpenRelay2();
             delay(100);
-        } else if (action == HumidifierActions::Low) {
+        } else if (action == HumidifierActions::LOW) {
             CloseRelay2();
             delay(100);
             OpenRelay2();
@@ -45,7 +45,7 @@ public:
     }
 
     void ShutDownAllActuators() {
-        SetHumidifiers(HumidifierActions::Off);
+        SetHumidifiers(HumidifierActions::OFF);
     }
 };
 

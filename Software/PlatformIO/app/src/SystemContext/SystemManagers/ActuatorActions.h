@@ -5,9 +5,9 @@
 #include <string>
 
 enum class HumidifierActions {
-    Off,
-    Low,
-    High,
+    OFF,
+    LOW,
+    HIGH,
 };
 
 #endif // HUMIDIFIER_ACTIONS_H
