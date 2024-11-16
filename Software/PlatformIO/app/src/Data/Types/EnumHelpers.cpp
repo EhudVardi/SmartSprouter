@@ -15,14 +15,14 @@ namespace EnumHelpers {
     }, AppStates::DIAGNOSING); // last valid state
     
     EnumHelper<AppErrors> appErrorsHelper({
-        { AppErrors::ErrInitInputManager, "ErrInitInputManager" },
-        { AppErrors::ErrInitSensorManager, "ErrInitSensorManager" },
-        { AppErrors::ErrInitDisplayManager, "ErrInitDisplayManager" },
-        { AppErrors::ErrInitActuatorManager, "ErrInitActuatorManager" },
-        { AppErrors::ErrInitProcessManager, "ErrInitProcessManager" },
-        { AppErrors::ErrInitNetworkManager, "ErrInitNetworkManager" },
-        { AppErrors::ErrInitTimeManager, "ErrInitTimeManager" },
-    }, AppErrors::ErrInitTimeManager); // last valid state
+        { AppErrors::ERR_INIT_INPUT_MANAGER, "ERR_INIT_INPUT_MANAGER" },
+        { AppErrors::ERR_INIT_SENSOR_MANAGER, "ERR_INIT_SENSOR_MANAGER" },
+        { AppErrors::ERR_INIT_DISPLAY_MANAGER, "ERR_INIT_DISPLAY_MANAGER" },
+        { AppErrors::ERR_INIT_ACTUATOR_MANAGER, "ERR_INIT_ACTUATOR_MANAGER" },
+        { AppErrors::ERR_INIT_PROCESS_MANAGER, "ERR_INIT_PROCESS_MANAGER" },
+        { AppErrors::ERR_INIT_NETWORK_MANAGER, "ERR_INIT_NETWORK_MANAGER" },
+        { AppErrors::ERR_INIT_TIME_MANAGER, "ErrInitTimeManager" },
+    }, AppErrors::ERR_INIT_TIME_MANAGER); // last valid state
     
     EnumHelper<SetupStates> setupStatesHelper({
         { SetupStates::HumidityRangeSelect, "HumidityRangeSelect" },

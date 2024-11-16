@@ -200,31 +200,31 @@ void StartingUpState::enter(SystemContext* context) {
     /// initialize all managers in the system context object
     /// if any fails, then transite to SYSTEM_IN_ERROR state.
     if (!context->inputManager->initialize()) {
-        GoToErrorState(context, AppErrors::ErrInitInputManager);
+        GoToErrorState(context, AppErrors::ERR_INIT_INPUT_MANAGER);
         return;
     }
     if (!context->sensorManager->initialize()) {
-        GoToErrorState(context, AppErrors::ErrInitSensorManager);
+        GoToErrorState(context, AppErrors::ERR_INIT_SENSOR_MANAGER);
         return;
     }
     if (!context->displayManager->initialize()) {
-        GoToErrorState(context, AppErrors::ErrInitDisplayManager);
+        GoToErrorState(context, AppErrors::ERR_INIT_DISPLAY_MANAGER);
         return;
     }
     if (!context->actuatorManager->initialize()) {
-        GoToErrorState(context, AppErrors::ErrInitActuatorManager);
+        GoToErrorState(context, AppErrors::ERR_INIT_ACTUATOR_MANAGER);
         return;
     }
     if (!context->processManager->initialize()) {
-        GoToErrorState(context, AppErrors::ErrInitProcessManager);
+        GoToErrorState(context, AppErrors::ERR_INIT_PROCESS_MANAGER);
         return;
     }
     if (!context->networkManager->initialize()) {
-        GoToErrorState(context, AppErrors::ErrInitNetworkManager);
+        GoToErrorState(context, AppErrors::ERR_INIT_NETWORK_MANAGER);
         return;
     }
     if (!context->timeManager->initialize()) {
-        GoToErrorState(context, AppErrors::ErrInitTimeManager);
+        GoToErrorState(context, AppErrors::ERR_INIT_TIME_MANAGER);
         return;
     }
 

@@ -2,13 +2,13 @@
 #define APP_ERRORS_ENUMERATION_H
 
 enum class AppErrors {
-    ErrInitInputManager,
-    ErrInitSensorManager,
-    ErrInitDisplayManager,
-    ErrInitActuatorManager,
-    ErrInitProcessManager,
-    ErrInitNetworkManager,
-    ErrInitTimeManager,
+    ERR_INIT_INPUT_MANAGER,
+    ERR_INIT_SENSOR_MANAGER,
+    ERR_INIT_DISPLAY_MANAGER,
+    ERR_INIT_ACTUATOR_MANAGER,
+    ERR_INIT_PROCESS_MANAGER,
+    ERR_INIT_NETWORK_MANAGER,
+    ERR_INIT_TIME_MANAGER,
 };
 
 #endif // APP_ERRORS_ENUMERATION_H
