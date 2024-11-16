@@ -17,18 +17,18 @@ public:
     }
 
     // Get count of usable actions (excluding dummy or any extra values)
-    int Count() const {
+    int count() const {
         return static_cast<int>(lastValue) + 1; // Assumes contiguous enums
     }
 
     // Get the next enum value in a circular manner
-    T Next(T value) const {
-        int nextValue = (static_cast<int>(value) + 1) % Count();
+    T next(T value) const {
+        int nextValue = (static_cast<int>(value) + 1) % count();
         return static_cast<T>(nextValue);
     }
     // Get the next enum value in a circular manner
-    T Prev(T value) const {
-        int prevValue = (static_cast<int>(value) - 1 + Count()) % Count();
+    T prev(T value) const {
+        int prevValue = (static_cast<int>(value) - 1 + count()) % count();
         return static_cast<T>(prevValue);
     }
 

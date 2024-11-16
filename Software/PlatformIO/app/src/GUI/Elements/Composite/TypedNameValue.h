@@ -127,11 +127,11 @@ public:
 
     void SelectNextValue() {
         using namespace EnumHelpers;
-        valueLabel.SetValue(EnumHelpers::HumidifierActionsHelper.Next(valueLabel.GetValue()));
+        valueLabel.SetValue(EnumHelpers::HumidifierActionsHelper.next(valueLabel.GetValue()));
     }
     void SelectPrevValue() {
         using namespace EnumHelpers;
-        valueLabel.SetValue(EnumHelpers::HumidifierActionsHelper.Prev(valueLabel.GetValue()));
+        valueLabel.SetValue(EnumHelpers::HumidifierActionsHelper.prev(valueLabel.GetValue()));
     }
 };
 
