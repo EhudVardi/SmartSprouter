@@ -25,13 +25,13 @@ inline String toString(const AppTimeSpan& value) {
 }
 // my custom enumerations
 #include "EnumHelpers.h"
-#include "StateMachine/App/AppStatesEnum.h"
+#include "Logic/StateMachine/App/AppStatesEnum.h"
 template <>
 inline String toString(const AppStates& value) {
     using namespace EnumHelpers;
     return EnumHelpers::appStatesHelper.ToString(value);
 }
-#include "StateMachine/Setup/SetupStatesEnum.h"
+#include "Logic/StateMachine/Setup/SetupStatesEnum.h"
 template <>
 inline String toString(const SetupStates& value) {
     using namespace EnumHelpers;

@@ -2,7 +2,7 @@
 #define SETUP_STATE_MACHINE_H
 
 #include <functional>
-#include "StateMachine/StateMachineBase.h"
+#include "Logic/StateMachine/StateMachineBase.h"
 #include "SetupState.h"
 #include "SetupStatesEnum.h"
 

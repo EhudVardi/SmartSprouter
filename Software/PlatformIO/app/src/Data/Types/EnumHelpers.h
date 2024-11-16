@@ -2,9 +2,9 @@
 #define ENUM_HELPER_ENUMERATION_H
 
 #include "EnumHelper.h"
-#include "StateMachine/App/AppStatesEnum.h"
-#include "StateMachine/App/AppErrorsEnum.h"
-#include "StateMachine/Setup/SetupStatesEnum.h"
+#include "Logic/StateMachine/App/AppStatesEnum.h"
+#include "Logic/StateMachine/App/AppErrorsEnum.h"
+#include "Logic/StateMachine/Setup/SetupStatesEnum.h"
 #include "SystemContext/SystemManagers/ActuatorActions.h"
 #include "GUI/Pages/Pages.h"
 #include "Data/Log/LogType.h"

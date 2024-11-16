@@ -1,7 +1,7 @@
 #ifndef DIAGNOSTICS_STATE_H
 #define DIAGNOSTICS_STATE_H
 
-#include "StateMachine/StateBase.h"
+#include "Logic/StateMachine/StateBase.h"
 #include "DiagStateMachine.h"
 
 class DiagStateMachine; // Forward declare SetupStateMachine

@@ -2,7 +2,7 @@
 #define DIAG_STATE_MACHINE_H
 
 #include <functional>
-#include "StateMachine/StateMachineBase.h"
+#include "Logic/StateMachine/StateMachineBase.h"
 #include "DiagState.h"
 #include "DiagStatesEnum.h"
 

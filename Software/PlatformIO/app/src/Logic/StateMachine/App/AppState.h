@@ -1,7 +1,7 @@
 #ifndef APPSTATE_H
 #define APPSTATE_H
 
-#include "StateMachine/StateBase.h"
+#include "Logic/StateMachine/StateBase.h"
 #include "AppStateMachine.h"
 
 class AppStateMachine; // Forward declare AppStateMachine

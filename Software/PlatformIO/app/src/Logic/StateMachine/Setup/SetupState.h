@@ -1,7 +1,7 @@
 #ifndef SETUP_STATE_H
 #define SETUP_STATE_H
 
-#include "StateMachine/StateBase.h"
+#include "Logic/StateMachine/StateBase.h"
 #include "SetupStateMachine.h"
 
 class SetupStateMachine; // Forward declare SetupStateMachine

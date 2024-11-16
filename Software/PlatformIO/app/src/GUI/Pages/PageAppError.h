@@ -2,7 +2,7 @@
 #define PAGEAPPERROR_H
 
 #include "PageAppBase.h"
-#include "StateMachine/App/AppErrorsEnum.h"
+#include "Logic/StateMachine/App/AppErrorsEnum.h"
 
 class PageAppError : public PageAppBase {
 protected:

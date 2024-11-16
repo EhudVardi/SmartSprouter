@@ -83,7 +83,7 @@ public:
 #ifndef SETTING_PROCESS_STATE_H
 #define SETTING_PROCESS_STATE_H
 
-#include "StateMachine/Setup/SetupStateMachine.h"
+#include "Logic/StateMachine/Setup/SetupStateMachine.h"
 
 class SettingProcessState : public AppState {
 private:
@@ -131,7 +131,7 @@ public:
 #ifndef DIAG_STATE_H
 #define DIAG_STATE_H
 
-#include "StateMachine/Diag/DiagStateMachine.h"
+#include "Logic/StateMachine/Diag/DiagStateMachine.h"
 
 class DiagnosingState : public AppState {
     std::shared_ptr<PageAppDiag> diagPage = nullptr;
