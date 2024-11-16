@@ -14,21 +14,22 @@ protected:
     NamedValueHumidifierActions humidifiers;
 
 public:
-    PageAppDiag() : humidity(2, 12, -1, FontSize::Small),
-                    temperature(42, 12, -1, FontSize::Small),
-                    dateTime(2, 22, AppDateTime(2000,1,1,0,1,2), FontSize::Small),
-                    humidifiers(2, 32, HumidifierActions::H_OFF, "Humidifiers", FontSize::Small) {
+    PageAppDiag() :
+        humidity(2, 12, -1, FontSize::Small),
+        temperature(42, 12, -1, FontSize::Small),
+        dateTime(2, 22, AppDateTime(2000, 1, 1, 0, 1, 2), FontSize::Small),
+        humidifiers(2, 32, HumidifierActions::H_OFF, "Humidifiers", FontSize::Small) {
         SetTitle("Diagnostics");
         AddElement(&humidity);
         AddElement(&temperature);
         AddElement(&dateTime);
         AddElement(&humidifiers);
     }
-    
+
     Pages getType() const override {
         return Pages::DIAG;
     }
-    
+
     bool SetHumidity(float newHumidity) {
         if (newHumidity != humidity.GetValue())
             humidity.SetValue(newHumidity);

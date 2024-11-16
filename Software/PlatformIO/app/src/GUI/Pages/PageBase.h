@@ -10,12 +10,12 @@ protected:
     std::vector<GuiElement*> elements;
 
 public:
-    void AddElement(GuiElement *element) {
+    void AddElement(GuiElement* element) {
         elements.push_back(element);
     }
 
-    void Draw(LcdDisplayHandler &displayHandler) {
-        for (auto &element : elements) {
+    void Draw(LcdDisplayHandler& displayHandler) {
+        for (auto& element : elements) {
             if (element->IsInvalidated()) {
                 element->Draw(displayHandler);
             }
@@ -23,7 +23,7 @@ public:
     }
 
     virtual void InvalidatePage() {
-        for (auto &element : elements) {
+        for (auto& element : elements) {
             element->Invalidate();
         }
     }

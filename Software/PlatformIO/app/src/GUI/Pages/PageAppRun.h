@@ -11,21 +11,22 @@ protected:
     NamedValueTimeSpan durationGauge;
 
 public:
-    PageAppRun() : humidityGauge(2, 12, "Humidity", FontSize::Small),
-                   temperatureGauge(2, 24, "Temper'", FontSize::Small),
-                   durationGauge(2, 36, "Duration", FontSize::Small) {
+    PageAppRun() :
+        humidityGauge(2, 12, "Humidity", FontSize::Small),
+        temperatureGauge(2, 24, "Temper'", FontSize::Small),
+        durationGauge(2, 36, "Duration", FontSize::Small) {
         SetTitle("RUNNING");
         AddElement(&humidityGauge);
         AddElement(&temperatureGauge);
         AddElement(&durationGauge);
     }
-    
+
     Pages getType() const override {
         return Pages::RUN;
     }
-    
+
     bool SetHumidity(float humidityPercent) {
-        if (humidityPercent >= 0.0 &&  humidityPercent <= 100.0) {
+        if (humidityPercent >= 0.0 && humidityPercent <= 100.0) {
             humidityGauge.SetValue(humidityPercent);
             return true;
         }
@@ -35,7 +36,7 @@ public:
     }
 
     bool SetTemperature(float temperature) {
-        if (temperature >= 0.0 &&  temperature <= 100.0) {
+        if (temperature >= 0.0 && temperature <= 100.0) {
             temperatureGauge.SetValue(temperature);
             return true;
         }

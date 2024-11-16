@@ -10,13 +10,14 @@ protected:
     TextLabel errorParams;
 
 public:
-    PageAppError() : errorEnum(2, SCREEN_HEIGHT  / 4, "", FontSize::Small),
-                     errorParams(2, SCREEN_HEIGHT  / 4 + 12, "", FontSize::Small)  {
+    PageAppError() :
+        errorEnum(2, SCREEN_HEIGHT / 4, "", FontSize::Small),
+        errorParams(2, SCREEN_HEIGHT / 4 + 12, "", FontSize::Small) {
         SetTitle("ERROR");
         AddElement(&errorEnum);
         AddElement(&errorParams);
     }
-    
+
     Pages getType() const override {
         return Pages::ERROR;
     }
