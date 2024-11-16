@@ -6,14 +6,14 @@
 
 class NamedValueInt : public NamedValue<int> {
 public:
-    NamedValueInt(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+    NamedValueInt(int xPos, int yPos, const String& name, FontSize size = FontSize::Small)
         : NamedValue<int>(xPos, yPos, name, size) {
         // Set a custom formatter for general int display
         valueLabel.SetFormatter([](int value) {
             return String(value);
         });
     }
-    NamedValueInt(int xPos, int yPos, int initialValue, const String &name, FontSize size = FontSize::Small)
+    NamedValueInt(int xPos, int yPos, int initialValue, const String& name, FontSize size = FontSize::Small)
         : NamedValueInt(xPos, yPos, name, size) {
         SetValue(initialValue);
     }
@@ -27,14 +27,14 @@ public:
 
 class NamedValueFloat : public NamedValue<float> {
 public:
-    NamedValueFloat(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+    NamedValueFloat(int xPos, int yPos, const String& name, FontSize size = FontSize::Small)
         : NamedValue<float>(xPos, yPos, name, size) {
         // Set a custom formatter for general float display
         valueLabel.SetFormatter([](float value) {
             return String(value);
         });
     }
-    NamedValueFloat(int xPos, int yPos, float initialValue, const String &name, FontSize size = FontSize::Small)
+    NamedValueFloat(int xPos, int yPos, float initialValue, const String& name, FontSize size = FontSize::Small)
         : NamedValueFloat(xPos, yPos, name, size) {
         SetValue(initialValue);
     }
@@ -48,7 +48,7 @@ public:
 
 class NamedValuePercent : public NamedValueFloat {
 public:
-    NamedValuePercent(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+    NamedValuePercent(int xPos, int yPos, const String& name, FontSize size = FontSize::Small)
         : NamedValueFloat(xPos, yPos, name, size) {
         // Set a custom formatter for percentage display
         valueLabel.SetFormatter([](float value) {
@@ -67,7 +67,7 @@ public:
 
 class NamedValueTemperature : public NamedValueFloat {
 public:
-    NamedValueTemperature(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+    NamedValueTemperature(int xPos, int yPos, const String& name, FontSize size = FontSize::Small)
         : NamedValueFloat(xPos, yPos, name, size) {
         // Set a custom formatter for temperature display with "C" appended
         valueLabel.SetFormatter([](float value) {
@@ -86,11 +86,11 @@ public:
 
 class NamedValueTimeSpan : public NamedValue<AppTimeSpan> {
 public:
-    NamedValueTimeSpan(int xPos, int yPos, AppTimeSpan initialValue, const String &name, FontSize size = FontSize::Small)
+    NamedValueTimeSpan(int xPos, int yPos, AppTimeSpan initialValue, const String& name, FontSize size = FontSize::Small)
         : NamedValueTimeSpan(xPos, yPos, name, size) {
-            SetValue(initialValue);
+        SetValue(initialValue);
     }
-    NamedValueTimeSpan(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+    NamedValueTimeSpan(int xPos, int yPos, const String& name, FontSize size = FontSize::Small)
         : NamedValue<AppTimeSpan>(xPos, yPos, name, size) {
         // Set a custom formatter for a TimeSpan value
         valueLabel.SetFormatter([](AppTimeSpan value) {
@@ -117,7 +117,7 @@ public:
 
 class NamedValueHumidifierActions : public NamedValue<HumidifierActions> {
 public:
-    NamedValueHumidifierActions(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+    NamedValueHumidifierActions(int xPos, int yPos, const String& name, FontSize size = FontSize::Small)
         : NamedValue<HumidifierActions>(xPos, yPos, name, size) {
         // Set a custom formatter for HumidifierActions enum value
         valueLabel.SetFormatter([](HumidifierActions value) {
@@ -125,7 +125,7 @@ public:
             return String(EnumHelpers::humidifierActionsHelper.ToString(value));
         });
     }
-    NamedValueHumidifierActions(int xPos, int yPos, HumidifierActions initialValue, const String &name, FontSize size = FontSize::Small)
+    NamedValueHumidifierActions(int xPos, int yPos, HumidifierActions initialValue, const String& name, FontSize size = FontSize::Small)
         : NamedValueHumidifierActions(xPos, yPos, name, size) {
         SetValue(initialValue);
     }

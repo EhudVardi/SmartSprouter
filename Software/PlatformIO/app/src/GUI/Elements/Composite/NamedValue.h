@@ -14,15 +14,15 @@ protected:
     NamedValueEditState editState;
 
 public:
-    NamedValue(int xPos, int yPos, T initialValue, const String &name, FontSize size = FontSize::Small)
+    NamedValue(int xPos, int yPos, T initialValue, const String& name, FontSize size = FontSize::Small)
         : NamedValue(xPos, yPos, name, size) {
         SetValue(initialValue);
     }
-    NamedValue(int xPos, int yPos, const String &name, FontSize size = FontSize::Small)
+    NamedValue(int xPos, int yPos, const String& name, FontSize size = FontSize::Small)
         : GuiElement(xPos, yPos),
-          nameLabel(xPos, yPos, name),
-          valueLabel(xPos + SCREEN_WIDTH / 2, yPos),
-          editState(NamedValueEditState::None) {
+        nameLabel(xPos, yPos, name),
+        valueLabel(xPos + SCREEN_WIDTH / 2, yPos),
+        editState(NamedValueEditState::None) {
         nameLabel.SetFontSize(size);
         valueLabel.SetFontSize(size);
     }
@@ -42,10 +42,12 @@ public:
         if (state == NamedValueEditState::None) {
             nameLabel.SetInverted(false);
             valueLabel.SetInverted(false);
-        } else if (state == NamedValueEditState::Selected) {
+        }
+        else if (state == NamedValueEditState::Selected) {
             nameLabel.SetInverted(true);
             valueLabel.SetInverted(false);
-        } else if (state == NamedValueEditState::Entered) {
+        }
+        else if (state == NamedValueEditState::Entered) {
             nameLabel.SetInverted(true);
             valueLabel.SetInverted(true);
         }
@@ -64,7 +66,7 @@ public:
         return (nameLabel.IsInvalidated() || valueLabel.IsInvalidated());
     }
 
-    virtual void Draw(LcdDisplayHandler &displayHandler) override {
+    virtual void Draw(LcdDisplayHandler& displayHandler) override {
         if (!IsInvalidated()) return;
 
         nameLabel.Draw(displayHandler);

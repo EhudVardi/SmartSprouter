@@ -7,12 +7,12 @@ class TextLabel : public Label<String> {
 public:
     TextLabel(int xPos, int yPos, String initialText, FontSize size = FontSize::Small)
         : Label(xPos, yPos, size) {
-            value = initialText;
-            // Default simple string conversion formatter if not provided
-            if (!formatter) {
-                SetFormatter([](String value) { return String(value); });
-            }
+        value = initialText;
+        // Default simple string conversion formatter if not provided
+        if (!formatter) {
+            SetFormatter([](String value) { return String(value); });
         }
+    }
 };
 
 #endif // TEXT_LABEL_H
@@ -27,15 +27,15 @@ private:
     int centeredX; // Cached x position for centering
 
 public:
-    CenteredLabel(int yPos, const String &initialText, FontSize size = FontSize::Large)
+    CenteredLabel(int yPos, const String& initialText, FontSize size = FontSize::Large)
         : TextLabel(0, yPos, initialText, size), positionCalculated(false), centeredX(0) {
     }
 
-    virtual void Draw(LcdDisplayHandler &displayHandler) override {
-        Adafruit_SSD1306 &display = displayHandler.GetDisplayObject();
+    virtual void Draw(LcdDisplayHandler& displayHandler) override {
+        Adafruit_SSD1306& display = displayHandler.GetDisplayObject();
 
         if (!positionCalculated) {
-            
+
             int16_t x1, y1;
             uint16_t textWidth, textHeight;
             display.getTextBounds(value, 0, 0, &x1, &y1, &textWidth, &textHeight);
@@ -65,9 +65,9 @@ class FloatLabel : public Label<float> {
 public:
     FloatLabel(int xPos, int yPos, float initialvalue, FontSize size = FontSize::Small)
         : Label(xPos, yPos, size) {
-            value = initialvalue;
-            SetFormatter([](float value) { return String(value); });
-        }
+        value = initialvalue;
+        SetFormatter([](float value) { return String(value); });
+    }
 };
 
 #endif // FLOAT_LABEL_H
@@ -80,12 +80,12 @@ class PercentLabel : public FloatLabel {
 public:
     PercentLabel(int xPos, int yPos, float initialvalue, FontSize size = FontSize::Small)
         : FloatLabel(xPos, yPos, initialvalue, size) {
-            SetFormatter([](float value) {
-                char buffer[7];
-                snprintf(buffer, sizeof(buffer), "%3.1f%%", value);
-                return String(buffer);
-            });
-        }
+        SetFormatter([](float value) {
+            char buffer[7];
+            snprintf(buffer, sizeof(buffer), "%3.1f%%", value);
+            return String(buffer);
+        });
+    }
 };
 
 #endif // HUMIDITY_LABEL_H
@@ -98,12 +98,12 @@ class TemperatureLabel : public FloatLabel {
 public:
     TemperatureLabel(int xPos, int yPos, float initialvalue, FontSize size = FontSize::Small)
         : FloatLabel(xPos, yPos, initialvalue, size) {
-            SetFormatter([](float value) {
-                char buffer[7];
-                snprintf(buffer, sizeof(buffer), "%3.1fC", value);
-                return String(buffer);
-            });
-        }
+        SetFormatter([](float value) {
+            char buffer[7];
+            snprintf(buffer, sizeof(buffer), "%3.1fC", value);
+            return String(buffer);
+        });
+    }
 };
 
 #endif // TEMPERATURE_LABEL_H
@@ -116,10 +116,10 @@ class DisplayDateTimeLabel : public Label<AppDateTime> {
 public:
     DisplayDateTimeLabel(int xPos, int yPos, AppDateTime initialDateTime, FontSize size = FontSize::Small)
         : Label(xPos, yPos, size) {
-            value = initialDateTime;
-        }
-        
-    void SetDateTime(const AppDateTime &newDate) {
+        value = initialDateTime;
+    }
+
+    void SetDateTime(const AppDateTime& newDate) {
         value = newDate;
         Invalidate();
     }

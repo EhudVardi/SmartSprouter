@@ -12,7 +12,7 @@ protected:
 public:
     GuiElement(int xPos, int yPos) : x(xPos), y(yPos), invalidated(true) {}
 
-    virtual void Draw(LcdDisplayHandler &displayHandler) = 0; // Pure virtual function
+    virtual void Draw(LcdDisplayHandler& displayHandler) = 0; // Pure virtual function
 
     virtual void Invalidate() {
         invalidated = true; // Mark as needing redraw

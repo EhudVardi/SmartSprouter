@@ -18,12 +18,12 @@ protected:
 public:
     Label(int xPos, int yPos, T initialValue, FontSize size = FontSize::Small, std::function<String(T)> customFormatter = nullptr)
         : Label(xPos, yPos, size, customFormatter) {
-            value = initialValue;
-        }
-    
+        value = initialValue;
+    }
+
     Label(int xPos, int yPos, FontSize size = FontSize::Small, std::function<String(T)> customFormatter = nullptr)
-        : GuiElement(xPos, yPos), 
-        fontSize(size), 
+        : GuiElement(xPos, yPos),
+        fontSize(size),
         inverted(false),
         formatter(customFormatter) {
         // Default simple string conversion formatter if not provided
@@ -31,13 +31,13 @@ public:
             SetFormatter([](T value) { return toString(value); });
         }
     }
-    
+
     void SetFormatter(std::function<String(T)> customFormatter) {
         formatter = customFormatter;
     }
 
     T GetValue() const { return value; }
-    
+
     void SetValue(T newValue) {
         value = newValue;
         Invalidate();
@@ -59,7 +59,7 @@ public:
         return inverted;
     }
 
-    virtual void Draw(LcdDisplayHandler &displayHandler) override {
+    virtual void Draw(LcdDisplayHandler& displayHandler) override {
         if (!IsInvalidated()) return;
 
         Adafruit_SSD1306& display = displayHandler.GetDisplayObject();

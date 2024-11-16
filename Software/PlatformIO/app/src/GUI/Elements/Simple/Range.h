@@ -18,15 +18,15 @@ private:
 public:
     Range(int xPos, int yPos, T initialMinValue, T initialMaxValue, std::function<String(T)> customFormatter = nullptr)
         : Range(xPos, yPos, customFormatter) {
-            SetMinValue(initialMinValue);
-            SetMaxValue(initialMaxValue);
-        }
+        SetMinValue(initialMinValue);
+        SetMaxValue(initialMaxValue);
+    }
 
     Range(int xPos, int yPos, std::function<String(T)> customFormatter = nullptr)
         : GuiElement(xPos, yPos),
-          minInverted(false),
-          maxInverted(false),
-          formatter(customFormatter) {
+        minInverted(false),
+        maxInverted(false),
+        formatter(customFormatter) {
         // Default formatter if not provided
         if (!formatter) {
             SetFormatter([](T value) { return String(value); }); // Default to simple string conversion
@@ -73,7 +73,7 @@ public:
     }
 
     // Draw with formatted values
-    virtual void Draw(LcdDisplayHandler &displayHandler) override {
+    virtual void Draw(LcdDisplayHandler& displayHandler) override {
         if (!IsInvalidated()) return;
 
         Adafruit_SSD1306& display = displayHandler.GetDisplayObject();
