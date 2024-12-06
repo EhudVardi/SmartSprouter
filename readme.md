@@ -15,6 +15,10 @@ it may take photos for hyperlapse video of the sprouting proceedure
 | -------- | ---------- | --- |
 | DIGITAL_OUTPUT_RELAY1_PIN | 16 |
 | DIGITAL_OUTPUT_RELAY2_PIN | 17 |
+| DIGITAL_OUTPUT_EXT_RELAY1_PIN | 27 |
+| DIGITAL_OUTPUT_EXT_RELAY2_PIN | 14 |
+| DIGITAL_OUTPUT_EXT_RELAY3_PIN | 13 |
+| DIGITAL_OUTPUT_EXT_RELAY4_PIN | 23 |
 | BUTTON_BACK_PIN | 12 |
 | ROTARY_ENCODER_MAIN_A_PIN | 18 |
 | ROTARY_ENCODER_MAIN_B_PIN | 19 |

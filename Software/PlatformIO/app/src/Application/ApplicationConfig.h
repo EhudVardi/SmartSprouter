@@ -27,8 +27,16 @@ extern const int NTP_SERVICE_PORT;
 // ACTUATOR_PINS
 #define DIGITAL_OUTPUT_RELAY1_PIN 16
 #define DIGITAL_OUTPUT_RELAY2_PIN 17
-#define DIGITAL_OUTPUT_RELAY1_NAME "relay1"
-#define DIGITAL_OUTPUT_RELAY2_NAME "relay2"
+#define DIGITAL_OUTPUT_RELAY3_PIN 27
+#define DIGITAL_OUTPUT_RELAY4_PIN 14
+#define DIGITAL_OUTPUT_RELAY5_PIN 13
+#define DIGITAL_OUTPUT_RELAY6_PIN 23
+const std::string DIGITAL_OUTPUT_RELAY1_NAME = "relay1";
+const std::string DIGITAL_OUTPUT_RELAY2_NAME = "relay2";
+const std::string DIGITAL_OUTPUT_RELAY3_NAME = "relay3";
+const std::string DIGITAL_OUTPUT_RELAY4_NAME = "relay4";
+const std::string DIGITAL_OUTPUT_RELAY5_NAME = "relay5";
+const std::string DIGITAL_OUTPUT_RELAY6_NAME = "relay6";
 
 // DISPLAY_PINS
 #define LCD_SDA_PIN 25 
