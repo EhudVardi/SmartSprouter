@@ -2,21 +2,21 @@
 
 bool ActuatorManager::initialize() {
 
-    std::vector<int> digitalOutputPins = { 
-        DIGITAL_OUTPUT_RELAY1_PIN, 
-        DIGITAL_OUTPUT_RELAY2_PIN, 
-        DIGITAL_OUTPUT_RELAY3_PIN, 
-        DIGITAL_OUTPUT_RELAY4_PIN, 
-        DIGITAL_OUTPUT_RELAY5_PIN, 
-        DIGITAL_OUTPUT_RELAY6_PIN 
+    std::vector<int> digitalOutputPins = {
+        DIGITAL_OUTPUT_RELAY1_PIN,
+        DIGITAL_OUTPUT_RELAY2_PIN,
+        DIGITAL_OUTPUT_RELAY3_PIN,
+        DIGITAL_OUTPUT_RELAY4_PIN,
+        DIGITAL_OUTPUT_RELAY5_PIN,
+        DIGITAL_OUTPUT_RELAY6_PIN
     };
-    std::vector<std::string> digitalOutputNames = { 
-        DIGITAL_OUTPUT_RELAY1_NAME, 
-        DIGITAL_OUTPUT_RELAY2_NAME, 
-        DIGITAL_OUTPUT_RELAY3_NAME, 
-        DIGITAL_OUTPUT_RELAY4_NAME, 
-        DIGITAL_OUTPUT_RELAY5_NAME, 
-        DIGITAL_OUTPUT_RELAY6_NAME 
+    std::vector<std::string> digitalOutputNames = {
+        DIGITAL_OUTPUT_RELAY1_NAME,
+        DIGITAL_OUTPUT_RELAY2_NAME,
+        DIGITAL_OUTPUT_RELAY3_NAME,
+        DIGITAL_OUTPUT_RELAY4_NAME,
+        DIGITAL_OUTPUT_RELAY5_NAME,
+        DIGITAL_OUTPUT_RELAY6_NAME
     };
 
     digitalOutputHandler = new DigitalOutputHandler(digitalOutputPins, digitalOutputNames);
@@ -29,25 +29,17 @@ void ActuatorManager::SetHumidifiers(HumidifierActions action) {
         OpenRelay1();
         return;
     }
-    OpenRelay1();
-    delay(100);
-    CloseRelay1();
-    delay(100);
+    OpenRelay1(); delay(100);
+    CloseRelay1(); delay(100);
     if (action == HumidifierActions::H_HIGH) {
-        CloseRelay2();
-        delay(100);
-        OpenRelay2();
-        delay(100);
+        CloseRelay2(); delay(100);
+        OpenRelay2(); delay(100);
     }
     else if (action == HumidifierActions::H_LOW) {
-        CloseRelay2();
-        delay(100);
-        OpenRelay2();
-        delay(100);
-        CloseRelay2();
-        delay(100);
-        OpenRelay2();
-        delay(100);
+        CloseRelay2(); delay(100);
+        OpenRelay2(); delay(100);
+        CloseRelay2(); delay(100);
+        OpenRelay2(); delay(100);
     }
 }
 void ActuatorManager::ShutDownAllActuators() {
