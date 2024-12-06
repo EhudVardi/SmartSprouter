@@ -28,6 +28,7 @@ private:
 public:
     bool initialize() override;
     void SetHumidifiers(HumidifierActions action);
+    void SetVentilators(VentilatorActions action);
     void ShutDownAllActuators();
 };
 

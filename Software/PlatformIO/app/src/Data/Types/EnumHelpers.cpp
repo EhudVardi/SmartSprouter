@@ -42,6 +42,13 @@ namespace EnumHelpers {
         { HumidifierActions::H_HIGH, "  H_HIGH" },
         }, HumidifierActions::H_HIGH); // last valid state
 
+    EnumHelper<VentilatorActions> ventilatorActionsHelper({
+        { VentilatorActions::V_BOTH_OFF, "V_BOTH_OFF   " },
+        { VentilatorActions::V_INTAKE_ON, "V_INTAKE_ON " },
+        { VentilatorActions::V_EXHAUST_ON, "V_EXHAUST_ON" },
+        { VentilatorActions::V_BOTH_ON, "V_BOTH_ON   " },
+        }, VentilatorActions::V_BOTH_ON); // last valid state
+
     EnumHelper<Pages> pagesHelper({
         { Pages::ABOUT, "ABOUT" },
         { Pages::IDLE, "IDLE" },

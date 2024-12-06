@@ -47,6 +47,12 @@ inline String toString(const HumidifierActions& value) {
 }
 // common primitives
 template <>
+inline String toString(const VentilatorActions& value) {
+    using namespace EnumHelpers;
+    return EnumHelpers::ventilatorActionsHelper.ToString(value);
+}
+// common primitives
+template <>
 inline String toString<int>(const int& value) {
     return String(value);
 }

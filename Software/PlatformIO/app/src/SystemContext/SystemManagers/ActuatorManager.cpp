@@ -42,8 +42,27 @@ void ActuatorManager::SetHumidifiers(HumidifierActions action) {
         OpenRelay2(); delay(100);
     }
 }
+void ActuatorManager::SetVentilators(VentilatorActions action) {
+    if (action == VentilatorActions::V_BOTH_OFF) {
+        OpenRelay3();
+        OpenRelay4();
+    }
+    else if (action == VentilatorActions::V_INTAKE_ON) {
+        CloseRelay3();
+        OpenRelay4();
+    }
+    else if (action == VentilatorActions::V_EXHAUST_ON) {
+        OpenRelay3();
+        CloseRelay4();
+    }
+    else if (action == VentilatorActions::V_BOTH_ON) {
+        CloseRelay3();
+        CloseRelay4();
+    }
+}
 void ActuatorManager::ShutDownAllActuators() {
     SetHumidifiers(HumidifierActions::H_OFF);
+    SetVentilators(VentilatorActions::V_BOTH_OFF);
 }
 
 void ActuatorManager::CloseRelay(const std::string& name) { digitalOutputHandler->SetOutput(name, 1); }

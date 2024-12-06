@@ -15,6 +15,7 @@ namespace EnumHelpers {
     extern EnumHelper<AppErrors> appErrorsHelper;
     extern EnumHelper<SetupStates> setupStatesHelper;
     extern EnumHelper<HumidifierActions> humidifierActionsHelper;
+    extern EnumHelper<VentilatorActions> ventilatorActionsHelper;
     extern EnumHelper<Pages> pagesHelper;
     extern EnumHelper<LogType> logTypeHelper;
     extern EnumHelper<PeriodicEvents> periodicEventsHelper;
