@@ -8,10 +8,10 @@
 class ActuatorManager : public BaseManager {
 private:
     DigitalOutputHandler* digitalOutputHandler = nullptr;
-    
+
     void CloseRelay(const std::string& name);
     void OpenRelay(const std::string& name);
-    
+
     inline void CloseRelay1() { CloseRelay(DIGITAL_OUTPUT_RELAY1_NAME); }
     inline void CloseRelay2() { CloseRelay(DIGITAL_OUTPUT_RELAY2_NAME); }
     inline void CloseRelay3() { CloseRelay(DIGITAL_OUTPUT_RELAY3_NAME); }
@@ -27,37 +27,8 @@ private:
 
 public:
     bool initialize() override;
-
-    void SetHumidifiers(HumidifierActions action) {
-        if (action == HumidifierActions::H_OFF) {
-            OpenRelay1();
-            return;
-        }
-        OpenRelay1();
-        delay(100);
-        CloseRelay1();
-        delay(100);
-        if (action == HumidifierActions::H_HIGH) {
-            CloseRelay2();
-            delay(100);
-            OpenRelay2();
-            delay(100);
-        }
-        else if (action == HumidifierActions::H_LOW) {
-            CloseRelay2();
-            delay(100);
-            OpenRelay2();
-            delay(100);
-            CloseRelay2();
-            delay(100);
-            OpenRelay2();
-            delay(100);
-        }
-    }
-
-    void ShutDownAllActuators() {
-        SetHumidifiers(HumidifierActions::H_OFF);
-    }
+    void SetHumidifiers(HumidifierActions action);
+    void ShutDownAllActuators();
 };
 
 #endif // ACTUATOR_MANAGER_H

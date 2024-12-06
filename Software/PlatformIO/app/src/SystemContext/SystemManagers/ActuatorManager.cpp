@@ -24,5 +24,35 @@ bool ActuatorManager::initialize() {
     return true;
 }
 
+void ActuatorManager::SetHumidifiers(HumidifierActions action) {
+    if (action == HumidifierActions::H_OFF) {
+        OpenRelay1();
+        return;
+    }
+    OpenRelay1();
+    delay(100);
+    CloseRelay1();
+    delay(100);
+    if (action == HumidifierActions::H_HIGH) {
+        CloseRelay2();
+        delay(100);
+        OpenRelay2();
+        delay(100);
+    }
+    else if (action == HumidifierActions::H_LOW) {
+        CloseRelay2();
+        delay(100);
+        OpenRelay2();
+        delay(100);
+        CloseRelay2();
+        delay(100);
+        OpenRelay2();
+        delay(100);
+    }
+}
+void ActuatorManager::ShutDownAllActuators() {
+    SetHumidifiers(HumidifierActions::H_OFF);
+}
+
 void ActuatorManager::CloseRelay(const std::string& name) { digitalOutputHandler->SetOutput(name, 1); }
 void ActuatorManager::OpenRelay(const std::string& name) { digitalOutputHandler->SetOutput(name, 0); }
