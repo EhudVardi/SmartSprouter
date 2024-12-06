@@ -109,11 +109,11 @@ bool ProcessManager::setProcessEventsCallbacks(Process* process, std::shared_ptr
         ventilatorsEvent->setActionCallbacks(
             [actuatorManager]() {
             log("ventilators Start");
-            //TODO: start ventilators
+            actuatorManager->SetVentilators(VentilatorActions::V_BOTH_ON);
         },
             [actuatorManager]() {
             log("ventilators Stop");
-            //TODO: start ventilators
+            actuatorManager->SetVentilators(VentilatorActions::V_BOTH_OFF);
         }
         );
     }
