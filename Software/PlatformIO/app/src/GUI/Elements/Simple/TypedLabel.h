@@ -35,11 +35,10 @@ public:
         Adafruit_SSD1306& display = displayHandler.GetDisplayObject();
 
         if (!positionCalculated) {
-
+            display.setTextSize(static_cast<uint8_t>(fontSize)); // set text size for correct bounds calculations
             int16_t x1, y1;
             uint16_t textWidth, textHeight;
             display.getTextBounds(value, 0, 0, &x1, &y1, &textWidth, &textHeight);
-            display.setTextSize(static_cast<uint8_t>(fontSize));
             centeredX = (display.width() - textWidth) / 2; // Centering the text based on actual display width
             x = centeredX; // Directly Set the inherited x position
             positionCalculated = true; // Mark the position as calculated
