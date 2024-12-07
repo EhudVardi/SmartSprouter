@@ -15,7 +15,7 @@ public:
         humidityGauge(2, 12, "Humidity", FontSize::Small),
         temperatureGauge(2, 24, "Temper'", FontSize::Small),
         durationGauge(2, 36, "Duration", FontSize::Small) {
-        SetTitle("RUNNING");
+        SetTitle("Running");
         AddElement(&humidityGauge);
         AddElement(&temperatureGauge);
         AddElement(&durationGauge);

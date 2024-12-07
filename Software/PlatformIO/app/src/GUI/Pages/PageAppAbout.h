@@ -18,7 +18,7 @@ public:
             abstractsproutingseedimage_bitmap, abstractsproutingseedimage_width, abstractsproutingseedimage_height),
         appName(abstractsproutingseedimage_width + 4, SCREEN_HEIGHT / 4, APP_NAME_TEXT, FontSize::Small),
         appVersion(abstractsproutingseedimage_width + 4, SCREEN_HEIGHT / 4 + 12, "Version " + APP_VERSION_TEXT, FontSize::Small) {
-        SetTitle("ABOUT");
+        SetTitle("About");
         AddElement(&LogoImage);
         AddElement(&appName);
         AddElement(&appVersion);

@@ -12,7 +12,7 @@ protected:
 public:
     PageAppAbort() : confirmQuestion(SCREEN_HEIGHT / 4 + 6, "R U Sure?", FontSize::Medium),
         confirmInsrtruction(SCREEN_HEIGHT / 4 + 30, "Enter To Confirm", FontSize::Small) {
-        SetTitle("ABORT");
+        SetTitle("Abort");
         AddElement(&confirmQuestion);
         AddElement(&confirmInsrtruction);
     }

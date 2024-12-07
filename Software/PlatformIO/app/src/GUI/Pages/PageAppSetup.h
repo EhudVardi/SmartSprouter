@@ -20,7 +20,7 @@ public:
         temperatureRangeSetup(2, 24, DEFAULT_TEMPERATURE_RANGE_SETUP_MIN, DEFAULT_TEMPERATURE_RANGE_SETUP_MAX, "Temper'"),
         durationSetup(2, 36, DEFAULT_DURATION_SETUP, "Duration", FontSize::Small),
         startButton(48, "Start", FontSize::Medium) {
-        SetTitle("SETUP");
+        SetTitle("Setup");
         AddElement(&humidityRangeSetup);
         AddElement(&temperatureRangeSetup);
         AddElement(&durationSetup);
